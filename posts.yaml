@@ -1,0 +1,12 @@
+- file: posts/xslt-rant-explained
+  title: "XSLT Rant Explained"
+  day: 2012-04-09
+- file: posts/xslt-rant
+  title: "Open Letter to XSLT Fans"
+  day: 2012-04-05
+- file: posts/ie-mimetype-png
+  title: "Dysfunctional Programming: FindMimeFromData"
+  day: 2012-03-22
+- file: posts/first-post
+  title: First Post
+  day: 2012-01-31

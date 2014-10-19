@@ -1,0 +1,61 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+aside {
+    float: right;
+    width: 300px;
+}
+
+article {
+    margin-right: 320px;
+}
+
+body {
+    width: 900px;
+    margin: 0 auto;
+}
+
+p.aboutme {
+    white-space: pre-wrap;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+tr:nth-child(odd) td {
+    background-color: #f8f8f8;
+}
+
+td {
+    font-size: 0.9em;
+    padding: 2px;
+}
+
+td:nth-child(2) {
+    font-weight: bold;
+}
+
+@media screen and (max-width: 900px) {
+    aside {
+        float: none;
+        width: auto;
+    }
+
+    #twitter {
+        display: none;
+    }
+
+    body {
+        width: auto;
+        margin: 5px;
+    }
+
+    article {
+        margin: 0;
+    }
+}

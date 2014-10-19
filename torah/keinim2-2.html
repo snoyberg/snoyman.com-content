@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Keinim</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <style>
+      body {
+        background-color: #cff;
+        font-family: sans-serif;
+      }
+
+      p {
+        line-height: 140%;
+      }
+
+      #wrapper {
+        background-color: #ffc;
+        width: 700px;
+        padding: 1em;
+        margin: 1em auto;
+        border: 1px solid black;
+        -moz-border-radius: 10px;
+        -moz-box-shadow: 2px 2px 1px 1px;
+        -webkit-border-radius: 10px;
+        -webkit-box-shadow: 2px 2px 1px #000;
+      }
+
+      h1 {
+        text-align: center;
+        color: #090;
+      }
+
+      h2 {
+        text-align: center;
+        color: #603;
+      }
+
+      .birds {
+        text-align: center;
+      }
+
+      .birds h5 {
+        margin: 0 0 5px 0;
+        text-decoration: underline;
+      }
+
+      .birds > div {
+        display: inline-block;
+	_display: inline;
+        border: 1px solid black;
+        margin-right: 1em;
+        text-align: center;
+        padding: 0 15px;
+        -moz-box-shadow: 1px 1px 1px;
+        -webkit-box-shadow: 1px 1px #000;
+      }
+
+      .birds > div > div {
+        width: 15px;
+        height: 15px;
+        display: inline-block;
+	_display: inline;
+        border: 1px solid #000;
+      }
+
+      .leah {
+        background-color: #f00;
+      }
+
+      .rachel {
+        background-color: #0f0;
+      }
+
+      .birds > div > div.none {
+        background-color: #999;
+        width: 11px;
+        height: 11px;
+      }
+
+      .leah.none {
+        border: 3px solid #f00;
+      }
+
+      .rachel.none {
+        border: 3px solid #0f0;
+      }
+
+      .olah {
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+      }
+    </style>
+  </head>
+<body>
+    <script type="text/javascript" src="CFInstall.js"></script>
+<script>CFInstall.check();</script>
+
+    <div id="wrapper">
+      <h1>Masechet Keinim 2:2</h1>
+      <h2>L'iluy nishmat Iser ben Binyamin HaCohen<br>
+      לעילוי נשמת איסר בן בנימין הכהן</h2>
+      <p>This d'var Torah is to mark my siyum- completion- of the fifth order of the mishna, Seder Kodshim, in memory of my grandfather Iser ben Binyamin HaCohen. Kodshim is paricularly appropriate, as it describes the intricacies of the temple service, from the details of an offering to the measurements of the temple mount.</p>
+      <p>The Mishna is broken up into six <i>sedarim</i>, or orders. Each order is divided into a number of <i>masechtot</i>, or tractates. The last tractate is called <i>keinim</i>, which literally means nests. It refers to the bird offerings in the temple. I would like to touch on one topic in this tractate.</p>
+
+      <h3>Pairs</h3>
+      <p>The most common case for bringing a bird offering was a birth, and thus the entire tractate refers to the owner of the birds in the feminine. For each birth, a woman was required to bring a <b>pair</b> of birds, one as an <i>olah</i> (burnt offering) and one as a <i>chatat</i> (sin offering).</p>
+      <p>I stress pair here because these birds <b>must</b> go together; it is not sufficient to have two separate bird offerings. They must be brought to the temple as a pair, and if the first is designated an olah, the other is automatically a chatat, and vice versa.</p>
+
+      <h3>Keinim 2:2</h3>
+      <blockquote>Two women: Rachel has two pairs of birds, and Leah has two pairs. If one of Rachel's birds flies and is mixed in with Leah's birds, the bird invalidates one in its departure. If one returns (from Leah to Rachel), it invalidates one in its return.</blockquote>
+      <p>I chose this Mishna because it has a very mathematical nature to it, something I feel connects me with my grandfather. In particular, this branch of math is known as combinatorics, or studying different possible combinations. In order to understand what's going on, let's look at a simpler case.</p>
+
+      <h3>Four birds</h3>
+      <h4>No funny business</h4>
+      <p>Let's say that Rachel has a single pair of birds, as does Leah. If none of the birds do any funny business, one of Rachel's birds will be an olah, and one will be a chatat. The same is true of Leah's birds. It would look like this:</p>
+      <div class="birds">
+        <div>
+          <h5>Rachel</h5>
+          <div class="rachel chatat"></div>
+          <div class="rachel olah"></div>
+        </div>
+        <div>
+          <h5>Leah</h5>
+          <div class="leah chatat"></div>
+          <div class="leah olah"></div>
+        </div>
+      </div>
+
+      <h4>OK, some funny busines</h4>
+      <p>Now let's say one of the birds decides to become Houdini (another Cohen if I'm not mistaken). One of Rachel's birds hops the fence into Leah's cage, and now we don't know whose bird is whose. Once a bird is assigned an owner, the owner cannot be changed (in the picture, color represents the owner). However, the <i>type</i> of offering (circle for olah and square for chatat) has <i>not</i> been assigned, and is thus up for grabs.</p>
+      <p>It's not possible for us to make more than two birds a chatat or more than two an olah, so the best case scenario would be that two of the three birds in Leah's possession will be an olah, the third will be a chatat, and the single bird in Rachel's cage will also be a chatat. That would look like this:</p>
+      <div class="birds">
+        <div>
+          <h5>Rachel</h5>
+          <div class="rachel chatat"></div>
+        </div>
+        <div>
+          <h5>Leah</h5>
+          <div class="leah chatat"></div>
+          <div class="leah olah"></div>
+          <div class="rachel olah"></div>
+        </div>
+      </div>
+
+      <p>In this case, all is fine and dandy; Leah's pair (the red birds) are an olah and chatat, and Rachel's pair (the green ones) are also an olah and chatat. No problem.</p>
+
+      <p>However, this assumes that we guessed correctly. Since the bird in Rachel's cage is a chatat, then we need to make sure that the green bird in Leah's cage is an olah, since we need matching pairs. We don't really know which bird actually belongs to Rachel, so we could accidently do the following:</p>
+      <div class="birds">
+        <div>
+          <h5>Rachel</h5>
+          <div class="rachel chatat"></div>
+        </div>
+        <div>
+          <h5>Leah</h5>
+          <div class="rachel chatat"></div>
+          <div class="leah olah"></div>
+          <div class="leah olah"></div>
+        </div>
+      </div>
+
+      <p>Now we've got a real problem! Both of Rachel's birds are chatats, and both of Leah's birds are olahs. We've got no matching pairs at all, so none of the offerings were good. It turns out the best we can do, mathematically, is to offer just two of the birds from Leah's cage. Here's the possibilities:</p>
+      <ul>
+        <li>The two birds that are chosen actually belong to Leah. Then Leah had a full offering of an olah and chatat, and Rachel gets nothing.
+          <div class="birds">
+            <div>
+              <h5>Rachel</h5>
+              <div class="rachel none"></div>
+            </div>
+            <div>
+              <h5>Leah</h5>
+              <div class="leah chatat"></div>
+              <div class="leah olah"></div>
+              <div class="rachel none"></div>
+            </div>
+          </div>
+        </li>
+        <li>One of the chosen birds is Leah's and one is Rachel's. Each of them will get a single offering (it could go either way, it doesn't really matter). But at least there are no mis-matched pairs.
+          <div class="birds">
+            <div>
+              <h5>Rachel</h5>
+              <div class="rachel none"></div>
+            </div>
+            <div>
+              <h5>Leah</h5>
+              <div class="leah chatat"></div>
+              <div class="rachel olah"></div>
+              <div class="leah none"></div>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <h3>Eight birds</h3>
+      <p>Well, eight birds is basically the exact same things as four, just more complicated. To look at this mathematically, our goal is to understand:</p>
+      <ul>
+        <li>Why making any more sacrifices than specified by the mishna could lead to mismatched pairs.</li>
+        <li>Why there is no possibility of mismatched pairs with the solution of the mishna.</li>
+      </ul>
+
+      <p>Proving the first is easier: we need a counter-example, or a case that <i>could</i> lead to mismatched pairs. Let's start off with the base case: one of Rachel's birds flew into Leah's cage:</p>
+      <div class="birds">
+        <div>
+          <h5>Rachel</h5>
+          <div class="rachel none"></div>
+          <div class="rachel none"></div>
+          <div class="rachel none"></div>
+        </div>
+        <div>
+          <h5>Leah</h5>
+          <div class="leah none"></div>
+          <div class="leah none"></div>
+          <div class="leah none"></div>
+          <div class="leah none"></div>
+          <div class="rachel none"></div>
+        </div>
+      </div>
+
+      <h4>Doing it wrong</h4>
+      <p>The mishna says that this disqualifies one of Rachel's birds, meaning that we sacrifice four from Leah's cage and two from Rachel's. There are two ways to sacrifice more than the allowed number:</p>
+      <ul>
+        <li>
+          <p>We could sacrifice three from Rachel's cage instead of two. However, this could lead to a problem if we had something like the following:</p>
+          <div class="birds">
+            <div>
+              <h5>Rachel</h5>
+              <div class="rachel chatat"></div>
+              <div class="rachel olah"></div>
+              <div class="rachel olah"></div>
+            </div>
+            <div>
+              <h5>Leah</h5>
+              <div class="leah chatat"></div>
+              <div class="leah olah"></div>
+              <div class="leah chatat"></div>
+              <div class="leah none"></div>
+              <div class="rachel olah"></div>
+            </div>
+          </div>
+          <p>That is, we sacrifice two olahs from Rachel's cage, and then inadvertently sacrifice Rachel's bird in Leah's cage as an olah. This means that, in total, we would have three olahs and one chatat for Rachel, which is unmatched.</p>
+        </li>
+        <li>
+          <p>We could sacrifice five from Leah's cage instead of four. Here the problem would be:</p>
+          <div class="birds">
+            <div>
+              <h5>Rachel</h5>
+              <div class="rachel chatat"></div>
+              <div class="rachel olah"></div>
+              <div class="rachel none"></div>
+            </div>
+            <div>
+              <h5>Leah</h5>
+              <div class="leah chatat"></div>
+              <div class="leah olah"></div>
+              <div class="leah chatat"></div>
+              <div class="leah chatat"></div>
+              <div class="rachel olah"></div>
+            </div>
+          </div>
+          <p>Here, the problem is that we might accidently sacrifice three of Leah's birds as the same type of offering. This would also be mismatched.</p>
+        </li>
+      </ul>
+      <h4>Doing it right</h4>
+      <p>So how do we know that the mishna's advice works? Well, let's do some deductive reasoning. Rachel has four birds all told. If she sacrifices two of them in her cage as a pair, she still has one left over to be the pair to the one in Leah's cage. If we don't sacrifice that third bird, then the fourth has the freedom to be anything it wants (within the realm of dead birds).</p>
+      <div class="birds">
+        <div>
+          <h5>Rachel</h5>
+          <div class="rachel olah"></div>
+          <div class="rachel chatat"></div>
+          <div class="rachel none"></div>
+        </div>
+        <div>
+          <h5>Leah</h5>
+          <div class="leah none"></div>
+          <div class="leah none"></div>
+          <div class="leah none"></div>
+          <div class="leah none"></div>
+          <div class="rachel none"></div>
+        </div>
+      </div>
+      <p>That means that if Leah sacrifices Rachel's bird as either an olah or chatat, or doesn't sacrifice any of Rachel's birds, we're safe. <b>There is nothing we can do to mess up Rachel's offerings.</b> The only concern is Leah's offerings.</p>
+      <p>Well, if we offer four of the birds in Leah's cage, there are two possibilies:</p>
+      <ol>
+        <li>One of the birds offered was Rachel's escapee, and one of Leah's birds was left out.</li>
+        <li>All four birds belonged to Leah, and Rachel's bird was left out.</li>
+      </ol>
+      <p>In option 1, Leah gets one matched pair and one lone offering, while Rachel gets an offering without a pair. Cool. In option 2, Leah gets two matched pairs, and Rachel gets nothing. Also good.</p>
+
+      <h3>The grass is greener on the other side</h3>
+      <p>Still with me? Good, we're right at the end here. So here goes the story: one of Rachel's birds flies into Leah's cage, and realizes living conditions were much better in Rachel's cage. The bird starts complaining, and eventually <i>some</i> bird flies into Rachel's cage. Problem is, we don't know if it was Rachel's escapee, or if one of Leah's birds has now broken out of jail.</p>
+      <p>What makes this different is <b>we have two possible base cases</b>, as follows:</p>
+      <ol>
+        <li>
+          <div class="birds">
+            <div>
+              <h5>Rachel</h5>
+              <div class="rachel none"></div>
+              <div class="rachel none"></div>
+              <div class="rachel none"></div>
+              <div class="rachel none"></div>
+            </div>
+            <div>
+              <h5>Leah</h5>
+              <div class="leah none"></div>
+              <div class="leah none"></div>
+              <div class="leah none"></div>
+              <div class="leah none"></div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="birds">
+            <div>
+              <h5>Rachel</h5>
+              <div class="rachel none"></div>
+              <div class="rachel none"></div>
+              <div class="rachel none"></div>
+              <div class="leah none"></div>
+            </div>
+            <div>
+              <h5>Leah</h5>
+              <div class="leah none"></div>
+              <div class="leah none"></div>
+              <div class="leah none"></div>
+              <div class="rachel none"></div>
+            </div>
+          </div>
+        </li>
+      </ol>
+      <p>Well, if we're talking about option 1, no problem: just go 50/50 in each cage, and all is well. The problem is in option 2.</p>
+      <h4>Independent events</h4>
+      <p>Time to bring in more math: we have something called <b>independent events</b>, where a result in one case does not effect the result in another. The typical example is a coin toss: if I get heads the first time, the next toss is unaffected. Thus, if I flip a coin twice, I have four possible results:</p>
+      <ol>
+        <li>Head, head</li>
+        <li>Head, tail</li>
+        <li>Tail, head</li>
+        <li>Tail, tail</li>
+      </ol>
+      <p>We're going to have the same thing here. In each cage, we're going to offer two birds. In Rachel's cage, we have two possible results:</p>
+      <ol>
+        <li>Two of Rachel's birds.</li>
+        <li>One of Rachel's and one of Leah's.</li>
+      </ol>
+      <p>We have the reverse options in Leah's cage: either both Leah's, or one of Leah's and one of Rachel's. So all told, we have four possibilities.</p>
+      <p>Instead of displaying them all, I'll simply put in the most difficult case: where we take one from each owner from each cage. Since in this case, each owner will still have two unsacrificed birds, each bird which <i>is</i> sacrificed has complete freedom to be what it wants. Therefore, no problem, and all is well.</p>
+
+      <h3>Conclusion</h3>
+      <p>Keinim is part of Kodshim, the fifth order of the Mishna. The fourt order, Nezikin (literally meaning damages, the same root as the yiddish word <i>mazik</i>), discusses monetary laws.</p>
+      <p>If our case of the birds occurred in Nezikin, the answer would be obvious and logical: if you can't tell the birds apart anyway, who cares who's holding onto which bird? If they each started with four birds, let them each take four birds and be done with it!</p>
+      <p>I think this dichotomy exemplifies the distinction between the two orders. Kodshim is <b>not about logic</b>, or at least not human logic relating to this world. It is relating to things beyond what we can perceive. In a Kodshim perspective, <b>the birds are connected to their owners</b> in a way that cannot be severed. We may not see this, but Kodshim tells us it's there.</p>
+      <p>The juxtaposition of these two orders tells us to not compartmentalize these two approaches. We need to take both aspects with us through our daily lives. While we are fully immersed in this world, and fully subject to the laws and logic of it, we must appreciate that there is more than meets the eye.</p>
+      <p>While Papa may not be here in a Nezikin sense, he is still with us in a Kodshim sense. Even though we cannot see him or talk to him, we all know that the connection lives on in a way we cannot understand.</p>
+    </div>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1434510-6']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+  })();
+
+</script>
+
+  </body>
+</html>

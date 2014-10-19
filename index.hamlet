@@ -1,0 +1,137 @@
+$doctype 5
+<html lang=en>
+    <head>
+        <meta charset=utf-8>
+        <meta name=viewport content="width=device-width, initial-scale=1">
+        <title>Michael Snoyman's homepage
+        <link rel=stylesheet href=style.lucius>
+    <body>
+        <aside>
+            <img src=profile.jpg alt="Michael Snoyman" width=150 height=213>
+            <ul>
+                <li>
+                    <a href="https://plus.google.com/116553865628071717889/posts">+Michael Snoyman
+                <li>
+                    <a href="https://twitter.com/snoyberg">@snoyberg
+                <li>
+                    <a href="http://www.haskellers.com/user/snoyberg">I'm a Haskeller
+
+            <div #twitter>
+                <a class="twitter-timeline" href="https://twitter.com/snoyberg" data-widget-id="296574273508741122">Tweets by @snoyberg</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            
+
+        <article>
+            <h1>Michael Snoyman
+            <h2>About Me
+            <p .aboutme>
+                I'm a (mainly) Haskell web developer, and lead developer of the <a href="http://www.yesodweb.com">Yesod Web Framework</a>.
+                I'm the Lead Software Engineer at <a href="http://fpcomplete.com">FP Complete</a>.
+                I live in Maalot, Israel with my wife and three kids.
+
+            <h2>Publications
+            <ul>
+                <li>
+                    <a href="http://aosabook.org/en/posa/warp.html">Performance of Open Source Applications#
+                    . November 2013
+                <li>
+                    <a href="http://www.aosabook.org/en/yesod.html">Architecture of Open Source Applications, Volume 2#
+                    . May 2012
+                <li>
+                    <a href="http://shop.oreilly.com/product/0636920023142.do">Developing Web Applications with Haskell and Yesod#
+                    . April 2012, O'Reilly
+                <li>
+                    <a href="http://steve.vinoski.net/pdf/IC-Warp_a_Haskell_Web_Server.pdf">Warp: A Haskell Web Server#
+                    . June 2011, IEEE Spectrum
+                    <i>The Functional Web
+
+            <h2>Talks
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date
+                        <th>Title
+                        <th>Venue
+                        <th>Links
+                <tbody>
+                    <tr>
+                        <td>October 2014
+                        <td>Hybrid server/client Haskell web apps
+                        <td>
+                            <a href=http://polyconf.com/>PolyConf 2014
+                        <td>To be posted after the talk
+                    <tr>
+                        <td>October 2014
+                        <td>Conduit
+                        <td>Haskell Users Group, Berlin
+                        <td>To be posted after the talk
+                    <tr>
+                        <td>February 2014
+                        <td>Pipes and Conduit
+                        <td>Haskell Cast
+                        <td>
+                            <a href="http://www.haskellcast.com/episode/006-gabriel-gonzalez-and-michael-snoyman-on-pipes-and-conduit/">Video
+                    <tr>
+                        <td>November 2013
+                        <td>Yesod and FP Complete
+                        <td>Mostly Erlang (podcast)
+                        <td>
+                            <a href="http://mostlyerlang.com/2013/11/27/023-yesod-and-fp-complete/">Audio
+                    <tr>
+                        <td>October 2013
+                        <td>Programming with Functional Style
+                        <td>Erlang Factory, Tel Aviv
+                        <td>
+                            <a href="https://docs.google.com/presentation/d/1770ZKnm_bUpkOfzYN_IZq7AVFE6J1pKyFMX9iqVgyAI/edit?usp=sharing">Slides
+                    <tr>
+                        <td>Dec 2012
+                        <td>Haskell and Yesod
+                        <td>Sayeret Lambda
+                        <td>
+                            <a href="https://docs.google.com/presentation/d/1_A1QMbFPmpfBc-uJz8Z4G4tESVuxErW4kmI-R2yVnU4/edit">Slides
+                    <tr>
+                        <td>Dec 2012
+                        <td>Yesod
+                        <td>Floss Weekly
+                        <td>
+                            <a href="http://twit.tv/show/floss-weekly/236">Video
+                    <tr>
+                        <td>Nov 2012
+                        <td>Designing Domain Specific Languages
+                        <td>O'Reilly Webinar
+                        <td>
+                            <a href="http://www.oreillynet.com/pub/e/2400">Video
+                            <a href="https://docs.google.com/presentation/d/1flkeCW-8rNPrT1d-YkxMm4repuAeT1YxjmdRd2f-FDs/edit">Slides
+                    <tr>
+                        <td>Oct 2012
+                        <td>Yesod
+                        <td>Sayeret Lambda (podcast)
+                        <td>
+                            <a href="http://narkisr.github.io/lambda-pod/posts/2012-10/lambda-pod-yesod-episode.html">Audio
+                    <tr>
+                        <td>June 2012
+                        <td>Designing Type-Safe Haskell APIs
+                        <td>Big Techday 5
+                        <td>
+                            <a href="http://www.oreillynet.com/pub/e/2351">Video
+                            <a href="https://docs.google.com/presentation/d/1K7smIeqmca-fY8qgQUKrvWWHTUPJoKuVLRtLeWYFMtI/edit">Slides
+                    <tr>
+                        <td>Nov 2011
+                        <td>Yesod Web Framework
+                        <td>QCon San Francisco
+                        <td>
+                            <a href="http://www.infoq.com/presentations/Yesod;jsessionid=6AF0AA3EF8CCCE7195BDBBB0C8E1050B">Video
+                            <a href="https://docs.google.com/presentation/d/15wN2uLhMdTWqvYD2RtN0W3XFyTYQ0Kh6bHOKlthBhX0/edit">Slides
+
+            <h2>My Sites
+            <ul>
+                <li>
+                    <a href="http://photos.snoyman.com">Family Photo Blog
+                <li>
+                    <a href="http://www.yesodweb.com">Yesod Web Framework
+                <li>
+                    <a href="http://www.haskellers.com">Haskellers
+                <li>
+                    <a href="http://packdeps.haskellers.com">Packdeps
+                <li>
+                    <a href="http://luach.snoyman.com">Luach
