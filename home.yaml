@@ -1,0 +1,118 @@
+title: Michael Snoyman's homepage
+about:
+    >
+        I'm a (mainly) Haskell web developer, and lead developer of the [Yesod Web Framework](http://www.yesodweb.com).
+        I'm the Lead Software Engineer at [FP Complete](http://fpcomplete.com).
+        I live in Maalot, Israel with my wife and three kids.
+
+profile:
+  url: /img/profile.jpg
+  alt: Michael Snoyman
+  width: 150
+  height: 213
+
+toplinks:
+- url: 'https://plus.google.com/116553865628071717889/posts'
+  text: "+Michael Snoyman"
+- url: 'https://twitter.com/snoyberg'
+  text: '@snoyberg'
+- url: 'http://www.haskellers.com/user/snoyberg'
+  text: I'm a Haskeller
+
+publications:
+- url: 'http://aosabook.org/en/posa/warp.html'
+  text: Performance of Open Source Applications
+  date: 2013-11
+- url: "http://www.aosabook.org/en/yesod.html"
+  text: Architecture of Open Source Applications, Volume 2
+  date: 2012-05
+- url: "http://shop.oreilly.com/product/0636920023142.do"
+  text: Developing Web Applications with Haskell and Yesod
+  date: 2012-04
+  publisher: O'Reilly
+- url: "http://steve.vinoski.net/pdf/IC-Warp_a_Haskell_Web_Server.pdf"
+  text: "Warp: A Haskell Web Server"
+  date: 2011-06
+  publisher: "IEEE Spectrum, The Functional Web"
+
+talks:
+- date: 2014-10
+  title: Hybrid server/client Haskell web apps
+  venue: PolyConf 2014
+  links: To be posted after the talk
+- date: 2014-10
+  title: Conduit
+  venue: Haskell Users Group, Berlin
+  links: To be posted after the talk
+- date: 2014-02
+  title: Pipes and Conduit
+  venue: Haskell Cast
+  links:
+    - url: "http://www.haskellcast.com/episode/006-gabriel-gonzalez-and-michael-snoyman-on-pipes-and-conduit/"
+      text: Video
+- date: 2013-11
+  title: Yesod and FP Complete
+  venue: Mostly Erlang (podcast)
+  links:
+    - url: "http://mostlyerlang.com/2013/11/27/023-yesod-and-fp-complete/"
+      text: Audio
+- date: 2013-10
+  title: Programming with Functional Style
+  venue: Erlang Factory, Tel Aviv
+  links:
+    - url: "https://docs.google.com/presentation/d/1770ZKnm_bUpkOfzYN_IZq7AVFE6J1pKyFMX9iqVgyAI/edit?usp=sharing"
+      text: Slides
+- date: 2012-12
+  title: Haskell and Yesod
+  venue: Sayeret Lambda
+  links:
+    - url: "https://docs.google.com/presentation/d/1_A1QMbFPmpfBc-uJz8Z4G4tESVuxErW4kmI-R2yVnU4/edit"
+      text: Slides
+- date: 2012-12
+  title: Yesod
+  venue: Floss Weekly
+  links:
+    - url: "http://twit.tv/show/floss-weekly/236"
+      text: Video
+- date: 2012-11
+  title: Designing Domain Specific Languages
+  venue: O'Reilly Webinar
+  links:
+    - url: "http://www.oreillynet.com/pub/e/2400"
+      text: Video
+    - url: "https://docs.google.com/presentation/d/1flkeCW-8rNPrT1d-YkxMm4repuAeT1YxjmdRd2f-FDs/edit"
+      text: Slides
+- date: 2012-10
+  title: Yesod
+  venue: Sayeret Lambda (podcast)
+  links:
+    - url: "http://narkisr.github.io/lambda-pod/posts/2012-10/lambda-pod-yesod-episode.html"
+      text: Audio
+- date: 2012-06
+  title: Designing Type-Safe Haskell APIs
+  venue: Big Techday 5
+  links:
+    - url: "http://www.oreillynet.com/pub/e/2351"
+      text: Video
+    - url: "https://docs.google.com/presentation/d/1K7smIeqmca-fY8qgQUKrvWWHTUPJoKuVLRtLeWYFMtI/edit"
+      text: Slides
+- date: 2011-11
+  title: Yesod Web Framework
+  venue: QCon San Francisco
+  links:
+    - url: "http://www.infoq.com/presentations/Yesod;jsessionid=6AF0AA3EF8CCCE7195BDBBB0C8E1050B"
+      text: Video
+    - url: "https://docs.google.com/presentation/d/15wN2uLhMdTWqvYD2RtN0W3XFyTYQ0Kh6bHOKlthBhX0/edit"
+      text: Slides
+
+sites:
+- url: "http://photos.snoyman.com"
+  text: Family Photo Blog
+- url: "http://www.yesodweb.com"
+  text: Yesod Web Framework
+- url: "http://www.haskellers.com"
+  text: Haskellers
+- url: "http://packdeps.haskellers.com"
+  text: Packdeps
+- url: "http://luach.snoyman.com"
+  text: Luach
