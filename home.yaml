@@ -43,7 +43,9 @@ talks:
 - date: 2014-10
   title: Conduit
   venue: Haskell Users Group, Berlin
-  links: To be posted after the talk
+  links:
+    - url: "https://docs.google.com/presentation/d/1RBefOCZ7AKOo4f1yiF4mtKPAT3l5vY9ky2SR02O4Vvg/edit?usp=sharing"
+      text: Slides
 - date: 2014-02
   title: Pipes and Conduit
   venue: Haskell Cast
