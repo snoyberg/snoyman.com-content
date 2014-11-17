@@ -42,6 +42,8 @@ talks:
   links:
     - url: "https://drive.google.com/open?id=1Wn-ceTyS8WqDlbzkm_dSyl02rOdskqE8IYRLTbRxFtI&authuser=0"
       text: Slides
+    - url: "https://www.youtube.com/watch?v=XfINRj5OzGw"
+      text: Video
 - date: 2014-10
   title: Conduit
   venue: Haskell Users Group, Berlin
