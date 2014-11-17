@@ -39,12 +39,14 @@ talks:
 - date: 2014-10
   title: Hybrid server/client Haskell web apps
   venue: PolyConf 2014
-  links: To be posted after the talk
+  links:
+    - url: "https://drive.google.com/open?id=1Wn-ceTyS8WqDlbzkm_dSyl02rOdskqE8IYRLTbRxFtI&authuser=0"
+      text: Slides
 - date: 2014-10
   title: Conduit
   venue: Haskell Users Group, Berlin
   links:
-    - url: "https://docs.google.com/presentation/d/1RBefOCZ7AKOo4f1yiF4mtKPAT3l5vY9ky2SR02O4Vvg/edit?usp=sharing"
+    - url: "https://drive.google.com/open?id=1RBefOCZ7AKOo4f1yiF4mtKPAT3l5vY9ky2SR02O4Vvg&authuser=0"
       text: Slides
 - date: 2014-02
   title: Pipes and Conduit
