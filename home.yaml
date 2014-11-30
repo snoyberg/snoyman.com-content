@@ -18,6 +18,8 @@ toplinks:
   text: '@snoyberg'
 - url: 'http://www.haskellers.com/user/snoyberg'
   text: I'm a Haskeller
+- url: 'http://shop.oreilly.com/product/0636920023142.do'
+  text: "The Yesod book from O'Reilly"
 
 publications:
 - url: 'http://aosabook.org/en/posa/warp.html'
