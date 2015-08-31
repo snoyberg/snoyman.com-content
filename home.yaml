@@ -39,7 +39,7 @@ publications:
 
 talks:
 - date: 2015-08
-  title: Haskell in Interprise
+  title: Haskell in Enterprise
   venue: Haskeller Meetup, Tel Aviv
   links:
     - url: "snoyberg.github.io/2015-08-30-tel-aviv-haskell-in-enterprise.html"
