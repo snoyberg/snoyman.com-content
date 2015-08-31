@@ -42,7 +42,7 @@ talks:
   title: Haskell in Enterprise
   venue: Haskeller Meetup, Tel Aviv
   links:
-    - url: "snoyberg.github.io/2015-08-30-tel-aviv-haskell-in-enterprise.html"
+    - url: "https://snoyberg.github.io/2015-08-30-tel-aviv-haskell-in-enterprise.html"
       text: Slides
 - date: 2014-10
   title: Hybrid server/client Haskell web apps
