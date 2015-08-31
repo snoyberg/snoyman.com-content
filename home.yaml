@@ -38,6 +38,12 @@ publications:
   publisher: "IEEE Spectrum, The Functional Web"
 
 talks:
+- date: 2015-08
+  title: Haskell in Interprise
+  venue: Haskeller Meetup, Tel Aviv
+  links:
+    - url: "snoyberg.github.io/2015-08-30-tel-aviv-haskell-in-enterprise.html"
+      text: Slides
 - date: 2014-10
   title: Hybrid server/client Haskell web apps
   venue: PolyConf 2014
