@@ -38,6 +38,12 @@ publications:
   publisher: "IEEE Spectrum, The Functional Web"
 
 talks:
+- date: 2015-11-11
+  title: Haskell for fast, concurrent, robust services
+  venue: Twitter
+  links:
+    - url: "http://snoyberg.github.io/generated/2015-11-10-twitter-haskell-fast-concurrent-robust-services.html"
+      text: Slides
 - date: 2015-08
   title: Haskell in Enterprise
   venue: Haskeller Meetup, Tel Aviv
