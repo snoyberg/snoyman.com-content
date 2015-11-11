@@ -38,7 +38,7 @@ publications:
   publisher: "IEEE Spectrum, The Functional Web"
 
 talks:
-- date: 2015-11-11
+- date: 2015-11
   title: Haskell for fast, concurrent, robust services
   venue: Twitter
   links:
