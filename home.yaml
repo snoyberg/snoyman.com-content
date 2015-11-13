@@ -44,6 +44,8 @@ talks:
   links:
     - url: "http://snoyberg.github.io/generated/2015-11-10-twitter-haskell-fast-concurrent-robust-services.html"
       text: Slides
+    - url: "https://youtu.be/6bkWvfI7QDQ"
+      text: Video
 - date: 2015-08
   title: Haskell in Enterprise
   venue: Haskeller Meetup, Tel Aviv
