@@ -78,6 +78,9 @@ a:hover {
 .book img {
     width: 150px;
 }
+aside.me img {
+    width: 100%;
+}
 .archive section h1 {
     font-size: 1em;
     color: #000;
