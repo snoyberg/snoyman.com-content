@@ -216,3 +216,13 @@ from haskell.org__. This is why we created haskell-lang.org. Link to
 it, tell your friends about it, warn people away from haskell.org, and
 maybe even
 [help improve its content](http://github.com/haskell-lang/haskell-lang#contributing-content).
+
+* * *
+
+Archive link of the Reddit and Github threads quoted above:
+
+* http://archive.is/7zFkb
+* http://archive.is/NTzUD
+* http://archive.is/roexm
+* http://archive.is/uwdzr
+* http://archive.is/uduu5
