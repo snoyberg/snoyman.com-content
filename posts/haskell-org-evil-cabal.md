@@ -48,6 +48,12 @@ unsuspecting users will arrive at
 of the much more intuitive
 [haskell-lang.org get started page](https://haskell-lang.org/get-started).
 
+__EDIT__ Ignore that bit about the download statistics, it's apparently due to
+the CDN usage on Hackage. Instead, one need only look at how often a question
+about Haskell Platform is answered with "don't do that, use Stack instead." For
+a great example, see the discussion of [the Rust
+Platform](https://www.reddit.com/r/haskell/comments/4uxgbl/the_rust_platform/).
+
 ## The newest attempt
 
 Alright, with that out of the way, why am I writing this blog post
