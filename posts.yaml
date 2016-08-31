@@ -1,3 +1,6 @@
+- file: posts/appveyor-haskell-windows-ci.md
+  title: "Using AppVeyor for Haskell+Windows CI"
+  day: 2016-08-31
 - file: posts/restarting-this-blog.md
   title: Restarting this blog
   day: 2016-08-24
