@@ -1,3 +1,6 @@
+- file: posts/appveyor-haskell-windows-ci.md
+  title: "Using AppVeyor for Haskell+Windows CI"
+  day: 2016-08-31
 - file: posts/follow-up-haskell-org-evil-cabal.md
   title: "Follow up: haskell.org and the Evil Cabal"
   day: 2016-08-29
