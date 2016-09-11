@@ -1,3 +1,6 @@
+- file: posts/monads-are-like-lannisters.md
+  title: "Monads are like Lannisters"
+  day: 2016-09-12
 - file: posts/appveyor-haskell-windows-ci.md
   title: "Using AppVeyor for Haskell+Windows CI"
   day: 2016-08-31
