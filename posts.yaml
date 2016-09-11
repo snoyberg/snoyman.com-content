@@ -4,9 +4,11 @@
 - file: posts/follow-up-haskell-org-evil-cabal.md
   title: "Follow up: haskell.org and the Evil Cabal"
   day: 2016-08-29
+  listed: false
 - file: posts/haskell-org-evil-cabal.md
   title: haskell.org and the Evil Cabal
   day: 2016-08-28
+  listed: false
 - file: posts/restarting-this-blog.md
   title: Restarting this blog
   day: 2016-08-24
