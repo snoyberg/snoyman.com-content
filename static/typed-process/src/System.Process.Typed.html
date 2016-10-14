@@ -1,0 +1,728 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-pragma">{-# LANGUAGE CPP #-}</span><span>
+</span><a name="line-2"></a><span class="hs-pragma">{-# LANGUAGE TypeFamilies #-}</span><span>
+</span><a name="line-3"></a><span class="hs-pragma">{-# LANGUAGE DeriveDataTypeable #-}</span><span>
+</span><a name="line-4"></a><span class="hs-pragma">{-# LANGUAGE RecordWildCards #-}</span><span>
+</span><a name="line-5"></a><span class="hs-pragma">{-# LANGUAGE DataKinds #-}</span><span>
+</span><a name="line-6"></a><span class="hs-pragma">{-# LANGUAGE KindSignatures #-}</span><span>
+</span><a name="line-7"></a><span class="hs-pragma">{-# LANGUAGE DeriveFunctor #-}</span><span>
+</span><a name="line-8"></a><span class="hs-comment">-- | Please see the README.md file for examples of using this API.</span><span>
+</span><a name="line-9"></a><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">System</span><span class="hs-operator">.</span><span class="hs-identifier">Process</span><span class="hs-operator">.</span><span class="hs-identifier">Typed</span><span>
+</span><a name="line-10"></a><span>    </span><span class="hs-special">(</span><span> </span><span class="hs-comment">-- * Types</span><span>
+</span><a name="line-11"></a><span>      </span><a href="System.Process.Typed.html#ProcessConfig"><span class="hs-identifier hs-type">ProcessConfig</span></a><span>
+</span><a name="line-12"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#StreamSpec"><span class="hs-identifier hs-type">StreamSpec</span></a><span>
+</span><a name="line-13"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#StreamType"><span class="hs-identifier hs-type">StreamType</span></a><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><a name="line-14"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#Process"><span class="hs-identifier hs-type">Process</span></a><span>
+</span><a name="line-15"></a><span>
+</span><a name="line-16"></a><span>      </span><span class="hs-comment">-- * ProcessConfig</span><span>
+</span><a name="line-17"></a><span>      </span><span class="hs-comment">-- ** Smart constructors</span><span>
+</span><a name="line-18"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#proc"><span class="hs-identifier hs-var">proc</span></a><span>
+</span><a name="line-19"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#shell"><span class="hs-identifier hs-var">shell</span></a><span>
+</span><a name="line-20"></a><span>
+</span><a name="line-21"></a><span>      </span><span class="hs-comment">-- ** Setters</span><span>
+</span><a name="line-22"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#setStdin"><span class="hs-identifier hs-var">setStdin</span></a><span>
+</span><a name="line-23"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#setStdout"><span class="hs-identifier hs-var">setStdout</span></a><span>
+</span><a name="line-24"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#setStderr"><span class="hs-identifier hs-var">setStderr</span></a><span>
+</span><a name="line-25"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#setWorkingDir"><span class="hs-identifier hs-var">setWorkingDir</span></a><span>
+</span><a name="line-26"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#setEnv"><span class="hs-identifier hs-var">setEnv</span></a><span>
+</span><a name="line-27"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#setCloseFds"><span class="hs-identifier hs-var">setCloseFds</span></a><span>
+</span><a name="line-28"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#setCreateGroup"><span class="hs-identifier hs-var">setCreateGroup</span></a><span>
+</span><a name="line-29"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#setDelegateCtlc"><span class="hs-identifier hs-var">setDelegateCtlc</span></a><span>
+</span><a name="line-30"></a><span class="hs-cpp">#if MIN_VERSION_process(1, 3, 0)</span><span>
+</span><a name="line-31"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#setDetachConsole"><span class="hs-identifier hs-var">setDetachConsole</span></a><span>
+</span><a name="line-32"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#setCreateNewConsole"><span class="hs-identifier hs-var">setCreateNewConsole</span></a><span>
+</span><a name="line-33"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#setNewSession"><span class="hs-identifier hs-var">setNewSession</span></a><span>
+</span><a name="line-34"></a><span class="hs-cpp">#endif</span><span>
+</span><a name="line-35"></a><span class="hs-cpp">#if MIN_VERSION_process(1, 4, 0) &amp;&amp; !WINDOWS</span><span>
+</span><a name="line-36"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#setChildGroup"><span class="hs-identifier hs-var">setChildGroup</span></a><span>
+</span><a name="line-37"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#setChildUser"><span class="hs-identifier hs-var">setChildUser</span></a><span>
+</span><a name="line-38"></a><span class="hs-cpp">#endif</span><span>
+</span><a name="line-39"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#setCheckExitCode"><span class="hs-identifier hs-var">setCheckExitCode</span></a><span>
+</span><a name="line-40"></a><span>
+</span><a name="line-41"></a><span>      </span><span class="hs-comment">-- * Stream specs</span><span>
+</span><a name="line-42"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#mkStreamSpec"><span class="hs-identifier hs-var">mkStreamSpec</span></a><span>
+</span><a name="line-43"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#inherit"><span class="hs-identifier hs-var">inherit</span></a><span>
+</span><a name="line-44"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#closed"><span class="hs-identifier hs-var">closed</span></a><span>
+</span><a name="line-45"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#byteStringInput"><span class="hs-identifier hs-var">byteStringInput</span></a><span>
+</span><a name="line-46"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#byteStringOutput"><span class="hs-identifier hs-var">byteStringOutput</span></a><span>
+</span><a name="line-47"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#createPipe"><span class="hs-identifier hs-var">createPipe</span></a><span>
+</span><a name="line-48"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#useHandleOpen"><span class="hs-identifier hs-var">useHandleOpen</span></a><span>
+</span><a name="line-49"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#useHandleClose"><span class="hs-identifier hs-var">useHandleClose</span></a><span>
+</span><a name="line-50"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#sink"><span class="hs-identifier hs-var">sink</span></a><span>
+</span><a name="line-51"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#source"><span class="hs-identifier hs-var">source</span></a><span>
+</span><a name="line-52"></a><span>
+</span><a name="line-53"></a><span>      </span><span class="hs-comment">-- * Launch a process</span><span>
+</span><a name="line-54"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#startProcess"><span class="hs-identifier hs-var">startProcess</span></a><span>
+</span><a name="line-55"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#stopProcess"><span class="hs-identifier hs-var">stopProcess</span></a><span>
+</span><a name="line-56"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#withProcess"><span class="hs-identifier hs-var">withProcess</span></a><span>
+</span><a name="line-57"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#readProcess"><span class="hs-identifier hs-var">readProcess</span></a><span>
+</span><a name="line-58"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#runProcess"><span class="hs-identifier hs-var">runProcess</span></a><span>
+</span><a name="line-59"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#runProcess_"><span class="hs-identifier hs-var">runProcess_</span></a><span>
+</span><a name="line-60"></a><span>
+</span><a name="line-61"></a><span>      </span><span class="hs-comment">-- * Interact with a process</span><span>
+</span><a name="line-62"></a><span>
+</span><a name="line-63"></a><span>      </span><span class="hs-comment">-- ** Process exit code</span><span>
+</span><a name="line-64"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#waitExitCode"><span class="hs-identifier hs-var">waitExitCode</span></a><span>
+</span><a name="line-65"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#waitExitCodeSTM"><span class="hs-identifier hs-var">waitExitCodeSTM</span></a><span>
+</span><a name="line-66"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#checkExitCode"><span class="hs-identifier hs-var">checkExitCode</span></a><span>
+</span><a name="line-67"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#checkExitCodeSTM"><span class="hs-identifier hs-var">checkExitCodeSTM</span></a><span>
+</span><a name="line-68"></a><span>
+</span><a name="line-69"></a><span>      </span><span class="hs-comment">-- ** Process streams</span><span>
+</span><a name="line-70"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#getStdin"><span class="hs-identifier hs-var">getStdin</span></a><span>
+</span><a name="line-71"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#getStdout"><span class="hs-identifier hs-var">getStdout</span></a><span>
+</span><a name="line-72"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#getStderr"><span class="hs-identifier hs-var">getStderr</span></a><span>
+</span><a name="line-73"></a><span>
+</span><a name="line-74"></a><span>      </span><span class="hs-comment">-- * Exceptions</span><span>
+</span><a name="line-75"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#ExitCodeException"><span class="hs-identifier hs-type">ExitCodeException</span></a><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><a name="line-76"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="System.Process.Typed.html#ByteStringOutputException"><span class="hs-identifier hs-type">ByteStringOutputException</span></a><span> </span><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><a name="line-77"></a><span>    </span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><a name="line-78"></a><span>
+</span><a name="line-79"></a><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="hs-identifier">Data</span><span class="hs-operator">.</span><span class="hs-identifier">ByteString</span><span> </span><span class="hs-keyword">as</span><span> </span><span class="hs-identifier">S</span><span>
+</span><a name="line-80"></a><span class="hs-keyword">import</span><span> </span><span class="hs-identifier">Data</span><span class="hs-operator">.</span><span class="hs-identifier">ByteString</span><span class="hs-operator">.</span><span class="hs-identifier">Lazy</span><span class="hs-operator">.</span><span class="hs-identifier">Internal</span><span> </span><span class="hs-special">(</span><span class="hs-identifier hs-var">defaultChunkSize</span><span class="hs-special">)</span><span>
+</span><a name="line-81"></a><span class="hs-keyword">import</span><span> </span><span class="hs-identifier">Control</span><span class="hs-operator">.</span><span class="hs-identifier">Exception</span><span> </span><span class="hs-special">(</span><span class="hs-identifier hs-var">throw</span><span class="hs-special">,</span><span> </span><span class="hs-identifier hs-var">throwIO</span><span class="hs-special">)</span><span>
+</span><a name="line-82"></a><span class="hs-keyword">import</span><span> </span><span class="hs-identifier">Control</span><span class="hs-operator">.</span><span class="hs-identifier">Monad</span><span> </span><span class="hs-special">(</span><span class="hs-identifier hs-var">void</span><span class="hs-special">)</span><span>
+</span><a name="line-83"></a><span class="hs-keyword">import</span><span> </span><span class="hs-identifier">Control</span><span class="hs-operator">.</span><span class="hs-identifier">Monad</span><span class="hs-operator">.</span><span class="hs-identifier">IO</span><span class="hs-operator">.</span><span class="hs-identifier">Class</span><span>
+</span><a name="line-84"></a><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="hs-identifier">System</span><span class="hs-operator">.</span><span class="hs-identifier">Process</span><span> </span><span class="hs-keyword">as</span><span> </span><span class="hs-identifier">P</span><span>
+</span><a name="line-85"></a><span class="hs-keyword">import</span><span> </span><span class="hs-identifier">Control</span><span class="hs-operator">.</span><span class="hs-identifier">Monad</span><span class="hs-operator">.</span><span class="hs-identifier">Catch</span><span> </span><span class="hs-keyword">as</span><span> </span><span class="hs-identifier">C</span><span>
+</span><a name="line-86"></a><span class="hs-keyword">import</span><span> </span><span class="hs-identifier">Data</span><span class="hs-operator">.</span><span class="hs-identifier">Typeable</span><span> </span><span class="hs-special">(</span><span class="hs-identifier hs-type">Typeable</span><span class="hs-special">)</span><span>
+</span><a name="line-87"></a><span class="hs-keyword">import</span><span> </span><span class="hs-identifier">System</span><span class="hs-operator">.</span><span class="hs-identifier">IO</span><span> </span><span class="hs-special">(</span><span class="hs-identifier hs-type">Handle</span><span class="hs-special">,</span><span> </span><span class="hs-identifier hs-var">hClose</span><span class="hs-special">)</span><span>
+</span><a name="line-88"></a><span class="hs-keyword">import</span><span> </span><span class="hs-identifier">Control</span><span class="hs-operator">.</span><span class="hs-identifier">Concurrent</span><span class="hs-operator">.</span><span class="hs-identifier">Async</span><span> </span><span class="hs-special">(</span><span class="hs-identifier hs-var">async</span><span class="hs-special">)</span><span>
+</span><a name="line-89"></a><span class="hs-keyword">import</span><span> </span><span class="hs-identifier">Control</span><span class="hs-operator">.</span><span class="hs-identifier">Concurrent</span><span class="hs-operator">.</span><span class="hs-identifier">STM</span><span> </span><span class="hs-special">(</span><span class="hs-identifier hs-var">newEmptyTMVarIO</span><span class="hs-special">,</span><span> </span><span class="hs-identifier hs-var">atomically</span><span class="hs-special">,</span><span> </span><span class="hs-identifier hs-var">putTMVar</span><span class="hs-special">,</span><span> </span><span class="hs-identifier hs-type">TMVar</span><span class="hs-special">,</span><span> </span><span class="hs-identifier hs-var">readTMVar</span><span class="hs-special">,</span><span> </span><span class="hs-identifier hs-var">tryReadTMVar</span><span class="hs-special">,</span><span> </span><span class="hs-identifier hs-type">STM</span><span class="hs-special">,</span><span> </span><span class="hs-identifier hs-var">tryPutTMVar</span><span class="hs-special">,</span><span> </span><span class="hs-identifier hs-var">throwSTM</span><span class="hs-special">)</span><span>
+</span><a name="line-90"></a><span class="hs-keyword">import</span><span> </span><span class="hs-identifier">System</span><span class="hs-operator">.</span><span class="hs-identifier">Exit</span><span> </span><span class="hs-special">(</span><span class="hs-identifier hs-type">ExitCode</span><span> </span><span class="hs-special">(</span><span class="hs-identifier hs-var">ExitSuccess</span><span class="hs-special">)</span><span class="hs-special">)</span><span>
+</span><a name="line-91"></a><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="hs-identifier">Data</span><span class="hs-operator">.</span><span class="hs-identifier">ByteString</span><span class="hs-operator">.</span><span class="hs-identifier">Lazy</span><span> </span><span class="hs-keyword">as</span><span> </span><span class="hs-identifier">L</span><span>
+</span><a name="line-92"></a><span class="hs-keyword">import</span><span> </span><span class="hs-identifier">Data</span><span class="hs-operator">.</span><span class="hs-identifier">String</span><span> </span><span class="hs-special">(</span><span class="hs-identifier hs-type">IsString</span><span> </span><span class="hs-special">(</span><span class="hs-identifier hs-var">fromString</span><span class="hs-special">)</span><span class="hs-special">)</span><span>
+</span><a name="line-93"></a><span class="hs-keyword">import</span><span> </span><span class="hs-identifier">Data</span><span class="hs-operator">.</span><span class="hs-identifier">Conduit</span><span> </span><span class="hs-special">(</span><span class="hs-identifier hs-type">ConduitM</span><span class="hs-special">)</span><span>
+</span><a name="line-94"></a><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="hs-identifier">Data</span><span class="hs-operator">.</span><span class="hs-identifier">Conduit</span><span> </span><span class="hs-keyword">as</span><span> </span><span class="hs-identifier">C</span><span>
+</span><a name="line-95"></a><span class="hs-keyword">import</span><span> </span><span class="hs-keyword">qualified</span><span> </span><span class="hs-identifier">Data</span><span class="hs-operator">.</span><span class="hs-identifier">Conduit</span><span class="hs-operator">.</span><span class="hs-identifier">Binary</span><span> </span><span class="hs-keyword">as</span><span> </span><span class="hs-identifier">CB</span><span>
+</span><a name="line-96"></a><span>
+</span><a name="line-97"></a><span class="hs-cpp">#if MIN_VERSION_process(1, 4, 0) &amp;&amp; !WINDOWS</span><span>
+</span><a name="line-98"></a><span class="hs-keyword">import</span><span> </span><span class="hs-identifier">System</span><span class="hs-operator">.</span><span class="hs-identifier">Posix</span><span class="hs-operator">.</span><span class="hs-identifier">Types</span><span> </span><span class="hs-special">(</span><span class="hs-identifier hs-type">GroupID</span><span class="hs-special">,</span><span> </span><span class="hs-identifier hs-type">UserID</span><span class="hs-special">)</span><span>
+</span><a name="line-99"></a><span class="hs-cpp">#endif</span><span>
+</span><a name="line-100"></a><span>
+</span><a name="line-101"></a><span class="hs-comment">-- | An abstract configuration for a process, which can then be</span><span>
+</span><a name="line-102"></a><span class="hs-comment">-- launched into an actual running 'Process'. Takes three type</span><span>
+</span><a name="line-103"></a><span class="hs-comment">-- parameters, providing the types of standard input, standard output,</span><span>
+</span><a name="line-104"></a><span class="hs-comment">-- and standard error, respectively.</span><span>
+</span><a name="line-105"></a><span class="hs-comment">--</span><span>
+</span><a name="line-106"></a><span class="hs-comment">-- There are three ways to construct a value of this type:</span><span>
+</span><a name="line-107"></a><span class="hs-comment">--</span><span>
+</span><a name="line-108"></a><span class="hs-comment">-- * With the 'proc' smart constructor, which takes a command name and</span><span>
+</span><a name="line-109"></a><span class="hs-comment">-- a list of arguments.</span><span>
+</span><a name="line-110"></a><span class="hs-comment">--</span><span>
+</span><a name="line-111"></a><span class="hs-comment">-- * With the 'shell' smart constructor, which takes a shell string</span><span>
+</span><a name="line-112"></a><span class="hs-comment">--</span><span>
+</span><a name="line-113"></a><span class="hs-comment">-- * With the 'IsString' instance via OverloadedStrings. If you</span><span>
+</span><a name="line-114"></a><span class="hs-comment">-- provide it a string with no spaces (e.g., @&quot;date&quot;@), it will</span><span>
+</span><a name="line-115"></a><span class="hs-comment">-- treat it as a raw command with no arguments (e.g., @proc &quot;date&quot;</span><span>
+</span><a name="line-116"></a><span class="hs-comment">-- []@). If it has spaces, it will use @shell@.</span><span>
+</span><a name="line-117"></a><span class="hs-comment">--</span><span>
+</span><a name="line-118"></a><span class="hs-comment">-- In all cases, the default for all three streams is to inherit the</span><span>
+</span><a name="line-119"></a><span class="hs-comment">-- streams from the parent process. For other settings, see the</span><span>
+</span><a name="line-120"></a><span class="hs-comment">-- setters below for default values.</span><span>
+</span><a name="line-121"></a><span class="hs-comment">--</span><span>
+</span><a name="line-122"></a><span class="hs-comment">-- @since 0.1.0.0</span><span>
+</span><a name="line-123"></a><span class="hs-keyword">data</span><span> </span><a name="ProcessConfig"><a href="System.Process.Typed.html#ProcessConfig"><span class="hs-identifier">ProcessConfig</span></a></a><span> </span><a name="local-1627412638"><a href="#local-1627412638"><span class="hs-identifier">stdin</span></a></a><span> </span><a name="local-1627412639"><a href="#local-1627412639"><span class="hs-identifier">stdout</span></a></a><span> </span><a name="local-1627412640"><a href="#local-1627412640"><span class="hs-identifier">stderr</span></a></a><span> </span><span class="hs-glyph">=</span><span> </span><a name="ProcessConfig"><a href="System.Process.Typed.html#ProcessConfig"><span class="hs-identifier">ProcessConfig</span></a></a><span>
+</span><a name="line-124"></a><span>    </span><span class="hs-special">{</span><span> </span><a name="pcCmdSpec"><a href="System.Process.Typed.html#pcCmdSpec"><span class="hs-identifier">pcCmdSpec</span></a></a><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="hs-identifier hs-type">P</span><span class="hs-operator hs-type">.</span><span class="hs-identifier hs-type">CmdSpec</span><span>
+</span><a name="line-125"></a><span>    </span><span class="hs-special">,</span><span> </span><a name="pcStdin"><a href="System.Process.Typed.html#pcStdin"><span class="hs-identifier">pcStdin</span></a></a><span> </span><span class="hs-glyph">::</span><span> </span><span class="hs-glyph">!</span><span class="hs-special">(</span><a href="System.Process.Typed.html#StreamSpec"><span class="hs-identifier hs-type">StreamSpec</span></a><span> </span><span class="hs-char">'STInput stdin)
+    , pcStdout :: !(StreamSpec 'STOutput stdout)
+    , pcStderr :: !(StreamSpec 'STOutput stderr)
+    , pcWorkingDir :: !(Maybe FilePath)
+    , pcEnv :: !(Maybe [(String, String)])
+    , pcCloseFds :: !Bool
+    , pcCreateGroup :: !Bool
+    , pcDelegateCtlc :: !Bool
+
+#if MIN_VERSION_process(1, 3, 0)
+    , pcDetachConsole :: !Bool
+    , pcCreateNewConsole :: !Bool
+    , pcNewSession :: !Bool
+#endif
+
+#if MIN_VERSION_process(1, 4, 0) &amp;&amp; !WINDOWS
+    , pcChildGroup :: !(Maybe GroupID)
+    , pcChildUser :: !(Maybe UserID)
+#endif
+
+    , pcCheckExitCode :: !Bool
+    }
+instance (stdin ~ (), stdout ~ (), stderr ~ ())
+  =&gt; IsString (ProcessConfig stdin stdout stderr) where
+    fromString s
+        | any (== ' ') s = shell s
+        | otherwise = proc s []
+
+-- | Whether a stream is an input stream or output stream. Note that
+-- this is from the perspective of the /child process/, so that a
+-- child's standard input stream is an @STInput@, even though the
+-- parent process will be writing to it.
+--
+-- @since 0.1.0.0
+data StreamType = STInput | STOutput
+
+-- | A specification for how to create one of the three standard child
+-- streams. See examples below.
+--
+-- @since 0.1.0.0
+data StreamSpec (streamType :: StreamType) a = StreamSpec
+    { ssStream :: !P.StdStream
+    , ssCreate :: !(Maybe Handle -&gt; Cleanup a)
+    }
+    deriving Functor
+
+-- | This instance uses 'byteStringInput' to convert a raw string into
+-- a stream of input for a child process.
+--
+-- @since 0.1.0.0
+instance (streamType ~ 'STInput, res ~ ())
+  =&gt; IsString (StreamSpec streamType res) where
+    fromString = byteStringInput . fromString
+
+-- | Internal type, to make for easier composition of cleanup actions.
+--
+-- @since 0.1.0.0
+newtype Cleanup a = Cleanup { runCleanup :: IO (a, IO ()) }
+    deriving Functor
+instance Applicative Cleanup where
+    pure x = Cleanup (return (x, return ()))
+    Cleanup f &lt;*&gt; Cleanup x = Cleanup $ do
+        (f', c1) &lt;- f
+        (`onException` c1) $ do
+            (x', c2) &lt;- x
+            return (f' x', c1 `finally` c2)
+
+-- | A running process. The three type parameters provide the type of
+-- the standard input, standard output, and standard error streams.
+--
+-- @since 0.1.0.0
+data Process stdin stdout stderr = Process
+    { pCleanup :: !(IO ())
+    , pStdin :: !stdin
+    , pStdout :: !stdout
+    , pStderr :: !stderr
+    , pHandle :: !P.ProcessHandle
+    , pExitCode :: !(TMVar ExitCode)
+    }
+
+-- | Internal helper
+defaultProcessConfig :: ProcessConfig () () ()
+defaultProcessConfig = ProcessConfig
+    { pcCmdSpec = P.ShellCommand &quot;&quot;
+    , pcStdin = inherit
+    , pcStdout = inherit
+    , pcStderr = inherit
+    , pcWorkingDir = Nothing
+    , pcEnv = Nothing
+    , pcCloseFds = False
+    , pcCreateGroup = False
+    , pcDelegateCtlc = False
+
+#if MIN_VERSION_process(1, 3, 0)
+    , pcDetachConsole = False
+    , pcCreateNewConsole = False
+    , pcNewSession = False
+#endif
+
+#if MIN_VERSION_process(1, 4, 0) &amp;&amp; !WINDOWS
+    , pcChildGroup = Nothing
+    , pcChildUser = Nothing
+#endif
+
+    , pcCheckExitCode = False
+    }
+
+-- | Create a 'ProcessConfig' from the given command and arguments.
+--
+-- @since 0.1.0.0
+proc :: FilePath -&gt; [String] -&gt; ProcessConfig () () ()
+proc cmd args = setProc cmd args defaultProcessConfig
+
+-- | Internal helper
+setProc :: FilePath -&gt; [String]
+        -&gt; ProcessConfig stdin stdout stderr
+        -&gt; ProcessConfig stdin stdout stderr
+setProc cmd args p = p { pcCmdSpec = P.RawCommand cmd args }
+
+-- | Create a 'ProcessConfig' from the given shell command.
+--
+-- @since 0.1.0.0
+shell :: String -&gt; ProcessConfig () () ()
+shell cmd = setShell cmd defaultProcessConfig
+
+-- | Internal helper
+setShell :: String
+         -&gt; ProcessConfig stdin stdout stderr
+         -&gt; ProcessConfig stdin stdout stderr
+setShell cmd p = p { pcCmdSpec = P.ShellCommand cmd }
+
+-- | Set the child's standard input stream to the given 'StreamSpec'.
+--
+-- Default: 'inherit'
+--
+-- @since 0.1.0.0
+setStdin :: StreamSpec 'STInput stdin
+         -&gt; ProcessConfig stdin0 stdout stderr
+         -&gt; ProcessConfig stdin stdout stderr
+setStdin spec pc = pc { pcStdin = spec }
+
+-- | Set the child's standard output stream to the given 'StreamSpec'.
+--
+-- Default: 'inherit'
+--
+-- @since 0.1.0.0
+setStdout :: StreamSpec 'STOutput stdout
+          -&gt; ProcessConfig stdin stdout0 stderr
+          -&gt; ProcessConfig stdin stdout stderr
+setStdout spec pc = pc { pcStdout = spec }
+
+-- | Set the child's standard error stream to the given 'StreamSpec'.
+--
+-- Default: 'inherit'
+--
+-- @since 0.1.0.0
+setStderr :: StreamSpec 'STOutput stderr
+          -&gt; ProcessConfig stdin stdout stderr0
+          -&gt; ProcessConfig stdin stdout stderr
+setStderr spec pc = pc { pcStderr = spec }
+
+-- | Set the working directory of the child process.
+--
+-- Default: current process's working directory.
+--
+-- @since 0.1.0.0
+setWorkingDir :: FilePath
+              -&gt; ProcessConfig stdin stdout stderr
+              -&gt; ProcessConfig stdin stdout stderr
+setWorkingDir dir pc = pc { pcWorkingDir = Just dir }
+
+-- | Set the environment variables of the child process.
+--
+-- Default: current process's environment.
+--
+-- @since 0.1.0.0
+setEnv :: [(String, String)]
+       -&gt; ProcessConfig stdin stdout stderr
+       -&gt; ProcessConfig stdin stdout stderr
+setEnv env pc = pc { pcEnv = Just env }
+
+-- | Should we close all file descriptors besides stdin, stdout, and
+-- stderr? See 'P.close_fds' for more information.
+--
+-- Default: False
+--
+-- @since 0.1.0.0
+setCloseFds
+    :: Bool
+    -&gt; ProcessConfig stdin stdout stderr
+    -&gt; ProcessConfig stdin stdout stderr
+setCloseFds x pc = pc { pcCloseFds = x }
+
+-- | Should we create a new process group?
+--
+-- Default: False
+--
+-- @since 0.1.0.0
+setCreateGroup
+    :: Bool
+    -&gt; ProcessConfig stdin stdout stderr
+    -&gt; ProcessConfig stdin stdout stderr
+setCreateGroup x pc = pc { pcCreateGroup = x }
+
+-- | Delegate handling of Ctrl-C to the child. For more information,
+-- see 'P.delegate_ctlc'.
+--
+-- Default: False
+--
+-- @since 0.1.0.0
+setDelegateCtlc
+    :: Bool
+    -&gt; ProcessConfig stdin stdout stderr
+    -&gt; ProcessConfig stdin stdout stderr
+setDelegateCtlc x pc = pc { pcDelegateCtlc = x }
+
+#if MIN_VERSION_process(1, 3, 0)
+
+-- | Detach console on Windows, see 'P.detach_console'.
+--
+-- Default: False
+--
+-- @since 0.1.0.0
+setDetachConsole
+    :: Bool
+    -&gt; ProcessConfig stdin stdout stderr
+    -&gt; ProcessConfig stdin stdout stderr
+setDetachConsole x pc = pc { pcDetachConsole = x }
+
+-- | Create new console on Windows, see 'P.create_new_console'.
+--
+-- Default: False
+--
+-- @since 0.1.0.0
+setCreateNewConsole
+    :: Bool
+    -&gt; ProcessConfig stdin stdout stderr
+    -&gt; ProcessConfig stdin stdout stderr
+setCreateNewConsole x pc = pc { pcCreateNewConsole = x }
+
+-- | Set a new session with the POSIX @setsid@ syscall, does nothing
+-- on non-POSIX. See 'P.new_session'.
+--
+-- Default: False
+--
+-- @since 0.1.0.0
+setNewSession
+    :: Bool
+    -&gt; ProcessConfig stdin stdout stderr
+    -&gt; ProcessConfig stdin stdout stderr
+setNewSession x pc = pc { pcNewSession = x }
+#endif
+
+#if MIN_VERSION_process(1, 4, 0) &amp;&amp; !WINDOWS
+-- | Set the child process's group ID with the POSIX @setgid@ syscall,
+-- does nothing on non-POSIX. See 'P.child_group'.
+--
+-- Default: False
+--
+-- @since 0.1.0.0
+setChildGroup
+    :: GroupID
+    -&gt; ProcessConfig stdin stdout stderr
+    -&gt; ProcessConfig stdin stdout stderr
+setChildGroup x pc = pc { pcChildGroup = Just x }
+
+-- | Set the child process's user ID with the POSIX @setuid@ syscall,
+-- does nothing on non-POSIX. See 'P.child_user'.
+--
+-- Default: False
+--
+-- @since 0.1.0.0
+setChildUser
+    :: UserID
+    -&gt; ProcessConfig stdin stdout stderr
+    -&gt; ProcessConfig stdin stdout stderr
+setChildUser x pc = pc { pcChildUser = Just x }
+#endif
+
+-- | Should we throw an exception when the process exits with a
+-- non-success code?
+--
+-- If set to 'True', then when 'stopProcess' is called - either
+-- directly or via 'withProcess' or other wrappers - the processes
+-- exit code will be checked. Any exit code besides 'ExitSuccess' will
+-- result in an 'ExitCodeException' being thrown.
+--
+-- Default: 'False'
+--
+-- @since 0.1.0.0
+setCheckExitCode :: Bool
+                 -&gt; ProcessConfig stdin stdout stderr
+                 -&gt; ProcessConfig stdin stdout stderr
+setCheckExitCode x p = p { pcCheckExitCode = x }
+
+-- TODO: Instead of having this setting, we could consider just having
+-- alternatives to readProcess, runProcess, etc, that check the exit
+-- code. This could actually be a really nice convention: readProcess
+-- does not check, readProcess_ or readProcessCheck does.
+
+-- | Create a new 'StreamSpec' from the given 'P.StdStream' and a
+-- helper function. This function:
+--
+-- * Takes as input the raw @Maybe Handle@ returned by the
+-- 'P.createProcess' function. This will be determined by the
+-- 'P.StdStream' argument.
+--
+-- * Returns the actual stream value @a@, as well as a cleanup
+-- * function to be run when calling 'stopProcess'.
+--
+-- @since 0.1.0.0
+mkStreamSpec :: P.StdStream
+             -&gt; (Maybe Handle -&gt; IO (a, IO ()))
+             -&gt; StreamSpec streamType a
+mkStreamSpec ss f = StreamSpec ss (Cleanup . f)
+
+-- | A stream spec which simply inherits the stream of the parent
+-- process.
+--
+-- @since 0.1.0.0
+inherit :: StreamSpec anyStreamType ()
+inherit = mkStreamSpec P.Inherit (\Nothing -&gt; pure ((), return ()))
+
+-- | A stream spec which will close the stream for the child process.
+--
+-- @since 0.1.0.0
+closed :: StreamSpec anyStreamType ()
+#if MIN_VERSION_process(1, 4, 0)
+closed = mkStreamSpec P.NoStream (\Nothing -&gt; pure ((), return ()))
+#else
+closed = mkStreamSpec P.CreatePipe (\(Just h) -&gt; (((), return ()) &lt;$ hClose h))
+#endif
+
+-- | An input stream spec which sets the input to the given
+-- 'L.ByteString'. A separate thread will be forked to write the
+-- contents to the child process.
+--
+-- @since 0.1.0.0
+byteStringInput :: L.ByteString -&gt; StreamSpec 'STInput ()
+byteStringInput lbs = StreamSpec P.CreatePipe $ \(Just h) -&gt; Cleanup $ do
+    void $ async $ do
+        L.hPut h lbs
+        hClose h
+    return ((), hClose h)
+
+-- | Capture the output of a process in a 'L.ByteString'.
+--
+-- This function will fork a separate thread to consume all input from
+-- the process, and will only make the results available when the
+-- underlying 'Handle' is closed. As this is provided as an 'STM'
+-- action, you can either check if the result is available, or block
+-- until it's ready.
+--
+-- In the event of any exception occurring when reading from the
+-- 'Handle', the result of this function will be a 'Left' value
+-- containing a 'ByteStringOutputException'.
+--
+-- @since 0.1.0.0
+byteStringOutput :: StreamSpec 'STOutput (STM (Either ByteStringOutputException L.ByteString))
+byteStringOutput = StreamSpec P.CreatePipe $ \(Just h) -&gt; Cleanup $ do
+    mvar &lt;- newEmptyTMVarIO
+
+    void $ async $ do
+        let loop front = do
+                bs &lt;- S.hGetSome h defaultChunkSize
+                if S.null bs
+                    then atomically $ putTMVar mvar $ Right $ L.fromChunks $ front []
+                    else loop $ front . (bs:)
+        loop id `catch` \e -&gt; do
+            atomically $ void $ tryPutTMVar mvar $ Left $ ByteStringOutputException e
+            throwIO e
+
+    return (readTMVar mvar, hClose h)
+
+-- | Create a new pipe between this process and the child, and return
+-- a 'Handle' to communicate with the child.
+--
+-- @since 0.1.0.0
+createPipe :: StreamSpec anyStreamType Handle
+createPipe = StreamSpec P.CreatePipe $ \(Just h) -&gt; Cleanup $ return (h, hClose h)
+
+-- | Use the provided 'Handle' for the child process, and when the
+-- process exits, do /not/ close it. This is useful if, for example,
+-- you want to have multiple processes write to the same log file
+-- sequentially.
+--
+-- @since 0.1.0.0
+useHandleOpen :: Handle -&gt; StreamSpec anyStreamType ()
+useHandleOpen h = StreamSpec (P.UseHandle h) $ \Nothing -&gt; Cleanup $ return ((), return ())
+
+-- | Use the provided 'Handle' for the child process, and when the
+-- process exits, close it. If you have no reason to keep the 'Handle'
+-- open, you should use this over 'useHandleOpen'.
+--
+-- @since 0.1.0.0
+useHandleClose :: Handle -&gt; StreamSpec anyStreamType ()
+useHandleClose h = StreamSpec (P.UseHandle h) $ \Nothing -&gt; Cleanup $ return ((), hClose h)
+
+-- | Provide input to a process by writing to a conduit.
+--
+-- @since 0.1.0.0
+sink :: MonadIO m =&gt; StreamSpec 'STInput (ConduitM S.ByteString o m ())
+sink =
+    (\h -&gt; C.addCleanup (\_ -&gt; liftIO $ hClose h) (CB.sinkHandle h))
+    &lt;$&gt; createPipe
+
+-- | Read output from a process by read from a conduit.
+--
+-- @since 0.1.0.0
+source :: MonadIO m =&gt; StreamSpec 'STOutput (ConduitM i S.ByteString m ())
+source =
+    (\h -&gt; C.addCleanup (\_ -&gt; liftIO $ hClose h) (CB.sourceHandle h))
+    &lt;$&gt; createPipe
+
+-- | Launch a process based on the given 'ProcessConfig'. You should
+-- ensure that you close 'stopProcess' on the result. It's usually
+-- better to use one of the functions in this module which ensures
+-- 'stopProcess' is called, such as 'withProcess'.
+--
+-- @since 0.1.0.0
+startProcess :: MonadIO m
+             =&gt; ProcessConfig stdin stdout stderr
+             -&gt; m (Process stdin stdout stderr)
+startProcess ProcessConfig {..} = liftIO $ do
+    let cp0 =
+            case pcCmdSpec of
+                P.ShellCommand cmd -&gt; P.shell cmd
+                P.RawCommand cmd args -&gt; P.proc cmd args
+        cp = cp0
+            { P.std_in = ssStream pcStdin
+            , P.std_out = ssStream pcStdout
+            , P.std_err = ssStream pcStderr
+            , P.cwd = pcWorkingDir
+            , P.env = pcEnv
+            , P.close_fds = pcCloseFds
+            , P.create_group = pcCreateGroup
+            , P.delegate_ctlc = pcDelegateCtlc
+
+#if MIN_VERSION_process(1, 3, 0)
+            , P.detach_console = pcDetachConsole
+            , P.create_new_console = pcCreateNewConsole
+            , P.new_session = pcNewSession
+#endif
+
+#if MIN_VERSION_process(1, 4, 0) &amp;&amp; !WINDOWS
+            , P.child_group = pcChildGroup
+            , P.child_user = pcChildUser
+#endif
+
+            }
+
+    (minH, moutH, merrH, pHandle) &lt;- P.createProcess_ &quot;startProcess&quot; cp
+
+    ((pStdin, pStdout, pStderr), pCleanup1) &lt;- runCleanup $ (,,)
+        &lt;$&gt; ssCreate pcStdin minH
+        &lt;*&gt; ssCreate pcStdout moutH
+        &lt;*&gt; ssCreate pcStderr merrH
+
+    pExitCode &lt;- newEmptyTMVarIO
+    void $ async $ do
+        ec &lt;- P.waitForProcess pHandle
+        atomically $ putTMVar pExitCode ec
+
+    let pCleanup2 = pCleanup1 `finally` do
+            mec &lt;- atomically $ tryReadTMVar pExitCode
+            case mec of
+                Nothing -&gt; do
+                    P.terminateProcess pHandle
+                    -- TODO: should we put in a timeout and then send
+                    -- a SIGKILL on Unix?
+                    void $ atomically $ readTMVar pExitCode
+                Just _ -&gt; return ()
+        pCleanup
+            | pcCheckExitCode = do
+                eres &lt;- try pCleanup2
+                ec &lt;- atomically $ readTMVar pExitCode
+                case (ec, eres) of
+                    (ExitSuccess, Right ()) -&gt; return ()
+                    (ExitSuccess, Left e) -&gt; throwIO e
+                    _ -&gt; throwIO $ ExitCodeException ec $ either Just (const Nothing) eres
+            | otherwise = pCleanup2
+
+    return Process {..}
+
+-- | Close a process and release any resources acquired. This will
+-- ensure 'P.terminateProcess' is called, wait for the process to
+-- actually exit, and then close out resources allocated for the
+-- streams. In the event of any cleanup exceptions being thrown, or if
+-- a non-success exit code was received and 'setCheckExitCode' was
+-- used, this will throw an exception.
+--
+-- @since 0.1.0.0
+stopProcess :: MonadIO m
+            =&gt; Process stdin stdout stderr
+            -&gt; m ()
+stopProcess = liftIO . pCleanup
+
+-- | Use the bracket pattern to call 'startProcess' and ensure
+-- 'stopProcess' is called.
+--
+-- @since 0.1.0.0
+withProcess :: (MonadIO m, C.MonadMask m)
+            =&gt; ProcessConfig stdin stdout stderr
+            -&gt; (Process stdin stdout stderr -&gt; m a)
+            -&gt; m a
+withProcess config = C.bracket (startProcess config) stopProcess
+
+-- | Run a process, capture its standard output and error as a
+-- 'L.ByteString', wait for it to complete, and then return its exit
+-- code, output, and error.
+--
+-- Note that any previously used 'setStdout' or 'setStderr' will be
+-- overridden.
+--
+-- @since 0.1.0.0
+readProcess :: MonadIO m
+            =&gt; ProcessConfig stdin stdoutIgnored stderrIgnored
+            -&gt; m (ExitCode, L.ByteString, L.ByteString)
+readProcess pc =
+    liftIO $ withProcess pc' $ \p -&gt; atomically $ (,,)
+        &lt;$&gt; waitExitCodeSTM p
+        &lt;*&gt; (getStdout p &gt;&gt;= either throwSTM return)
+        &lt;*&gt; (getStderr p &gt;&gt;= either throwSTM return)
+  where
+    pc' = setStdout byteStringOutput
+        $ setStderr byteStringOutput pc
+
+-- | Run the given process, wait for it to exit, and returns its
+-- 'ExitCode'.
+--
+-- @since 0.1.0.0
+runProcess :: MonadIO m
+           =&gt; ProcessConfig stdin stdout stderr
+           -&gt; m ExitCode
+runProcess pc = liftIO $ withProcess pc waitExitCode
+
+-- | Same as 'runProcess', but ignores the 'ExitCode'.
+--
+-- @since 0.1.0.0
+runProcess_ :: MonadIO m
+            =&gt; ProcessConfig stdin stdout stderr
+            -&gt; m ()
+runProcess_ = void . runProcess
+
+-- | Wait for the process to exit and then return its 'ExitCode'.
+--
+-- @since 0.1.0.0
+waitExitCode :: MonadIO m =&gt; Process stdin stdout stderr -&gt; m ExitCode
+waitExitCode = liftIO . atomically . waitExitCodeSTM
+
+-- | Same as 'waitExitCode', but in 'STM'.
+--
+-- @since 0.1.0.0
+waitExitCodeSTM :: Process stdin stdout stderr -&gt; STM ExitCode
+waitExitCodeSTM = readTMVar . pExitCode
+
+-- | Check if a process has exited and, if so, return its 'ExitCode'.
+--
+-- @since 0.1.0.0
+checkExitCode :: MonadIO m =&gt; Process stdin stdout stderr -&gt; m (Maybe ExitCode)
+checkExitCode = liftIO . atomically . checkExitCodeSTM
+
+-- | Same as 'checkExitCode', but in 'STM'.
+--
+-- @since 0.1.0.0
+checkExitCodeSTM :: Process stdin stdout stderr -&gt; STM (Maybe ExitCode)
+checkExitCodeSTM = tryReadTMVar . pExitCode
+
+-- | Get the child's standard input stream value.
+--
+-- @since 0.1.0.0
+getStdin :: Process stdin stdout stderr -&gt; stdin
+getStdin = pStdin
+
+-- | Get the child's standard output stream value.
+--
+-- @since 0.1.0.0
+getStdout :: Process stdin stdout stderr -&gt; stdout
+getStdout = pStdout
+
+-- | Get the child's standard error stream value.
+--
+-- @since 0.1.0.0
+getStderr :: Process stdin stdout stderr -&gt; stderr
+getStderr = pStderr
+
+-- | Exit code generated by 'stopProcess' when 'setCheckExitCode' is
+-- 'True' and a process exits with a non-success code. Contains the
+-- non-success code, and if any other exceptions occur during cleanup,
+-- that exception.
+--
+-- @since 0.1.0.0
+data ExitCodeException = ExitCodeException ExitCode (Maybe SomeException)
+    deriving (Show, Typeable)
+instance Exception ExitCodeException
+
+-- | Wrapper for when an exception is thrown when reading from a child
+-- process, used by 'byteStringOutput'.
+--
+-- @since 0.1.0.0
+newtype ByteStringOutputException = ByteStringOutputException SomeException
+    deriving (Show, Typeable)
+instance Exception ByteStringOutputException
+</span></pre></body></html>
