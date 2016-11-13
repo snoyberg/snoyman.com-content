@@ -11,7 +11,7 @@ configuration](https://docs.haskellstack.org/en/stable/GUIDE/#travis-with-cachin
 Unfortunately, this leaves Windows testing out, which is unfortunate, because Windows is likely to be the most common build to fail. Fortunately, [AppVeyor](https://www.appveyor.com/) provides a similar experience to Travis, but for Windows. In order to get set up, just:
 
 1. Sign in with their web interface and add your Github repo
-2. Add an appveyor.yaml to your project
+2. Add an `appveyor.yml` to your project
 
 Here's a simple file I've used on a few projects with succeess:
 
