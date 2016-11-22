@@ -14,7 +14,7 @@ enough to write robust code in a language like Python." We're not
 using Haskell because we're brilliant; we're using Haskell because we
 know we need a language that will protect us from ourselves.
 
-I use Haskell because (in this order):
+I use Haskell because:
 
 * It gives me the highest degree of confidence that I'll write my
   program correctly, due to its strong, static typing
