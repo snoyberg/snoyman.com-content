@@ -1,4 +1,4 @@
-Last week I fired off two tweets about the state of Haskell evangelism:
+Yesterday I fired off two tweets about the state of Haskell evangelism:
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">I&#39;d hoped by now we&#39;d be out spreading the gospel of Haskell&#39;s awesome features. Instead, we&#39;re fighting about the same broken things.</p>&mdash; Michael Snoyman (@snoyberg) <a href="https://twitter.com/snoyberg/status/800585540177432576">November 21, 2016</a></blockquote>
 <blockquote class="twitter-tweet" data-conversation="none" data-lang="en"><p lang="en" dir="ltr">Haskell is by far the best language on the market today. It&#39;s so sad to see it not gaining traction because of unimportant details.</p>&mdash; Michael Snoyman (@snoyberg) <a href="https://twitter.com/snoyberg/status/800586069863301120">November 21, 2016</a></blockquote>
