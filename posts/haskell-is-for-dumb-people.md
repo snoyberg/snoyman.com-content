@@ -14,7 +14,19 @@ enough to write robust code in a language like Python." We're not
 using Haskell because we're brilliant; we're using Haskell because we
 know we need a language that will protect us from ourselves.
 
-I use Haskell because:
+That said, I should acknowledge that Haskell does have a steeper
+learning curve for most programmers. But this is mostly to do with
+unfamiliarity: Haskell is significantly different from languages like
+Python, Ruby, and Java, whereas by contrast those languages are all
+relatively similar to each
+other. [Great](https://haskell-lang.org/documentation)
+[educational](http://haskellbook.com/)
+[material](https://www.fpcomplete.com/haskell-syllabus) helps with
+this.
+
+You should set your expectations appropriately: it will take you
+longer to learn Haskell, but it's worth it. Personally, I use Haskell
+because:
 
 * It gives me the highest degree of confidence that I'll write my
   program correctly, due to its strong, static typing
