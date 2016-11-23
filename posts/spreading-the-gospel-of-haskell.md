@@ -40,7 +40,7 @@ pretty good tooling and educational resources.
 
 At FP Complete, we often talk about the __attractors__ and
 __obstacles__ (thanks to our CEO, Aaron Contorer, for this great prism
-to view things). Using that terminology: Haskell is chalk-full of
+to view things). Using that terminology: Haskell is chock-full of
 attractors. The problem is the obstacles which prevent Haskell from
 taking off. I'm going to claim that, at this point, we need to do very
 little as far as making Haskell more attractive, but instead need to
