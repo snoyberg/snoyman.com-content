@@ -12,16 +12,16 @@ profile:
   height: 213
 
 toplinks:
-- url: '/blog'
-  text: Blog on this site
-- url: 'https://twitter.com/snoyberg'
-  text: '@snoyberg'
-- url: 'http://www.haskellers.com/user/snoyberg'
-  text: I'm a Haskeller
+#- url: '/blog'
+#  text: Blog on this site
+#- url: 'https://twitter.com/snoyberg'
+#  text: '@snoyberg'
+#- url: 'http://www.haskellers.com/user/snoyberg'
+#  text: I'm a Haskeller
 - url: 'http://shop.oreilly.com/product/0636920023142.do'
   text: "The Yesod book from O'Reilly"
-- url: 'https://plus.google.com/116553865628071717889/posts'
-  text: "+Michael Snoyman"
+#- url: 'https://plus.google.com/116553865628071717889/posts'
+#  text: "+Michael Snoyman"
 
 publications:
 - url: 'http://aosabook.org/en/posa/warp.html'
