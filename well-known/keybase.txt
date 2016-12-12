@@ -1,0 +1,68 @@
+==================================================================
+https://keybase.io/snoyberg
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://www.snoyman.com
+  * I am snoyberg (https://keybase.io/snoyberg) on keybase.
+  * I have a public key with fingerprint 5E6C 66B2 78BD B10A A636  57FA A048 E8C0 57E8 6876
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "01019e2dd51756f988fa03ccaeed7d941e8e8c56338b433919bea53589ae355f5d960a",
+            "fingerprint": "5e6c66b278bdb10aa63657faa048e8c057e86876",
+            "host": "keybase.io",
+            "key_id": "a048e8c057e86876",
+            "kid": "01019e2dd51756f988fa03ccaeed7d941e8e8c56338b433919bea53589ae355f5d960a",
+            "uid": "94ba73faf292fbdc29d2c8d6a5dd8919",
+            "username": "snoyberg"
+        },
+        "service": {
+            "hostname": "www.snoyman.com",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1481553188,
+    "expire_in": 157680000,
+    "prev": "63eec68e4209d3b400d8064175f238b0cbc2fdbd0228038ded6203f8b6aa379f",
+    "seqno": 6,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v1
+
+owGtkltIFUEYx4+nixTdqKiIrouBlOnszu7s7Cm6EKUh5ZMpeuQwszN73Mzd4znb
+MY0oKLsgQVAU1JG0kEIj7U5EF9OikoLIgiBMKsp6KLGg6ELNir312LwM883v/5//
+9zEHxo8IBNMa8/pvFfWXJ9O639NA8fpLmVsl6rIaKbRVquBDG9/EeMKLVNhMCklA
+BrLBFcY0WdeQZWBsEQBNk3DOdGaoMsccmxqCEFMVQkM2KCca1LBBONQ0S2MGAkTK
+kizbifJ4LG47nrDVODIRooqOKaMyIARBpOkWIUD1/YCmc4ywjoSw3E34ChGOkgTP
+tl1RE4fIULx/8P859+YhO0OlRIcWsRRDsSgzFYMpJmaIaIxhIfbBBI87pJILOuG4
+NZTHo9K2LElUk7bJ/cH6nQwT1dXV2T5VSZxs060U8ljc9VzT3SQuyz0vFvK1Xk1s
+COY0MmwTobbDxCSFIMnjCdt1pJAsSNOzfV9ZxbKmQRnjLIlvidlxHrF9QtMRBmL5
+z/CksESQc7MEYa4qwGCQqgAwDJAqhmUpYiTApKZiMcqAomAAMeMMKQBamCJCoG5Y
+kt9ZleNKISRykqjftR11iLc5zqVtY/elzRoZSAsGRo8K+n8sMHbMpL8fr7Mn/ffG
+k63NDzds/1F7L9ww5c7Sle6uDatfHRk8WxHWDxeHrxxte/h43Uejp77dyz14YfTL
+JdOTyav9S+qejv/W2rRyGk99bYZL2xaqWxpHHeqtO6tkHP5ctOZEd8fAuuMFE84N
+7mlbfvpGzJqf2Pk8N68vmRn9NKHk46WGqtquwqLcHZ3597uSPTeLpzrB/p6uu6nS
+85MLrYhyaPe78P7F06/3fX8wdy89MSN1dUXdiPrTJalnb14N/KQDM1dNfBvsPjOn
+cVnO2icFv9I7Xv+aOGteCNbqC263Nz078AH0toQzWq5lHls0O/Ul//r29ZVZtavb
+j52y+IuyRwOfLpZ9AaU5yrj3FzJil/8A
+=ka6p
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/snoyberg
+
+==================================================================
+
