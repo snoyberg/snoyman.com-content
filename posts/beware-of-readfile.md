@@ -59,13 +59,13 @@ In my ideal world, we end up with the following functions for working
 with files:
 
 ```haskell
-readFile :: FilePath -> IO ByteString -- strict byte string, no lazy I/O!
-readFileUtf8 :: FilePath -> IO Text
+readFile :: MonadIO m => FilePath -> m ByteString -- strict byte string, no lazy I/O!
+readFileUtf8 :: MonadIO m => FilePath -> m Text
 readFileUtf8 = fmap (decodeUtf8With lenientDecode) . readFile
 -- maybe include a non-lenient variant that throws exceptions or
 -- returns an Either value on bad character encoding
-writeFile :: FilePath -> ByteString -> IO ()
-writeFileUtf8 :: FilePath -> Text -> IO ()
+writeFile :: MonadIO m => FilePath -> ByteString -> m ()
+writeFileUtf8 :: MonadIO m => FilePath -> Text -> m ()
 writeFileUtf8 fp = writeFile fp . encodeUtf8
 -- conduit, pipes, streaming, etc, can handle the too-large-for-memory
 -- case
@@ -147,7 +147,7 @@ found three interesting takeaways here:
 __My recommendation to all__: never use `Prelude.readFile`,
 `Data.Text.IO.readFile`, `Data.Text.Lazy.IO.readFile`, or
 `Data.ByteString.Lazy.readFile`. Stick with `Data.ByteString.readFile`
-for known-small data, use a streaming package of your choice for large
+for known-small data, use a streaming package (e.g, [conduit](https://haskell-lang.org/library/conduit)) if your choice for large
 data, and handle the character encoding yourself. And apply this to
 `writeFile` and other file-related functions as well.
 
