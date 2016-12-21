@@ -95,9 +95,9 @@ import qualified Data.Text.IO             as TIO
 import qualified Data.Text.Lazy.Encoding  as TL
 import qualified Data.Text.Lazy.IO        as TLIO
 
--- Just ASCII data, a good UTF-8 corpus would be better!
+-- Downloaded from: http://www.gutenberg.org/cache/epub/345/pg345.txt
 fp :: FilePath
-fp = "/usr/share/dict/words"
+fp = "pg345.txt"
 
 main :: IO ()
 main = defaultMain
@@ -127,7 +127,7 @@ discovered this trick recently.)
 Here are the graphical results, full textual results are available
 below:
 
-<img src="https://i.sli.mg/FMU0gm.png" alt="Benchmark Results" style="max-width:100%">
+<img src="https://i.sli.mg/qsJ2A1.png" alt="Benchmark Results" style="max-width:100%">
 
 Unsurprisingly, `String` I/O is the slowest, and `ByteString` I/O is
 the fastest (since no character encoding overhead is involved). I
@@ -153,61 +153,64 @@ data, and handle the character encoding yourself. And apply this to
 
 ```
 benchmarking String
-open bench.html
-time                 25.07 ms   (24.73 ms .. 25.42 ms)
-                     0.999 R²   (0.999 R² .. 1.000 R²)
-mean                 24.86 ms   (24.67 ms .. 25.04 ms)
-std dev              390.4 μs   (299.0 μs .. 515.3 μs)
+time                 8.605 ms   (8.513 ms .. 8.720 ms)
+                     0.998 R²   (0.996 R² .. 0.999 R²)
+mean                 8.719 ms   (8.616 ms .. 8.889 ms)
+std dev              354.9 μs   (236.1 μs .. 535.2 μs)
+variance introduced by outliers: 18% (moderately inflated)
 
 benchmarking Data.Text.IO
-time                 10.35 ms   (10.26 ms .. 10.44 ms)
-                     0.999 R²   (0.998 R² .. 1.000 R²)
-mean                 10.42 ms   (10.34 ms .. 10.49 ms)
-std dev              191.1 μs   (145.6 μs .. 263.1 μs)
+time                 3.735 ms   (3.701 ms .. 3.763 ms)
+                     0.999 R²   (0.999 R² .. 1.000 R²)
+mean                 3.703 ms   (3.680 ms .. 3.726 ms)
+std dev              76.23 μs   (62.41 μs .. 97.13 μs)
 
 benchmarking Data.Text.Lazy.IO
-time                 8.555 ms   (8.451 ms .. 8.637 ms)
-                     0.999 R²   (0.998 R² .. 0.999 R²)
-mean                 8.687 ms   (8.624 ms .. 8.777 ms)
-std dev              216.3 μs   (161.8 μs .. 316.2 μs)
-
-benchmarking Data.ByteString.readFile
-time                 678.4 μs   (673.6 μs .. 684.8 μs)
-                     0.999 R²   (0.997 R² .. 1.000 R²)
-mean                 681.0 μs   (677.9 μs .. 688.8 μs)
-std dev              16.84 μs   (8.769 μs .. 33.94 μs)
-variance introduced by outliers: 15% (moderately inflated)
-
-benchmarking Data.ByteString.Lazy.readFile
-time                 548.6 μs   (539.7 μs .. 557.2 μs)
-                     0.998 R²   (0.997 R² .. 0.999 R²)
-mean                 548.1 μs   (543.5 μs .. 553.0 μs)
-std dev              15.77 μs   (12.96 μs .. 20.76 μs)
-variance introduced by outliers: 21% (moderately inflated)
-
-benchmarking strict decodeUtf8
-time                 2.307 ms   (2.285 ms .. 2.327 ms)
-                     0.999 R²   (0.999 R² .. 1.000 R²)
-mean                 2.315 ms   (2.301 ms .. 2.328 ms)
-std dev              46.77 μs   (38.91 μs .. 60.47 μs)
-
-benchmarking strict decodeUtf8With lenientDecode
-time                 2.316 ms   (2.290 ms .. 2.347 ms)
-                     0.999 R²   (0.999 R² .. 1.000 R²)
-mean                 2.314 ms   (2.301 ms .. 2.327 ms)
-std dev              40.60 μs   (32.07 μs .. 52.18 μs)
-
-benchmarking lazy decodeUtf8
-time                 1.755 ms   (1.731 ms .. 1.780 ms)
-                     0.998 R²   (0.997 R² .. 0.999 R²)
-mean                 1.760 ms   (1.745 ms .. 1.778 ms)
-std dev              57.04 μs   (46.54 μs .. 70.84 μs)
+time                 2.995 ms   (2.949 ms .. 3.050 ms)
+                     0.997 R²   (0.994 R² .. 0.999 R²)
+mean                 3.026 ms   (2.998 ms .. 3.071 ms)
+std dev              109.3 μs   (81.86 μs .. 158.8 μs)
 variance introduced by outliers: 19% (moderately inflated)
 
+benchmarking Data.ByteString.readFile
+time                 218.1 μs   (215.1 μs .. 221.6 μs)
+                     0.992 R²   (0.987 R² .. 0.996 R²)
+mean                 229.2 μs   (221.0 μs .. 242.5 μs)
+std dev              34.36 μs   (24.13 μs .. 48.99 μs)
+variance introduced by outliers: 90% (severely inflated)
+
+benchmarking Data.ByteString.Lazy.readFile
+time                 162.8 μs   (160.7 μs .. 164.7 μs)
+                     0.999 R²   (0.998 R² .. 0.999 R²)
+mean                 164.3 μs   (162.7 μs .. 165.9 μs)
+std dev              5.481 μs   (4.489 μs .. 6.557 μs)
+variance introduced by outliers: 30% (moderately inflated)
+
+benchmarking strict decodeUtf8
+time                 1.283 ms   (1.265 ms .. 1.307 ms)
+                     0.997 R²   (0.995 R² .. 0.999 R²)
+mean                 1.285 ms   (1.274 ms .. 1.303 ms)
+std dev              46.84 μs   (35.27 μs .. 67.71 μs)
+variance introduced by outliers: 25% (moderately inflated)
+
+benchmarking strict decodeUtf8With lenientDecode
+time                 1.298 ms   (1.287 ms .. 1.309 ms)
+                     0.999 R²   (0.999 R² .. 1.000 R²)
+mean                 1.290 ms   (1.280 ms .. 1.298 ms)
+std dev              29.77 μs   (24.26 μs .. 36.97 μs)
+variance introduced by outliers: 11% (moderately inflated)
+
+benchmarking lazy decodeUtf8
+time                 589.2 μs   (581.3 μs .. 599.8 μs)
+                     0.998 R²   (0.996 R² .. 0.999 R²)
+mean                 596.7 μs   (590.9 μs .. 605.2 μs)
+std dev              22.43 μs   (16.87 μs .. 28.83 μs)
+variance introduced by outliers: 30% (moderately inflated)
+
 benchmarking lazy decodeUtf8With lenientDecode
-time                 1.790 ms   (1.748 ms .. 1.845 ms)
-                     0.995 R²   (0.991 R² .. 0.999 R²)
-mean                 1.771 ms   (1.756 ms .. 1.795 ms)
-std dev              61.60 μs   (40.08 μs .. 107.8 μs)
-variance introduced by outliers: 22% (moderately inflated)
+time                 598.1 μs   (591.0 μs .. 607.4 μs)
+                     0.998 R²   (0.994 R² .. 0.999 R²)
+mean                 594.7 μs   (588.3 μs .. 602.4 μs)
+std dev              24.20 μs   (17.06 μs .. 39.94 μs)
+variance introduced by outliers: 33% (moderately inflated)
 ```
