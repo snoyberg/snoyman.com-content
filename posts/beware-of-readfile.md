@@ -47,6 +47,9 @@ correctly. However, I'm also going to claim the following:
 __In exactly 0 cases in my Haskell career have I desired the character
 encoding guessing functionality of the textual `readFile` functions__
 
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Have you ever needed the behavior of Prelude.readFile, which chooses its character encoding based on environment variables?</p>&mdash; Michael Snoyman (@snoyberg) <a href="https://twitter.com/snoyberg/status/811624134174183424">December 21, 2016</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 The reason is fairly simple: when reading and writing files, I'm
 almost always dealing with some file format. The first code example
 above demonstrates one example of this: writing an HTML file. JSON and
