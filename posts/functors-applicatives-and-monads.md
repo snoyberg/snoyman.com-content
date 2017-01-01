@@ -1,8 +1,13 @@
+__NOTE__ This content originally appeared on
+[School of Haskell](https://www.schoolofhaskell.com/user/snoyberg/general-haskell/basics/functors-applicative-functors-and-monads).
+
 Let's start off with a very simple problem. We want to let a user input his/her
 birth year, and tell him/her his/her age in the year 2020.
 Using the function `read`, this is really simple:
 
-```active haskell
+```haskell
+#!/usr/bin/env stack
+-- stack --resolver lts-7.14 runghc
 main = do
     putStrLn "Please enter your birth year"
     year <- getLine
@@ -23,34 +28,38 @@ trying to parse it into an `Integer`. But not all `String`s are valid
 `Integer`s. `read` is what we call a __partial function__, meaning that under
 some circumstances it will return an error instead of a valid result.
 
-A more resilient way to write our code is to use the `readMay` function, which
+A more resilient way to write our code is to use the `readMaybe` function, which
 will return a `Maybe Integer` value. This makes it clear with the types
 themselves that the parse may succeed or fail. To test this out, try running
 the following code:
 
-```active haskell
-import Safe (readMay)
+```haskell
+#!/usr/bin/env stack
+-- stack --resolver lts-7.14 runghc
+import Text.Read (readMaybe)
 
 main = do
     -- We use explicit types to tell the compiler how to try and parse the
     -- string.
-    print (readMay "1980" :: Maybe Integer)
-    print (readMay "hello" :: Maybe Integer)
-    print (readMay "2000" :: Maybe Integer)
-    print (readMay "two-thousand" :: Maybe Integer)
+    print (readMaybe "1980" :: Maybe Integer)
+    print (readMaybe "hello" :: Maybe Integer)
+    print (readMaybe "2000" :: Maybe Integer)
+    print (readMaybe "two-thousand" :: Maybe Integer)
 ```
 
 So how can we use this to solve our original problem? We need to now determine
-if the result of `readMay` was successful (as `Just`) or failed (a `Nothing`).
+if the result of `readMaybe` was successful (as `Just`) or failed (a `Nothing`).
 One way to do this is with pattern matching:
 
-```active haskell
-import Safe (readMay)
+```haskell
+#!/usr/bin/env stack
+-- stack --resolver lts-7.14 runghc
+import Text.Read (readMaybe)
 
 main = do
     putStrLn "Please enter your birth year"
     yearString <- getLine
-    case readMay yearString of
+    case readMaybe yearString of
         Nothing -> putStrLn "You provided an invalid year"
         Just year -> putStrLn $ "In 2020, you will be: " ++ show (2020 - year)
 ```
@@ -61,8 +70,10 @@ This code is a bit coupled; let's split it up to have a separate function for
 displaying the output to the user, and another separate function for
 calculating the age.
 
-```active haskell
-import Safe (readMay)
+```haskell
+#!/usr/bin/env stack
+-- stack --resolver lts-7.14 runghc
+import Text.Read (readMaybe)
 
 displayAge maybeAge =
     case maybeAge of
@@ -75,7 +86,7 @@ main = do
     putStrLn "Please enter your birth year"
     yearString <- getLine
     let maybeAge =
-            case readMay yearString of
+            case readMaybe yearString of
                 Nothing -> Nothing
                 Just year -> Just (yearToAge year)
     displayAge maybeAge
@@ -96,8 +107,10 @@ mapping__, will apply some function over the value contained by a __functor__.
 of `Maybe`, `fmap` does precisely what we described above. So we can replace
 our code with:
 
-```active haskell
-import Safe (readMay)
+```haskell
+#!/usr/bin/env stack
+-- stack --resolver lts-7.14 runghc
+import Text.Read (readMaybe)
 
 displayAge maybeAge =
     case maybeAge of
@@ -109,7 +122,7 @@ yearToAge year = 2020 - year
 main = do
     putStrLn "Please enter your birth year"
     yearString <- getLine
-    let maybeAge = fmap yearToAge (readMay yearString)
+    let maybeAge = fmap yearToAge (readMaybe yearString)
     displayAge maybeAge
 ```
 
@@ -131,8 +144,10 @@ we've been writing our `main` function in so far. That's because- as we
 mentioned in the previous paragraph- `IO` is a functor as well. Let's see how
 we can change our code to not use `fmap`:
 
-```active haskell
-import Safe (readMay)
+```haskell
+#!/usr/bin/env stack
+-- stack --resolver lts-7.14 runghc
+import Text.Read (readMaybe)
 
 displayAge maybeAge =
     case maybeAge of
@@ -145,7 +160,7 @@ main = do
     putStrLn "Please enter your birth year"
     yearString <- getLine
     let maybeAge = do
-            yearInteger <- readMay yearString
+            yearInteger <- readMaybe yearString
             return $ yearToAge yearInteger
     displayAge maybeAge
 ```
@@ -170,8 +185,10 @@ fix that by allowing the user to specify the "future year." We'll start off
 with a simple implementation using pattern matching and then move back to do
 notation.
 
-```active haskell
-import Safe (readMay)
+```haskell
+#!/usr/bin/env stack
+-- stack --resolver lts-7.14 runghc
+import Text.Read (readMaybe)
 
 displayAge maybeAge =
     case maybeAge of
@@ -184,10 +201,10 @@ main = do
     putStrLn "Please enter some year in the future"
     futureYearString <- getLine
     let maybeAge =
-            case readMay birthYearString of
+            case readMaybe birthYearString of
                 Nothing -> Nothing
                 Just birthYear ->
-                    case readMay futureYearString of
+                    case readMaybe futureYearString of
                         Nothing -> Nothing
                         Just futureYear -> Just (futureYear - birthYear)
     displayAge maybeAge
@@ -195,8 +212,10 @@ main = do
 
 OK, it gets the job done... but it's very tedious. Fortunately, do-notation makes this kind of code really simple:
 
-```active haskell
-import Safe (readMay)
+```haskell
+#!/usr/bin/env stack
+-- stack --resolver lts-7.14 runghc
+import Text.Read (readMaybe)
 
 displayAge maybeAge =
     case maybeAge of
@@ -211,8 +230,8 @@ main = do
     putStrLn "Please enter some year in the future"
     futureYearString <- getLine
     let maybeAge = do
-            birthYear <- readMay birthYearString
-            futureYear <- readMay futureYearString
+            birthYear <- readMaybe birthYearString
+            futureYear <- readMaybe futureYearString
             return $ yearDiff futureYear birthYear
     displayAge maybeAge
 ```
@@ -232,7 +251,7 @@ But maybe there's something else that provides enough power to write our
 two-variable code without the full power of `Monad`. To see what this might be,
 let's look more carefully at our types.
 
-We're working with two values: `readMay birthYearString` and `readMay
+We're working with two values: `readMaybe birthYearString` and `readMaybe
 futureYearString`. Both of these values have the type `Maybe Integer`. And we
 want to apply the function `yearDiff`, which has the type `Integer -> Integer
 -> Integer`.
@@ -268,19 +287,21 @@ Then when we apply `fmap` to `yearDiff`, we end up with:
 fmap yearDiff :: Maybe Integer -> Maybe (Integer -> Integer)
 ```
 
-That's pretty cool. We can apply *this* to our `readMay futureYearString` and
+That's pretty cool. We can apply *this* to our `readMaybe futureYearString` and
 end up with:
 
 ```haskell
-fmap yearDiff (readMay futureYearString) :: Maybe (Integer -> Integer)
+fmap yearDiff (readMaybe futureYearString) :: Maybe (Integer -> Integer)
 ```
 
 That's certainly very interesting, but it doesn't help us. We need to somehow
-apply this value of type `Maybe (Integer -> Integer)` to our `readMay
+apply this value of type `Maybe (Integer -> Integer)` to our `readMaybe
 birthYearString` of type `Maybe Integer`. We can do this with do-notation:
 
-```active haskell
-import Safe (readMay)
+```haskell
+#!/usr/bin/env stack
+-- stack --resolver lts-7.14 runghc
+import Text.Read (readMaybe)
 
 displayAge maybeAge =
     case maybeAge of
@@ -295,16 +316,18 @@ main = do
     putStrLn "Please enter some year in the future"
     futureYearString <- getLine
     let maybeAge = do
-            yearToAge <- fmap yearDiff (readMay futureYearString)
-            birthYear <- readMay birthYearString
+            yearToAge <- fmap yearDiff (readMaybe futureYearString)
+            birthYear <- readMaybe birthYearString
             return $ yearToAge birthYear
     displayAge maybeAge
 ```
 
 We can even use `fmap` twice and avoid the second slurp:
 
-```active haskell
-import Safe (readMay)
+```haskell
+#!/usr/bin/env stack
+-- stack --resolver lts-7.14 runghc
+import Text.Read (readMaybe)
 
 displayAge maybeAge =
     case maybeAge of
@@ -319,8 +342,8 @@ main = do
     putStrLn "Please enter some year in the future"
     futureYearString <- getLine
     let maybeAge = do
-            yearToAge <- fmap yearDiff (readMay futureYearString)
-            fmap yearToAge (readMay birthYearString)
+            yearToAge <- fmap yearDiff (readMaybe futureYearString)
+            fmap yearToAge (readMaybe birthYearString)
     displayAge maybeAge
 ```
 
@@ -334,8 +357,10 @@ we want to be able to apply a function which is *inside* a functor to a value
 inside a functor. The magic operator for this is <code>&lt;*&gt;</code>. Let's
 see how it works in our example:
 
-```active haskell
-import Safe (readMay)
+```haskell
+#!/usr/bin/env stack
+-- stack --resolver lts-7.14 runghc
+import Text.Read (readMaybe)
 import Control.Applicative ((<*>))
 
 displayAge maybeAge =
@@ -351,8 +376,8 @@ main = do
     putStrLn "Please enter some year in the future"
     futureYearString <- getLine
     let maybeAge =
-            fmap yearDiff (readMay futureYearString)
-                <*> readMay birthYearString
+            fmap yearDiff (readMaybe futureYearString)
+                <*> readMaybe birthYearString
     displayAge maybeAge
 ```
 
@@ -360,8 +385,10 @@ In fact, the combination of `fmap` and `<*>` is so common that we have a
 special operator, `<$>`, which is a synonym for `fmap`. That means we can make
 our code just a little prettier:
 
-```active haskell
-import Safe (readMay)
+```haskell
+#!/usr/bin/env stack
+-- stack --resolver lts-7.14 runghc
+import Text.Read (readMaybe)
 import Control.Applicative ((<$>), (<*>))
 
 displayAge maybeAge =
@@ -378,8 +405,8 @@ main = do
     futureYearString <- getLine
 -- show
     let maybeAge = yearDiff
-            <$> readMay futureYearString
-            <*> readMay birthYearString
+            <$> readMaybe futureYearString
+            <*> readMaybe birthYearString
 -- /show
     displayAge maybeAge
 ```
@@ -401,8 +428,10 @@ we'll assume that the user just got confused and entered the values in reverse,
 so we'll automatically fix it by reversing the arguments to `yearDiff`.  With
 do-notation and an if statement, it's easy:
 
-```active haskell
-import Safe (readMay)
+```haskell
+#!/usr/bin/env stack
+-- stack --resolver lts-7.14 runghc
+import Text.Read (readMaybe)
 
 displayAge maybeAge =
     case maybeAge of
@@ -417,8 +446,8 @@ main = do
     putStrLn "Please enter some year in the future"
     futureYearString <- getLine
     let maybeAge = do
-            futureYear <- readMay futureYearString
-            birthYear <- readMay birthYearString
+            futureYear <- readMaybe futureYearString
+            birthYear <- readMaybe birthYearString
             return $
                 if futureYear < birthYear
                     then yearDiff birthYear futureYear
@@ -430,7 +459,9 @@ main = do
 
 1.  Implement `fmap` using `<*>` and `return`.
 
-    ```active haskell
+    ```haskell
+    #!/usr/bin/env stack
+    -- stack --resolver lts-7.14 runghc
     import Control.Applicative ((<*>), Applicative)
     import Prelude (return, Monad)
     import qualified Prelude
@@ -448,7 +479,9 @@ main = do
 
     @@@SHOW SOLUTION
 
-    ```active haskell
+    ```haskell
+    #!/usr/bin/env stack
+    -- stack --resolver lts-7.14 runghc
     import Control.Applicative ((<*>))
 
     -- show
@@ -463,7 +496,9 @@ main = do
 2.  How is `return` implemented for the `Maybe` monad? Try replacing `return`
     with its implementation in the code above.
 
-    ```haskell active
+    ```haskell
+    #!/usr/bin/env stack
+    -- stack --resolver lts-7.14 runghc
     -- show
     returnMaybe = FIXME
     -- /show
@@ -472,9 +507,9 @@ main = do
         | returnMaybe "Hello" == Just "Hello" = putStrLn "Correct!"
         | otherwise = putStrLn "Incorrect, please try again"
     ```
-    
+
     @@@SHOW SOLUTION
-    
+
     `return` is simply the `Just` constructor. This gets defined as:
 
     ```haskell
@@ -487,8 +522,10 @@ main = do
 3.  `yearDiff` is really just subtraction. Try to replace the calls to
     `yearDiff` with explicit usage of the `-` operator.
 
-    ```haskell active
-    import Safe (readMay)
+    ```haskell
+    #!/usr/bin/env stack
+    -- stack --resolver lts-7.14 runghc
+    import Text.Read (readMaybe)
 
     displayAge maybeAge =
         case maybeAge of
@@ -501,8 +538,8 @@ main = do
         putStrLn "Please enter some year in the future"
         futureYearString <- getLine
         let maybeAge = do
-                futureYear <- readMay futureYearString
-                birthYear <- readMay birthYearString
+                futureYear <- readMaybe futureYearString
+                birthYear <- readMaybe birthYearString
                 return $
     -- show
                     if futureYear < birthYear
@@ -515,7 +552,9 @@ main = do
     @@@SHOW SOLUTION
 
     ```haskell
-    import Safe (readMay)
+    #!/usr/bin/env stack
+    -- stack --resolver lts-7.14 runghc
+    import Text.Read (readMaybe)
 
     displayAge maybeAge =
         case maybeAge of
@@ -528,8 +567,8 @@ main = do
         putStrLn "Please enter some year in the future"
         futureYearString <- getLine
         let maybeAge = do
-                futureYear <- readMay futureYearString
-                birthYear <- readMay birthYearString
+                futureYear <- readMaybe futureYearString
+                birthYear <- readMaybe birthYearString
                 return $
     -- show
                     if futureYear < birthYear
@@ -544,9 +583,11 @@ main = do
 4.  It's possible to write an applicative functor version of the
     auto-reverse-arguments code by modifying the `yearDiff` function. Try to do
     so.
-    
-    ```active haskell
-    import Safe (readMay)
+
+    ```haskell
+    #!/usr/bin/env stack
+    -- stack --resolver lts-7.14 runghc
+    import Text.Read (readMaybe)
     import Control.Applicative ((<$>), (<*>))
 
     displayAge maybeAge =
@@ -562,12 +603,13 @@ main = do
         | yearDiff 5 6 == 1 = putStrLn "Correct!"
         | otherwise = putStrLn "Please try again"
     ```
-    
 
     @@@ SHOW SOLUTION
 
-    ```active haskell
-    import Safe (readMay)
+    ```haskell
+    #!/usr/bin/env stack
+    -- stack --resolver lts-7.14 runghc
+    import Text.Read (readMaybe)
 
     displayAge maybeAge =
         case maybeAge of
@@ -586,8 +628,8 @@ main = do
         putStrLn "Please enter some year in the future"
         futureYearString <- getLine
         let maybeAge = do
-                futureYear <- readMay futureYearString
-                birthYear <- readMay birthYearString
+                futureYear <- readMaybe futureYearString
+                birthYear <- readMaybe birthYearString
                 return $
                     if futureYear < birthYear
                         then yearDiff birthYear futureYear
@@ -599,9 +641,11 @@ main = do
 
     *   Now try to do it without modifying `yearDiff` directly, but by using a
         helper function which is applied to `yearDiff`.
-    
-        ```active haskell
-        import Safe (readMay)
+
+        ```haskell
+        #!/usr/bin/env stack
+        -- stack --resolver lts-7.14 runghc
+        import Text.Read (readMaybe)
         import Control.Applicative ((<$>), (<*>))
 
         displayAge maybeAge =
@@ -621,8 +665,10 @@ main = do
 
         @@@ SHOW SOLUTION
 
-        ```active haskell
-        import Safe (readMay)
+        ```haskell
+        #!/usr/bin/env stack
+        -- stack --resolver lts-7.14 runghc
+        import Text.Read (readMaybe)
 
         displayAge maybeAge =
             case maybeAge of
@@ -637,8 +683,8 @@ main = do
             putStrLn "Please enter some year in the future"
             futureYearString <- getLine
             let maybeAge = do
-                    futureYear <- readMay futureYearString
-                    birthYear <- readMay birthYearString
+                    futureYear <- readMaybe futureYearString
+                    birthYear <- readMaybe birthYearString
                     return $
                         if futureYear < birthYear
                             then yourHelperFunction yearDiff birthYear futureYear
