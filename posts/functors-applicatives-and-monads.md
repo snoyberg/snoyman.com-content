@@ -386,29 +386,9 @@ special operator, `<$>`, which is a synonym for `fmap`. That means we can make
 our code just a little prettier:
 
 ```haskell
-#!/usr/bin/env stack
--- stack --resolver lts-7.14 runghc
-import Text.Read (readMaybe)
-import Control.Applicative ((<$>), (<*>))
-
-displayAge maybeAge =
-    case maybeAge of
-        Nothing -> putStrLn "You provided invalid input"
-        Just age -> putStrLn $ "In that year, you will be: " ++ show age
-
-yearDiff futureYear birthYear = futureYear - birthYear
-
-main = do
-    putStrLn "Please enter your birth year"
-    birthYearString <- getLine
-    putStrLn "Please enter some year in the future"
-    futureYearString <- getLine
--- show
     let maybeAge = yearDiff
             <$> readMaybe futureYearString
             <*> readMaybe birthYearString
--- /show
-    displayAge maybeAge
 ```
 
 Notice the distinction between `<$>` and `<*>`. The former uses a function
@@ -467,9 +447,7 @@ main = do
     import qualified Prelude
 
     fmap :: (Applicative m, Monad m) => (a -> b) -> (m a -> m b)
-    -- show
     fmap ... ... = FIXME
-    -- /show
 
     main =
         case fmap (Prelude.+ 1) (Prelude.Just 2) of
@@ -490,15 +468,9 @@ main = do
     <div class="panel-body">
 
     ```haskell
-    #!/usr/bin/env stack
-    -- stack --resolver lts-7.14 runghc
-    import Control.Applicative ((<*>))
-
-    -- show
     myFmap function wrappedValue = return function <*> wrappedValue
 
     main = print $ myFmap (+ 1) $ Just 5
-    -- /show
     ```
 
     </div></div>
@@ -509,9 +481,7 @@ main = do
     ```haskell
     #!/usr/bin/env stack
     -- stack --resolver lts-7.14 runghc
-    -- show
     returnMaybe = FIXME
-    -- /show
 
     main
         | returnMaybe "Hello" == Just "Hello" = putStrLn "Correct!"
@@ -561,11 +531,11 @@ main = do
                 futureYear <- readMaybe futureYearString
                 birthYear <- readMaybe birthYearString
                 return $
-    -- show
+                    -- BEGIN CODE TO MODIFY
                     if futureYear < birthYear
                         then yearDiff birthYear futureYear
                         else yearDiff futureYear birthYear
-    -- /show
+                    -- END CODE TO MODIFY
         displayAge maybeAge
     ```
 
@@ -582,30 +552,9 @@ main = do
     <div class="panel-body">
 
     ```haskell
-    #!/usr/bin/env stack
-    -- stack --resolver lts-7.14 runghc
-    import Text.Read (readMaybe)
-
-    displayAge maybeAge =
-        case maybeAge of
-            Nothing -> putStrLn "You provided invalid input"
-            Just age -> putStrLn $ "In that year, you will be: " ++ show age
-
-    main = do
-        putStrLn "Please enter your birth year"
-        birthYearString <- getLine
-        putStrLn "Please enter some year in the future"
-        futureYearString <- getLine
-        let maybeAge = do
-                futureYear <- readMaybe futureYearString
-                birthYear <- readMaybe birthYearString
-                return $
-    -- show
                     if futureYear < birthYear
                         then birthYear - futureYear
                         else futureYear - birthYear
-    -- /show
-        displayAge maybeAge
     ```
 
     </div></div>
@@ -625,9 +574,7 @@ main = do
             Nothing -> putStrLn "You provided invalid input"
             Just age -> putStrLn $ "In that year, you will be: " ++ show age
 
-    -- show
     yearDiff futureYear birthYear = FIXME
-    -- /show
 
     main
         | yearDiff 5 6 == 1 = putStrLn "Correct!"
@@ -647,34 +594,9 @@ main = do
     <div class="panel-body">
 
     ```haskell
-    #!/usr/bin/env stack
-    -- stack --resolver lts-7.14 runghc
-    import Text.Read (readMaybe)
-
-    displayAge maybeAge =
-        case maybeAge of
-            Nothing -> putStrLn "You provided invalid input"
-            Just age -> putStrLn $ "In that year, you will be: " ++ show age
-
-    -- show
     yearDiff futureYear birthYear
         | futureYear > birthYear = futureYear - birthYear
         | otherwise = birthYear - futureYear
-    -- /show
-
-    main = do
-        putStrLn "Please enter your birth year"
-        birthYearString <- getLine
-        putStrLn "Please enter some year in the future"
-        futureYearString <- getLine
-        let maybeAge = do
-                futureYear <- readMaybe futureYearString
-                birthYear <- readMaybe birthYearString
-                return $
-                    if futureYear < birthYear
-                        then yearDiff birthYear futureYear
-                        else yearDiff futureYear birthYear
-        displayAge maybeAge
     ```
 
     </div></div>
@@ -694,9 +616,7 @@ main = do
             Just age -> putStrLn $ "In that year, you will be: " ++ show age
 
     yearDiff futureYear birthYear = futureYear - birthYear
-    -- show
     yourHelperFunction f ...
-    -- /show
 
     main
         | yourHelperFunction yearDiff 5 6 == 1 = putStrLn "Correct!"
@@ -716,36 +636,9 @@ main = do
     <div class="panel-body">
 
     ```haskell
-    #!/usr/bin/env stack
-    -- stack --resolver lts-7.14 runghc
-    import Text.Read (readMaybe)
-
-    displayAge maybeAge =
-        case maybeAge of
-            Nothing -> putStrLn "You provided invalid input"
-            Just age -> putStrLn $ "In that year, you will be: " ++ show age
-
-    yearDiff futureYear birthYear = futureYear - birthYear
-
-    main = do
-        putStrLn "Please enter your birth year"
-        birthYearString <- getLine
-        putStrLn "Please enter some year in the future"
-        futureYearString <- getLine
-        let maybeAge = do
-                futureYear <- readMaybe futureYearString
-                birthYear <- readMaybe birthYearString
-                return $
-                    if futureYear < birthYear
-                        then yourHelperFunction yearDiff birthYear futureYear
-                        else yourHelperFunction yearDiff futureYear birthYear
-        displayAge maybeAge
-
-    -- show
     yourHelperFunction f x y
         | x > y = f x y
         | otherwise = f y x
-    -- /show
     ```
 
     </div></div>
