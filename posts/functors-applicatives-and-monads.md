@@ -477,7 +477,17 @@ main = do
             _ -> Prelude.putStrLn "Try again"
     ```
 
-    @@@SHOW SOLUTION
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+    <div class="panel-heading" role="tab">
+    <h4 class="panel-title">
+    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#exerciseOne" aria-expanded="true" aria-controls="collapseOne">
+    Show Solution
+    </a>
+    </h4>
+    </div>
+    <div id="exerciseOne" class="panel-collapse collapse" role="tabpanel">
+    <div class="panel-body">
 
     ```haskell
     #!/usr/bin/env stack
@@ -491,7 +501,7 @@ main = do
     -- /show
     ```
 
-    @@@
+    </div></div>
 
 2.  How is `return` implemented for the `Maybe` monad? Try replacing `return`
     with its implementation in the code above.
@@ -508,7 +518,17 @@ main = do
         | otherwise = putStrLn "Incorrect, please try again"
     ```
 
-    @@@SHOW SOLUTION
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+    <div class="panel-heading" role="tab">
+    <h4 class="panel-title">
+    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#exerciseTwo" aria-expanded="true" aria-controls="collapseTwo">
+    Show Solution
+    </a>
+    </h4>
+    </div>
+    <div id="exerciseTwo" class="panel-collapse collapse" role="tabpanel">
+    <div class="panel-body">
 
     `return` is simply the `Just` constructor. This gets defined as:
 
@@ -517,7 +537,7 @@ main = do
         return = Just
     ```
 
-    @@@
+    </div></div>
 
 3.  `yearDiff` is really just subtraction. Try to replace the calls to
     `yearDiff` with explicit usage of the `-` operator.
@@ -549,7 +569,17 @@ main = do
         displayAge maybeAge
     ```
 
-    @@@SHOW SOLUTION
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+    <div class="panel-heading" role="tab">
+    <h4 class="panel-title">
+    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#exerciseThree" aria-expanded="true" aria-controls="collapseThree">
+    Show Solution
+    </a>
+    </h4>
+    </div>
+    <div id="exerciseThree" class="panel-collapse collapse" role="tabpanel">
+    <div class="panel-body">
 
     ```haskell
     #!/usr/bin/env stack
@@ -578,7 +608,7 @@ main = do
         displayAge maybeAge
     ```
 
-    @@@
+    </div></div>
 
 4.  It's possible to write an applicative functor version of the
     auto-reverse-arguments code by modifying the `yearDiff` function. Try to do
@@ -604,7 +634,17 @@ main = do
         | otherwise = putStrLn "Please try again"
     ```
 
-    @@@ SHOW SOLUTION
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+    <div class="panel-heading" role="tab">
+    <h4 class="panel-title">
+    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#exerciseFour" aria-expanded="true" aria-controls="collapseFour">
+    Show Solution
+    </a>
+    </h4>
+    </div>
+    <div id="exerciseFour" class="panel-collapse collapse" role="tabpanel">
+    <div class="panel-body">
 
     ```haskell
     #!/usr/bin/env stack
@@ -637,65 +677,75 @@ main = do
         displayAge maybeAge
     ```
 
-    @@@
+    </div></div>
 
-    *   Now try to do it without modifying `yearDiff` directly, but by using a
-        helper function which is applied to `yearDiff`.
+5.  Now try to do it without modifying `yearDiff` directly, but by
+    using a helper function which is applied to `yearDiff`.
 
-        ```haskell
-        #!/usr/bin/env stack
-        -- stack --resolver lts-7.14 runghc
-        import Text.Read (readMaybe)
-        import Control.Applicative ((<$>), (<*>))
+    ```haskell
+    #!/usr/bin/env stack
+    -- stack --resolver lts-7.14 runghc
+    import Text.Read (readMaybe)
+    import Control.Applicative ((<$>), (<*>))
 
-        displayAge maybeAge =
-            case maybeAge of
-                Nothing -> putStrLn "You provided invalid input"
-                Just age -> putStrLn $ "In that year, you will be: " ++ show age
+    displayAge maybeAge =
+        case maybeAge of
+            Nothing -> putStrLn "You provided invalid input"
+            Just age -> putStrLn $ "In that year, you will be: " ++ show age
 
-        yearDiff futureYear birthYear = futureYear - birthYear
-        -- show
-        yourHelperFunction f ...
-        -- /show
+    yearDiff futureYear birthYear = futureYear - birthYear
+    -- show
+    yourHelperFunction f ...
+    -- /show
 
-        main
-            | yourHelperFunction yearDiff 5 6 == 1 = putStrLn "Correct!"
-            | otherwise = putStrLn "Please try again"
-        ```
+    main
+        | yourHelperFunction yearDiff 5 6 == 1 = putStrLn "Correct!"
+        | otherwise = putStrLn "Please try again"
+    ```
 
-        @@@ SHOW SOLUTION
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+    <div class="panel-heading" role="tab">
+    <h4 class="panel-title">
+    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#exerciseFive" aria-expanded="true" aria-controls="collapseFive">
+    Show Solution
+    </a>
+    </h4>
+    </div>
+    <div id="exerciseFive" class="panel-collapse collapse" role="tabpanel">
+    <div class="panel-body">
 
-        ```haskell
-        #!/usr/bin/env stack
-        -- stack --resolver lts-7.14 runghc
-        import Text.Read (readMaybe)
+    ```haskell
+    #!/usr/bin/env stack
+    -- stack --resolver lts-7.14 runghc
+    import Text.Read (readMaybe)
 
-        displayAge maybeAge =
-            case maybeAge of
-                Nothing -> putStrLn "You provided invalid input"
-                Just age -> putStrLn $ "In that year, you will be: " ++ show age
+    displayAge maybeAge =
+        case maybeAge of
+            Nothing -> putStrLn "You provided invalid input"
+            Just age -> putStrLn $ "In that year, you will be: " ++ show age
 
-        yearDiff futureYear birthYear = futureYear - birthYear
+    yearDiff futureYear birthYear = futureYear - birthYear
 
-        main = do
-            putStrLn "Please enter your birth year"
-            birthYearString <- getLine
-            putStrLn "Please enter some year in the future"
-            futureYearString <- getLine
-            let maybeAge = do
-                    futureYear <- readMaybe futureYearString
-                    birthYear <- readMaybe birthYearString
-                    return $
-                        if futureYear < birthYear
-                            then yourHelperFunction yearDiff birthYear futureYear
-                            else yourHelperFunction yearDiff futureYear birthYear
-            displayAge maybeAge
+    main = do
+        putStrLn "Please enter your birth year"
+        birthYearString <- getLine
+        putStrLn "Please enter some year in the future"
+        futureYearString <- getLine
+        let maybeAge = do
+                futureYear <- readMaybe futureYearString
+                birthYear <- readMaybe birthYearString
+                return $
+                    if futureYear < birthYear
+                        then yourHelperFunction yearDiff birthYear futureYear
+                        else yourHelperFunction yearDiff futureYear birthYear
+        displayAge maybeAge
 
-        -- show
-        yourHelperFunction f x y
-            | x > y = f x y
-            | otherwise = f y x
-        -- /show
-        ```
+    -- show
+    yourHelperFunction f x y
+        | x > y = f x y
+        | otherwise = f y x
+    -- /show
+    ```
 
-        @@@
+    </div></div>
