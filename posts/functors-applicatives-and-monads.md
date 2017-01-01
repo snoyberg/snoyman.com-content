@@ -67,7 +67,7 @@ main = do
 ## Decoupling code
 
 This code is a bit coupled; let's split it up to have a separate function for
-displaying the output to the user, and another separate function for
+displaying the output to the user and another separate function for
 calculating the age.
 
 ```haskell
@@ -93,7 +93,7 @@ main = do
 ```
 
 This code does exactly the same thing as our previous version. But the
-definition of `maybeAge` in the `main` function looks pretty repetitive to me.
+definition of `maybeAge` in `main` looks pretty repetitive to me.
 We check if the parse year is `Nothing`. If it's `Nothing`, we return
 `Nothing`. If it's `Just`, we return `Just`, after applying the function
 `yearToAge`. That seems like a lot of line noise to do something simple. All we
@@ -103,7 +103,7 @@ want is to conditionally apply `yearToAge`.
 
 Fortunately, we have a helper function to do just that. `fmap`, or __functor
 mapping__, will apply some function over the value contained by a __functor__.
-`Maybe` is one example of a functor, another common one is a list. In the case
+`Maybe` is one example of a functor; another common one is a list. In the case
 of `Maybe`, `fmap` does precisely what we described above. So we can replace
 our code with:
 
@@ -139,8 +139,8 @@ their contents.
 
 ## do-notation
 
-We have another option as well: we can use do-notation. This is the same way
-we've been writing our `main` function in so far. That's because- as we
+We have another option as well: we can use `do`-notation. This is the same way
+we've been writing `main` so far. That's because- as we
 mentioned in the previous paragraph- `IO` is a functor as well. Let's see how
 we can change our code to not use `fmap`:
 
@@ -166,13 +166,13 @@ main = do
 ```
 
 Inside the `do-`block, we have the __slurp operator__ <code>&lt;-</code>. This
-operator is special for do-notation, and is used to pull a value out of its
+operator is special for `do`-notation and is used to pull a value out of its
 wrapper (in this case, `Maybe`). Once we've extracted the value, we can
 manipulate it with normal functions, like `yearToAge`. When we complete our
-do-block, we have to return a value wrapped up in that container again. That's
+`do`-block, we have to return a value wrapped up in that container again. That's
 what the `return` function does.
 
-do-notation isn't available for all `Functor`s; it's a special feature reserved
+`do`-notation isn't available for all `Functor`s; it's a special feature reserved
 only for `Monad`s. `Monad`s are an extension of `Functor`s that provide a
 little extra power. We're not really taking advantage of any of that extra
 power here; we'll need to make our program more complicated to demonstrate
@@ -182,8 +182,7 @@ it.
 
 It's kind of limiting that we have a hard-coded year to compare against. Let's
 fix that by allowing the user to specify the "future year." We'll start off
-with a simple implementation using pattern matching and then move back to do
-notation.
+with a simple implementation using pattern matching and then move back to `do`-notation.
 
 ```haskell
 #!/usr/bin/env stack
@@ -210,7 +209,7 @@ main = do
     displayAge maybeAge
 ```
 
-OK, it gets the job done... but it's very tedious. Fortunately, do-notation makes this kind of code really simple:
+OK, it gets the job done... but it's very tedious. Fortunately, `do`-notation makes this kind of code really simple:
 
 ```haskell
 #!/usr/bin/env stack
@@ -236,8 +235,8 @@ main = do
     displayAge maybeAge
 ```
 
-This is very convenient: we've now slurped our two values in our do-notation.
-If either parse returns `Nothing`, then the entire do-block will return
+This is very convenient: we've now slurped our two values in our `do`-notation.
+If either parse returns `Nothing`, then the entire `do`-block will return
 `Nothing`. This demonstrates an important property about `Maybe`: it provides
 __short circuiting__.
 
@@ -264,7 +263,7 @@ some type `a`, takes a second argument of a `Maybe Integer`, and gives back a
 value of type `Maybe a`. But our function- `yearDiff`- actually takes two
 arguments, not one. So `fmap` can't be used at all, right?
 
-Not true actually. This is where one of Haskell's very powerful features comes
+Not true. This is where one of Haskell's very powerful features comes
 into play. Any time we have a function of two arguments, we can also look at is
 as a function of one argument which returns a __function__. We can make this
 more clear with parentheses:
@@ -296,7 +295,7 @@ fmap yearDiff (readMaybe futureYearString) :: Maybe (Integer -> Integer)
 
 That's certainly very interesting, but it doesn't help us. We need to somehow
 apply this value of type `Maybe (Integer -> Integer)` to our `readMaybe
-birthYearString` of type `Maybe Integer`. We can do this with do-notation:
+birthYearString` of type `Maybe Integer`. We can do this with `do`-notation:
 
 ```haskell
 #!/usr/bin/env stack
@@ -361,7 +360,6 @@ see how it works in our example:
 #!/usr/bin/env stack
 -- stack --resolver lts-7.14 runghc
 import Text.Read (readMaybe)
-import Control.Applicative ((<*>))
 
 displayAge maybeAge =
     case maybeAge of
@@ -406,7 +404,7 @@ functions.
 Let's give a contrived example: if the future year is less than the birth year,
 we'll assume that the user just got confused and entered the values in reverse,
 so we'll automatically fix it by reversing the arguments to `yearDiff`.  With
-do-notation and an if statement, it's easy:
+`do`-notation and an if statement, it's easy:
 
 ```haskell
 #!/usr/bin/env stack
