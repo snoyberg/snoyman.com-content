@@ -1,3 +1,6 @@
+- file: posts/foldable-mapm-maybe-and-recursive-functions.md
+  title: Foldable.mapM_, Maybe, and recursive functions
+  day: 2017-01-10
 - file: posts/functors-applicatives-and-monads.md
   title: Functors, Applicatives, and Monads
   day: 2017-01-03
