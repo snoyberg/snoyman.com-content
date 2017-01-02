@@ -1,5 +1,8 @@
 __NOTE__ This content originally appeared on
-[School of Haskell](https://www.schoolofhaskell.com/user/snoyberg/general-haskell/basics/functors-applicative-functors-and-monads).
+[School of
+Haskell](https://www.schoolofhaskell.com/user/snoyberg/general-haskell/basics/functors-applicative-functors-and-monads).
+Thanks for Julie Moronuki for encouraging me to update/republish, and for all
+of the edits/improvements.
 
 Let's start off with a very simple problem. We want to let a user input his/her
 birth year, and tell him/her his/her age in the year 2020.
