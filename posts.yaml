@@ -1,3 +1,6 @@
+- file: posts/functors-applicatives-and-monads.md
+  title: Functors, Applicatives, and Monads
+  day: 2017-01-03
 - file: posts/beware-of-readfile.md
   title: Beware of readFile
   day: 2016-12-22
