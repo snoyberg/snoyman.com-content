@@ -1,8 +1,13 @@
-__NOTE__ This content originally appeared on
+This content originally appeared on
 [School of
 Haskell](https://www.schoolofhaskell.com/user/snoyberg/general-haskell/basics/functors-applicative-functors-and-monads).
 Thanks for Julie Moronuki for encouraging me to update/republish, and for all
 of the edits/improvements.
+
+__NOTE__ Code snippets below can be run using the [Stack build
+tool](https://haskell-lang.org/get-started), by saving to a file `Main.hs` and
+running with `stack Main.hs`. More information is available in the [How to
+Script with Stack tutorial](https://haskell-lang.org/tutorial/stack-script).
 
 Let's start off with a very simple problem. We want to let a user input his/her
 birth year, and tell him/her his/her age in the year 2020.
@@ -10,7 +15,7 @@ Using the function `read`, this is really simple:
 
 ```haskell
 #!/usr/bin/env stack
--- stack --resolver lts-7.14 runghc
+-- stack --resolver lts-7.14 --install-ghc runghc
 main = do
     putStrLn "Please enter your birth year"
     year <- getLine
@@ -38,7 +43,7 @@ the following code:
 
 ```haskell
 #!/usr/bin/env stack
--- stack --resolver lts-7.14 runghc
+-- stack --resolver lts-7.14 --install-ghc runghc
 import Text.Read (readMaybe)
 
 main = do
@@ -56,7 +61,7 @@ One way to do this is with pattern matching:
 
 ```haskell
 #!/usr/bin/env stack
--- stack --resolver lts-7.14 runghc
+-- stack --resolver lts-7.14 --install-ghc runghc
 import Text.Read (readMaybe)
 
 main = do
@@ -75,7 +80,7 @@ calculating the age.
 
 ```haskell
 #!/usr/bin/env stack
--- stack --resolver lts-7.14 runghc
+-- stack --resolver lts-7.14 --install-ghc runghc
 import Text.Read (readMaybe)
 
 displayAge maybeAge =
@@ -112,7 +117,7 @@ our code with:
 
 ```haskell
 #!/usr/bin/env stack
--- stack --resolver lts-7.14 runghc
+-- stack --resolver lts-7.14 --install-ghc runghc
 import Text.Read (readMaybe)
 
 displayAge maybeAge =
@@ -149,7 +154,7 @@ we can change our code to not use `fmap`:
 
 ```haskell
 #!/usr/bin/env stack
--- stack --resolver lts-7.14 runghc
+-- stack --resolver lts-7.14 --install-ghc runghc
 import Text.Read (readMaybe)
 
 displayAge maybeAge =
@@ -189,7 +194,7 @@ with a simple implementation using pattern matching and then move back to `do`-n
 
 ```haskell
 #!/usr/bin/env stack
--- stack --resolver lts-7.14 runghc
+-- stack --resolver lts-7.14 --install-ghc runghc
 import Text.Read (readMaybe)
 
 displayAge maybeAge =
@@ -216,7 +221,7 @@ OK, it gets the job done... but it's very tedious. Fortunately, `do`-notation ma
 
 ```haskell
 #!/usr/bin/env stack
--- stack --resolver lts-7.14 runghc
+-- stack --resolver lts-7.14 --install-ghc runghc
 import Text.Read (readMaybe)
 
 displayAge maybeAge =
@@ -302,7 +307,7 @@ birthYearString` of type `Maybe Integer`. We can do this with `do`-notation:
 
 ```haskell
 #!/usr/bin/env stack
--- stack --resolver lts-7.14 runghc
+-- stack --resolver lts-7.14 --install-ghc runghc
 import Text.Read (readMaybe)
 
 displayAge maybeAge =
@@ -328,7 +333,7 @@ We can even use `fmap` twice and avoid the second slurp:
 
 ```haskell
 #!/usr/bin/env stack
--- stack --resolver lts-7.14 runghc
+-- stack --resolver lts-7.14 --install-ghc runghc
 import Text.Read (readMaybe)
 
 displayAge maybeAge =
@@ -361,7 +366,7 @@ see how it works in our example:
 
 ```haskell
 #!/usr/bin/env stack
--- stack --resolver lts-7.14 runghc
+-- stack --resolver lts-7.14 --install-ghc runghc
 import Text.Read (readMaybe)
 
 displayAge maybeAge =
@@ -411,7 +416,7 @@ so we'll automatically fix it by reversing the arguments to `yearDiff`.  With
 
 ```haskell
 #!/usr/bin/env stack
--- stack --resolver lts-7.14 runghc
+-- stack --resolver lts-7.14 --install-ghc runghc
 import Text.Read (readMaybe)
 
 displayAge maybeAge =
@@ -442,7 +447,7 @@ main = do
 
     ```haskell
     #!/usr/bin/env stack
-    -- stack --resolver lts-7.14 runghc
+    -- stack --resolver lts-7.14 --install-ghc runghc
     import Control.Applicative ((<*>), Applicative)
     import Prelude (return, Monad)
     import qualified Prelude
@@ -481,7 +486,7 @@ main = do
 
     ```haskell
     #!/usr/bin/env stack
-    -- stack --resolver lts-7.14 runghc
+    -- stack --resolver lts-7.14 --install-ghc runghc
     returnMaybe = FIXME
 
     main
@@ -515,7 +520,7 @@ main = do
 
     ```haskell
     #!/usr/bin/env stack
-    -- stack --resolver lts-7.14 runghc
+    -- stack --resolver lts-7.14 --install-ghc runghc
     import Text.Read (readMaybe)
 
     displayAge maybeAge =
@@ -566,7 +571,7 @@ main = do
 
     ```haskell
     #!/usr/bin/env stack
-    -- stack --resolver lts-7.14 runghc
+    -- stack --resolver lts-7.14 --install-ghc runghc
     import Text.Read (readMaybe)
     import Control.Applicative ((<$>), (<*>))
 
@@ -607,7 +612,7 @@ main = do
 
     ```haskell
     #!/usr/bin/env stack
-    -- stack --resolver lts-7.14 runghc
+    -- stack --resolver lts-7.14 --install-ghc runghc
     import Text.Read (readMaybe)
     import Control.Applicative ((<$>), (<*>))
 
