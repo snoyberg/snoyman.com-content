@@ -77,10 +77,10 @@ module name appear in different packages:
     of Cabal, Stack is only just now adding support for this, and not
     all packages will update to support this immediately.
 
-5.  It would be great if tooling could automatically determine which
-    packages to install based on the imports list, to avoid the need
-    for a lot of manual and redundant statements of
-    dependencies. We're considering
+5.  __Better tooling__ It would be great if tooling could
+    automatically determine which packages to install based on the
+    imports list, to avoid the need for a lot of manual and redundant
+    statements of dependencies. We're considering
     [doing this in the upcoming `stack script` command](https://github.com/commercialhaskell/stack/issues/2805#issuecomment-263075097). But
     how will Stack know which `Control.Monad.Reader` to use?
 
