@@ -18,6 +18,11 @@ made-up example above, I would explicitly state that I depend on
 `Data.Conduit`, Stack+Cabal+GHC can all work together to ensure that
 the correct module is used.
 
+__EDIT__ Since I've already written some of the code for stackage-curator to
+detect this, I generated a [list of all conflicting module
+names](https://gist.github.com/snoyberg/c5044f390d22200fcee37c894a853719) to
+give an idea of what we're looking at.
+
 ## The problem
 
 (If you're already convinced that conflicting module names are a
