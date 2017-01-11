@@ -38,6 +38,7 @@ but wanted to play with this in the short term.
 * Use generalization (via type classes) when they are well
   established. For example: `Foldable` and `Traversable` yes,
   `MonoFoldable` no.
+
     * _Controversial_ Avoid providing list-specific functions. This
       connects to the parent point. Most of the time, I'd argue that
       lists are _not_ the correct choice, and instead a `Vector`
@@ -81,10 +82,12 @@ reasoning for some libraries:
 Packages I considered but have not included yet:
 
 * `stm` is an obvious winner, and while I use it constantly, I'm not
-convinced everyone else uses it as much as I do. Also, there are some
-questions around generalizing its functions (e.g., `atomically` could
-be in `MonadIO`), and I don't want to make that decision yet.
+  convinced everyone else uses it as much as I do. Also, there are some
+  questions around generalizing its functions (e.g., `atomically` could
+  be in `MonadIO`), and I don't want to make that decision yet.
+
     * `stm-chans` falls into this category too
+
 * `async` is an amazing library, and in particular the `race`,
   `concurrently`, and `Concurrently` bits are an easy win. I've left
   it out for now due to questions of generalizing to
