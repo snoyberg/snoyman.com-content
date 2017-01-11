@@ -1,3 +1,6 @@
+- file: posts/safe-prelude-a-thuought-experiment.md
+  title: "safe-prelude: a thought experiment"
+  day: 2017-01-16
 - file: posts/foldable-mapm-maybe-and-recursive-functions.md
   title: Foldable.mapM_, Maybe, and recursive functions
   day: 2017-01-10
