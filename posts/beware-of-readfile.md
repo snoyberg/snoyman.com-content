@@ -232,3 +232,5 @@ include others here, please
 
 * [hpack failures on AppVeyor/Windows](https://github.com/sol/hpack/pull/142)
 * [Unexpected failure with conduit+sinkHandle+Docker](https://www.reddit.com/r/haskell/comments/5nmmgv/how_to_pipe_unicode_to_a_process_using_conduit/)
+* [stack new can fail when character encoding isn't
+  UTF-8](https://github.com/commercialhaskell/stack/pull/2867) (and [mailing list discussion](https://groups.google.com/d/msg/yesodweb/ZyWLsJOtY0c/aejf9E7rCAAJ))
