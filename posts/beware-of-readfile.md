@@ -8,6 +8,10 @@ that exist in the `String` and strict/lazy `Text` variants. For the
 record, these problems apply equally to `writeFile` and a number of
 other functions.
 
+__EDIT__ See the [end of this blog post](#real-world-failures), where
+I've begun collecting real-life examples where this I/O behavior is
+problematic.
+
 Let's start off with a simple example. Try running the following
 program:
 
@@ -217,3 +221,14 @@ mean                 594.7 μs   (588.3 μs .. 602.4 μs)
 std dev              24.20 μs   (17.06 μs .. 39.94 μs)
 variance introduced by outliers: 33% (moderately inflated)
 ```
+
+<h2 id="real-world-failures">Real world failures</h2>
+
+This is a list of examples of real-world problems caused by
+the behavior described in this blog post. It's by far not an
+exhaustive list, just examples that I've noticed. If you'd like to
+include others here, please
+[send me a pull request](https://github.com/snoyberg/snoyman.com-content/edit/master/posts/beware-of-readfile.md).
+
+* [hpack failures on AppVeyor/Windows](https://github.com/sol/hpack/pull/142)
+* [Unexpected failure with conduit+sinkHandle+Docker](https://www.reddit.com/r/haskell/comments/5nmmgv/how_to_pipe_unicode_to_a_process_using_conduit/)
