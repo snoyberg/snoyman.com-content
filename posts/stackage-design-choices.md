@@ -113,12 +113,12 @@ may be noteworthy.
       specifies versions of packages which claim to be incompatible
       with each other
 
-    Therefore, version bounds needed to be respect. However...
+    Therefore, version bounds needed to be respected. However...
 
 * Due to the frequency of overly restrictive version bounds and
   trivial compatibility patches which were slow to make it upstream,
   Stackage allowed for locally modified packages. That means that, for
-  example, Stackage version `foo` could have a different set of code
+  example, Stackage snapshot `foo` could have a different set of code
   associated with `mtl-2.2.1` than what Hackage reports. Note that
   this feature was more aggressive than Hackage cabal file revisions,
   in that it allowed the code itself to change, not just the cabal
@@ -126,7 +126,8 @@ may be noteworthy.
 
 These decisions lasted for (IIRC) about a year, and were overall
 successful at letting Stackage become a thriving project. I was soon
-able to shut down the Yesod Platform initiative in favor of Stackage,
+able to [shut down the Yesod Platform initiative](http://www.yesodweb.com/blog/2014/08/deprecating-yesod-platform)
+ in favor of Stackage,
 which was a huge relief for me. At this point, outside of the Yesod
 community, I think Stackage was viewed mostly as a "ecosystem-wide CI
 system" than something for end users. It wasn't until Stack defaulted
@@ -136,8 +137,8 @@ to Stackage snapshots that end users en masse started using Stackage.
 
 Stackage today is quite a bit different from the above decisions:
 
-* I eventually dropped the Haskell Platform superset. There were a few
-  years where that package set wasn't updated, and the complication of
+* I eventually dropped the Haskell Platform superset. There was a
+  time when that package set wasn't updated, and the complication of
   trying to find a compatible set of packages on top of it was simply
   too high. In addition, HP included a version of aeson with a
   significant security hole (DoS attack with small inputs), and
@@ -167,7 +168,7 @@ Stackage today is quite a bit different from the above decisions:
   it weakens our previous decision to respect cabal file constraints
   due to avoiding user confusion.
 
-* Expanded the team! I'm happy to say that I am now one of five
+* We have an expanded team! I'm happy to say that I am now one of five
   Stackage curators, and no longer have to either handle all the work
   myself, or make unilateral decisions. In other words, I get to share
   the blame with others :). Many thanks to Adam Bergmark, Dan Burton,
