@@ -1,3 +1,6 @@
+- file: posts/follow-up-mapm.md
+  title: "Follow up on mapM_"
+  day: 2017-01-20
 - file: posts/safe-prelude-a-thought-experiment.md
   title: "safe-prelude: a thought experiment"
   day: 2017-01-16
