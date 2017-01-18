@@ -1,8 +1,8 @@
 This post is going to talk about some of the design choices made over
 the years around the
 [Stackage project](https://github.com/fpco/stackage#readme), a curated
-package set for Haskell. While many of these points will be
-Haskell-specific, I think the ideas would translate well to other
+package set for Haskell. While many of these points will be Haskell-
+and Stackage-specific, I think the ideas would translate well to other
 languages interested in created curated package sets. This blog post
 was inspired by a short discussion on Twitter, which made it clear
 that I'd never really shared design thoughts on the Stackage project:
@@ -17,6 +17,8 @@ important to take into account:
 * The historical circumstances when decisions were made
 * Social pressures in the community agitating for specific decisions
 * Inertia in the project making significant changes difficult
+
+Apologies in advance, this turned out longer than I'd intended.
 
 ## Goals
 
@@ -181,10 +183,59 @@ that brought this whole blog post into existence: should we be
 changing anything about Stackage? Here are some changes either
 proposed by others or that I've thought of, and some remarks.
 
-* Ignore constraints in .cabal files
-* Put in stricter rules about relaxing upper bounds on authors
-* Reallow modifications to packages
-* Multiple Nightly lines
-* Be more aggressive about kicking out packages
+* The curator team overall has been pretty lax about booting packages
+  that block newer versions of dependencies. There have definitely
+  been calls for us to be more proactive about that, and aggressively
+  kick out packages that are holding back dependencies.
 
-There are likely others e
+    * Pros: Stackage Nightly will live up to its bleeding edge mission
+      statement more effectively, we'll overall have less incidental
+      pain on package authors who are staying up to date with their
+      dependencies.
+
+    * Cons: it will decrease the number of packages in Stackage
+      Nightly for end users, and adds extra burden on package authors
+      to be more quick to respond to requests.
+
+* As a relaxed version of the above: be stricter with package authors,
+  but only in the case of cabal file upper bounds. The argument here
+  is stronger, since the work required is fairly minimal, and - at
+  least in my experience - waiting for relaxed upper bounds is what
+  takes up a lot of the time when curating. An extreme version of this
+  is demanding that
+  [upper bounds just be removed](https://twitter.com/haskdev/status/820932892385808384).
+
+* Or an interesting alternative to that: should Stackage simply ignore
+  constraints in cabal files entirely? It would be fairly easy to
+  extend Stack to recognize a flag in snapshots to say "ignore the
+  constraints when building," or even make that the default behavior.
+
+    * Pros: less time spent on bounds issues, Stackage doesn't get
+      held back by trivial version bounds issues, for PVP bounds
+      enthusiasts could encourage people to add bounds during upload
+      more often (not sure of that).
+
+    * Cons: cabal users with Stackage snapshots wouldn't have as nice
+      a time, it could be confusing for users, and if the upper bounds
+      are in place due to semantic changes we won't catch it.
+
+* Since GPS Haskell isn't happening, we could add back the ability for
+  the Stackage curator team to modify packages (both cabal files and
+  source files). I think the pros and cons of this were pretty well
+  established above, I'm not going to repeat it here.
+
+* People have asked for running multiple nightly lines with different
+  GHC versions.
+
+    * Pros: instead of haven't slightly outdated LTS versions for
+      older GHCs, we'd have bleeding edge all over again.
+
+    * Cons: we'd need new naming schemes for snapshots, a lot more
+      work for the curator team, and potentially a lot more work for
+      package authors who would need to maintain further GHC
+      compatibility with their most recent releases.
+
+There are likely other changes that I haven't mentioned, feel free to
+raise them in the comments below. Also, if anyone really wants to
+follow up on these topics, the best place to do that is
+[the Stackage mailing list](https://groups.google.com/d/forum/stackage).

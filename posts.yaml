@@ -1,3 +1,6 @@
+- file: posts/stackage-design-choices.md
+  title: "Stackage design choices: making Haskell curated package sets"
+  day: 2017-01-23
 - file: posts/follow-up-mapm.md
   title: "Follow up on mapM_"
   day: 2017-01-19
