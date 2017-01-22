@@ -236,6 +236,20 @@ proposed by others or that I've thought of, and some remarks.
       package authors who would need to maintain further GHC
       compatibility with their most recent releases.
 
+* I've had some private discussions around this, and thought I should share the
+  idea here. Right now, Stackage requires that any package added must be
+  available on Hackage. A number of newer build systems have been going the route
+  of allowing packages to be present only in a Git repository. Stack has built-in
+  support for specifying such locations, but snapshots do not support it. Should
+  we add support to Stackage to allow packages to be pulled from places besides
+  Hackage?
+
+    * Pros: knocks down another barrier to entry for publishing packages.
+
+    * Cons: Stackage snapshots will not automatically work with cabal-install
+      anymore, extra work to be done to make this functional, and some issues
+      around determining who owns a package name need to be worked out.
+
 There are likely other changes that I haven't mentioned, feel free to
 raise them in the comments below. Also, if anyone really wants to
 follow up on these topics, the best place to do that is
