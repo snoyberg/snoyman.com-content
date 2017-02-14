@@ -1,3 +1,6 @@
+- file: posts/hackage-security-stack.md
+  title: Hackage Security and Stack
+  time: 2017-02-14T15:24:20Z
 - file: posts/stackage-design-choices.md
   title: "Stackage design choices: making Haskell curated package sets"
   day: 2017-01-23
