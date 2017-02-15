@@ -123,7 +123,7 @@ hackage-security:
   hopefully resulting in a more reliable security mechanism for both
   projects to share
   ([small example of such stress-testing](https://github.com/haskell/hackage-security/issues/184)).
-* Stack has always maintained compaitibility with some form of non-Git
+* Stack has always maintained compatibility with some form of non-Git
   index, so we've always had two code paths for index updates. As
   hinted at above, this change opens the door to removing the
   Git-based code path. And removing code is almost as good as avoiding
