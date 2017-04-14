@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>One Time Pad</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://unpkg.com/vue"></script>
+  </head>
+  <body>
+    <div class="jumbotron">
+      <div class="container">
+        <h1>One Time Pad</h1>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Encrypt</h1>
+          <form class="form-horizontal">
+            <div id="encrypt" class="form-group">
+
+              <label for="encrypt-cleartext">Enter a message</label>
+              <textarea id="encrypt-cleartext" class="form-control" v-model="cleartext"></textarea>
+
+              <label for="encrypt-binary">Message in binary</label>
+              <textarea readonly id="encrypt-binary" class="form-control">{{ binary.cleartext }}</textarea>
+
+              <label for="encrypt-pad">One time pad</label>
+              <textarea readonly id="encrypt-pad" class="form-control">{{ binary.pad }}</textarea>
+
+              <label for="encrypt-ciphertext">Ciphertext</label>
+              <textarea readonly id="encrypt-ciphertext" class="form-control">{{ binary.ciphertext }}</textarea>
+            </div>
+          </form>
+
+          <h1>Decrypt</h1>
+          <form class="form-horizontal">
+            <div id="decrypt" class="form-group">
+
+              <label for="decrypt-pad">Enter pad</label>
+              <textarea id="decrypt-pad" class="form-control" v-model="pad"></textarea>
+
+              <label for="decrypt-ciphertext">Enter ciphertext</label>
+              <textarea id="decrypt-ciphertext" class="form-control" v-model="ciphertext"></textarea>
+
+              <label for="decrypt-cleartext-binary">Cleartext (binary)</label>
+              <textarea readonly id="decrypt-cleartext-binary" class="form-control">{{ cleartext.binary }}</textarea>
+
+              <label for="decrypt-message">Original Message</label>
+              <textarea readonly id="decrypt-message" class="form-control">{{ cleartext.text }}</textarea>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="vue.js"></script>
+  </body>
+</html>
