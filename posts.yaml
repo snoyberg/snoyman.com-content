@@ -1,3 +1,6 @@
+- file: posts/stackages-no-revisions-field.md
+  title: "Stackage's no-revisions (experimental) field"
+  time: 2017-04-27T06:00:00Z
 - file: posts/haskell-success-stories.md
   title: Haskell Success Stories
   time: 2017-04-24T06:00:00Z
