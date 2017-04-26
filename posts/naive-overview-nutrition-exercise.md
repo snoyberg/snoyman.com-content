@@ -47,6 +47,18 @@ fitness, which guide my own decisions a lot:
   else you believe has a chance of working. Pay attention to how you
   respond to it.
 
+## Who am I?
+
+FIXME: I think you need to have a section that gets more personal- or
+even make it 3rd person- talk about the imaginary you... it will allow
+people to relate to you and allow them to think that they can do
+something about it. Talk about being a computer programmer- sedentary,
+evils of snacking etc... most workers today that are reading blogs on
+weight loss and general health are office drones shuffling along into
+obesity and early death. They dont need to do this. You have moved
+away from a genetic predisposition for diabetes, obesity etc... and
+they can too.
+
 ## Goals
 
 It's useless to talk about "getting healthy" or "getting fit" without
