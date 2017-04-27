@@ -37,6 +37,26 @@ the `no-revisions` field. Its purpose is really simple:
 > to use, if a package is present in the `no-revisions` list, then the
 > original revision is used. Otherwise, the newest revision is used.
 
+__UPDATE__ Someone pointed out that this "unwanted work" description
+was pretty vague. To clarify, here's an example situation:
+
+1. Package author Alice uploads package `foo`, and depends on `bar >=
+   2.3` (with no upper bounds). The latest version of `bar` on Hackage
+   is 2.3.
+2. Hackage Trustee Bob adds an upper so that, now, `foo` depends on
+   `bar >= 2.3 && < 2.4`
+3. Package author Charlie uploads `bar-2.4` to Hackage.
+4. Alice checks on her Git repo and sees that the current `foo` code
+   is compatible with `bar-2.4`, so does nothing.
+5. Meanwhile, Stackage discovers the upper bounds and files a bug
+   report for Alice to remove the upper bound (that she's not aware
+   of).
+6. Alice needs to log in to Hackage and remove the upper bound (or at
+   least relax it).
+7. Alternatively, with `no-revisions` in place, Alice could initially
+   put `foo` in the `no-revisions` list, and then Bob's changes would
+   be ignored completely by Stackage.
+
 This is an opt-in field, so people who want the current behavior need
 not do anything. This change will transparently work for Stack, since
 it will simply respect the hash of the .cabal file. And since there
