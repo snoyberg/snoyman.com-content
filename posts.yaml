@@ -1,6 +1,9 @@
 - file: posts/naive-overview-nutrition-exercise.md
   title: A Very Naive Overview of Nutrition and Exercise
   time: 2017-05-20T06:00:00Z
+- file: posts/worst-function-in-conduit.md
+  title: The Worst Function in Conduit
+  time: 2017-05-07T05:10:00Z
 - file: posts/stackages-no-revisions-field.md
   title: "Stackage's no-revisions (experimental) field"
   time: 2017-04-27T06:00:00Z
