@@ -49,6 +49,7 @@ talks:
 - date: 2017-05-22
   title: Applied Haskell (two day training)
   venue: LambdaConf
+  links: []
 - date: 2015-11
   title: Haskell for fast, concurrent, robust services
   venue: Twitter
