@@ -682,8 +682,26 @@ main = runConduit
          printC
 ```
 
+* (Output on next slide)
 * Don't forget: start downstream when processing!
 * Yes, you can deeply nest Conduit components like this
+
+----
+
+## Output from previous slides
+
+```
+"Hello There!"
+2
+3
+4
+5
+6
+7
+8
+9
+10
+```
 
 ----
 
