@@ -9,30 +9,10 @@ proposing a way to make things better, is a waste of 280
 characters. So I'd like to expand on where I think we, the Haskell
 community, can do better.
 
-To try and prevent the flamewars which I'm sure are about to start,
-let me give some guidelines on __who shouldn't read this blog post__:
-
-* If you think that programming languages should succeed on purely
-  technical merits, and silly "marketing activities" like writing
-  newbie-oriented tutorials and making engaging screencasts is unfair
-  competition, you shouldn't read this blog post.
-* If you think that broken dependency solving, Hackage downtime,
-  confusing cabal-install incantations, and problematic global package
-  databases in the Haskell Platform have had no ill effect on Haskell
-  adoption, you shouldn't read this blog post.
-* If you think that new users who give up after 5 minutes of confusion
-  on a website weren't serious enough in the first place and we
-  shouldn't be sad that we lost them, you shouldn't read this blog
-  post.
-
-And most likely, you shouldn't post this to /r/haskell. That's not
-going to end well.
-
 ## Attacking Haskell's Flaws
 
 As the Twitter discussion yesterday pointed out, there are undoubtedly
-flaws in Haskell. It may be __inflammatory__ to admit that publicly,
-but so be it. Every language has flaws. Haskell is blessed to also
+flaws in Haskell. Every language has flaws. Haskell is blessed to also
 have some of the greatest strengths in any programming language
 available today: beautiful concurrency, a powerful _and_ useful type
 system, a plethora of real-world libraries, and (as of recently)
