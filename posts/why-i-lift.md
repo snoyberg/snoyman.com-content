@@ -51,7 +51,7 @@ don't want to lift weights, consider those as good alternatives.
 __NOTE__ Despite many stereotypes out there, my comments here are not
 targetted specifically at men. I believe that barring specific male
 advantages (like spiking testosterone production), weight lifting is
-just as important for woman as for me. The points I list below are
+just as important for women as for men. The points I list below are
 gender neutral. If you read any of them and think they don't apply to
 women, I encourage you to rethink your stance.
 
@@ -100,8 +100,8 @@ it.
 
 If I had heard "increased muscle mass" 10 years ago, I probably would
 have thought of some bodybuilder, and thought it was a vain pursuit of
-asthetic beauty. And while increased muscle mass can in fact be an
-asthetic feature, I believe the health benefits are even greater.
+aesthetic beauty. And while increased muscle mass can in fact be an
+aesthetic feature, I believe the health benefits are even greater.
 
 When we get sick, we'll often lose muscle mass. Having a little extra
 reserve prevents us from getting into danger levels. Increased body
@@ -231,7 +231,7 @@ bodyweights instead, I had a lot of success with the
 
 ## More posts like this?
 
-This blog post is obviously an anomoly versus most of my other
+This blog post is obviously an anomaly versus most of my other
 development-related posts. If this is something you like and would
 enjoy more of, please let me know. Depending on interest in it and the
 volume of posts on the topic, I may put the health and fitness posts
