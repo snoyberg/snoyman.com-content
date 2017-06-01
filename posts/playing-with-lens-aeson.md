@@ -269,7 +269,7 @@ main = hspec $ do
 
 So apparently, if you're totally bought in on the lens ecosystem,
 you're free to never use your data constructors again and just use
-`re`. But anyway, we were dealing with JSON data; can we constructor a
+`re`. But anyway, we were dealing with JSON data; can we construct a
 simple JSON value like this? Sure.
 
 ```haskell
