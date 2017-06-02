@@ -40,6 +40,16 @@ publications:
   publisher: "IEEE Spectrum, The Functional Web"
 
 talks:
+- date: 2017-05
+  title: Web Programming and Streaming Data in Haskell
+  venue: LambdaConf
+  links:
+  - url: "http://www.snoyman.com/reveal/conduit-yesod"
+    text: Slides
+- date: 2017-05
+  title: Applied Haskell (two day training)
+  venue: LambdaConf
+  links: []
 - date: 2015-11
   title: Haskell for fast, concurrent, robust services
   venue: Twitter

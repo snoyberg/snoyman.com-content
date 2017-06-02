@@ -1,6 +1,21 @@
 - file: posts/naive-overview-nutrition-exercise.md
   title: A Very Naive Overview of Nutrition and Exercise
-  time: 2017-05-20T06:00:00Z
+  time: 2017-06-05T06:00:00Z
+- file: posts/why-i-lift.md
+  title: Why I lift
+  time: 2017-06-01T10:00:00Z
+- file: posts/playing-with-lens-aeson.md
+  title: Playing with lens-aeson
+  time: 2017-05-29T18:00:00Z
+- file: posts/worst-function-in-conduit.md
+  title: The Worst Function in Conduit
+  time: 2017-05-07T05:10:00Z
+- file: posts/stackages-no-revisions-field.md
+  title: "Stackage's no-revisions (experimental) field"
+  time: 2017-04-27T06:00:00Z
+- file: posts/haskell-success-stories.md
+  title: Haskell Success Stories
+  time: 2017-04-24T06:00:00Z
 - file: posts/generalizing-type-signatures.md
   title: Generalizing Type Signatures
   time: 2017-04-20T06:00:00Z
@@ -58,9 +73,6 @@
 - file: posts/new-conduit-tutorial.md
   title: New Conduit Tutorial
   day: 2016-10-13
-- file: posts/respect.md
-  title: Respect
-  day: 2016-09-29
 - file: posts/proposed-conduit-reskin.md
   title: Proposed conduit reskin
   day: 2016-09-23
@@ -70,14 +82,14 @@
 - file: posts/appveyor-haskell-windows-ci.md
   title: "Using AppVeyor for Haskell+Windows CI"
   day: 2016-08-31
-- file: posts/follow-up-haskell-org-evil-cabal.md
-  title: "Follow up: haskell.org and the Evil Cabal"
-  day: 2016-08-29
-  listed: false
-- file: posts/haskell-org-evil-cabal.md
-  title: haskell.org and the Evil Cabal
-  day: 2016-08-28
-  listed: false
+#- file: posts/follow-up-haskell-org-evil-cabal.md
+#  title: "Follow up: haskell.org and the Evil Cabal"
+#  day: 2016-08-29
+#  listed: false
+#- file: posts/haskell-org-evil-cabal.md
+#  title: haskell.org and the Evil Cabal
+#  day: 2016-08-28
+#  listed: false
 - file: posts/restarting-this-blog.md
   title: Restarting this blog
   day: 2016-08-24
