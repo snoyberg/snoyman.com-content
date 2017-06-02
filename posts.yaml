@@ -1,5 +1,11 @@
+- file: posts/naive-overview-exercise.md
+  title: A Very Naive Overview of Exercise (Part 3)
+  time: 2017-06-07T06:00:00Z
+- file: posts/naive-overview-nutrition.md
+  title: A Very Naive Overview of Nutrition (Part 2)
+  time: 2017-06-06T06:00:00Z
 - file: posts/naive-overview-nutrition-exercise.md
-  title: A Very Naive Overview of Nutrition and Exercise
+  title: A Very Naive Overview of Nutrition and Exercise (Part 1)
   time: 2017-06-05T06:00:00Z
 - file: posts/why-i-lift.md
   title: Why I lift
