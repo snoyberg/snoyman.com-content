@@ -285,10 +285,10 @@ with these terms:
 
 * A barbell is a long metal bar (about 2 meters or 6 feet) that you
   usually hold with both
-  hands.<br><img src="http://cdn-mf1.heartyhosting.com/sites/mensfitness.com/files/101-best-workouts-the-best-barbell-only-ab-workout-main_1.jpg" width="300">
-* A dumbbell is a shorter metal bar usually held in one hand<br><img src="http://exercises.youtrain.me.s3.amazonaws.com/wp-content/uploads/Dumbbell-Standing-Lunge-622x485.png" width="300">
-* A kettlebell is a weight with a handle on the top<br><img src="http://greatist.com/sites/default/files/styles/article_main/public/KBSwing.png?itok=WSm92mHT" width="300">
-* A machine is some kind of, well, machine<br><img src="http://www.fitness-world.in/wp-content/uploads/2013/10/GLPH1100-LEG-PRESS_HACK-SQUAT-MACHINE.jpg" width="300">
+  hands.<br><img src="/static/exercise/barbell.jpg" width="300">
+* A dumbbell is a shorter metal bar usually held in one hand<br><img src="/static/exercise/dumbbell.png" width="300">
+* A kettlebell is a weight with a handle on the top<br><img src="/static/exercise/kettlebell.png" width="300">
+* A machine is some kind of, well, machine<br><img src="/static/exercise/machine.jpg" width="300">
 
 Free weights have an advantage over machines in that they are
 _unstable_. This means you need to use more muscle groups to keep
@@ -448,14 +448,175 @@ ways:
 * Changing the exercise you're doing (full pushups vs knee pushups)
 
 A good program will build in this kind of progressive overload, as do
-the programs I linked to above.
+the programs I linked to above. The basic idea is to avoid stagnating
+by constantly challenging yourself to improve.
 
+### Plate math
 
-* Plate math
-* Importance of proper form
-    * Eccentric portion
-* Calorie surplus
-* Full body vs splits
+If you're going to be doing barbell exercises, it's important to get
+comfortable with adding up weights, also known as _plate math_. I'll
+start with the metric system, since it's easier to handle, and what I
+use.
+
+A standard barbell weighs 20kg. The plates you'll put on the barbell must be balanced: you put the same amount on the left and right side. If you put a 10kg and 5kg weight on each side, you'll end up with:
+
+* 20kg bar
+* 10kg times 2 (one per side) = 20kg
+* 5kg times 2 (one per side) = 10kg
+* __Total__ 20+20+10=50kg
+
+I find it easiest in most cases to add up the weight per side of the
+bar, double it, and add 20. So in the above example, I'd do "10 + 5 =
+15, 15 * 2 = 30, 30 + 20 = 50." This is just arithmetic, so don't get
+too hung up on it, and do what's comfortable.
+
+Now let's do this in reverse. Suppose you're planning on benching
+70kg. In order to figure out what to put on the bar, you would do
+this:
+
+* 70kg - 20kg for the bar = 50kg in plates
+* 50kg total plates / 2 = 25kg in plates per side
+* Start finding the largest plates that will add up to your number. In
+  this case, you're probably looking at a 20kg and 5kg.
+
+Try not to just match the total weight, but also the plate
+distribution. In other words, don't put a 20kg on one side of the bar
+and 4 5kg plates on the other. That will feel unbalanced. Most gyms
+will have plates of size 20kg, 10kg, 5kg, 2.5kg, and 1.25kg. Some may
+also have 25kg and 15kg.
+
+You may also hear people say things like "squatting 2 plate," or on
+stranger parts of the internet, "2pl8." This means you have 2 20kg
+plates per side of the barbell. Why 20kg? Convention. Do the math,
+I'll give you the total weight for this at the end of this section.
+
+__For you Americans__, the numbers are slightly different. Instead of
+a barbell weighing 20kg, it weights 45lbs, which is just slightly more
+than 20kg (20.4kg). And the plates come in sizes of 45lbs, 35lbs,
+25lbs, 10lbs, 5lbs, and 2.5lbs. As a developer, I love the power-of-2
+system employed by the metric plates, but if you have to use imperial
+measurements, just get used to doing the math.
+
+This has the funny side-effect that if you say "I squatted 2 plate,"
+it means something different between America and the rest of the
+world. (Go ahead and figure out what that total pound value is.) The
+numbers are close, but not exactly the same.
+
+*Answer: 2 plate is 100kg, or 225lbs.*
+
+### Importance of proper form
+
+You'll read this just about everywhere that discusses weight lifting,
+but I'll say it here too: using proper form on your lifts is
+_absolutely crucial_. Using proper form will:
+
+* Ensure you are getting the full value from your workout
+* Help you avoid injuries
+* Make sure you don't end up in an embarassing video on YouTube
+
+There are two particular points of proper form that I want to point
+out:
+
+* The act of lowering the weight is known as the *eccentric portion*
+  of the exercise. It is common to see people lose control of the
+  weight during this portion. If you do this, you are hindering your
+  progress dramatically! Most of the muscle tearing that leads to
+  muscle regrowth occurs during the eccentric portion. Lowering the
+  weight in a controlled, steady pace is difficult, but well worth it.
+* Be sure to follow full range of motion. You'll often hear people say
+  they don't want to squat to parallel because it will injure their
+  knees. This is in fact a myth: squatting with insufficient depth
+  leads to muscular imbalances and injuries.
+    * I'm well aware of the fact that I haven't actually described how
+      to do a squat in this post; please see the linked routines above
+      that describe how to do a squat properly.
+
+### Full body vs splits
+
+A full body workout is a routine that exercises all (or most) muscle
+groups each day you train. A split routine somehow splits up days of
+the week to specific muscle groups. There are many tradeoffs between
+these two approaches, and I won't be able to cover them all here. But
+here's a basic idea: you should always have a day of rest between
+training a specific muscle group. But having too many rest days in
+between is limiting your growth potential.
+
+If you're going to work out three days a week, you can do a full body
+routine each of those days and have 1 or 2 days of rest in between. By
+contrast, if you're going to work out 6 days a week, doing a full body
+routine each day won't give you any time to rest and recover.
+
+The routines above are all full body routines. That's probably the
+right place to start; I would highly advise _against_ strength
+training for more than three days a week as a beginner. If you later
+want to progress to more days of working out a week, you can consider
+some kind of split. There are many preexisting routines based on
+splits, and you can of course make your own.
+
+Personally, I've found the PPL (Push/Pull/Leg) split approach to be
+pretty good. The idea is to first separate out all lower-body/leg
+exercises to their own day. Then, of upper body exercises, break them
+up by whether they push the weight away from your body (like a bench
+press) or are pulling the weight toward your body (like a curl or
+barbell row). This ends up pretty cleanly dividing up the upper body
+muscle groups.
+
+### How to eat
+
+If you're just getting started with strength training, you don't need
+to worry too much about eating. Follow nutrition advice from the
+previous post. If you're trying to lose fat, eat at a caloric
+deficit. When you're initially going from untrained to trained, you
+get to experience what are known as "noob gains," which lifters treat
+as the magical ability for your body to get stronger and leaner at the
+same time.
+
+Once you're past that initial beginner phase, it gets harder to pull
+this off. You'll hear people talk about bulking and cutting, on the
+premise that you need to eat extra food to fuel muscle growth (bulk),
+and then go for a period of caloric deficit to burn off the extra fat
+you gained (cut). Other approaches believe in trying for a recomp, or
+body recomposition, consisting of careful balancing of calories to get
+_just enough_ to gain muscle and burn fat. Other approaches like Lean
+Gains believe in *carb and calorie cycling*: eating more carbs and
+calories on training days, and less carbs and calories on rest days.
+
+This is all rocket science versus what we're discussing here. I'm
+mentioning it all so that you know you don't need to freak out about
+it. Remember, your goal is to get used to training, enjoy it, nail
+down form, and get basic strength gains. If you decide to pursue
+strength training more aggressively (like I have), there will be
+plenty of time in the gym to read hundreds of articles on the right
+way to eat. For now: eat healthy and lift heavy things.
+
+Final note: be sure to get __plenty of protein__ while strength
+training. You'll be using protein to rebuild your muscles after
+working them in the gym. If you don't have enough protein in your
+diet, your body will be unable to recover.
+
+### Summary of resistance training
+
+Wow, that was a lot! I honestly didn't realize I had that much to say
+on the subject of resistance training, and there's still a lot more
+worth saying. But hopefully this gives you a good place to start. In
+sum:
+
+* Strength training is for everyone
+* Don't forget to focus on health, not just pushing some numbers
+* Body weights are an easy way to get started and require little
+  equipment
+    * [StartBodyweight.com](http://www.startbodyweight.com/p/start-bodyweight-basic-routine.html)
+* If you have access to a gym and/or weights, a weight lifting routine
+  can be a great approach
+    * [StrongLifts](https://stronglifts.com/)
+* Start light, get your form down, and progressively increase the load
+* Focus on compound movements, adding in isolation movements as
+  desired
+* Eat healthy, and be sure to get plenty of protein
+
+## Cardio
+
+Aerobic exercise 
 
 ## Exercise
 
