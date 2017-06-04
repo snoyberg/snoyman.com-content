@@ -3,7 +3,7 @@ haven't seen it already, I recommend
 [reading part 1 now](/blog/2017/06/naive-overview-nutrition-exercise). This
 blog post will go into more details on nutrition.
 
-For the completely impatient, here are my recommendations on where you
+__For the completely impatient__, here are my recommendations on where you
 should get started, in a priority-sorted list (start with #1, and add
 more recommendations as you're ready):
 
