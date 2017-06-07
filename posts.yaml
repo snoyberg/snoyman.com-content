@@ -1,12 +1,15 @@
 - file: posts/naive-overview-exercise.md
   title: A Very Naive Overview of Exercise (Part 3)
-  time: 2017-06-07T06:00:00Z
+  time: 2017-06-14T06:00:00Z
 - file: posts/naive-overview-nutrition.md
   title: A Very Naive Overview of Nutrition (Part 2)
-  time: 2017-06-06T06:00:00Z
+  time: 2017-06-13T06:00:00Z
 - file: posts/naive-overview-nutrition-exercise.md
   title: A Very Naive Overview of Nutrition and Exercise (Part 1)
-  time: 2017-06-05T06:00:00Z
+  time: 2017-06-12T06:00:00Z
+- file: posts/how-to-send-me-a-pull-request.md
+  title: How to send me a pull request
+  time: 2017-06-06T10:00:00Z
 - file: posts/why-i-lift.md
   title: Why I lift
   time: 2017-06-01T10:00:00Z
