@@ -453,6 +453,11 @@ by constantly challenging yourself to improve.
 
 ### Plate math
 
+In order to modify the weight of a barbell, we can add extra weight to
+it. These weights come in the form of _plates_, circular pieces of
+metal&mdash;sometimes rubberized&mdash;that are put on the sides of
+the bar.
+
 If you're going to be doing barbell exercises, it's important to get
 comfortable with adding up weights, also known as _plate math_. I'll
 start with the metric system, since it's easier to handle, and what I
@@ -594,6 +599,36 @@ training. You'll be using protein to rebuild your muscles after
 working them in the gym. If you don't have enough protein in your
 diet, your body will be unable to recover.
 
+### Muscle groups
+
+There are many different muscles in your body. However, when talking
+about weight lifting, we usually break the body down into major muscle
+groups. The basic breakdown often discussed is:
+
+* __Trapezius__, or __traps__: muscles between shoulders and neck
+* __Deltoids__, or __delts__: shoulder muscles
+* __Triceps__: back of the arm muscles (used to extend your elbow)
+* __Biceps__: front of the arm muscles (used to bend/flex your elbow)
+* __Pectoralis__, or __pecs__: chest muscles
+* __Latissimus__, or __lats__: upper back
+* __Core__: stomach and lower back stabilizing muscles. This includes
+  your __abs__
+* __Gluteus__, or __glutes__: your butt muscles
+* __Quadriceps__, or __quads__: front of the leg muscles (used to
+  extend your knee)
+* __Hamstrings__: back of the leg muscles (used to bend/flex your
+  knee)
+
+You should get comfortable with identifying these muscle groups, and
+at flexing the different muscle groups. Some exercises will say things
+like "activate your glutes" or "stabilize with your lats." Don't worry
+if you're having trouble feeling your pecs or lats, working them out
+will help.
+
+Make sure that, with whatever exercise routine you're following,
+you're hitting all of this muscle groups at least once per week (and
+ideally 2-3 times).
+
 ### Summary of resistance training
 
 Wow, that was a lot! I honestly didn't realize I had that much to say
@@ -616,13 +651,260 @@ sum:
 
 ## Cardio
 
-Aerobic exercise 
+I'll say right now that I know more about resistance training than
+cardio and mobility, so these two sections will not be as detailed as
+resistance training. (And after everything you just read through, you
+may be relieved to hear that).
 
-## Exercise
+Cardio is also known as aerobic exercise. Aerobic means "with oxygen,"
+and describes the energy system used during typical cardio
+workouts. When you go for a 30 minutes jog, you'll end up using fat as
+a major energy source, which requires oxygen to break down. This
+energy production is not as fast as glycogen, but we don't need to
+have the same level of explosive energy as we do with weight lifting.
 
-* Cardio
-    * LISS
-    * HITT
-    * Moving slowly a lot (long, slow walks)
-* Mobility/flexibility
-* Muscle groups
+Advantages of cardio:
+
+* It increases the efficiency of your respiratory system in order to
+  provide sufficient oxygen to your body
+* It increases the efficiency of your circulatory system, also in
+  order to provide sufficient oxygen to your body
+
+* It's good for burning fat
+
+    * Because you can sustain cardio exercise for a longing period of
+      time than intense weight lifting, you can cumulatively burn more
+      calories
+    * Since the primary energy source for cardio is fat, you'll burn
+      fat directly, which you won't do with weight lifting
+    * Both of these points are more nuanced than I've implied, keep
+      reading for more
+
+* Improvements to blood lipids (cholesterol)
+* Numerous other, less tangible benefits, like decreased chronic
+  stress
+
+There are also some downsides:
+
+* Many forms of cardio (like jogging) put strains on our bones and
+  joints, which can lead to injury over time
+* You may have heard the meme "cardio kills your gains," implying that
+  cardio destroys muscle mass. While the meme is certainly overplayed,
+  there's no question that 30 minutes of cardio will not result in as
+  much muscle synthesis stimulation as 30 minutes of weight lifting.
+* Subjectively: it's boring. Some people really love running or
+  biking. Others (like me) find it difficult to stay motivated for
+  longer cardio sessions. If you love cardio: great, keep doing it. If
+  this describes you, I'll present an alternative below.
+
+There are many different ways you can perform cardio. Some of the most popular are:
+
+* Running/jogging
+* Cycling
+* Swimming
+* Eliptical (my personal favorite, due to signficantly lowered joint
+  impact)
+* Jumping rope
+* Stair climbing
+
+Cardio can be performed on a daily basis. There is far less concern of
+overtraining like with weight training, since the exercise will not
+break down your muscles to the same extent. Common durations for a
+session range from 15 minutes to an hour. My recommendation: start off
+with something you can manage easily, get used to the activity, and
+then ramp it up over time.
+
+I haven't personally done this program, but I've heard good reviews of
+the [Couch to 5k](http://www.c25k.com/) program, which trains you to
+be able to run 5 kilometers (or just over 3 miles) in 9 weeks.
+
+### High Intensity Interval Training
+
+It may be slightly incorrect to include High Intensity Interval
+Training, or HIIT, as a subheading within cardio, but I'll explain my
+motivation shortly. Cardio as described above is also known as Low
+Intensity Steady State (LISS), where you keep to a mostly-fixed level
+of exertion which can be maintained for a significant period of
+time. By contrast, HIIT uses short bursts of high intensity exertion
+for a shorter period of time.
+
+A typical HIIT protocol may look like: perform a cycle of 8
+sprints. For each sprint, run as fast as you possibly can for 20
+seconds, and then rest for 10 seconds. (This specific protocol is
+known as tabatas.) This full workout will take only 4 minutes, but as
+I saw someone once describe it, "it's 4 minutes of suck." Also, since
+HIIT is more physically taxing than LISS, you should take at least one
+rest day between sessions.
+
+Before getting into the physical comparison, I want to point out that
+both HIIT and LISS are appealing. HIIT is anything but boring, and
+it's incredibly time efficient (imagine replacing a daily 30 minutes
+run with a 4 minute sprint 3 days a week). But it's a hard workout. In
+fact, it's hard enough that I'd encourage people to _not_ try to start
+exercising with regular HIIT sessions, as it may encourage you to give
+up. Instead, try a HIIT session interspersed with other workouts, and
+only consider making it part of your routine when you're confident
+that you won't give up. Remember, _any_ exercise is better than _no_
+exercise.
+
+So, if HIIT is so very different than normal cardio, why did I include
+it here? Because research is indicating that it can deliver on the
+same benefits people try to get from LISS cardio:
+
+* While you burn less energy _during workout_ than with LISS, HIIT
+  triggers something known as Excess Post-exercise Oxygen Consumption
+  (EPOC), also known as the afterburn effect thanks to some spammy
+  infomercials. What this means is that you continue to burn energy at
+  a higher rate for about 48 hours after a HIIT session to recover.
+* Since this EPOC involves increased oxygen usage, it puts a stress on
+  the respiratory and cardiovascular system, providing similar health
+  benefits to those systems as LISS. (I encourage you to do the
+  research yourself on which form actually causes better adaptations.)
+* While you will use glycogen more than fat during a HIIT session, the
+  recover period will use more fat burning, resulting in plenty of fat
+  loss. (Again, please check out the research yourself.)
+
+In addition, HIIT claims some advantages over LISS, like more
+favorable hormonal responses and possibly better blood glucose
+control.
+
+__Short story__: there is a lot of positive to be said about HIIT, but
+the science is not conclusive yet. If you want to try HIIT, and you
+don't believe you'll be discouraged by the intensity, go for it.
+
+To make my biases clear in this: I almost never do dedicated LISS
+cardio sessions, but instead rely on HIIT for cardiovascular
+health. It's worked well for me, with improvements in my blood
+pressure, pulse, and respiratory system (far less symptoms of
+asthma). But given that HIIT is still considered somewhat less
+established than LISS, I want it to be clear that I am _not_
+advocating for anyone to stop standard cardio workouts.
+
+You can do HIIT with lots of different exercises:
+
+* Running (sprinting)
+* Cycling
+* Eliptical (again, my favorite)
+* Swimming
+
+There are also similar programs, like circuit training, which involve
+high intensity as well as weight lifting.
+
+### Weight lifting for cardio health?
+
+One other very interesting approach for overall strength and
+cardiovascular health is presented in the book "Body by Science." I'm
+throwing this in here just to give a taste of how varied theories of
+good exercise are, and to encourage you to continue research beyond
+this naive overview.
+
+Body by Science makes the bold claim that you can get "strength
+training, body building, and complete fitness in 12 minutes a week."
+I'll present a massively simplified version of what they claim, and
+encourage you to read the book itself if you're interested in more.
+
+* We can use just 5 big, compound weight lifting movements to target
+  all of the major muscles groups in the body.
+* It's possible to perform each of these 5 movements for 90 seconds
+  continuously to fully exhaust the muscles and deplete their glycogen
+  stores. (5 * 90 seconds plus rest time is where the 12 minute claim
+  comes from.)
+* It takes approximately a week for your body to fully recover from
+  such an ordeal.
+* By fully exhausting the muscles, you send a trigger to your body to
+  increase your muscle mass so you're more well prepared for the next
+  time this happens. This is because your body reads this event as a
+  fight-or-flight, life-or-death situation.
+* In order to provide energy to replenish glycogen and rebuild the
+  muscles, your body will have significant respiratory and
+  cardiovascular demands, which will cause improvements in those
+  systems (like HIIT).
+
+I've never done this program myself, but that's mostly because I
+actually enjoy my time in the gym, and don't want to reduce it to just
+15 minutes a week. At the very least, the book is a great read with
+lots of valuable information.
+
+### Undoing your workout with food
+
+This is a very common problem with people doing cardio: get on the
+treadmill for 45 minutes, walk at a decent (but not particular
+strenuous pace), and then get some kind of recovery smoothie (or
+insert other food item here). Take a guess: how many calories did the
+treadmill burn, and how many are in the smoothie?
+
+Unfortunately, for many people, the smoothie completely outweighs the
+workout itself. Don't fall into this trap! Figure out your nutrition,
+and stick to it. Don't convince yourself that you're free to eat
+whatever you want because you went for a run today. You'll be undoing
+all of your hard work.
+
+### Move slowly, often
+
+Another idea to throw in is, outside of "exercise," it's a good idea
+to simply be more active. Taking a nightly walk, taking the stairs
+instead of the elevator, playing some easy sports, taking a break at
+the office to step outside, or a dozen other tweaks you can make
+throughout your day, all make you less sedentary. Sure, these
+activities help you burn a few more calories. But I would
+argue&mdash;as would many better authorities&mdash;that simply being
+more active is a reward in and of itself.
+
+## Mobility/flexibility
+
+Flexibility measures the range of movement of a joint. Flexibility can
+be improved with stretching. Given the sedentary lifestyles most of us
+live today, we end up having reduced flexibility. While flexibility
+and stretching typically have to do with the static range of motion of
+our joints, mobility refers to our ability to effectively move our
+joints.
+
+An important distinction to make in these kinds of routines is
+_dynamic_ vs _static_. Dynamic movements will involve moving a joint
+constantly. These are good to warm up before another exercise
+session. By contrast, static stretches will hold your joints in a
+fixed position. These can increase overall flexibility, but are
+generally best saved for after a workout.
+
+This is the area in this post I am least familiar with, so I'm not
+going to go into much detail. Probably the most popular technique out
+there right now for improving your flexibility and mobility is
+Yoga. Many other people can give better advice than I can for getting
+started with it.
+
+One pair of programs I followed (for less time than I should have) for
+mobility and flexibility are
+[Molding Mobility](http://www.phraktured.net/molding-mobility.html)
+and
+[Starting Stretching](http://phraktured.net/starting-stretching.html). I
+found it much easier to grasp when I watched a set of Youtube videos
+demonstrating them:
+
+* [Molding Mobility - Warmup Exercises](https://www.youtube.com/watch?v=I3yTrhuwUJo)
+* [Molding Mobility - Joint Mobility](https://www.youtube.com/watch?v=Aoyy3bKtD84)
+* [Starting Stretching](https://www.youtube.com/watch?v=w1iXMvTMvBo)
+
+The idea with this order is to perform the dynamic mobility routine
+first, perform any resistance training next, and then finally perform
+static stretches at the end.
+
+## Conclusion
+
+Thank you for making it through these three posts, I know I didn't
+make it easy. Hopefully they have provided you with lots of
+information, a good idea of the terms at play, and encouragement to go
+read more from better sources. And, of course, I hope you don't just
+make this an intellectual endeavor, but start taking control of your
+health!
+
+My recommendation for getting started with this: get your nutrition
+improved, and to a place where you're comfortable with your daily
+eating routine. Try not to focus on a scale goal; focus on eating
+better. Experiment, and find what works. Introduce some exercise. Make
+sure you're ultimately getting in exercise that both improves your
+strength level, and improves your cardiovascular system.
+
+I hope this was useful. If you have questions, please send them to
+me. I still haven't decided if I'll be making more health-related
+posts. If this _is_ something you'd like to see from me, please say
+so, it's more likely to happen with such feedback.
