@@ -131,7 +131,7 @@ more complicated than this. The amount and type of food you eat
 affects hormone levels that influence your energy expenditure and
 hunger levels. And while my simplified model talks about adding and
 losing fat, we have other body mass (glycogen and muscle) which will
-be afected as well.
+be affected as well.
 
 What's my point in all of this? Yes, you should be aware of your
 TDEE. Let it be a general guide (in addition to hunger signals) to how
@@ -383,21 +383,21 @@ reading up.
 Simple. Complex. Sugar. Glucose. Fructose. Lactose. Starch. What
 exactly are carbs? Time for some more chemistry!
 
-*Saccharide* is another term of carbohydrates. The *monosacharides*
-and *disacharides* make up what we call the sugars. The most common
-monosacharides are:
+*Saccharide* is another term of carbohydrates. The *monosaccharides*
+and *disaccharides* make up what we call the sugars. The most common
+monosaccharides are:
 
 * Glucose
 * Fructose
 * Galactose
 
-Disacharides are pairs of monosacharides, such as:
+Disaccharides are pairs of monosaccharides, such as:
 
 * Sucrose (table sugar) = glucose + fructose
 * Lactose (milk sugar) = galactose + fructose
 * Maltose = glucose + glucose
 
-Longer chains of sacharides form *polysacharides*, such as starch (as
+Longer chains of saccharides form *polysaccharides*, such as starch (as
 you'd find in potatos or rice) and cellulose. Cellulose gives plants
 their structure and is indigestible (for the most part) to humans;
 you've already seen it referred to here as dietary fiber. However,
@@ -405,9 +405,9 @@ some gut bacteria can digest fiber and generate molecules we _can_
 digest.
 
 When digesting, our body will break down carbohydrates into
-monosacharides so they can be absorbed in the large
+monosaccharides so they can be absorbed in the large
 intenstine. Because this breakdown takes time, the more *complex* the
-carbohydrate (meaning the more sacharides are bound together), the
+carbohydrate (meaning the more saccharides are bound together), the
 slower the digestion. This will leave you feeling full longer and
 avoid a blood sugar spike.
 
