@@ -2,7 +2,7 @@ This blog post is part 3 of a series on nutrition and exercise. If you
 haven't seen them already, I recommend
 [reading part 1 now](/blog/2017/06/naive-overview-nutrition-exercise),
 which provides a general overview, and
-[part 2 detailing nutrition](/blog/2017/06/naive-overview-nutrition?preview=true). This
+[part 2 detailing nutrition](/blog/2017/06/naive-overview-nutrition). This
 blog post will go into more details on exercise.
 
 I'm going to break down exercise into three broad categories:
