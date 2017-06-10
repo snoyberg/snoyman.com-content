@@ -67,7 +67,7 @@ project.
     -- @since 1.5.2
     downloadJPEG :: MonadIO m
                  => Request -- ^ URL to download from
-                 -> IO JPEG
+                 -> m JPEG
     ```
 
 *   Include a `ChangeLog.md` entry. If the project doesn't have a
