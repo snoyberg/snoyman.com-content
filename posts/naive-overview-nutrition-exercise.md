@@ -27,6 +27,8 @@ unsure if I'll be writing more like it. If you _do_ like it and want
 to see more, or have some specific questions, please mention so in the
 comments and I'll be more likely to make future posts on these topics.
 
+* [Read part 2 now](/blog/2017/06/naive-overview-nutrition)
+
 ## Philosophy
 
 I've come up with the following philosophical points about health and
@@ -141,3 +143,4 @@ likely add a fourth Q&A post to this series.
 And if you're just desperate to read more now, don't forget about my
 [why I lift](/blog/2017/06/why-i-lift) post.
 
+* [Read part 2 now](/blog/2017/06/naive-overview-nutrition)
