@@ -43,7 +43,7 @@ fitness, which guide my own decisions a lot:
   worry about the rocket science later.
 * If you read any nutrition study, odds are pretty high there's
   another study that shows the opposite result. Nutrition science is
-  greatly lacking in reproduction studies, so take everything you read
+  greatly lacking in replication studies, so take everything you read
   with a grain of salt (and yes, studies on salt are contradictory
   too).
 * You'll be best served by following basic guidelines, getting
