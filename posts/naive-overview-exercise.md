@@ -71,8 +71,8 @@ intended to cover *health*, and using nutrition and exercise to
 achieve it. It is very tempting to get caught up in numbers and goals
 that measure fitness, while throwing health to the wind. For the most
 trivial example of this: taking steroids to improve your powerlifting
-numbers will certainly improve your fitness, but I'd argue pretty
-strongly against it as bad for your health.
+numbers will certainly improve your fitness. However, I'd argue pretty
+strongly against it, since it's bad for your health.
 
 All that said, there's nothing wrong with pursuing fitness goals, and
 as I mentioned in [why I lift](/blog/2017/06/why-i-lift), doing so can
@@ -94,7 +94,7 @@ The term strength training tells us the *why*, whereas resistance
 training hints more at how we achieve these goals. Resistance training
 involves exerting your muscles against some external
 resistance. Probably the most emblematic version of this is resisting
-against gravity in the forms of lifting weights, but we'll see that
+against gravity in the form of lifting weights, but we'll see that
 there are many other approaches available.
 
 ### Why?
@@ -105,7 +105,7 @@ was somehow *bad*. Lifting weights was a vain pursuit of bigger
 muscles, and real health benefits only came from cardio like jogging.
 
 If you never had these misconceptions, congratulations. I certainly
-did. And in case others do as well, let me disspell them:
+did. And in case others do as well, let me dispel them:
 
 * Muscle mass has a __protective effect on your body__. For example,
   if you have more muscle, you can withstand a larger impact.
@@ -187,7 +187,7 @@ doses, stress is wonderful for our body.
 When we temporarily stress our body, it provides a stimulus for our
 body to get better, so it is able to more easily handle the stress in
 the future. Stressing our muscles causes them to get
-stronger. Stresses our bones makes them more dense. And stressing our
+stronger. Stressing our bones makes them more dense. And stressing our
 cardiovascular system with extra oxygen demands makes our heart and
 lungs more efficient.
 
@@ -224,7 +224,7 @@ There are other variations you can perform: changing the width of your
 grip by putting your hands closer or farther apart to focus on
 different muscles. You can also follow a one-arm pushup progression
 instead of a vertical pushup progression. Vertical pushups put more
-stress on your shoulder muscles, while one arm pushups put more focus
+stress on your shoulder muscles, while one-arm pushups put more focus
 on your chest muscles.
 
 If all of this sounds confusing and a bit daunting, don't worry. Some
@@ -294,7 +294,7 @@ Free weights have an advantage over machines in that they are
 _unstable_. This means you need to use more muscle groups to keep
 control of the weight. By contrast, a machine keeps the weight in more
 a less a straight line, which takes some of the stress off of your
-body. By contrast, machines are usually easier to learn to use and
+body. Additionally, machines are usually easier to learn to use and
 less dangerous.
 
 If you're too intimidated by free weights, by all means start right
@@ -398,7 +398,7 @@ This means:
 
 * Perform three sets of five repetitions of pushups
 * Perform three sets of five repetitions of bench press
-* Perform one set of overhead press to failure (as many reps as your
+* Perform one set of overhead press to failure (as many reps as you
   can do)
 
 You'll also need to consider how long to rest between sets. Usually
@@ -414,7 +414,7 @@ you. You bend your elbows, your wrist bends, and your shoulder joint
 activates. You push back up using your chest muscles, your shoulder
 muscles, and your arm muscles (tricpes in particular).
 
-Now think of a bicep curl: you hold a dumbbell in your hand, and you
+Now think of a bicep curl: you hold a dumbbell in your hand and you
 bend your elbow.
 
 The former is called a _compound movement_: it involves multiple
@@ -738,7 +738,7 @@ rest day between sessions.
 
 Before getting into the physical comparison, I want to point out that
 both HIIT and LISS are appealing. HIIT is anything but boring, and
-it's incredibly time efficient (imagine replacing a daily 30 minutes
+it's incredibly time efficient (imagine replacing a daily 30 minute
 run with a 4 minute sprint 3 days a week). But it's a hard workout. In
 fact, it's hard enough that I'd encourage people to _not_ try to start
 exercising with regular HIIT sessions, as it may encourage you to give
@@ -908,3 +908,6 @@ I hope this was useful. If you have questions, please send them to
 me. I still haven't decided if I'll be making more health-related
 posts. If this _is_ something you'd like to see from me, please say
 so, it's more likely to happen with such feedback.
+
+* [Read part 1 now](/blog/2017/06/naive-overview-nutrition-exercise)
+* [Read part 2 now](/blog/2017/06/naive-overview-nutrition)
