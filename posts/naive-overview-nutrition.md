@@ -20,6 +20,9 @@ more recommendations as you're ready):
 Of course, I strongly recommend you read the rest of this blog post
 for more details.
 
+* [Read part 1 now](/blog/2017/06/naive-overview-nutrition-exercise)
+* [Read part 3 now](/blog/2017/06/naive-overview-exercise)
+
 ## Nutrients
 
 We need to get two different things from our food:
@@ -461,3 +464,6 @@ down into some practical advice.
 
 I'll tie up this series in my next post, which will go into details on
 exercise.
+
+* [Read part 1 now](/blog/2017/06/naive-overview-nutrition-exercise)
+* [Read part 3 now](/blog/2017/06/naive-overview-exercise)
