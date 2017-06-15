@@ -28,6 +28,7 @@ to see more, or have some specific questions, please mention so in the
 comments and I'll be more likely to make future posts on these topics.
 
 * [Read part 2 now](/blog/2017/06/naive-overview-nutrition)
+* [Read part 3 now](/blog/2017/06/naive-overview-exercise)
 
 ## Philosophy
 
@@ -144,3 +145,4 @@ And if you're just desperate to read more now, don't forget about my
 [why I lift](/blog/2017/06/why-i-lift) post.
 
 * [Read part 2 now](/blog/2017/06/naive-overview-nutrition)
+* [Read part 3 now](/blog/2017/06/naive-overview-exercise)
