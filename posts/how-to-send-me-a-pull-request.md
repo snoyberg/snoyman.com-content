@@ -81,6 +81,10 @@ project.
     * Added the `downloadJPEG` function
     ```
 
+* Slight exception to the above: if you're making a doc-only PR, don't bother
+  with a version bump, but instead add a ChangeLog entry with `## Unreleased`
+  and a description of the change.
+
 * Do not include unrelated changes in your PR, it makes it difficult
   to review, more likely to get delayed, and more likely to conflict
   with other changes. Include separate changes in separate PRs.
