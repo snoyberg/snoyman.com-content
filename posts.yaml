@@ -1,6 +1,7 @@
 - file: posts/some-upcoming-crazy-thoughts.md
   title: Some Upcoming Crazy Thoughts
   time: 2017-07-16T13:30:00Z
+  description: "Just a fair warning heads up that I've been having some crazy Haskell thoughts, and will be sharing them soon"
 - file: posts/the-spiderman-principle.md
   title: The Spiderman Principle
   time: 2017-07-05T03:00:00Z
