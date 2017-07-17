@@ -396,7 +396,7 @@ Often times, workout programs will be given in terms of sets and reps like so:
 
 This means:
 
-* Perform three sets of five repetitions of pushups
+* Perform three sets of eight repetitions of pushups
 * Perform three sets of five repetitions of bench press
 * Perform one set of overhead press to failure (as many reps as you
   can do)
