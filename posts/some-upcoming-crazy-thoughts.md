@@ -46,7 +46,7 @@ sharing:
 
 * Similar to this, my time at LambdaConf earlier this year was
   great. My conference experiences usually are either non-functional
-  programming conferences where I'm the Haskell anamoly, or advanced
+  programming conferences where I'm the Haskell anomaly, or advanced
   functional crowds. The huge mixture of experience levels with FP and
   Haskell at LambdaConf was wonderful and eye-opening (or perhaps
   reopening).
