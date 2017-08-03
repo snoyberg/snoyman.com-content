@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Résumé of Michael Snoyman</title>
+    <style>
+      section, header {
+        display: block;
+        clear: both;
+        margin-bottom: 0.2in;
+      }
+
+      abbr {
+        border-bottom: 1px dotted #000;
+        cursor: help;
+      }
+
+      dl {
+        clear: both;
+      }
+
+      ul {
+        margin: 0;
+      }
+
+      ul.degree {
+        list-style: none;
+      }
+
+      section#wrapper {
+        position: absolute;
+        left: 50%;
+        margin-left: -3.5in;
+        width: 7in;
+      }
+
+      h1 {
+        clear: both;
+      }
+
+      header > h1.fn {
+        float: left;
+      }
+
+      header > h2.email {
+        float: right;
+      }
+
+      header > div {
+        clear: both;
+      }
+
+      ul {
+        margin-top: 2px;
+      }
+
+      a {
+        text-decoration: none;
+        color: #00f;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      h1 {
+        font-variant: small-caps;
+        font-weight: 700;
+        font-size: 14pt;
+      }
+
+      h2 {
+        font-size: 12pt;
+      }
+
+      h3 {
+        font-size: 10pt;
+        font-weight: 600;
+      }
+
+      body {
+        font-size: 10pt;
+        font-family: sans-serif;
+      }
+
+      .adr > .country-name {
+        padding-right: .2in;
+        display: block;
+        float: left;
+        margin: 0;
+        width: 1.3in;
+      }
+      .adr > address {
+        display: block;
+        float: left;
+        width: 3.5in;
+      }
+
+      #experience > h1 {
+        margin-left: -0.2in;
+      }
+
+      #experience {
+        margin-left: 0.2in;
+      }
+
+      @media print {
+          abbr {
+              border: 0;
+          }
+          a, a:visited {
+              color: #000;
+          }
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <section id="wrapper">
+
+      <header class="vcard">
+        <h1 class="fn">Michael Snoyman</h1>
+        <h2 class="email">
+          <a href="mailto:michael@snoyman.com">michael@snoyman.com</a>
+        </h2>
+
+        <div class="adr">
+          <h3 class="country-name">Israel</h3>
+          <address>
+            <span class="street-address">Maale Narkisim 29</span>,
+            <span class="locality">Maalot</span>
+            <span class="postal-code">21530</span>
+          </address>
+          <span class="tel">+972.4.957.1371</span>
+        </div>
+
+        <div class="adr">
+          <h3 class="country-name">United States</h3>
+          <address>
+            <span class="street-address">13711 Rushmore Lane</span>,
+            <span class="locality">Santa Ana</span>,
+            <abbr class="region" title="California">CA</abbr>
+            <span class="postal-code">92705</span>
+          </address>
+          <span class="tel">+1.714.900.3549</span>
+        </div>
+      </header>
+
+      <section id="experience">
+        <h1>Experience</h1>
+
+        <h2>Suite Solutions</h2>
+        <h3>November 2010 to present</h3>
+        <ul>
+          <li>Created industry leading webhelp system (<a href="http://www.suite-sol.com/pages/solutions/suitehelp.html">SuiteHelp</a>) based on modern, open standards.</li>
+          <li>Produced industry's first fully DITA based social document system (<a href="http://www.suite-sol.com/pages/solutions/suite-social-kb.html">SuiteShare</a>).</li>
+          <li>Authored numerous XML to XSL-FO conversion systems.</li>
+          <li>Provided solutions for numerous global, Fortune 500 companies.</li>
+        </ul>
+
+        <h2>Yesod Web Framework</h2>
+        <h3>March 2009 to present</h3>
+        <ul>
+          <li>Authored dozens of Haskell packages providing a basis for the Yesod Web Framework, covering templating, web server, database persistence, and handler functionality.</li>
+          <li>Created the premier web application framework in the Haskell community, focusing on type safety, robustness, and developer productivity.</li>
+          <li>Wrote core Haskell libraries, such as HTTP client, XML parsing and rendering, streaming data (conduit), YAML binding</li>
+          <li>Code available on Github in my <a href="https://github.com/snoyberg">personal account</a> or <a href="https://github.com/yesodweb">yesodweb organization</a>.</li>
+        </ul>
+
+        <h2>Senior Actuarial Analyst, Farmers Insurance Group</h2>
+        <h3>July 2006 to March 2009</h3>
+        <ul>
+          <li>Facilitated production of a complete factor refresh for the auto book of business through use of the COM+ protocol, external Generalized Linear Modeling tools, modified binary files and Excel user interface. Provided users with flexibility to determine for each variable how rates would be determined (offset, interacted, grouped, or simple categorical).</li>
+          <li>Adapted ratemaking process for entire homeowners book of business to reflect previously uncalculated effects of differing loss experience between lines.</li>
+          <li>Created reports to provide insight into business patterns based on exposure shifts. Provided both precision at the granular level as well as high-level overviews.</li>
+          <li>Restructured multiple data pulling programs to reflect changes in business practice, to streamline execution and to ease maintenance.</li>
+          <li>Provided assistance in dealing with various legacy database systems and in integrating across different platforms.</li>
+        </ul>
+
+      </section>
+
+      <section id="publications">
+          <h1>Publications</h1>
+          <ul>
+              <li><a href="http://shop.oreilly.com/product/0636920023142.do">Developing Web Application with Haskell and Yesod</a>, O'Reilly Media, 2012</li>
+              <li><a href="http://www.aosabook.org/en/index.html#vol2">Architecture of Open Source Applications, Volume 2</a>, 2012</li>
+              <li><a href="http://steve.vinoski.net/pdf/IC-Warp_a_Haskell_Web_Server.pdf">Warp: A Haskell Web Server</a>, IEEE Spectrum, 2011</li>
+              <li><a href="https://github.com/mezzohaskell/mezzohaskell">MezzoHaskell</a>: community-driven book focusing on intermediate Haskell. <i>In Development</i></li>
+          </ul>
+      </section>
+
+      <section id="awards">
+        <h1>Awards</h1>
+        <ul>
+          <li>Superior Service, Farmers Insurance Group, 2007</li>
+        </ul>
+      </section>
+
+      <section id="skills">
+        <h1>Skills</h1>
+        <dl>
+          <dt>Programming Languages</dt>
+          <dd>Haskell, C, C++, Java, SQL, Javascript, Bash, XSLT, Perl, PHP, Visual Basic 6, Bash, SAS</dd>
+          <dt>Operating systems</dt>
+          <dd>Linux, FreeBSD, AIX, Windows</dd>
+          <dt>Databases</dt>
+          <dd>PostgreSQL, MySQL, SQLite, IBM DB2, Microsoft SQL Server, Microsoft Access</dd>
+          <dt>Web servers</dt>
+          <dd>Warp, Nginx, Lighttpd, Apache</dd>
+          <dt>Markup Languages</dt>
+          <dd>HTML, XML, DocBook, DITA, XSL-FO</dd>
+        </dl>
+      </section>
+
+      <section id="education">
+        <h1>Education</h1>
+        <ul class="degree">
+          <li>Bachelor of Science: June 2006</li>
+          <li>Math/Applied Science, Actuarial Plan, Specializing in Computing</li>
+          <li>University of California, Los Angeles</li>
+        </ul>
+      </section>
+
+      <section id="certifications">
+        <h1>Certifications</h1>
+        <ul>
+          <li>Society of Actuaries exams P, FM, M and C</li>
+          <li>Casualty Actuary Society exam 6</li>
+          <li>Completed all <abbr title="Validation by Educational Experience">VEE</abbr> requirements</li>
+        </ul>
+      </section>
+
+    </section> <!-- wrapper -->
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1434510-6']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+  })();
+
+</script>
+
+
+  </body>
+</html>
