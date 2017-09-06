@@ -54,7 +54,7 @@ talks:
   title: Haskell for fast, concurrent, robust services
   venue: Twitter
   links:
-    - url: "http://snoyberg.github.io/generated/2015-11-10-twitter-haskell-fast-concurrent-robust-services.html"
+    - url: "/static/reveal/2015-11-10-twitter-haskell-fast-concurrent-robust-services.html"
       text: Slides
     - url: "https://youtu.be/6bkWvfI7QDQ"
       text: Video
@@ -62,7 +62,7 @@ talks:
   title: Haskell in Enterprise
   venue: Haskeller Meetup, Tel Aviv
   links:
-    - url: "https://snoyberg.github.io/2015-08-30-tel-aviv-haskell-in-enterprise.html"
+    - url: "/static/reveal/2015-08-30-tel-aviv-haskell-in-enterprise.html"
       text: Slides
 - date: 2014-10
   title: Hybrid server/client Haskell web apps

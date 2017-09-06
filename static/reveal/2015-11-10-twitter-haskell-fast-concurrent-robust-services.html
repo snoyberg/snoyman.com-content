@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<!-- NOTE: This file was autogenerating, do not edit! --><head><meta charset="utf-8">
+<title>Haskell for fast, concurrent, robust services</title>
+<meta name="author" content="Michael Snoyman">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="css/reveal.css">
+<link rel="stylesheet" href="css/theme/black.css" id="theme">
+<link rel="stylesheet" href="michael/style.css">
+<link rel="stylesheet" href="lib/css/zenburn.css">
+<script>var link = document.createElement( 'link' );
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+document.getElementsByTagName( 'head' )[0].appendChild( link );</script>
+<!--[if lt IE 9]>
+<script src="lib/js/html5shiv.js"></script>
+<![endif]--></head>
+<body><div class="reveal"><div class="slides"><section><h1>Haskell for fast, concurrent, robust services</h1>
+<p>Michael Snoyman, Director of Engineering, FP Complete</p>
+<p><small>Twitter tech talk, November 10, 2015</small>
+</p>
+</section>
+<section><h1>What is Haskell?</h1>
+<ul><li>Strongly and statically typed</li>
+<li>Purely functional/explicit side effects</li>
+<li>Immutable by default</li>
+<li>Compiles to native code</li>
+<li>Multithreaded runtime</li>
+<li>Playground for interesting optimizations (rewrite rules)</li>
+</ul>
+</section>
+<section><h1>What we'll cover today</h1>
+<p>What makes Haskell great for writing network services?</p>
+<ul><li>Efficient single-core performance</li>
+<li>Powerful concurrency story</li>
+<li>Great abstractions</li>
+<li>Tools for writing robust code</li>
+<li>Some miscellaneous goodness</li>
+<li>How to get started</li>
+</ul>
+</section>
+<section><section><h1>Single Core Performance</h1>
+</section>
+<section><h1>Tuned for immutable data</h1>
+<ul><li>Haskell encourages immutable data</li>
+<li>Garbage collector highly tuned for such workloads (generational, copying)</li>
+<li>New data goes into a nursery</li>
+<li>Temporary data gets garbage collected quickly</li>
+</ul>
+</section>
+<section><h1>Data Unpacking</h1>
+<p>How much memory does it take to store the following? (Assume 64-bit)</p>
+<pre><code>data Foo = Foo Int Int</code>
+</pre>
+<p><code>Foo</code> constructor (8 bytes), 2 * (pointer to <code>Int</code> (8), <code>Int</code> constructor (8), raw <code>Int</code> (8)) == 56 bytes</p>
+<pre><code>data Foo = Foo {-# UNPACK #-} !Int {-# UNPACK #-} !Int</code>
+</pre>
+<p><code>Foo</code> constructor (8), 2 * (raw <code>Int</code> (8)) == 24 bytes</p>
+<p>Note: UNPACK pragmas aren't necessary for small data types, just strictness (<code>!</code>)</p>
+</section>
+<section><h1>Nested unpacked data</h1>
+<p>Unpacking also works for larger values!</p>
+<pre><code>data Foo = Foo !Int !Int
+data Bar = Bar {-# UNPACK #-} !Foo !Int</code>
+</pre>
+<ul><li>For now, only works for single-constructor data types</li>
+<li>Do you want lazy or strict data?</li>
+<li>In practice: strict data often a good choice</li>
+<li>Side benefits: much harder to create a space leak</li>
+</ul>
+</section>
+<section><h1>Vectors</h1>
+<ul><li>Contiguous memory collections</li>
+<li>Avoid cons-cell overhead</li>
+<li>Think: <code>std::list</code> vs <code>std::vector</code></li>
+<li>Both mutable and immutable variants</li>
+<li>Implement mutable algorithms safely via <code>ST</code> monad</li>
+<li>Boxed, unboxed, and storable (C-FFI compatible) representations</li>
+</ul>
+</section>
+<section><h1>Vectors (cont)</h1>
+<ul><li>Simple API based on common list functions (<code>map</code>, <code>fold</code>, <code>filter</code>, etc)</li>
+<li>Implements common Haskell abstractions like <code>Foldable</code> and <code>Traversable</code></li>
+<li>Stream fusion (more on that in a moment)</li>
+<li>New tutorial: <a style="word-break:break-all" href="https://github.com/commercialhaskell/haskelldocumentation/blob/master/content/vector.md">https://github.com/commercialhaskell/haskelldocumentation/blob/master/content/vector.md</a></li>
+</ul>
+</section>
+<section><h1>Stream fusion</h1>
+<p>How much memory does the following code use?</p>
+<pre><code>import qualified Data.Vector.Unboxed as V
+main = print $ V.sum $ V.enumFromTo 1 (10^9 :: Int)</code>
+</pre>
+<ul><li>Without optimizations: ~8GB</li>
+<li>With optimizations: ~52KB</li>
+<li>GHC optimizes this down to a tight inner loop without any actual vector</li>
+<li>Is GHC itself actually that smart? No, not really...</li>
+</ul>
+</section>
+<section><h1>Rewrite rules</h1>
+<ul><li>Tell GHC that certain expressions can be rewritten as something else</li>
+<li><code>map f . map g = map (f . g)</code>
+</li>
+<li>Takes advantage of Haskell's purity</li>
+<li>Provides library authors with ability to create new optimizations without hacking on the compiler</li>
+<li>Typically promotes lots of inlining (downside: optimized executables tend to be large)</li>
+</ul>
+</section>
+<section><h1>Demonstration: efficient statistics calculation</h1>
+<p><a href="https://gist.github.com/snoyberg/d6c30825718eaf2aaea4">Stepping away from the slides for a moment</a>
+</p>
+</section>
+<section><h1>Builders</h1>
+<ul><li>Buffer-filling actions for creating byte arrays and text</li>
+<li>Minimal buffer copying</li>
+<li>Composable (via <code>Monoid</code>)</li>
+<li>Easy to do the right thing</li>
+<li>Highly tuned by real-world data and testing</li>
+<li>Good trade-off between memory copying and extra syscalls (e.g., Warp HTTP server)</li>
+</ul>
+</section>
+<section><h1>Great example libraries</h1>
+<ul><li><a href="https://www.stackage.org/package/vector">vector</a>
+</li>
+<li><a href="https://www.stackage.org/package/unordered-containers">unordered-containers</a>
+</li>
+<li><a href="https://www.stackage.org/package/bytestring">bytestring</a>
+</li>
+<li><a href="https://www.stackage.org/package/text">text</a>
+</li>
+<li><a href="https://www.stackage.org/package/conduit">conduit</a>
+</li>
+<li><a href="https://www.stackage.org/package/pipes">pipes</a>
+</li>
+</ul>
+</section>
+</section>
+<section><section><h1>Concurrency</h1>
+</section>
+<section><h1>Green threads</h1>
+<ul><li>Lightweight threads in the Haskell runtime</li>
+<li>Mapped to actual system threads/cores by scheduler</li>
+<li>Uses evented (per-OS) system calls to wake up threads</li>
+<li>Result: code against blocking APIs, callback magic happens for you automatically!</li>
+</ul>
+</section>
+<section><h1>Low-level example</h1>
+<pre><code>{-# LANGUAGE OverloadedStrings #-}
+import Data.Streaming.Network
+import Control.Monad
+import Control.Concurrent
+
+main :: IO ()
+main = runTCPServer (serverSettingsTCP 4500 "*") $ \ad ->
+    forever $ do
+        bs <- appRead ad
+        print $ "Received: " ++ show bs
+        appWrite ad "Now I'm going to delay...\n"
+        threadDelay 1000000</code>
+</pre>
+</section>
+<section><h1>Immutable-by-default</h1>
+<ul><li>Shared mutable state is hard</li>
+<li>Make it easy: data is immutable by default!</li>
+<li>Mutable variables available as necessary</li>
+<li>Explicitly decide what kind of mutable variables you want (<code>IORef</code>, <code>MVar</code>, <code>TVar</code>)</li>
+<li>Focus your attention on the few mutable pieces of the system</li>
+</ul>
+</section>
+<section><h1>Explicit side effects</h1>
+<ul><li>Function of type <code>Int -&gt; String</code> does not modify the world</li>
+<li>Allows for some almost-free parallelism (e.g., <code>parMap</code>)</li>
+<li>Also opens the door for Software Transactional Memory (STM)</li>
+<li>Not to mention: makes your code easier to understand and maintain</li>
+</ul>
+</section>
+<section><h1>STM example</h1>
+<pre><code>import Control.Concurrent.STM
+import Control.Concurrent.Async
+main = do
+    alice <- newTVarIO 50
+    bob <- newTVarIO 50
+    runConcurrently $
+        Concurrently (transfer 60 alice bob) *>
+        Concurrently (transfer 30 bob alice) *>
+        Concurrently (transfer 40 bob alice)
+  where
+    transfer amt srcVar dstVar = atomically $ do
+        modifyTVar dstVar (+ amt) -- yes, even this position works!
+        srcOrig <- readTVar srcVar
+        let srcNew = srcOrig - amt
+        check (srcNew >= 0)
+        writeTVar srcVar srcNew</code>
+</pre>
+</section>
+<section><h1>The async package</h1>
+<ul><li>Futures on steroids</li>
+<li>Codifies many best practices</li>
+<li>Handles cases you didn't even know you had to worry about (like exceptions)</li>
+<li>Simple helper functions like <code>race</code> and <code>both</code></li>
+<li>Applicative interface (via <code>Concurrency</code>)</li>
+</ul>
+</section>
+<section><h1>Network-based concurrency</h1>
+<ul><li><a href="https://www.stackage.org/package/warp">Warp</a> web server library (fast, concurrent, HTTP2)</li>
+<li>Many web frameworks based on Warp (Yesod, Servant, Scotty, Spock)</li>
+<li><a href="https://www.stackage.org/package/conduit-extra">Data.Conduit.Network</a></li>
+<li><a href="https://www.stackage.org/package/pipes-network">pipes-network</a></li>
+<li><a href="https://www.stackage.org/package/connection">connection</a> (easy TLS support)</li>
+</ul>
+</section>
+</section>
+<section><section><h1>Abstractions</h1>
+</section>
+<section><h1>Mathematical type classes</h1>
+<ul><li>Laws allow you to reason about code</li>
+<li>Can also expose optimizations opportunities</li>
+<li>Example:<ul><li>monoidal append is associative</li>
+<li>builders prefer right-association</li>
+<li>we know it's always safe to make that transformation</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h1>Commonly used type classes</h1>
+<ul><li>Functor/Applicative/Monad</li>
+<li>Semigroup/Monoid</li>
+<li>Foldable/Traversable</li>
+<li>But wait, there's more! <a href="https://wiki.haskell.org/Typeclassopedia">Typeclassopedia</a></li>
+</ul>
+</section>
+<section><h1>Streaming data</h1>
+<ul><li>conduit and pipes libraries</li>
+<li>Authors of each are in this room</li>
+<li>Focus on your algorithm, not the low-level details of moving data around</li>
+<li>Highly composable</li>
+</ul>
+</section>
+<section><h1>Conduit example</h1>
+<pre><code>import Conduit
+import qualified Data.Text as T
+
+main :: IO ()
+main = stdinC
+    $$ mapC T.toUpper
+    =$ filterCE (/= 'E')
+    =$ stdoutC</code>
+</pre>
+</section>
+</section>
+<section><h1>Robust</h1>
+<ul><li>Static/strong typing makes your code easier to refactor and maintain</li>
+<li>Restricted side effects makes your code easier to test, and encourages a good coding style</li>
+<li>Immutable data structures avoid common problems like race conditions and deadlocks</li>
+</ul>
+</section>
+<section><h1>Miscellaenous goodness</h1>
+<ul><li>Parametric polymorphism</li>
+<li>Avoid boilerplate! Generics, Scrap your Boilerplate, Template Haskell</li>
+<li>Test with confidence: QuickCheck, tasty, hspec</li>
+</ul>
+</section>
+<section><section><h1>Getting started</h1>
+<ul><li>Use <a href="http://haskellstack.com">the Stack build tool</a></li>
+<li>Handles projects, installs necessary tools (including GHC), easy to learn</li>
+<li>Lots of learning resources<ul><li><a href="https://github.com/commercialhaskell/haskelldocumentation">Haskell Documentation project</a>
+</li>
+<li><a href="http://schoolofhaskell.com">School of Haskell</a>
+</li>
+<li><a href="http://www.haskellforall.com/2015/10/basic-haskell-examples.html">Gabriel's basic Haskell examples</a>
+</li>
+<li><a href="http://dohaskell.com">Do Haskell (collection of papers and tutorials)</a>
+</li>
+<li><a href="http://www.haskellbook.com/">Haskell Programming from First Principles</a>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h1>Write scripts!</h1>
+<p>Easy way to get started</p>
+<pre><code>#!/usr/bin/env stack
+-- stack --resolver lts-3.2 --install-ghc runghc --package turtle
+{-# LANGUAGE OverloadedStrings #-}
+import Turtle
+main = echo "Hello World!"</code>
+</pre>
+</section>
+</section>
+<section><h1>Questions</h1>
+<p>Thanks for being a great audeince</p>
+</section>
+</div>
+</div>
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+<script>// Full list of configuration options available at:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({controls: true,
+progress: true,
+history: true,
+center: true,
+transition: 'fade', // none/fade/slide/convex/concave/zoom
+// Optional reveal.js plugins
+dependencies: [{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+{ src: 'plugin/zoom-js/zoom.js', async: true },
+{ src: 'plugin/notes/notes.js', async: true }]});</script>
+</body>

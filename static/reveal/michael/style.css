@@ -1,0 +1,14 @@
+p, ul, li {
+    text-align: left;
+}
+
+body:after {
+    content: url(logo.png);
+    position: fixed;
+    bottom: 1em;
+    left: 1em;
+}
+
+b {
+    color: #797;
+}

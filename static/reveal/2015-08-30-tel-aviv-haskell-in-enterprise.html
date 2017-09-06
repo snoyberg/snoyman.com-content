@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<!-- NOTE: This file was autogenerating, do not edit! --><head><meta charset="utf-8">
+<title>Haskell in Enterprise</title>
+<meta name="author" content="Michael Snoyman">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="css/reveal.css">
+<link rel="stylesheet" href="css/theme/black.css" id="theme">
+<link rel="stylesheet" href="michael/style.css">
+<link rel="stylesheet" href="lib/css/zenburn.css">
+<script>var link = document.createElement( 'link' );
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+document.getElementsByTagName( 'head' )[0].appendChild( link );</script>
+<!--[if lt IE 9]>
+<script src="lib/js/html5shiv.js"></script>
+<![endif]--></head>
+<body><div class="reveal"><div class="slides"><section><h1>Haskell in Enterprise</h1>
+<p>Michael Snoyman, Director of Engineering, FP Complete</p>
+<p><small>Tel Aviv Haskellers meetup, August 30, 2015</small>
+</p>
+</section>
+<section><h1>Who am I?</h1>
+<ul><li>Open source project maintainer (Yesod, WAI, conduit, Stackage)</li>
+<li>Run internal engineering at FP Complete</li>
+<li>Lead many of FP Complete's consulting engagements</li>
+<li>Spend lots of time talking to commercial users of Haskell</li>
+</ul>
+<p>I spend my days talking to both engineers and managers. Prepare to hear some of that today.</p>
+</section>
+<section><section><h1>Why use Haskell?</h1>
+<ul><li>Productivity</li>
+<li>Reliability</li>
+<li>Efficiency</li>
+</ul>
+</section>
+<section><h1>Why use Haskell?</h1>
+<h2>Productivity</h2>
+<p>Short, expressive code leads to programmer efficiency</p>
+<ul><li>Engineers: it's more fun to read and write!</li>
+<li>Managers: quicker time to market</li>
+<li>Compare with: Ruby, Python</li>
+</ul>
+</section>
+<section><h1>Why use Haskell?</h1>
+<h2>Reliability</h2>
+<p>Expressing invariants at the type level means less runtime bugs</p>
+<ul><li>Engineers: less debugging-production-system nightmares</li>
+<li>Managers: easier support tail for sold software</li>
+<li>Compare with: Ada</li>
+</ul>
+</section>
+<section><h1>Why use Haskell?</h1>
+<h2>Efficiency</h2>
+<p>Compiled, optimized code is fast, especially given high level structures</p>
+<ul><li>Everyone: faster == better</li>
+<li>Compare with: Java (about same performance)</li>
+</ul>
+<p>Note: Haskell, Java, and others offer many opportunities to go even lower level to get higher performance. In general, I'll talk about production-quality, high level Haskell code</p>
+</section>
+</section>
+<section><h1>Who uses Haskell?</h1>
+<ul><li><b>Finance</b> performance and reliability very important!</li>
+<li><b>Science/pharma</b> reliability vital (literally)</li>
+<li><b>Defense</b> performance and reliability</li>
+<li><b>Startups</b> time-to-market and recruiting edge</li>
+<li><b>Enterprise solutions</b> outpace the competition</li>
+<li><b>Solutions providers</b> do more with less hardware, less downtime</li>
+</ul>
+</section>
+<section><section><h1>Strengths</h1>
+<ul><li>Mature, well designed language</li>
+<li>Well rounded library ecosystem (web, parsing, streaming data, mathematical, much more)</li>
+<li>Powerful concurrency/parallelism stor</li>
+<li>Refactor with impunity (use the types, Luke!)</li>
+<li>Team collaboration is much easier too</li>
+<li>Amazing Javascript backend</li>
+</ul>
+</section>
+<section><h1>Weaknesses</h1>
+<ul><li>Doesn't integrate well with existing JVM and .NET deployments</li>
+<li>GUIs can be a bit of a pain (situation is improving, and web UIs are a good option)</li>
+<li>Compiling to mobile devices still a bit involved</li>
+</ul>
+</section>
+<section><h1>Dispelling Myths</h1>
+<ul><li><b>Category theory not required</b> Haskell has a strong theoretical foundation, but you don't need to understand that to use it
+<blockquote>Haskell is the world's finest imperative programming language</blockquote>
+</li>
+<li><b>Build tools are difficult</b> FP Complete and other Commercial Haskell members have put a lot of work into fixing this in the past few years: Stackage, LTS Haskell, stack</li>
+</ul>
+</section>
+</section>
+<section><section><h1>Get started with Haskell</h1>
+<h2>Just do it!</h2>
+<ul><li>Choose a pilot/side project</li>
+<li>Download <a href="https://github.com/commercialhaskell/stack#readme">stack</a></li>
+<li>Start a project with <code>stack new</code></li>
+<li>Start hacking!</li>
+</ul>
+</section>
+<section><h1>Learning Resources</h1>
+<ul><li><a href="https://www.fpcomplete.com/school">School of Haskell</a>
+</li>
+<li><a href="http://stackoverflow.com/questions/tagged/haskell">StackOverflow Haskell tag</a>
+</li>
+<li>Mailing lists:<ul><li><a href="https://mail.haskell.org/mailman/listinfo/haskell-cafe">Haskell Cafe</a>
+</li>
+<li><a href="https://mail.haskell.org/mailman/listinfo/beginners">Haskell Beginners</a>
+</li>
+<li><a href="https://groups.google.com/d/forum/haskell-stack">Haskell Stack mailinng list</a>
+(tooling issues)</li>
+</ul>
+</li>
+<li>Books<ul><li><a href="http://book.realworldhaskell.org/">Real World Haskell</a></li>
+<li><a href="http://learnyouahaskell.com/">Learn You a Haskell</a></li>
+<li><a href="http://www.yesodweb.com/book">Developing Web Apps with Haskell and Yesod</a></li>
+<li><a href="https://github.com/bitemyapp/learnhaskell">Future Haskell book... stay tuned</a></li>
+</ul>
+</li>
+</ul>
+</section>
+<section><h1>Convincing others</h1>
+<ul><li><a href="https://www.fpcomplete.com/business/resources/case-studies/">Case Studies on fpcomplete.com</a></li>
+<li><a href="https://github.com/commercialhaskell/commercialhaskell/blob/master/taskforce/devops.md">Haskell in Devops</a> (from Commercial Haskell <abbr title="Special Interest Group">SIG</abbr>)</li>
+<li><a href="https://groups.google.com/d/forum/commercialhaskell">Commercial Haskell mailing list</a> ask for advice!</li>
+<li>Call me: FP Complete specializes in helping companies succeed with Haskell</li>
+</ul>
+</section>
+</section>
+<section><h1>Questions</h1>
+<p>Thanks for listening to me blab about Haskell :)</p>
+</section>
+</div>
+</div>
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+<script>// Full list of configuration options available at:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({controls: true,
+progress: true,
+history: true,
+center: true,
+transition: 'fade', // none/fade/slide/convex/concave/zoom
+// Optional reveal.js plugins
+dependencies: [{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+{ src: 'plugin/zoom-js/zoom.js', async: true },
+{ src: 'plugin/notes/notes.js', async: true }]});</script>
+</body>
