@@ -20,7 +20,7 @@ title: Everything you didn't want to know about monad transformer state
 * Example: `ReaderT` avoids needing to pass an extra argument to functions
 * I'll explain transformer _environment_ and _state_ during the talk
 
----
+----
 
 ## Which transformers are we covering?
 
@@ -46,7 +46,7 @@ concurrently :: IO a -> IO b -> IO (a, b)
 concurrently foo bar :: IO (a, b)
 ```
 
----
+----
 
 ## What about ReaderT?
 
@@ -60,7 +60,7 @@ bar :: ReaderT MyEnv IO b
 * Now `concurrently` doesn't type match!
 * Can we make this work anyway?
 
----
+----
 
 ## Unwrap the `ReaderT`!
 
@@ -79,7 +79,7 @@ concurrentlyR (ReaderT foo) (ReaderT bar) =
 After all, `ReaderT` is just a convenient way to avoid argument
 passing.
 
----
+----
 
 ## Ask, lift, and run
 
@@ -97,7 +97,7 @@ concurrentlyR foo bar = do
 * _Leading question_ Surely there must be some general way to write
   `concurrently`, right?
 
----
+----
 
 ## lifted-async
 
@@ -139,7 +139,7 @@ main = do
 
 What happened to 3?
 
----
+----
 
 ## Playing with bracket_
 
@@ -163,7 +163,7 @@ Trick question! Depends on which `bracket_` you use
 
 Ahhhhh!!!
 
----
+----
 
 ## Implement concurrently for StateT
 
@@ -181,7 +181,7 @@ concurrentlyS (StateT f) (StateT g) = StateT $ \s0 -> do
 
 We generated two states, and have to discard one of them!
 
----
+----
 
 ## Implement bracket_ for StateT
 
@@ -198,7 +198,7 @@ bracket_S (StateT f) (StateT g) (StateT h) = StateT $ \s0 ->
 `h` doesn't see the new state from `f`, and `g` doesn't see the new
 state from either `f` or `h`!
 
----
+----
 
 ## How about `ExceptT`?
 
@@ -229,7 +229,7 @@ More discarding!
 
 Next: let's define those classes
 
----
+----
 
 ## Control functions
 
@@ -254,7 +254,7 @@ atomicModifyIORef :: IORef a -> (a -> (a, b)) -> IO b
 modifyMVar_ :: MVar a -> (a -> IO a) -> IO ()
 ```
 
----
+----
 
 ## Monad transformer environment versus state
 
@@ -270,7 +270,7 @@ newtype ExceptT e m a = ExceptT (     m (Either e a))
   e a)` instead of `m a`)
 * `StateT` has both (`s` as input, `m (a, s)` as output)
 
----
+----
 
 ## Unlifting
 
@@ -281,7 +281,7 @@ newtype ExceptT e m a = ExceptT (     m (Either e a))
 * Transformers with monadic state may require discarding when
   unlifting
 
----
+----
 
 ## ReaderT-like things
 
@@ -314,7 +314,7 @@ catchS (StateT f) onErr = StateT $ \s ->
   f s `catch` (flip runStateT s . onErr)
 ```
 
----
+----
 
 ## What about bracket_?
 
@@ -349,7 +349,7 @@ class MonadIO m => MonadUnliftIO m where
     * https://www.stackage.org/package/monad-unlift
     * Control.Concurrent.Async.Lifted.Safe
 
----
+----
 
 ## Providing StateT and ExceptT features
 
@@ -362,7 +362,7 @@ recommendations:
 
 Prepare torches and pitchforks for the next two slides
 
----
+----
 
 ## Use mutable variables
 
@@ -373,7 +373,7 @@ Prepare torches and pitchforks for the next two slides
 * Recommendation: default to `TVar` unless you have a good reason to
   do otherwise
 
----
+----
 
 ## Use runtime exceptions
 
@@ -395,7 +395,7 @@ Prepare torches and pitchforks for the next two slides
 * You'll sometimes get stuck using less elegant things...
 * But at least they work :)
 
----
+----
 
 ## References
 
@@ -406,7 +406,7 @@ This talk is based on a series of blog posts. Get even more gory details!
 * https://www.fpcomplete.com/blog/2017/07/the-rio-monad
 * https://www.fpcomplete.com/blog/2017/07/announcing-new-unliftio-library
 
----
+----
 
 ## Questions?
 
