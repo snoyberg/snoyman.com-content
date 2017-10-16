@@ -46,6 +46,10 @@ talks:
   links:
   - url: "http://www.snoyman.com/reveal/conduit-yesod"
     text: Slides
+  - url: "https://www.youtube.com/watch?v=9957qVltU00"
+    text: Video (1)
+  - url: "https://www.youtube.com/watch?v=V2GxCcgopgI"
+    text: Video (2)
 - date: 2017-05
   title: Applied Haskell (two day training)
   venue: LambdaConf
