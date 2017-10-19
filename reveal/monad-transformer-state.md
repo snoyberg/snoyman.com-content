@@ -37,7 +37,7 @@ title: Everything you didn't want to know about monad transformer state
 
 *No trick question here*
 
-* I have `foo :: IO a` and `bar :: IO b`. I want to run both at the same
+I have `foo :: IO a` and `bar :: IO b`. I want to run both at the same
 time in separate threads. How do I do that?
 
 ```haskell
@@ -48,16 +48,35 @@ concurrently foo bar :: IO (a, b)
 
 ----
 
+## An extra argument
+
+Let's slightly modify things:
+
+```haskell
+foo :: MyEnv -> IO a
+bar :: MyEnv -> IO b
+
+baz :: MyEnv -> IO (a, b)
+baz myEnv = concurrently (foo myEnv) (bar myEnv)
+```
+
+So far so good?
+
+----
+
 ## What about ReaderT?
 
-* Let's change the game a bit:
+Explicit arguments are so boring! Let's move over to `ReaderT`.
 
 ```haskell
 foo :: ReaderT MyEnv IO a
 bar :: ReaderT MyEnv IO b
+
+baz :: ReaderT MyEnv IO (a, b)
+baz = concurrently foo bar -- bad!
 ```
 
-* Now `concurrently` doesn't type match!
+* Now `concurrently` doesn't type check!
 * Can we make this work anyway?
 
 ----
@@ -137,7 +156,8 @@ main = do
   print res
 ```
 
-What happened to 3?
+* Outputs `4`
+* What happened to `3`?
 
 ----
 
