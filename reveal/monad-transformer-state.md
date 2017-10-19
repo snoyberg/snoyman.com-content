@@ -2,13 +2,19 @@
 title: Everything you didn't want to know about monad transformer state
 ---
 
-# Monad Transformer State
+### Monad Transformer State
 
 *Everything you didn't want to know*
 
 * Michael Snoyman
 * VP of Engineering, FP Complete
 * LambdaWorld 2017
+
+<div style="text-align:center">
+<div><img src="/static/fpcomplete-logo.png" style="border:0;margin:0"></div>
+<div><img src="/static/lambdaworld-logo.png" style="border:0;margin:0"><div>
+</div>
+
 
 ---
 
