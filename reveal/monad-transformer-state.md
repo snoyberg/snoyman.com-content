@@ -325,19 +325,15 @@ If a control function only takes one action as input, you can get away
 without discarding.
 
 ```haskell
-catchE :: Exception e
-       => ExceptT ex IO a
-       -> (e -> ExceptT ex IO a)
-       -> ExceptT ex IO a
-catchE (ExceptT f) onErr =
-  ExceptT $ f `catch` (runExceptT . onErr)
-
-catchS :: Exception e
-       => StateT s IO a
-       -> (e -> StateT s IO a)
-       -> StateT s IO a
 catchS (StateT f) onErr = StateT $ \s ->
   f s `catch` (flip runStateT s . onErr)
+
+tryS (StateT f) = StateT $ \s -> do
+  eres <- try (f s)
+  return $
+    case eres of
+      Left e -> (Left e, s)
+      Right (a, s') -> (Right a, s')
 ```
 
 ----
