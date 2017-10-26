@@ -345,11 +345,14 @@ catchS (StateT f) onErr = StateT $ \s ->
   f s `catch` (flip runStateT s . onErr)
 ```
 
+No updated state is available from main action, since an exception was
+thrown. This is safe!
+
 ----
 
 ## Finally a problem
 
-Loses state updates from g:
+Loses state updates in `g`:
 
 ```haskell
 finallyS (StateT f) (StateT g) = StateT $ \s ->
