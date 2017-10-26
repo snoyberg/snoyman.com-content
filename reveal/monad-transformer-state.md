@@ -37,6 +37,26 @@ title: Everything you didn't want to know about monad transformer state
     * Feel free to ask me about them later!
 * Also, only doing shallow transformers (1 layer)
 
+----
+
+## Meet the transformers
+
+```haskell
+newtype ReaderT r m a = ReaderT (r -> m a)
+newtype StateT  s m a = StateT  (s -> m (a, s))
+newtype ExceptT e m a = ExceptT (     m (Either e a))
+```
+
+Or specialized to `IO` and turned into functions:
+
+```haskell
+type ReaderIO r a = r -> IO a
+type StateIO  s a = s -> IO (a, s)
+type ExceptIO e a =      IO (Either e a)
+```
+
+Let's motivate some problems
+
 ---
 
 ## A concurrent problem
