@@ -396,11 +396,22 @@ finallyS (StateT f) (StateT g) =
 
 ----
 
-## What about bracket_?
+## The problem cases
 
-1. Could reimplement `bracket_` specifically for `StateT` to keep
-   state (exercise for the reader)
-2. Could define a safe-for-`StateT` `bracket_`:
+Two categories of problem cases
+
+1. Things like `finally`: can manually reimplement them to get the
+   state retaining behavior desired. Problems:
+     * End up with mismatched semantics between libraries (the
+       `bracket_` example).
+     * Tedious and error-prone to reimplement these functions.
+2. Things which _cannot_ be solved, like `concurrently`
+
+----
+
+## Cheating
+
+Could define a safe-for-`StateT` `bracket_`:
 
 ```haskell
 bracket_
