@@ -355,6 +355,42 @@ But it's not exactly the type signature people expect.
 
 ---
 
+## Standard solutions
+
+Two basic approaches today for typeclass-based control function
+lifting.
+
+## exceptions
+
+Define an `mtl`-style typeclass for each operation.
+
+```haskell
+class Monad m => MonadThrow m where
+  throwM :: Exception e => e -> m a
+class MonadThrow m => MonadCatch m where
+  catch :: Exception e => m a -> (e -> m a) -> m a
+```
+
+Need an extra typeclass for each operation (forking, timeout, etc).
+
+----
+
+## monad-control
+
+Define a generic interface for all unlifting.
+
+```haskell
+class MonadBase b m => MonadBaseControl b m | m -> b where
+  type StM m a :: *
+  liftBaseWith :: (RunInBase m b -> b a) -> m a
+  restoreM :: StM m a -> m a
+```
+
+Difficult to understand, easy to write buggy instances, more likely to
+implement bad discard behavior.
+
+----
+
 ## unliftio
 
 New entry in the market for control-like things
