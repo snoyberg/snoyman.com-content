@@ -325,9 +325,6 @@ If a control function only takes one action as input, you can get away
 without discarding.
 
 ```haskell
-catchS (StateT f) onErr = StateT $ \s ->
-  f s `catch` (flip runStateT s . onErr)
-
 tryS (StateT f) = StateT $ \s -> do
   eres <- try (f s)
   return $
@@ -338,9 +335,49 @@ tryS (StateT f) = StateT $ \s -> do
 
 ----
 
+## Natural linear call path
+
+Even though `catch` has two input actions, the handler is only called
+_after_ the main action completes.
+
+```haskell
+catchS (StateT f) onErr = StateT $ \s ->
+  f s `catch` (flip runStateT s . onErr)
+```
+
+----
+
+## Finally a problem
+
+Loses state updates from g:
+
+```haskell
+finallyS (StateT f) (StateT g) = StateT $ \s ->
+  f s `finally` g s
+```
+
+Instead have to reimplement functionality:
+
+```haskell
+finallyS (StateT f) (StateT g) =
+  StateT $ \s0 -> mask $ \restore -> do
+    res <- try $ restore $ f s0
+    case res of
+      Left e -> do
+        _ <- restore $ g s0
+        throwIO (e :: SomeException)
+      Right (s1, x) -> do
+        (s2, _) <- restore $ g s1
+        return (s2, x)
+```
+
+----
+
 ## What about bracket_?
 
-Could define a safe-for-`StateT` `bracket_`:
+1. Could reimplement `bracket_` specifically for `StateT` to keep
+   state (exercise for the reader)
+2. Could define a safe-for-`StateT` `bracket_`:
 
 ```haskell
 bracket_
@@ -355,7 +392,7 @@ But it's not exactly the type signature people expect.
 
 ---
 
-## Standard solutions
+## Existing generic solutions
 
 Two basic approaches today for typeclass-based control function
 lifting.
