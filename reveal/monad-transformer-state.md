@@ -289,7 +289,7 @@ Next: let's define those classes
 
 ## But does it lift?
 
-Which of these functions can be safely converted to `StateT s IO`?
+Which of these functions can be converted to `StateT s IO` with `lift`?
 
 ```haskell
 putStrLn :: String -> IO a
@@ -320,6 +320,7 @@ newtype ExceptT e m a = ExceptT (     m (Either e a))
 
 ## Unlifting
 
+* Also a made up term :)
 * Unlifting is taking a control operation living in `IO` and moving it
   into a transformer
 * Transformers with no monadic state can safely "unlift" control
@@ -431,6 +432,8 @@ But it's not exactly the type signature people expect.
 Two basic approaches today for typeclass-based control function
 lifting.
 
+----
+
 ## exceptions
 
 Define an `mtl`-style typeclass for each operation.
@@ -487,7 +490,7 @@ recommendations:
 
 * Feel free to use any monad transformer "in the small," where you're
   not forking threads or acquiring resources
-* Keep your overall applications to `ReaderT env IO`
+* Keep your overall applications to `ReaderT env IO` (or use `RIO`)
 
 Prepare torches and pitchforks for the next two slides
 
@@ -511,7 +514,6 @@ Prepare torches and pitchforks for the next two slides
 * But that's the Haskell runtime system
 * Also, you have to deal with async exceptions anyway
 * Caveat emptor: Many people disagree with me here
-* I still think I'm right :)
 
 ---
 
