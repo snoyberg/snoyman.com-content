@@ -1,7 +1,9 @@
-- file: posts/manipulating-maintainers.md
-  title: Manipulating Maintainers
+- file: posts/effective-ways-help-from-maintainers.md
+  title: Effective ways to get help from maintainers
   time: 2017-10-23T08:45:00Z
-  description: "Exploiting the human nature of open source contributors for fun and profit"
+  description: "Tapping into the human nature of open source contributors for fun and profit"
+  old-slugs:
+  - manipulating-maintainers
 - file: posts/posture.md
   title: Posture
   time: 2017-08-16T09:43:00Z

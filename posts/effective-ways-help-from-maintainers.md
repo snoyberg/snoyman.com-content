@@ -1,5 +1,8 @@
-Real title should be: how to get members of any open source community
-to be interested in helping you. But the given title is catchier.
+This blog post was previously titled "Manipulating Maintainers," but
+has been retitled to more accurately reflect what it's about (with a
+less cheeky tone). It's about how to most effectively interact with
+and request assistance from maintainers of open source projects, and
+open source community members in general.
 
 There's an old "ha ha, only serious" joke. If you go to a Linux forum
 and ask for help fixing your WiFi driver, everyone will ignore
