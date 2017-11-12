@@ -1,3 +1,7 @@
+- file: posts/future-proofing-test-suites.md
+  title: Future proofing test suites
+  time: 2017-11-12T17:00:00Z
+  description: "A small piece of advice about including test suites that may fail over time"
 - file: posts/effective-ways-help-from-maintainers.md
   title: Effective Ways to Get Help from Maintainers
   time: 2017-10-23T08:45:00Z
