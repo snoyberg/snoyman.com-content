@@ -46,6 +46,8 @@ talks:
   links:
   - url: "https://www.snoyman.com/reveal/monad-transformer-state"
     text: Slides
+  - url: "https://www.youtube.com/watch?v=KZIN9f9rI34"
+    text: Video
 - date: 2017-05
   title: Web Programming and Streaming Data in Haskell
   venue: LambdaConf
