@@ -6,6 +6,10 @@ plus the
 [GHC trac ticket](https://ghc.haskell.org/trac/ghc/ticket/14558), but
 thought I'd reshare as a blog post for others who are interested.
 
+__EDIT__ Right after publishing, I saw that Stack 1.6.1 was released, so you
+should probably just run `stack upgrade`. Keep reading if you're curious on the
+bug.
+
 ## The problem
 
 When the first releases of Stackage Nightly for GHC 8.2.1 started
