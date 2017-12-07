@@ -48,7 +48,7 @@ different things that are all called Cabal:
 * Cabal the library. This is a normal Haskell library which Stack
   depends on, and is used for (among other things) parsing cabal
   files.
-* Cabal the file format. If you open up vritually any cabal file
+* Cabal the file format. If you open up vittually any cabal file
   you'll see a `cabal-version: >= 1.10` looking field. This is stating
   which version of the Cabal file format is being used. New versions
   of Cabal-the-library may add new features to the Cabal file
