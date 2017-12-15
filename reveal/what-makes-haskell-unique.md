@@ -648,7 +648,7 @@ But this is great
 sum [1..1000000]
 ```
 
-* Doesn't is allocate 8mb of ints?
+* Doesn't it allocate 8mb of ints?
 * Nope, laziness!
 * Just a thunk telling us how to get the rest of the list
 
