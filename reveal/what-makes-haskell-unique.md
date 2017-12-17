@@ -512,19 +512,19 @@ runServer (|request| => {
 Looks reasonable, but...
 
 ```
-Thread 1: receive request: Alice gives $25
-Thread 2: receive request: Alice receives $25
+Thread 1: receive request: Alice gives $10
+Thread 2: receive request: Alice receives $10
 Thread 1: lookup that Alice has $50
 Thread 2: lookup that Alice has $50
-Thread 1: set Alice's account to $25
-Thread 2: set Alice's account to $75
+Thread 1: set Alice's account to $40
+Thread 2: set Alice's account to $60
 ```
 
 NOTE:
 
 * What if you actually need to mutate values, and from multiple threads?
 * *Describe slide*
-* Alice ends up with either $25 or $75 instead of $50
+* Alice ends up with either $40 or $60 instead of $50
 
 ----
 
