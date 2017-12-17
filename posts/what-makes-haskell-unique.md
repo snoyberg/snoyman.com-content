@@ -625,7 +625,7 @@ if you use the right kinds of functions.
 
 ### Laziness is awesome
 
-Let's go back to psuedocode and rewrite our summation:
+Let's go back to pseudocode and rewrite our summation:
 
 ```
 total := 0
