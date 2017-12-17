@@ -10,6 +10,15 @@ title: What Makes Haskell Unique
 
 <div><img src="/static/fpcomplete-logo.png" style="border:0;margin:0"></div>
 
+<aside class="notes">
+
+<ul>
+<li>Good morning, welcome</li>
+<li>FP Complete helps people adopt Haskell</li>
+<li>Need to know: <b>What makes Haskell unique</b></li>
+</ul>
+</aside>
+
 ---
 
 ## Why uniqueness matters
@@ -28,9 +37,21 @@ title: What Makes Haskell Unique
 	* Higher order functions
 * Wait... is C functional?
 
+<aside class="notes">
+<ul>
+<li>Haskell is functional</li>
+<li>So are lots of others</li>
+<li>Even if you include closures, still many choices</li>
+</ul>
+</aside>
+
 ----
 
 __Haskell may be functional, but that doesn't make it unique__
+
+<aside class="notes">
+Lots of things could describe Haskell
+</aside>
 
 ----
 
@@ -45,6 +66,14 @@ __Haskell may be functional, but that doesn't make it unique__
 * Native executables
 * Garbage collected
 * Immutability
+
+<aside class="notes">
+<ul>
+<li>Some features are rare: pure and lazy</li>
+<li>Some are common</li>
+<li>No one feature is enough to motivate using Haskell</li>
+</ul>
+</aside>
 
 ----
 
@@ -111,7 +140,7 @@ useJsonBodies json1 json2
 
 ----
 
-<img src="http://i1.kym-cdn.com/photos/images/newsfeed/000/531/557/a88.jpg">
+<img src="/static/unique/deeper.jpg" style="width:100%">
 
 ----
 
@@ -121,16 +150,20 @@ useJsonBodies json1 json2
 * Need to fork threads, write to mutable variables, do some locking
 * Or be awesome
 
-```haskell
-(json1, json2) <- concurrently
+<div class="fragment">
+
+<pre><code class="haskell">(json1, json2) <- concurrently
   (httpGet url1)
   (httpGet url2)
-useJsonBodies json1 json2
-```
+useJsonBodies json1 json2</code></pre>
 
-* Cheap green thread implementation
-* Wonderful `async` library
-* Builds on the async I/O system
+<ul>
+<li>Cheap green thread implementation</li>
+<li>Wonderful `async` library</li>
+<li>Builds on the async I/O system</li>
+</ul>
+
+</div>
 
 ----
 
@@ -151,6 +184,10 @@ promise2.andThen(|json2| =>
   promise1.cancel())
 useJsonBody(result.get())
 ```
+
+<aside class="notes">
+So far: elegant in Haskell, but not terribly difficult in other languages.
+</aside>
 
 ----
 
@@ -214,7 +251,7 @@ timeout tenSeconds expensiveComputation
 * Haskell differs in two ways:
     * Immutable by default, explicit kind of mutability
 	* Mutating is an effect, tracked by the type system
-	
+
 ----
 
 ## Mutable Haskell
@@ -242,6 +279,16 @@ let loop i =
           loop (i + 1)
 loop 1
 ```
+
+<aside class="notes">
+
+<ul>
+<li>In pure code, we cannot create, read, or modify a mutable variable</li>
+<li>Have to use non-pure code</li>
+<li>Lots of ceremony for something simple, so don't do that</li>
+</ul>
+
+</aside>
 
 ----
 
@@ -282,6 +329,16 @@ func printScoreRange(results: Vector<TestResult>) {
 }
 ```
 
+<aside class="notes">
+
+<ul>
+<li>Personally think the phrase "reasoning about code" is overused, but here's a concrete example.</li>
+<li><i>Describe slide</i></li>
+<li>What's the expected output? Reasonable to guess...</li>
+</ul>
+
+</aside>
+
 ----
 
 ## Expected output
@@ -291,6 +348,8 @@ Lowest: 22
 Highest: 55
 First result was by: Alice
 ```
+
+<aside class="notes">But let's see the definition of <code>printScoreRange</code></aside>
 
 ----
 
@@ -304,19 +363,33 @@ func printScoreRange(results: Vector<TestResult>) {
 }
 ```
 
+<div class="fragment">
+
 Actual output:
 
-```
-Lowest: 22
+<pre>Lowest: 22
 Highest: 55
-First result was by: Charlie
-```
+First result was by: Charlie</pre>
 
 Non-local changes broke our guessed result
+</div>
+
+<aside class="notes">Our assumptions changed because of mutation</aside>
 
 ----
 
-<img src="http://www.raminajmi.dk/wp-content/uploads/2014/06/homer-simpson-doh.gif">
+<img src="/static/unique/doh.gif">
+
+<aside class="notes">
+
+<ul>
+<li><code>results</code> from <code>main</code> has been modified</li>
+<li>Can't just look at <code>main/code> to understand what will happen</li>
+<li>Need to be aware of mutation happening in the rest of the program</li>
+</ul>
+
+</aside>
+
 
 ----
 
@@ -363,6 +436,8 @@ printScoreRange results = do
 * Concurrent data writes? Impossible!
 * We'll come back to mutable, multithreaded data
 
+<aside class="notes">Multithreaded cases is more interesting. We can easily parallelize our previous code.</aside>
+
 ----
 
 ## Mutability when needed
@@ -373,6 +448,8 @@ printScoreRange results = do
     1. You can still have mutable data structures if you want them,
        but they're __explicit__
 	2. Temporary mutable copy, then freeze it
+
+<aside class="notes">Option 1 breaks our guarantees. But still better than other languages: know exactly which data to look at</aside>
 
 ----
 
@@ -432,6 +509,8 @@ runServer (|request| => {
 })
 ```
 
+Looks reasonable, but...
+
 ```
 Thread 1: receive request: Alice gives $25
 Thread 2: receive request: Alice receives $25
@@ -440,6 +519,16 @@ Thread 2: lookup that Alice has $50
 Thread 1: set Alice's account to $25
 Thread 2: set Alice's account to $75
 ```
+
+<aside class="notes">
+
+<ul>
+<li>What if you actually need to mutate values, and from multiple threads?</li>
+<li><i>Describe slide</i></li>
+<li>Alice ends up with either $25 or $75 instead of $50</li>
+</ul>
+
+</aside>
 
 ----
 
@@ -466,6 +555,8 @@ Thread 2: try to lock Alice, but can't, so wait
 
 __Deadlock!__
 
+NOTE: Typical solution to this is to use locking, but it leads to other problems
+
 ----
 
 ## Software Transactional Memory
@@ -486,6 +577,12 @@ runServer $ \request -> atomically $ do
 * `TVar` is an example of explicit mutation
 * Alternatives: `IORef`, `MVar`
 
+NOTE:
+
+* There are helper functions to make this shorter
+* Want to make a point with the longer code
+* STM will automatically retry when needed
+
 ----
 
 ## The role of purity
@@ -504,6 +601,12 @@ atomically $ do
 * `atomically` only allows side effects on `TVar`s
 * Other side effects (like my bank account) are disallowed
 * Safe for runtime to retry thanks to purity
+
+NOTE:
+
+* `buyBitcoins` needs to go to an exchange and spend $100,000
+* Due to retry, this code could spend $10m
+* This is where purity steps in
 
 ----
 
@@ -549,13 +652,15 @@ There are two problems with this code:
 1. There's a major performance bug in it
 2. It's much more cumbersome than it should be
 
+NOTE: Kind of cheeky to hold off on laziness this long
+
 ----
 
 ## Space leaks
 
 Consider `let foo = 1 + 2`
 
-* `foo` isn't `3`, it's an instruction on how to create `3`
+* `foo` isn't `3`, it's an instruction for how to create `3`
 * `foo` is a _thunk_ until it's evaluated
 * Storing thunks is more expensive than simple types like `Int`s
 * Which values are evaluated in our `loop`?
@@ -567,6 +672,13 @@ let loop i total =
         else loop (i + 1) (total + i)
  in loop 1 0
 ```
+
+NOTE:
+
+* The bane of laziness is space leaks, which you may have hard
+  about. Need to understand how laziness is implemented.
+* Explain why `i` is forced and `total` is not
+* Builds a tree, lots of CPU and memory pressure
 
 ----
 
@@ -582,8 +694,14 @@ let loop i !total =
  in loop 1 0
 ```
 
-* Needing to do this is a downside of Haskell
+* Needing to do this is a downside of Haskell's laziness
 * But do we get any benefits in return?
+
+NOTE:
+
+* Can be explicit about what needs to be evaluated
+* This is one approach, there are others
+* Just added a `!`
 
 ----
 
@@ -628,6 +746,8 @@ for(i := 1; i <= 1000000; i++) {
 * Getting harder to see the forest for the trees
 * If our logic was more complicated, code reuse would be an issue
 
+NOTE: Example of more complicated use case, writing a lookahead parser
+
 ----
 
 ## Some better Haskell
@@ -642,15 +762,19 @@ let loop i !total =
  in loop 1 0
 ```
 
-But this is great
+<div class="fragment">
 
-```haskell
-sum [1..1000000]
-```
+<p>But this is great</p>
 
-* Doesn't it allocate 8mb of ints?
-* Nope, laziness!
-* Just a thunk telling us how to get the rest of the list
+<pre><code class="haskell">sum [1..1000000]</code></pre>
+
+<ul>
+<li>Doesn't it allocate 8mb of ints?</li>
+<li>Nope, laziness!</li>
+<li>Just a thunk telling us how to get the rest of the list</li>
+</ul>
+
+</div>
 
 ----
 
@@ -670,6 +794,13 @@ sum (map (`mod` 13) (filter even [1..1000000]))
 
 * Easy and natural to compose functions in a lazy context
 * Avoids doing unnecessary work or using too much memory
+
+NOTE:
+
+* Never using more than a few machine words
+* Other GHC optimizations avoid allocating any thunks
+* Not covering that today
+* Mixed bag, but functional+lazy=declarative, performant
 
 ----
 
@@ -703,6 +834,11 @@ See also: `and`, `or`, `all`, `any`
 * Aka partial functions: `head []`
 * Also, some inefficient functions still available, `foldl` vs
   `foldl'`
+
+NOTE:
+
+* Generally partial functions are frowned upon
+* But they're still in the language
 
 ----
 
@@ -751,10 +887,10 @@ See also: `and`, `or`, `all`, `any`
 ## Parser (and other) DSLs
 
 * Operator overloading!
-* Abstractions `Alternative` a natural fit
+* Abstractions like `Alternative` a natural fit
     * `parseXMLElement <|> parseXMLText`.
 * Able to reuse huge number of existing library functions,
-  e.g. `optional`, `many`
+    * `optional`, `many`, `foldMap`
 * General purpose `do`-notation is great
 
 ----
