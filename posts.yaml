@@ -1,3 +1,7 @@
+- file: posts/what-makes-haskell-unique.md
+  title: What Makes Haskell Unique
+  time: 2017-12-17T12:00:00Z
+  description: "A talk I gave at F(by) 2017 on what makes Haskell different from other languages"
 - file: posts/stack-and-nightly-breakage.md
   title: Stack and Nightly breakage
   time: 2017-12-07T04:00:00Z
