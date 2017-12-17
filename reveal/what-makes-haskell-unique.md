@@ -165,6 +165,10 @@ useJsonBodies json1 json2</code></pre>
 
 </div>
 
+<aside class="notes">
+So far: elegant in Haskell, but not terribly difficult in other languages.
+</aside>
+
 ----
 
 ## Canceling
@@ -184,10 +188,6 @@ promise2.andThen(|json2| =>
   promise1.cancel())
 useJsonBody(result.get())
 ```
-
-<aside class="notes">
-So far: elegant in Haskell, but not terribly difficult in other languages.
-</aside>
 
 ----
 
@@ -384,7 +384,7 @@ Non-local changes broke our guessed result
 
 <ul>
 <li><code>results</code> from <code>main</code> has been modified</li>
-<li>Can't just look at <code>main/code> to understand what will happen</li>
+<li>Can't just look at <code>main</code> to understand what will happen</li>
 <li>Need to be aware of mutation happening in the rest of the program</li>
 </ul>
 
@@ -463,7 +463,7 @@ sortImmutable :: Vector a -> Vector a
 sortImmutable orig = runST $ do
   mutable <- newMutableVector (length orig)
   copyValues orig mutable
-  sort mutable
+  sortMutable mutable
   freeze mutable
 ```
 
@@ -520,15 +520,11 @@ Thread 1: set Alice's account to $25
 Thread 2: set Alice's account to $75
 ```
 
-<aside class="notes">
+NOTE:
 
-<ul>
-<li>What if you actually need to mutate values, and from multiple threads?</li>
-<li><i>Describe slide</i></li>
-<li>Alice ends up with either $25 or $75 instead of $50</li>
-</ul>
-
-</aside>
+* What if you actually need to mutate values, and from multiple threads?
+* *Describe slide*
+* Alice ends up with either $25 or $75 instead of $50
 
 ----
 
