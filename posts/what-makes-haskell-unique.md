@@ -529,7 +529,7 @@ buying bitcoins!
 
 This is where purity steps in. Inside `atomically`, you are not
 allowed to perform any side effects outside of STM itself. That means
-you can modify `TVar`s, but you can read or write files, print to the
+you can modify `TVar`s, but you cannot read or write files, print to the
 console, fire the missiles, or place multi million dollar currency
 purchases. This may feel like a limitation, but the tradeoff is that
 it's perfectly safe for the runtime system to retry your transactions
