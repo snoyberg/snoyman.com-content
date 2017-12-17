@@ -40,6 +40,12 @@ publications:
   publisher: "IEEE Spectrum, The Functional Web"
 
 talks:
+- date: 2017-12
+  title: "What Makes Haskell Unique"
+  venue: F(by) 2017
+  links:
+  - url: "https://www.snoyman.com/reveal/what-makes-haskell-unique"
+    text: Slides
 - date: 2017-10
   title: "Everything you didn't want to know about monad transformer state"
   venue: LambdaWorld
