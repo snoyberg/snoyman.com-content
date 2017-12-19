@@ -682,7 +682,7 @@ sum [1..1000000]
 
 We use list range syntax to create a list with one million numbers in
 it. On its face, this looks terrible: we need to allocate about 8mb of
-data to hold onto this integers, when this should run in constant
+data to hold onto these integers, when this should run in constant
 space. But this is exactly where laziness kicks in: instead of
 allocating all of these values immediately, we allocate a thunk. Each
 time we step through the list, our thunk generates one new integer and
