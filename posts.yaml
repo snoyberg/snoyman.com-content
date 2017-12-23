@@ -1,3 +1,7 @@
+- file: posts/when-you-should-use-revisions.md
+  title: When you should use revisions
+  time: 2017-12-20T12:00:00Z
+  description: "Despite my general aversion to Hackage Revisions: some cases where you should use them"
 - file: posts/what-makes-haskell-unique.md
   title: What Makes Haskell Unique
   time: 2017-12-17T08:00:00Z
