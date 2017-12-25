@@ -1,3 +1,7 @@
+- file: posts/dropped-packages-following-lts-10.md
+  title: Dropped packages following LTS 10
+  time: 2017-12-25T15:47:00Z
+  description: "Following the release of LTS 10, we've removed a bunch of upper bounds and dropped some packages from Stackage Nightly"
 - file: posts/what-makes-haskell-unique.md
   title: What Makes Haskell Unique
   time: 2017-12-17T08:00:00Z
