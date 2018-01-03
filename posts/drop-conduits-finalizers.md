@@ -38,13 +38,13 @@ is almost always fine in practice, but clearly not a mathematical law.
 relies on using the type paramter on the `Pipe` type to eliminate
 leftovers, but leftovers are not a topic I'm raising right now.
 
-None of this is new information, so why am I writing this blog post
-now. The first is that I'm already working on a breaking changes to
+None of this is new information; so why am I writing this blog post
+now? The first is that I'm already working on a breaking change to
 Conduit to standardize naming and eliminate some legacy type and
 operator names. See
 [the discussion](https://github.com/snoyberg/conduit/issues/283) and
 [initial comparison](https://github.com/snoyberg/conduit/pull/338/files)
-for more details. This natural leads me to ask related questions.
+for more details. This naturally leads me to ask related questions.
 
 More to the point: after having worked with Conduit for years, my
 initial concerns about prompt finalization seem to have been
