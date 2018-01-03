@@ -467,5 +467,237 @@ https://www.snoyman.com/blog/2016/12/beware-of-readfile
 
 * Wants bytes? `Data.ByteString.readFile`
 * Want text? Choose an encoding!
-    * `decodeUtf8With lenientDecode <$> Data.ByteString.readFile`
-* 
+    * `decodeUtf8With lenientDecode <$> B.readFile fp`
+* Let's get crazy
+
+```haskell
+readFileUtf8 :: MonadIO m => FilePath -> m Text
+readFileUtf8 fp = do
+  bs <- readFileBinary fp
+  case decodeUtf8' bs of
+    Left e -> throwIO $ ReadFileUtf8Exception fp e
+    Right text -> return text
+```
+
+----
+
+## Writing a file
+
+* No need to worry about char enc problems
+* `Data.ByteString.writeFile`
+* Have text? Choose an encoding!
+    * `B.writeFile fp $ encodeUtf8 text`
+
+----
+
+## Copy a file
+
+What's wrong with this code?
+
+```haskell
+bs <- B.readFile inputFile
+B.writeFile outputFile bs
+```
+
+----
+
+## Streaming
+
+Here's a conduit solution
+
+```haskell
+runConduitRes $ sourceFile inputFile
+             .| sinkFile outputFile
+```
+
+Or without `ResourceT`:
+
+```haskell
+withSourceFile inputFile $ \src ->
+withSinkFile outputFile $ \sink ->
+  runConduit $ src .| sink
+```
+
+Why with pattern? We'll talk exceptions later
+
+---
+
+## Generating large output
+
+What's wrong with this code?
+
+```haskell
+odds :: [Int]
+odds = [1, 3..]
+
+toLine :: Int -> String
+toLine i = show i ++ "\n"
+
+toLines :: [Int] -> String
+toLines = foldr (\i rest -> toLine i ++ rest) ""
+
+main :: IO ()
+main = putStr $ toLines $ take 1000 odds
+```
+
+__Strings!__
+
+----
+
+## Strict ByteString
+
+```haskell
+{-# LANGUAGE OverloadedStrings #-}
+import Data.ByteString (ByteString)
+import qualified Data.ByteString.Char8 as B8
+import Data.Monoid ((<>))
+
+odds = [1, 3..]
+
+toLine :: Int -> ByteString
+toLine i = B8.pack (show i) <> "\n"
+
+toLines :: [Int] -> ByteString
+toLines = foldr (\i rest -> toLine i <> rest) B8.empty
+
+main = B8.putStr $ toLines $ take 1000 odds
+```
+
+Problem? Quadratic complexity
+
+----
+
+## Lazy ByteString
+
+Avoid the buffer copies
+
+```haskell
+{-# LANGUAGE OverloadedStrings #-}
+import Data.ByteString.Lazy (ByteString)
+import qualified Data.ByteString.Lazy.Char8 as BL8
+import Data.Monoid ((<>))
+
+odds = [1, 3..]
+
+toLine :: Int -> ByteString
+toLine i = BL8.pack (show i) <> "\n"
+
+toLines :: [Int] -> ByteString
+toLines = foldr (\i rest -> toLine i <> rest) BL8.empty
+
+main = BL8.putStr $ toLines $ take 1000 odds
+```
+
+Still quadratic :(
+
+----
+
+## Builders
+
+Single-copy data structure, efficient `Handle` interaction
+
+```haskell
+{-# LANGUAGE OverloadedStrings #-}
+import Data.ByteString.Builder (Builder, intDec, hPutBuilder)
+import System.IO (stdout)
+import Data.Monoid ((<>))
+
+odds = [1, 3..]
+
+toLine :: Int -> Builder
+toLine i = intDec i <> "\n"
+
+toLines :: [Int] -> Builder
+toLines = foldr (\i rest -> toLine i <> rest) mempty
+
+main = hPutBuilder stdout $ toLines $ take 1000 odds
+```
+
+----
+
+## Text builders
+
+* Text also has a builder
+* Much less useful overall, no direct output capabilities
+* Downside to ByteString builders: have to assume a character encoding
+* For console, may be a problem, but great for network or file I/O
+
+---
+
+## Networking
+
+* Low level libraries like network
+    * Use the `Network.Socket` API!
+* conduit-based helper functions on top of that
+* WAI and Warp for web servers
+* http-conduit for web clients
+* Many other libraries out there too
+
+----
+
+## Web server
+
+* Lots of details here: <https://github.com/fpco/applied-haskell/blob/master/web-services.md>
+* Who wants to go down the rabbit hole?
+
+----
+
+## Web client
+
+* <https://haskell-lang.org/library/http-client>
+* Optional rabbit hole again
+
+----
+
+## Network server with conduit
+
+* FIXME include some code samples
+
+---
+
+## Side adventure: unliftio
+
+* Many more details on the motivation tomorrow
+* Two packages
+    * unliftio-core provides a typeclass
+    * unliftio wraps a bunch of libraries with that type class
+* If it's in unliftio: it's good to use, do it!
+* Epic foreshadowment for tomorrow's presentation :)
+
+---
+
+## Concurrency
+
+* FIXME UnliftIO.Async
+* https://haskell-lang.org/library/async
+
+---
+
+## Mutable data
+
+* FIXME
+* https://github.com/fpco/applied-haskell/blob/master/mutable-variables.md
+
+---
+
+## Exception handling
+
+* Documentation still out of date
+* We'll cover the why of things tomorrow
+* Short answer: use `UnliftIO.Exception`
+
+---
+
+## External processes
+
+* FIXME typed-process
+* https://haskell-lang.org/library/typed-process
+
+---
+
+## Random grab bag
+
+* Typeclassopedia FIXME add link
+* <https://haskell-lang.org/tutorial/operators>
+* <https://haskell-lang.org/tutorial/synonyms>
+* <https://haskell-lang.org/library/optparse-applicative>
