@@ -1,3 +1,7 @@
+- file: posts/drop-conduits-finalizers.md
+  title: "Drop Conduit's Finalizers?"
+  time: 2018-01-03T13:57:00Z
+  description: "Time to ask a really hard question: is it time to remove Conduit's finalizer concept from the library?"
 - file: posts/review-bridge-program.md
   title: Review of The Bridge strength program
   time: 2018-01-01T10:45:00Z
