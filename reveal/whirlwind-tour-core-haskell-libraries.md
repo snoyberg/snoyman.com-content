@@ -109,7 +109,7 @@ Sequential data the most complicated, let's knock out the other two
     * `data IntMap value`
     * `data HashMap key value`
 * `IntMap` is a specialized, optimized `Map Int`
-* `Map` is a binary tree, `HashMap` is (surprised) hash map
+* `Map` is a binary tree, `HashMap` is (surprise) hash map
 * `Map` requires `Ord` on keys, `HashMap` requires `Hashable` and `Eq`
 * Generally: `HashMap` performs better
 
@@ -651,7 +651,19 @@ main = hPutBuilder stdout $ toLines $ take 1000 odds
 
 ## Network server with conduit
 
-* FIXME include some code samples
+Simple echo server example
+
+```haskell
+{-# LANGUAGE OverloadedStrings #-}
+import Data.Conduit
+import Data.Conduit.Network
+
+main :: IO ()
+main = runTCPServer (serverSettings 3001 "127.0.0.1") echo
+
+echo :: AppData -> IO ()
+echo app = runConduit $ appSource app .| appSink app
+```
 
 ---
 
@@ -666,17 +678,17 @@ main = hPutBuilder stdout $ toLines $ take 1000 odds
 
 ---
 
-## Concurrency
+## Mutable data
 
-* FIXME UnliftIO.Async
-* https://haskell-lang.org/library/async
+* https://github.com/fpco/applied-haskell/blob/master/mutable-variables.md
+* Single cell references: https://www.stackage.org/package/mutable-containers
 
 ---
 
-## Mutable data
+## Concurrency
 
-* FIXME
-* https://github.com/fpco/applied-haskell/blob/master/mutable-variables.md
+* tl;dr: use `UnliftIO.Async` and `UnliftIO.STM`
+* https://haskell-lang.org/library/async
 
 ---
 
@@ -690,14 +702,22 @@ main = hPutBuilder stdout $ toLines $ take 1000 odds
 
 ## External processes
 
-* FIXME typed-process
 * https://haskell-lang.org/library/typed-process
+
+---
+
+## Structuring applications
+
+* Use `RIO`
+* Define `Has` typeclasses
+* Demonstration: `pantry`: https://github.com/snoyberg/codename-karka/blob/master/pantry/src/Pantry.hs
+* <https://github.com/commercialhaskell/stack/tree/rio/subs/rio>
 
 ---
 
 ## Random grab bag
 
-* Typeclassopedia FIXME add link
+* <https://wiki.haskell.org/Typeclassopedia>
 * <https://haskell-lang.org/tutorial/operators>
 * <https://haskell-lang.org/tutorial/synonyms>
 * <https://haskell-lang.org/library/optparse-applicative>
