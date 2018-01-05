@@ -688,6 +688,7 @@ echo app = runConduit $ appSource app .| appSink app
 ## Concurrency
 
 * tl;dr: use `UnliftIO.Async` and `UnliftIO.STM`
+* https://haskell-lang.org/library/stm
 * https://haskell-lang.org/library/async
 
 ---
