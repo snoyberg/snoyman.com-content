@@ -88,6 +88,26 @@ title: Whirlwind Tour of Core Haskell Libraries
 Doesn't cover all needs, but most real programs will need almost all
 of these.
 
+----
+
+## Libraries
+
+- base
+- bytestring
+- containers
+- deepseq
+- directory
+- filepath
+- hashable
+- microlens
+- mtl
+- text
+- time
+- typed-process
+- unliftio
+- unordered-containers
+- vector
+
 ---
 
 ## Data structures
