@@ -161,8 +161,6 @@ Same approach used by the new unliftio package, docs still in transition
 
 <https://www.fpcomplete.com/blog/2017/07/the-rio-monad>
 
-FIXME: More up-to-date explanation
-
 ---
 
 ## Still have time for more?
