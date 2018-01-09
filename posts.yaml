@@ -1,3 +1,7 @@
+- file: posts/breaking-changes-dependency-trees.md
+  title: "Breaking changes, dependency trees"
+  time: 2018-01-09T12:00:00Z
+  description: "Some thoughts on upcoming library breaking changes, and how to restructure dependency trees"
 - file: posts/drop-conduits-finalizers.md
   title: "Drop Conduit's Finalizers?"
   time: 2018-01-03T13:57:00Z
