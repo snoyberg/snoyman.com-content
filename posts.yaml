@@ -1,3 +1,7 @@
+- file: posts/slurp.md
+  title: SLURP
+  time: 2018-01-24T04:45:00Z
+  description: "My comments on the SLURP proposal"
 - file: posts/breaking-changes-dependency-trees.md
   title: "Breaking changes, dependency trees"
   time: 2018-01-09T12:00:00Z
