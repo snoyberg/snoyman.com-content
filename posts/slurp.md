@@ -211,7 +211,7 @@ the ability to change this:
    simply do not release their code to Hackage or Stackage because of
    this. Others do so begrdugingly. But all of them would like to
    avoid Hackage for this reason.
-3. Some people feel that, technically, the central repro with manually
+3. Some people feel that, technically, the central repo with manually
    uploaded tarball model is outdated. They would rather see a
    workflow based on automated Git-based releases using tags or a
    release branch. This is not a social dynamic _at all_, but a desire
