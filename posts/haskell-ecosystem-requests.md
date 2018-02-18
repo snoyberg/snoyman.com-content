@@ -79,7 +79,7 @@ goals/agendas/plans being made privately and not shared, which leads
 to an inability of people outside of an inner circle to
 contribute. See, for example:
 
-* https://np.reddit.com/r/haskell/comments/7tykqi/should_stackage_ignore_version_bounds/dtgn1eb/
+* [https://np.reddit.com/r/haskell/comments/7tykqi/should_stackage_ignore_version_bounds/dtgn1eb/](https://np.reddit.com/r/haskell/comments/7tykqi/should_stackage_ignore_version_bounds/dtgn1eb/)
 
 I would like to recommend some maintainer guidelines be put in place
 for any core Haskell packages and projects. (What constitutes "core"
