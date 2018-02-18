@@ -71,15 +71,15 @@ contributors to some infrastructure projects have been discouraged by
 the unclear process for getting their changes included upstream. See,
 as examples:
 
-* https://github.com/haskell/cabal/pull/4696
-* https://github.com/haskell/hackage-security/pull/203
+* <https://github.com/haskell/cabal/pull/4696>
+* <https://github.com/haskell/hackage-security/pull/203>
 
 More generally, there is an ongoing culture in some places of
 goals/agendas/plans being made privately and not shared, which leads
 to an inability of people outside of an inner circle to
 contribute. See, for example:
 
-* [https://np.reddit.com/r/haskell/comments/7tykqi/should_stackage_ignore_version_bounds/dtgn1eb/](https://np.reddit.com/r/haskell/comments/7tykqi/should_stackage_ignore_version_bounds/dtgn1eb/)
+* <https://np.reddit.com/r/haskell/comments/7tykqi/should_stackage_ignore_version_bounds/dtgn1eb/>
 
 I would like to recommend some maintainer guidelines be put in place
 for any core Haskell packages and projects. (What constitutes "core"
