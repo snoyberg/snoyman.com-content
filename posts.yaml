@@ -1,3 +1,7 @@
+- file: posts/haskell-ecosystem-requests.md
+  title: Haskell Ecosystem Requests
+  time: 2018-02-18T16:41:00Z
+  description: "Some requests for changes in how some parts of the Haskell ecosystem are maintained"
 - file: posts/stack-patching-policy.md
   title: Stack Patching Policy
   time: 2018-02-14T08:38:00Z
