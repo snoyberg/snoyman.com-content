@@ -232,7 +232,7 @@ bar :: ConduitM a  b    m ()
 baz :: ConduitM b  Void m r
 
 foo .| bar :: ConduitM () b    m ()
-bar .| baz :: ConduitM b  Void m r
+bar .| baz :: ConduitM a  Void m r
 
 foo .| bar .| baz :: ConduitM () Void m r
 runConduit $ foo .| bar .| baz :: m r
