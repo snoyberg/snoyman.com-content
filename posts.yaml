@@ -1,3 +1,7 @@
+- file: posts/stop-breaking-compatibility.md
+  title: Stop breaking compatibility
+  time: 2018-04-01T00:00:00Z
+  description: Without a doubt, the most dangerous thing in all of software development is breaking backwards compatibility. We need to stop this!
 - file: posts/lambdaconf-haskell-hackathon-2018.md
   title: LambdaConf Haskell Hackathon 2018
   time: 2018-03-28T10:12:00Z
