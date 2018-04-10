@@ -1496,3 +1496,5 @@ badRace ioa iob = do
 
 * Thanks all!
 * Let us know on Twitter what topics you're interested in next
+    * [@snoyberg](https://twitter.com/snoyberg/)
+    * [@FPComplete](https://twitter.com/fpcomplete)
