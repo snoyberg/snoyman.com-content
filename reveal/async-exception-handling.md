@@ -1498,3 +1498,4 @@ badRace ioa iob = do
 * Let us know on Twitter what topics you're interested in next
     * [@snoyberg](https://twitter.com/snoyberg/)
     * [@FPComplete](https://twitter.com/fpcomplete)
+* For Partnering opportunities please email: [Robert@fpcomplete.com](mailto:Robert@fpcomplete.com)
