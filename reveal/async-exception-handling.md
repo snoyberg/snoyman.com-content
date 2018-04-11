@@ -84,7 +84,7 @@ badRace ioa iob = do
     * Open the file, may fail
     * Interact with the file handle, may fail
     * Close the file handle regardless
-    * File descriptor are scarce!
+    * File descriptors are scarce!
 * Start without any exceptions, build up from there
 * Slight detour though...
 
@@ -200,10 +200,10 @@ myFunc :: FilePath -> IO MyResult
 myFunc fp = withFile fp ReadMode usesFileHandle
 ```
 
-__General principle__ Avoid using functions which only allocate or
+__General principle__: Avoid using functions which only allocate or
 only clean up whenever possible.
 
-__Question__ What if `cleanup` throws an exception?
+__Question__: What if `cleanup` throws an exception?
 
 ---
 
