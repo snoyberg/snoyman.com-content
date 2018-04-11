@@ -1499,3 +1499,5 @@ badRace ioa iob = do
     * [@snoyberg](https://twitter.com/snoyberg/)
     * [@FPComplete](https://twitter.com/fpcomplete)
 * For Partnering opportunities please email: [Robert@fpcomplete.com](mailto:Robert@fpcomplete.com)
+* Slides: https://www.snoyman.com/reveal/async-exception-handling
+* Blog post on its way!
