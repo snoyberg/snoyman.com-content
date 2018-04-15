@@ -40,6 +40,14 @@ publications:
   publisher: "IEEE Spectrum, The Functional Web"
 
 talks:
+- date: 2018-04
+  title: "Asynchronous Exception Handling in Haskell"
+  venue: FP Complete Webinar
+  links:
+  - url: "https://www.snoyman.com/reveal/async-exception-handling"
+    text: Slides
+  - url: "https://www.fpcomplete.com/blog/how-to-handle-asynchronous-exceptions-in-haskell"
+    text: Video
 - date: 2017-12
   title: "What Makes Haskell Unique"
   venue: F(by) 2017
