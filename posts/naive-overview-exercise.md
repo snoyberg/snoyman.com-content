@@ -238,6 +238,7 @@ bodyweights. Some references:
   [r/bodyweightfitness recommended routine](https://www.reddit.com/r/bodyweightfitness/wiki/kb/recommended_routine)
 * [Mark Lauren's You Are Your Own Gym](https://www.marklauren.com/),
   which I also followed for a while
+* [Calisthenics for Beginners](https://athleticmuscle.net/calisthenics-for-beginners/)
 
 All of these routines follow the same basic principles: use compound
 movements to target all of your major muscle groups, progressively
