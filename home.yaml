@@ -110,7 +110,7 @@ talks:
   title: Pipes and Conduit
   venue: Haskell Cast
   links:
-    - url: "http://www.haskellcast.com/episode/006-gabriel-gonzalez-and-michael-snoyman-on-pipes-and-conduit/"
+    - url: "https://www.youtube.com/watch?v=Qn2Oc4vWoGg"
       text: Video
 - date: 2013-11
   title: Yesod and FP Complete
