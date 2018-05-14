@@ -1,5 +1,3 @@
-# Guide to matrix.org and riot.im
-
 NOTE: This guide is essentially me taking notes while I learn about
 the matrix.org/riot.im projects. Some of it is almost certainly
 wrong. And I'm trying to take notes on how an end user uninterested in
@@ -28,13 +26,14 @@ reasons why I started using these systems:
 If these reasons don't seem important to you, you may want to stick
 with more mainstream tooling. I'm particularly interested in these
 options for open source project communication, which is also why I'm
-writing this blog post (to help others onboard more easily).
+writing this blog post (to help others onboard more easily). More on
+that topic in a separate blog post.
 
 ## Matrix.org vs Riot.im
 
 Matrix, hosted at [matrix.org](https://www.matrix.org), is "An open
 network for secure, decentralized communication." It is a protocol
-people to communicate with each other. There is a concrete server at
+people use to communicate with each other. There is a concrete server at
 matrix.org that speaks this protocol, but you're free to run your own
 server on your own machine. That's the "decentralized" aspect of
 things.
