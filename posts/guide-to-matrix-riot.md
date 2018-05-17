@@ -129,3 +129,7 @@ bridge to the #haskell channel on Freenode (IRC).
 For open source work, I'm hoping that this kind of bridging will allow
 people who prefer IRC to interact with those looking for clients with
 a different interface.
+
+__UPDATE May 15, 2018__ I found a great guide that demonstrates how to
+get tighter integration with IRC:
+<https://opensource.com/article/17/5/introducing-riot-IRC>.
