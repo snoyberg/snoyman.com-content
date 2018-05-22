@@ -1,3 +1,7 @@
+- file: posts/building-packages-outside-snapshots.md
+  title: "Building packages outside snapshots"
+  time: 2018-05-23T13:28:00Z
+  description: Sometimes you want to build a package that isn't in the latest Stackage snapshots. Here's a quick trick to making that easier.
 - file: posts/guide-to-matrix-riot.md
   title: "Guide to matrix.org and riot.im"
   time: 2018-05-14T13:28:00Z
