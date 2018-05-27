@@ -167,7 +167,7 @@ __NOTE__ An _optic_ is a more general term that encompasses a lot of
 the types in the lens package, like lenses, foldables, prisms,
 traversables, isos, getters, etc. Because of how optics are
 structured, they compose together nicely. And because of how the
-typeclasses are structure, optics have a nice subtyping system, which
+typeclasses are structured, optics have a nice subtyping system, which
 I'm hinting at here.
 
 For example, a `Traversal` is a generalization of a `Fold` which also
