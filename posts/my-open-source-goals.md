@@ -52,7 +52,7 @@ that to me. What I recommend is:
   did that [write-up on
   matrix.org](https://www.snoyman.com/blog/2018/05/guide-to-matrix-riot) a few
   weeks back.) After a lot of review and experimentation, it looks for now like
-  <gitter.im> is the best bet for now. I'm already hanging out on
+  [gitter.im](https://gitter.im) is the best bet for now. I'm already hanging out on
   [commercialhaskell/commercialhaskell](https://gitter.im/commercialhaskell/commercialhaskell)
   if you want to hit me up there.
 
