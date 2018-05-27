@@ -1,3 +1,7 @@
+- file: posts/my-open-source-goals.md
+  title: "My open source goals"
+  time: 2018-05-28T00:08:00Z
+  description: I'm planning on changing my open source priorities to focus more on helping others work on projects.
 - file: posts/building-packages-outside-snapshots.md
   title: "Building packages outside snapshots"
   time: 2018-05-23T13:06:00Z
