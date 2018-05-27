@@ -11,7 +11,7 @@ of reasons:
 * I think it's healthiest for the projects in question to distribute the
   knowledge of how to maintain them, debug them, document them, etc, across a
   larger group of people. (In other words: [bus
-  factor](https://en.wikipedia.org/wiki/Bus_factor).
+  factor](https://en.wikipedia.org/wiki/Bus_factor).)
 * I don't want to set myself up as a bottleneck on any project. Doing so hurts
   the project (per previous point), and ultimately will force me to make
   decisions on which projects will and will not be supported.
@@ -27,7 +27,7 @@ mentor people looking to get more involved.
 
 In collaboration with some others, I'm planning on writing some kind of "guide
 to open source maintenance" document to help keep the projects I'm maintaining
-run smoothly. I'm hoping that such a write-up will be helpful for others. More
+running smoothly. I'm hoping that such a write-up will be helpful for others. More
 generally: I encourage others who maintain open source projects to take similar
 steps towards helping others join their projects.
 
