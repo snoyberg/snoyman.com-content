@@ -5,11 +5,14 @@ been some confusion recently, I'd like to set the record straight:
 * I don't know who snoyjerk is
 * I have never used "sock puppet" accounts to discuss Haskell or other
   programming topics.
+
     * I have in the past used alternative accounts to discuss other
       interests, like weight lifting, but have since stopped to avoid
       any possible confusion.
+
 * Unless I'm overlooking something, all of my social media accounts
   are under the name snoyberg.
+
     * I obviously can't guarantee that every snoyberg out there is me,
       there are simply too many social media sites.
     * I also have access to some other social media accounts. For
