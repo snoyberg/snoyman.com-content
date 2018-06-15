@@ -1,3 +1,7 @@
+- file: posts/deprecating-haskell-markdown-library.md
+  title: "Deprecating the Haskell markdown library"
+  time: 2018-06-15T06:32:00Z
+  description: "I'm considering deprecating the markdown library I wrote"
 - file: posts/i-am-not-snoyjerk.md
   title: "I am not snoyjerk"
   time: 2018-05-28T08:43:00Z
