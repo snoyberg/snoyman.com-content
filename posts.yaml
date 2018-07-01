@@ -1,6 +1,6 @@
 - file: posts/stop-supporting-older-ghcs.md
   title: "Stop supporting older GHCs"
-  time: 2018-07-02T13:00:00Z
+  time: 2018-07-01T13:00:00Z
   description: "An argument for dropping support in libraries for older versions of GHC"
 - file: posts/deprecating-haskell-markdown-library.md
   title: "Deprecating the Haskell markdown library"
