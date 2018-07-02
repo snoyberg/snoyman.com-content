@@ -113,9 +113,6 @@
 - file: posts/playing-with-lens-aeson.md
   title: Playing with lens-aeson
   time: 2017-05-29T18:00:00Z
-- file: posts/naive-overview-nutrition-exercise.md
-  title: A Very Naive Overview of Nutrition and Exercise
-  time: 2017-05-20T06:00:00Z
 - file: posts/worst-function-in-conduit.md
   title: The Worst Function in Conduit
   time: 2017-05-07T05:10:00Z
