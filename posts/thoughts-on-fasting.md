@@ -158,15 +158,16 @@ purported benefits I mentioned above:
 
 * Running your brain on a different energy source can give you mental
   focus. This is _not_ universal: some people report no such feeling.
-* Once you switch over to ketosis on a fast, your burning your (likely
-  ample) body fat stores, providing a nearly-unlimited supply of raw
-  calories. Compare this to have 3 meals a day, and depending on the
-  next injection of calories for your pick-me-up.
+* Once you switch over to ketosis on a fast, you're burning your
+  (likely ample) body fat stores, providing a nearly-unlimited supply
+  of raw calories. Compare this to having 3 meals a day: you are
+  typically dependent on each meal to provide your energy, and are
+  just waiting for your next infusion of food for a pick-me-up.
 * Using your body fat as a fuel source obviously means you'll be
-  burning fat, which is the right way to lose weight! But fasting and
-  ketosis do something even better: it trains your body to be better
-  at burning fat in the future, making it easier to continue burning
-  fat in the future.
+  burning fat, which is the right way to lose weight! But
+  fasting+ketosis does something even better: it trains your body to
+  be better at burning fat, making it easier to continue burning fat
+  in the future.
 
 One final note: people familiar with Type 1 diabetes may be terrified
 of the term "keto" due to ketoacidosis. Ketoacidosis is a dangerous
@@ -221,13 +222,14 @@ I'm writing this blog post now:
       mini-cuts.
 * __Nausea__. The first time I did a multiday fast, I got so nauseous
   that by the end of the third day I had to break the fast. It was bad
-  enough that I could stand the taste of coffee for the next two
+  enough that I couldn't stand the taste of coffee for the next two
   months. However, that first fast included no cream or bone
   broth. Since I've added those two things, I haven't had any more
   nausea when fasting.
 * __Dizziness__. Especially when first adapting to the fasted state,
   you may feel lightheaded. Just be careful, and be sure to drink
-  enough water. Generally: make sure you get enough fluids.
+  enough water, and supplement salts as needed. More generally: make
+  sure you get enough fluids.
 
 There are certainly others, these are just the ones that have most
 affected me.
@@ -286,7 +288,7 @@ over eating to see what happens.
 
 ## Extra: some calorie math
 
-For anyone in a healthy or above weight range, your body is carry more
+For anyone in a healthy or above weight range, your body is carrying more
 than enough calories in fat to sustain you for days, likely weeks. If
 you do some quick math: there are 3,500 calories in 1 pound (0.45 kg)
 of fat. If you burn about 2,000 calories a day, you can burn roughly
