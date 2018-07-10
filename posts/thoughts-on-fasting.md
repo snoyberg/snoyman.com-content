@@ -306,3 +306,15 @@ cancer cells. Cancer cells require lots of glucose (and a bit of
 protein) for energy. Fasting starves out the cancer cells. I'm not
 telling anyone to skip chemo or radiation. But I do personally know
 someone who defeated breast cancer with an (I believe) 11 day fast.
+
+## Extra: relevant tweets
+
+Here are some of the relevant tweets from the discussion yesterday.
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Day 2.5 of a multiday fast. The ketones have kicked in big time. I&#39;m feeling clear headed, it&#39;s easier to focus on tasks/ignore distractions, and physically feeling great. If you haven&#39;t tried a multiday fast, I highly recommend it!</p>&mdash; Michael Snoyman (@snoyberg) <a href="https://twitter.com/snoyberg/status/1016312409760436225?ref_src=twsrc%5Etfw">July 9, 2018</a></blockquote>
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">👌🏻truth👌🏻<br><br>fasting is much easier than calorie restriction, but most people won&#39;t believe it until they do it once. After that, they&#39;ll never go back to &quot;trying to eat less today&quot;. The binary decision to eat today or not to eat today is far less stressful. <a href="https://t.co/uqvwovvtBV">https://t.co/uqvwovvtBV</a></p>&mdash; Thomas D (@tthomasdd) <a href="https://twitter.com/tthomasdd/status/1016384405798113280?ref_src=twsrc%5Etfw">July 9, 2018</a></blockquote>
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">And some Youtube videos I&#39;ve watched by him. There are many others as well, I&#39;m going to assume also very good, but likely lots of repeated content. There&#39;s only so much to say about &quot;stop eating&quot; :)<a href="https://t.co/FPfBZ1UpAy">https://t.co/FPfBZ1UpAy</a><a href="https://t.co/OGjnA4tgcz">https://t.co/OGjnA4tgcz</a></p>&mdash; Michael Snoyman (@snoyberg) <a href="https://twitter.com/snoyberg/status/1016334163664916481?ref_src=twsrc%5Etfw">July 9, 2018</a></blockquote>
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">No, not at all, it&#39;s the exact opposite. Once you have the mental decision &quot;I&#39;m not going to eat today,&quot; it&#39;s much easier to just move on from food completely. Much harder is to say &quot;I&#39;m only going to eat 500 calories today&quot; or whatever.</p>&mdash; Michael Snoyman (@snoyberg) <a href="https://twitter.com/snoyberg/status/1016377672119865344?ref_src=twsrc%5Etfw">July 9, 2018</a></blockquote>
