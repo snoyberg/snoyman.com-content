@@ -24,7 +24,8 @@ There are many reasons to consider fasting, including:
   coming from? We'll get to that.
 * __General health benefits__. Fasting has been well demonstrated to
   help treat epilepsy, but more recently also have claims of
-  anti-cancer benefits.
+  anti-cancer benefits. It can also be a highly effective treatment
+  for type 2 diabetes.
 
 Alright, let's get into the details of how to do this.
 
@@ -57,8 +58,8 @@ and some contain calories.
 There are three other things you can include in your fast if desired:
 
 * Salts, including sodium (normal table salt), potassium, and
-  magnesium. Personally, I've only used a bit of normal table salt or
-  himalayan salt.
+  magnesium. Personally, I've used a bit of normal table salt,
+  himalayan salt, or high-potassium salt.
     * If you're wondering: how do you consume the salt? Yup: I drink
       salt water sometimes. Delicious.
 * Some cream in your coffee. Don't overdo it: you're not making
