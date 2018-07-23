@@ -42,6 +42,12 @@ publications:
   publisher: "IEEE Spectrum, The Functional Web"
 
 talks:
+- date: 2018-07
+  title: Haskell from the Inside Out
+  venue: FLIP 2018
+  links:
+  - url: "https://www.snoyman.com/reveal/haskell-inside-out"
+    text: Slides
 - date: 2018-06
   title: Haskell Hackathon
   venue: LambdaConf 2018
