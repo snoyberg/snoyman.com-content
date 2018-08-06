@@ -1,3 +1,5 @@
+__UPDATE August 2018__ As pointed out by Mark Wotton, the instructions below were out of date (see [Sed: A Debugging Story](https://www.fpcomplete.com/blog/2018/06/sed-a-debugging-story) for more information). I've updated the contents below, but for future readers: please see the more up-to-date AppVeyor configuration on [Stack's Github repo](https://github.com/commercialhaskell/stack/blob/stable/doc/appveyor.yml).
+
 I don't think I ever documented this before, so just a quick post to get this
 out there. Many of us working on open source Haskell libraries already use
 [Travis CI](https://travis-ci.org/) for doing continuous integration builds of
@@ -29,6 +31,10 @@ clone_folder: "c:\\stack"
 environment:
   global:
     STACK_ROOT: "c:\\sr"
+
+    # Override the temp directory to avoid sed escaping issues
+    # See https://github.com/haskell/cabal/issues/5386
+    TMP: "c:\\tmp"
 
 test_script:
 - stack setup > nul
