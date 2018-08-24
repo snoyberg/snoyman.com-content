@@ -1,11 +1,17 @@
+series:
+  kids-coding: Kids Coding
+  health-guide: Health Guide
+posts:
 - file: posts/kids-coding-part-2.md
   title: "Kids Coding, Part 2"
   time: 2018-08-24T06:04:00Z
   description: "Part 2 of teaching my kids to code, introducing variables and defining functions."
+  series: kids-coding
 - file: posts/kids-coding-part-1.md
   title: "Kids Coding, Part 1"
   time: 2018-08-23T17:55:00Z
   description: "I just started teaching my kids some coding. Here are the notes from the first lesson."
+  series: kids-coding
 - file: posts/post-fast-writeup.md
   title: "Post Fast Write-up"
   time: 2018-07-15T05:55:00Z
@@ -14,6 +20,7 @@
   title: "Thoughts on Fasting"
   time: 2018-07-10T03:10:00Z
   description: "A number of people expressed interest in my current multiday fast. Let me share some layperson's thoughts on the topic."
+  series: health-guide
 - file: posts/stop-supporting-older-ghcs.md
   title: "Stop supporting older GHCs"
   time: 2018-07-01T13:00:00Z
@@ -104,6 +111,7 @@
   title: Posture
   time: 2017-08-16T09:43:00Z
   description: "The story of how I (mostly) overcame back pain, and advice for others suffering from it"
+  series: health-guide
 - file: posts/some-upcoming-crazy-thoughts.md
   title: Some Upcoming Crazy Thoughts
   time: 2017-07-16T13:30:00Z
@@ -114,18 +122,22 @@
 - file: posts/naive-overview-exercise.md
   title: A Very Naive Overview of Exercise (Part 3)
   time: 2017-06-15T15:00:00Z
+  series: health-guide
 - file: posts/naive-overview-nutrition.md
   title: A Very Naive Overview of Nutrition (Part 2)
   time: 2017-06-14T03:00:00Z
+  series: health-guide
 - file: posts/naive-overview-nutrition-exercise.md
   title: A Very Naive Overview of Nutrition and Exercise (Part 1)
   time: 2017-06-13T03:00:00Z
+  series: health-guide
 - file: posts/how-to-send-me-a-pull-request.md
   title: How to send me a pull request
   time: 2017-06-06T10:00:00Z
 - file: posts/why-i-lift.md
   title: Why I lift
   time: 2017-06-01T10:00:00Z
+  series: health-guide
 - file: posts/playing-with-lens-aeson.md
   title: Playing with lens-aeson
   time: 2017-05-29T18:00:00Z
