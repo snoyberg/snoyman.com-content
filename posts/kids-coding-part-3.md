@@ -14,6 +14,12 @@ though this fits my needs for the moment.
 
 https://github.com/snoyberg/kids-haskell-ide#readme
 
+I've set up AppVeyor to upload Windows executables to S3:
+
+https://s3.amazonaws.com/www.snoyman.com/kids-ide/bin/kids-ide.exe
+
+You'll also need to [install Stack](https://haskell-lang.org/get-started).
+
 ## Pattern matching strings
 
 This morning, Eliezer and Gavriella both had their next "official"
