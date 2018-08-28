@@ -2,6 +2,11 @@ series:
   kids-coding: Kids Coding
   health-guide: Health Guide
 posts:
+- file: posts/kids-coding-part-3.md
+  title: "Kids Coding, Part 3"
+  time: 2018-08-28T12:12:00Z
+  description: "Part 3 of teaching my kids to code, introducing pattern matches and enums"
+  series: kids-coding
 - file: posts/kids-coding-part-2.md
   title: "Kids Coding, Part 2"
   time: 2018-08-24T06:04:00Z
