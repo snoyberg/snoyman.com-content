@@ -73,7 +73,7 @@ And gave them the challenge to rewrite `nickname` so that the code
 worked, which wasn't too much of a problem. The misordering of `Lavi`
 and `Yakov` between `main` and `nickname` did cause some confusion,
 and then helped them understand better how pattern matching works. (I
-didn't intentionally put that in, in somehow slipped in while the kids
+didn't intentionally put that in, it somehow slipped in while the kids
 were working on rewriting things.)
 
 ## Type signatures
@@ -99,7 +99,7 @@ so I told them that integer is a kind of number, and that in Haskell
 we call it `Int`. Filling in the type signature was fine.
 
 I pointed out that some things (like `Int` and `String`) were upper
-case, and some were lower case. I pointed out that concerete things
+case, and some were lower case. I pointed out that concrete things
 that "actually exist" (maybe not the best terminology) are
 capitalized. We know what an `Int` is, for example. Variables are
 things we don't know yet, and those are lowercase. And finally, you
@@ -161,9 +161,9 @@ Some caveats where they got stuck:
   pattern matching a variable works, and "wildcards." They got this,
   though still needed to be coached on it.
 * I'd been on the fence about including syntax highlighting in the
-  kids IDE, but it turns out that the difference colors between
+  kids IDE, but it turns out that the different colors of
   `Eliezer` and `lavi` helped Gavriella realize her mistake. Syntax
-  highlight is a _good thing_ here.
+  highlighting is a _good thing_ here.
 * I did ultimately have to give her a hint: "Lavi is BIG but you made
   him small."
 
@@ -221,9 +221,9 @@ years; after all, I only started learning Haskell in my twenties. It
 made them feel pretty good that they were learning this stuff earlier
 than I did.
 
-I gave them an exercise to imlement `multTo` instead of `addUp`. They
+I gave them an exercise to implement `multTo` instead of `addUp`. They
 didn't understand this, or recursion, and I had to help them through
-the whole think. Mea culpa completely.
+the whole thing. Mea culpa completely.
 
 Gavriella asked for another exercise:
 
