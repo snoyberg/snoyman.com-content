@@ -12,7 +12,7 @@ offerings. (Thanks all for the recommendations on Reddit.)
 One final note. I'm extremely happy that we went with Haskell after today's
 lessons. Concepts like variable replacement which are natural in Haskell were
 great teaching tools. I obviously don't have enough data to prove this yet, but
-I'm more strongly belieiving the long-held theory that Haskell is easier for
+I'm more strongly believing the long-held theory that Haskell is easier for
 brand new programmers than those familiar with imperative programming.
 
 ## Coding environment
@@ -47,8 +47,8 @@ runghc foo.hs`. Perhaps not the ideal setup, but definitely good enough.
   there for our benefit, computer doesn't care.
 * We do `five + six * seven` (with appropriate variable definitions), they get
   that answer, and then `(five + six) * seven`, they get that too.
-* Now I define `fivePlusSix = five + six`, and change to `hello = (fivePlusSix)
-  * seven` (direct replacement). They're fine with this. Yay replacement.
+* Now I define `fivePlusSix = five + six`, and change to `hello = (fivePlusSix) * seven`
+  (direct replacement). They're fine with this. Yay replacement.
 * Point out that the parens are now unneeded and remove them. Again, no
   problem.
 * Parens just tell us "do this first", not needed for one thing
