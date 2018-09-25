@@ -210,3 +210,11 @@ If you want me to share more experience reports like this in the
 future, let me know. I can also include the nutrition side of things
 if people are interested, which has been possibly more volatile for me
 over the past year than the training itself.
+
+## Additional reading
+
+I've added this section to collect additional links to helpful articles that
+may be relevant to people interested in The Bridge. Expect it to grow over
+time.
+
+* https://www.jenreviews.com/workout-routines/
