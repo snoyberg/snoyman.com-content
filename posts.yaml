@@ -2,6 +2,11 @@ series:
   kids-coding: Kids Coding
   health-guide: Health Guide
 posts:
+- file: posts/how-i-research-health.md
+  title: "How I research health"
+  time: 2018-10-02T19:08:00Z
+  description: "An explanation on my process for researching topics on health (including nutrition and exercise). Hopefully this can help others understand how I reach my conclusions, and follow similar processes for themselves."
+  series: health-guide
 - file: posts/kids-coding-part-3.md
   title: "Kids Coding, Part 3"
   time: 2018-08-28T12:12:00Z
