@@ -91,6 +91,7 @@ Here are some of the sources I read or listen to.
   collection of links.
 * [Jeff Nippard](https://www.youtube.com/user/icecream4PRs/featured)
 * Dr Robert Lustig's [Sugar: The Bitter Truth](https://www.youtube.com/watch?v=dBnniua6-oM)
+* [Low Carb Down Under](https://www.youtube.com/channel/UCcTTiHZtNpiqD2EubIO5HFw)
 
 And books I've read and recommend:
 
