@@ -2,6 +2,11 @@ series:
   kids-coding: Kids Coding
   health-guide: Health Guide
 posts:
+- file: posts/raii-better-than-bracket-pattern.md
+  title: RAII is better than the bracket pattern
+  time: 2018-10-08T03:18:00Z
+  description: |
+    Last week, I wrote a blog post about ResourceT, and mentioned Rust's RAII being better than Haskell's bracket pattern. In this blog post, I demonstrate what this advantage is.
 - file: posts/how-i-research-health.md
   title: "How I research health"
   time: 2018-10-02T19:08:00Z
