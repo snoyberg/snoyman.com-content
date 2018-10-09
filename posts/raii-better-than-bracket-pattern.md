@@ -2,6 +2,8 @@ I recently wrote an [FP Complete](https://www.fpcomplete.com/) blog post entitle
 
 > I believe this is an area where the RAII (Resource Acquisition Is Initialization) approach in both C++ and Rust leads to a nicer solution than even our bracket pattern in Haskell, by (mostly) avoiding the possibility of a premature close.
 
+<a href="/static/io-thief.jpg" target="_blank"><img alt="IO Thief" src="/static/io-thief.jpg" style="max-width:100%;width:300px;margin:0 auto;display:block;"></a>
+
 To demonstrate what I'm talking about, let's first see an example of the problem in Haskell. First, the good code:
 
 ```haskell
