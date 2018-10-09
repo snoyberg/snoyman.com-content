@@ -121,6 +121,8 @@ The life time of the value is determined correctly and only dropped at the end o
 
 ## Fixing it in Haskell
 
+__UPDATE__ In my efforts to make this as simple as possible, I included a "solution" that's got a massive hole in it. It still demonstrates the basic idea correctly, but if you want _actual_ guarantees, you'll need to include the phantom type variable on the monad as well. See [Dominique's comment](http://disq.us/p/1we3o1q) for more information.
+
 We can use a similar approach as the `ST` strict state transformer via a phantom variable to apply a "lifetime" to the `MyResource`:
 
 ```haskell
