@@ -3,13 +3,14 @@ Rust crash course. In this blog post, I want to explain:
 
 * Why I'm interested in Rust
 * Why I'm writing up this series
+* Who this series is for
 * My intended flavor for the series
 * Some examples of Rust gotchas I want to cover
 
 ## Why Rust?
 
 I'm a strong believer in using the compiler to help eliminate bugs. No
-programming language can eliminate all bugs, and even the best
+programming language can eliminate all bugs and even the best
 designed language will typically need to leave developers plenty of
 wiggle room to shoot themselves in the foot. Still, there's
 significant value in safety and long term maintainability of projects
@@ -23,11 +24,11 @@ problems with an intense focus on Haskell:
 * There's always something to be learned from other languages. It's
   quite easy to fall into the trap of knowing one language well, and
   becoming blind to its shortcomings. Haskell is now the language I've
-  used for the longest stretch of time as a primary language (finally
-  displacing Java). I need to avoid this trap.
+  used for the longest stretch of time as a primary language, finally
+  displacing Java. I need to avoid this trap.
 * There are some legitimate technical advantages of Rust:
     * Performance is better, and more reliable as well, relying less
-      on things like rewrite rules firing
+      upon things like rewrite rules firing
     * It's got a better story right now for mobile and frontend
       development
     * Lack of garbage collection opens up new possibilities in real
@@ -53,10 +54,21 @@ also overlaps heavily with training material. As I do more training
 * Newcomers are stumbling hard
 
 This series is intended to collect both initial pointers of how to get
-started with Rust, and hard learned lessons of how to avoid getting
+started with Rust, and hard-learned lessons of how to avoid getting
 stuck. Some of these stumbling blocks may favor the kind of audience
 I'm working with directly (lots of Haskell and DevOps engineers), but
 that will likely change over time.
+
+## Target audience
+
+I'm gearing this series towards the Rust curious. I'm assuming programming
+knowledge, and some basic idea of what Rust is about, but no real knowledge of
+the language itself. I'll try to call out when you should go read the Rust
+book.
+
+If you're a Java user, a Rubyist, or a Haskeller, and Rust intrigues you, I
+hope this will help you. And maybe even Rustaceans will enjoy seeing the pain
+points I find myself and others are hitting.
 
 ## Flavor of the series
 
@@ -68,7 +80,7 @@ book](https://doc.rust-lang.org/book/), and point to sections where
 appropriate.
 
 One concrete example: I don't intend to spend a lot of time talking
-about Rust syntax, or explaining that it's an expression oriented
+about Rust syntax, or explaining that it's an expression-oriented
 language. The book covers that.
 
 Instead, I want to give people:
@@ -84,7 +96,7 @@ And on that note...
 A few people on Twitter asked me to share some Rust gotchas,
 especially coming from the perspective of a Haskell developer. I'll
 certainly be covering more gotchas going forward, but I wanted to give
-some examples in this first post, so you can get a feel for the kinds
+some examples in this first post so you can get a feel for the kinds
 of things we'll be addressing in the series. I'm _not_ going to be
 explaining details of these problems here; that's what the series is
 for!
@@ -141,7 +153,7 @@ fn foo<'a>(mut i: &'a mut isize, j: &'a mut isize) {
 
 ### So many strings
 
-I was warned about this one, and blew it off. I thought to myself
+I was warned about this one and blew it off. I thought to myself
 there's no way a Haskeller, trained in the arts of `String`, strict
 `Text`, lazy `Text`, `ByteString`s and more could be daunted. I was
 wrong.
@@ -161,7 +173,7 @@ Nope, the code above doesn't compile.
 ### Magically works, until it doesn't
 
 There are a number of "magic" things that happen in Rust in the name
-of ergonomics. Often, they work perfectly, and save a lot of
+of ergonomics. Often, they work perfectly and save a lot of
 frustration. And sometimes, they fail. Look at this broken code:
 
 ```rust
@@ -192,7 +204,7 @@ Oh, well that makes sense! I need to get a reference to a `str` instead of the `
 respond(&arg);
 ```
 
-But then I realize that the respond function is silly, and inline the
+But then I realize that the respond function is silly and inline the
 `match`:
 
 ```rust

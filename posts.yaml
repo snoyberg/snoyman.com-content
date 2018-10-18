@@ -1,7 +1,14 @@
 series:
   kids-coding: Kids Coding
   health-guide: Health Guide
+  rust-crash-course: Rust Crash Course
 posts:
+- file: posts/introducing-rust-crash-course.md
+  title: Introducing the Rust crash course
+  time: 2018-10-18T03:04:00Z
+  description: |
+    I'm happy to announce that I'll be beginning a crash course on Rust. This post describes motivations and the style this will take.
+  series: rust-crash-course
 - file: posts/raii-better-than-bracket-pattern.md
   title: RAII is better than the bracket pattern
   time: 2018-10-08T03:18:00Z
