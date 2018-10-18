@@ -39,8 +39,7 @@ problems with an intense focus on Haskell:
 Like many others, I've been hearing a buzz around Rust for years. Two
 or so years ago, I started playing around with it more, and have been
 steadily dedicating more personal time to it. But recently, we've had
-more [Rust interest at work @@@FIXME broken
-link](https://www.fpcomplete.com/rust), and therefore we've been
+more [Rust interest at work](https://www.fpcomplete.com/rust), and therefore we've been
 expanding our internal Rust team.
 
 ## Why this series?
