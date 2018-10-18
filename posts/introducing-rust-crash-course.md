@@ -7,6 +7,8 @@ Rust crash course. In this blog post, I want to explain:
 * My intended flavor for the series
 * Some examples of Rust gotchas I want to cover
 
+I'm getting to work on this series due to [increased Rust usage at FP Complete](https://www.fpcomplete.com/rust).
+
 ## Why Rust?
 
 I'm a strong believer in using the compiler to help eliminate bugs. No
