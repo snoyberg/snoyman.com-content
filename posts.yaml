@@ -15,6 +15,12 @@ posts:
   description: |
     Lesson 1 in the Rust crash course: kicking the tires with some basic usage of Rust.
   series: rust-crash-course
+- file: posts/is-it-healthy-depends-on-context.md
+  title: Is it healthy? Depends on context
+  time: 2018-10-19T06:10:00Z
+  description: |
+    I recently was asked the question "is it healthy?" about a food item. This blog post is an answer to that.
+  series: health-guide
 - file: posts/introducing-rust-crash-course.md
   title: Introducing the Rust crash course
   time: 2018-10-18T03:04:00Z
