@@ -3,6 +3,18 @@ series:
   health-guide: Health Guide
   rust-crash-course: Rust Crash Course
 posts:
+- file: posts/rust-crash-course-01-kick-the-tires-solutions.md
+  title: Kick the Tires - Rust Crash Course lesson 1 - exercise solutions
+  time: 2018-10-24T04:00:00Z
+  description: |
+    Solutions to exercises in Rust crash course lesson 1, "Kicking the Tires."
+  series: rust-crash-course
+- file: posts/rust-crash-course-01-kick-the-tires.md
+  title: Kick the Tires - Rust Crash Course lesson 1
+  time: 2018-10-22T04:00:00Z
+  description: |
+    Lesson 1 in the Rust crash course: kicking the tires with some basic usage of Rust.
+  series: rust-crash-course
 - file: posts/introducing-rust-crash-course.md
   title: Introducing the Rust crash course
   time: 2018-10-18T03:04:00Z
