@@ -62,14 +62,34 @@ new` and experiment in there. Entirely your decision.
 
 ### Running tests
 
+We won't be adding any tests to our code yet, but you can run tests in
+your code with `cargo test`.
+
 ### Extra tools
 
-* cargo fmt
-* cargo clippy
+Two useful utilities are the `rustfmt` tool (for automatically
+formatting your code) and `clippy` (for getting code advice). Note
+that `clippy` is still a work in progress, and sometimes gives false
+positives. To get them set up, run:
+
+```
+$ rustup component add clippy-preview rustfmt-preview
+```
+
+And then you can run them with:
+
+```
+$ cargo fmt
+$ cargo clippy
+```
 
 ### IDE
 
-* IntelliJ IDEA
+There is some IDE support for those who want it. I've heard great
+things about IntelliJ IDEA's Rust add-on. Personally, I haven't used
+it much yet, but I'm also not much of an IDE user in the first
+place. This crash course won't assume any IDE, just basic text editor
+support.
 
 ## Macros
 
