@@ -3,6 +3,18 @@ series:
   health-guide: Health Guide
   rust-crash-course: Rust Crash Course
 posts:
+- file: posts/rust-crash-course-02-basics-of-ownership-solutions.md
+  title: Basics of Ownership - Rust Crash Course lesson 2 - exercise solutions
+  time: 2018-10-31T04:00:00Z
+  description: |
+    Solutions to exercises in Rust crash course lesson 2, "Basics of Ownership."
+  series: rust-crash-course
+- file: posts/rust-crash-course-02-basics-of-ownership.md
+  title: Basics of Ownership - Rust Crash Course lesson 2
+  time: 2018-10-29T04:00:00Z
+  description: |
+    Lesson 2 in the Rust crash course: learning the basics of ownership.
+  series: rust-crash-course
 - file: posts/rust-crash-course-01-kick-the-tires-solutions.md
   title: Kick the Tires - Rust Crash Course lesson 1 - exercise solutions
   time: 2018-10-24T04:00:00Z
