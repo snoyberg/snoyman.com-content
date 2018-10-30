@@ -3,6 +3,18 @@ series:
   health-guide: Health Guide
   rust-crash-course: Rust Crash Course
 posts:
+- file: posts/rust-crash-course-03-iterators-and-errors-solutions.md
+  title: Iterators and Errors - Rust Crash Course lesson 3 - exercise solutions
+  time: 2018-11-07T04:00:00Z
+  description: |
+    Solutions to exercises in Rust crash course lesson 3, "Iterators and Errors."
+  series: rust-crash-course
+- file: posts/rust-crash-course-03-iterators-and-errors.md
+  title: Iterators and Errors - Rust Crash Course lesson 3
+  time: 2018-11-05T04:00:00Z
+  description: |
+    Lesson 3 in the Rust crash course: iterators and errors.
+  series: rust-crash-course
 - file: posts/rust-crash-course-02-basics-of-ownership-solutions.md
   title: Basics of Ownership - Rust Crash Course lesson 2 - exercise solutions
   time: 2018-10-31T04:00:00Z
