@@ -722,7 +722,7 @@ This next bit should be done as a Cargo project, not with
 `rustc`. Let's start a new empty project:
 
 ```
-$ cargo new bouncy-args
+$ cargo new bouncy-args --bin
 $ cd bouncy-args
 ```
 
