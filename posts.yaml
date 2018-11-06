@@ -5,13 +5,13 @@ series:
 posts:
 - file: posts/rust-crash-course-04-crates-more-iterators-solutions.md
   title: Crates and more iterators - Rust Crash Course lesson 4 - exercise solutions
-  time: 2018-11-07T04:00:00Z
+  time: 2018-11-14T04:00:00Z
   description: |
     Solutions to exercises in Rust crash course lesson 4, "Crates and more iterators."
   series: rust-crash-course
 - file: posts/rust-crash-course-04-crates-more-iterators.md
   title: Crates and more iterators - Rust Crash Course lesson 4
-  time: 2018-11-05T04:00:00Z
+  time: 2018-11-12T04:00:00Z
   description: |
     Lesson 4 in the Rust crash course: crates and more iterators.
   series: rust-crash-course
