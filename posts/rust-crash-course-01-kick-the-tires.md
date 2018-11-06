@@ -284,7 +284,9 @@ bit, but you shouldn't expect to fully grok this yet.
   check the type of a return to see if it succeeded, or tedious to do
   error handling properly, Rust makes this much less painful. We'll
   deal with it later.
-    * __NOTE__ Rust _does_ have the concept of panics, which in practice behave similarly to runtime exceptions. However, there are two important differences. Firstly, by convention, code is not supposed to use the panic mechanism for signaling normal error conditions (like file not found), and instead reserve panics for completely unexpected failures (like logic errors). Secondly, panics are unrecoverable, meaning they take down the entire thread of execution.
+    * __NOTE__ Rust _does_ have the concept of panics, which in practice behave similarly to runtime exceptions. However, there are two important differences. Firstly, by convention, code is not supposed to use the panic mechanism for signaling normal error conditions (like file not found), and instead reserve panics for completely unexpected failures (like logic errors). Secondly, panics are (mostly) unrecoverable, meaning they take down the current thread.
+
+      A previous version of this document said that panics are unrecoverable, and that they take down the entire thread. However, as pointed out by [J Haigh](https://twitter.com/debugsteven), this isn't quite true: the function [`catch_unwind`](https://doc.rust-lang.org/std/panic/fn.catch_unwind.html) allows you to usually capture and recover from a panic without losing the current thread. I'm not going to go into more details here.
 
 Awesome, that type signature all on its own gave us enough material
 for about 5 more lessons! Don't worry, you'll be able to write some
