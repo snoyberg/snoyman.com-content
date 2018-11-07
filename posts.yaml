@@ -3,11 +3,6 @@ series:
   health-guide: Health Guide
   rust-crash-course: Rust Crash Course
 posts:
-- file: posts/proposal-stack-coc.md
-  title: "Proposal: Stack Code of Conduct"
-  time: 2018-11-14T04:30:00Z
-  description: |
-    I'm proposing an unofficial code of conduct for the Stack project.
 - file: posts/rust-crash-course-04-crates-more-iterators-solutions.md
   title: Crates and more iterators - Rust Crash Course lesson 4 - exercise solutions
   time: 2018-11-14T04:00:00Z
@@ -20,6 +15,11 @@ posts:
   description: |
     Lesson 4 in the Rust crash course: crates and more iterators.
   series: rust-crash-course
+- file: posts/proposal-stack-coc.md
+  title: "Proposal: Stack Code of Conduct"
+  time: 2018-11-07T04:30:00Z
+  description: |
+    I'm proposing an unofficial code of conduct for the Stack project.
 - file: posts/rust-crash-course-03-iterators-and-errors-solutions.md
   title: Iterators and Errors - Rust Crash Course lesson 3 - exercise solutions
   time: 2018-11-07T04:00:00Z
