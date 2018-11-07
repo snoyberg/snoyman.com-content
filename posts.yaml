@@ -17,7 +17,7 @@ posts:
   series: rust-crash-course
 - file: posts/proposal-stack-coc.md
   title: "Proposal: Stack Code of Conduct"
-  time: 2018-11-07T04:30:00Z
+  time: 2018-11-07T05:30:00Z
   description: |
     I'm proposing an unofficial code of conduct for the Stack project.
 - file: posts/rust-crash-course-03-iterators-and-errors-solutions.md
