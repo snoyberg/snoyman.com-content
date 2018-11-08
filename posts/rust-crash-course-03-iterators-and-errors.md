@@ -791,7 +791,7 @@ warning: function is never used: `parse_args`
 ```
 
 Let's fix that. To start off, add the following to the top of your
-`main` module, just to prove that we can, in fact, use our new module:
+`main` function, just to prove that we can, in fact, use our new module:
 
 ```rust
 println!("{:?}", parse_args::parse_args());
@@ -835,7 +835,7 @@ Err(TooFewArgs)
 
 It's nice that we get an unreachable statement warning. It's also a
 bit weird that `game` is no longer required to be
-mutable. Strange. But most importantly: our argument aprsing is
+mutable. Strange. But most importantly: our argument parsing is
 working!
 
 Let's try to use this. We'll modify the `Game::new()` method to accept
