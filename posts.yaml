@@ -3,6 +3,18 @@ series:
   health-guide: Health Guide
   rust-crash-course: Rust Crash Course
 posts:
+- file: posts/rust-crash-course-05-rule-of-three-solutions.md
+  title: Rule of Three - Parameters, Iterators, and Closures - Rust Crash Course lesson 5 - exercise solutions
+  time: 2018-11-21T04:00:00Z
+  description: |
+    Solutions to exercises in Rust crash course lesson 5, "Rule of Three - Parameters, Iterators, and Closures."
+  series: rust-crash-course
+- file: posts/rust-crash-course-05-rule-of-three.md
+  title: Rule of Three - Parameters, Iterators, and Closures - Rust Crash Course lesson 5
+  time: 2018-11-19T04:00:00Z
+  description: |
+    Lesson 5 in the Rust crash course: Rule of Three - Parameters, Iterators, and Closures.
+  series: rust-crash-course
 - file: posts/rust-crash-course-04-crates-more-iterators-solutions.md
   title: Crates and more iterators - Rust Crash Course lesson 4 - exercise solutions
   time: 2018-11-14T04:00:00Z
