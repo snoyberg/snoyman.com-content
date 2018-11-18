@@ -15,6 +15,11 @@ posts:
   description: |
     Lesson 5 in the Rust crash course: Rule of Three - Parameters, Iterators, and Closures.
   series: rust-crash-course
+- file: posts/stackage-history-philosophy-future.md
+  title: "Stack(age): History, philosophy, and future"
+  time: 2018-11-18T12:15:00Z
+  description: |
+    A personal review of the history of the Stackage and Stack projects, their philosophy, and some thoughts on their future.
 - file: posts/rust-crash-course-04-crates-more-iterators-solutions.md
   title: Crates and more iterators - Rust Crash Course lesson 4 - exercise solutions
   time: 2018-11-14T04:00:00Z
