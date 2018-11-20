@@ -27,6 +27,11 @@ posts:
   description: |
     Solutions to exercises in Rust crash course lesson 5, "Rule of Three - Parameters, Iterators, and Closures."
   series: rust-crash-course
+- file: posts/why-i-believe-stackage-succeeded.md
+  title: Why (I believe) Stackage succeeded
+  time: 2018-11-20T16:30:00Z
+  description: |
+    Some thoughts on what I believe has made Stackage a successful project.
 - file: posts/rust-crash-course-05-rule-of-three.md
   title: Rule of Three - Parameters, Iterators, and Closures - Rust Crash Course lesson 5
   time: 2018-11-19T04:00:00Z
