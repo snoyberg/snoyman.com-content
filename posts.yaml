@@ -3,6 +3,24 @@ series:
   health-guide: Health Guide
   rust-crash-course: Rust Crash Course
 posts:
+- file: posts/rust-crash-course-07-async-futures-tokio.md
+  title: Async, futures, and tokio - Rust Crash Course lesson 7
+  time: 2018-12-03T04:00:00Z
+  description: |
+    Lesson 5 in the Rust crash course: Rule of Three - Parameters, Iterators, and Closures.
+  series: rust-crash-course
+- file: posts/rust-crash-course-06-lifetimes-slices-solutions.md
+  title: Lifetimes and Slices - Rust Crash Course lesson 6 - exercise solutions
+  time: 2018-11-28T04:00:00Z
+  description: |
+    Solutions to exercises in Rust crash course lesson 6, "Lifetimes and Slices."
+  series: rust-crash-course
+- file: posts/rust-crash-course-06-lifetimes-slices.md
+  title: Lifetimes and Slices - Rust Crash Course lesson 6
+  time: 2018-11-26T04:00:00Z
+  description: |
+    Lesson 6 in the Rust crash course: Lifetimes and Slices.
+  series: rust-crash-course
 - file: posts/rust-crash-course-05-rule-of-three-solutions.md
   title: Rule of Three - Parameters, Iterators, and Closures - Rust Crash Course lesson 5 - exercise solutions
   time: 2018-11-21T04:00:00Z
