@@ -69,7 +69,7 @@ fn main() {
 The first call to `bin` will not compile, because `bin` requires a
 _mutable_ reference, and we've provided an _immutable_ reference. We
 need to use the second version of the call. And not only does this
-have a _syntactic_ different, but a _semantic_ difference as well:
+have a _syntactic_ difference, but a _semantic_ difference as well:
 we've taken a mutable reference, which means we can have no other
 references at the same time (remember our borrow rules from lesson 2).
 
