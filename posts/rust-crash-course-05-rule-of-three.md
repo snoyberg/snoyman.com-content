@@ -716,7 +716,7 @@ fn call_with_hi<F>(f: F)
 Another nifty thing about the `Fn` trait is that it doesn't just apply
 to closures. It works on regular ol' functions too:
 
-> __Exercise 4__ Rewrite `say_message` as a function _outside_ of `main` and make the program above compiler.
+> __Exercise 4__ Rewrite `say_message` as a function _outside_ of `main` and make the program above compile.
 
 This was a bit boring, since `say_message` isn't actually a
 closure. Let's change that a bit.
