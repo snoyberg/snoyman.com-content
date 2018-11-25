@@ -113,8 +113,6 @@ We're going to put the code for our `Interval` into a separate
 module. First, put the following code into `src/interval.rs`:
 
 ```rust
-extern crate std;
-
 use std::sync::atomic::{AtomicBool, AtomicUsize, Ordering};
 use std::sync::Arc;
 use std::thread::{sleep, spawn};
@@ -325,7 +323,7 @@ impl Future for IntervalFuture {
     type Item = usize;
     type Error = ();
 
-    fn poll(&mut self) -> Result<Async<Self::Item>, Self::Error> {
+    fn poll(&mut self) -> Poll<Self::Item, Self::Error> {
         let curr = self.interval.get_counter();
         if curr == self.last {
             Ok(Async::NotReady)
@@ -537,7 +535,7 @@ saying that? We'll find out soon, just one more pitstop first.)
 
 ### I need some closure
 
-It's amazing I've made it to lesson 6 in this crash course without
+It's amazing I've made it to lesson 7 in this crash course without
 making that pun. Obviously, defining an entire struct and `Future`
 implementation is a bit overkill to just print a line. Fortunately,
 the authors of the `futures` crate noticed this too. There are a
@@ -656,20 +654,32 @@ looking at the solution below. A hint on some features of Rust we
 haven't covered yet: you'll end up wanting to pattern match on the
 `Option` held inside the `Mutex`. You'll want to pattern match by
 reference, which will require some code that looks like `Some(ref
-task) =>`.
+task) =>`. And the final output should look like:
+
+```
+Interval thread launched
+Interval thread still alive, value was: 0
+Counter is: 1
+Interval thread shutting down
+```
+
+If you want to be sure, you can see the [initial version of the code on Github](https://github.com/snoyberg/rush-crash-course-tokio-exercise-2/tree/03c5b9029263ce36e626e877e986a281c9334d4e).
 
 ### Solution 2
 
-Instead of including the full code, I'll include the diff from the
-previous version:
+You can [check out the
+diff](https://github.com/snoyberg/rush-crash-course-tokio-exercise-2/commit/1c58bf4df946763f5f9f0773235e975968260ba9)
+and [full
+solution](https://github.com/snoyberg/rush-crash-course-tokio-exercise-2/tree/1c58bf4df946763f5f9f0773235e975968260ba9)
+on Github. Here's the diff included inline:
 
 ```diff
-diff --git a/rust-crash-course/lesson-06-tokio/interval/src/future.rs b/rust-crash-course/lesson-06-tokio/interval/src/future.rs
-index e3867bb..1d352d0 100644
---- a/rust-crash-course/lesson-06-tokio/interval/src/future.rs
-+++ b/rust-crash-course/lesson-06-tokio/interval/src/future.rs
+diff --git a/src/future.rs b/src/future.rs
+index 9aaee3c..e231e7b 100644
+--- a/src/future.rs
++++ b/src/future.rs
 @@ -22,6 +22,8 @@ impl Future for IntervalFuture {
-     fn poll(&mut self) -> Poll<Self::Item, Self::Error> {
+     fn poll(&mut self) -> Result<Async<Self::Item>, Self::Error> {
          let curr = self.interval.get_counter();
          if curr == self.last {
 +            let task = futures::task::current();
@@ -677,32 +687,30 @@ index e3867bb..1d352d0 100644
              Ok(Async::NotReady)
          } else {
              self.last = curr;
-diff --git a/rust-crash-course/lesson-06-tokio/interval/src/interval.rs b/rust-crash-course/lesson-06-tokio/interval/src/interval.rs
-index 3430ae0..fb1ffec 100644
---- a/rust-crash-course/lesson-06-tokio/interval/src/interval.rs
-+++ b/rust-crash-course/lesson-06-tokio/interval/src/interval.rs
-@@ -1,13 +1,16 @@
- extern crate std;
-+extern crate futures;
- 
+diff --git a/src/interval.rs b/src/interval.rs
+index 044e2ca..8013ac6 100644
+--- a/src/interval.rs
++++ b/src/interval.rs
+@@ -1,12 +1,14 @@
  use std::sync::atomic::{AtomicBool, AtomicUsize, Ordering};
 -use std::sync::Arc;
 +use std::sync::{Arc, Mutex};
  use std::thread::{sleep, spawn};
  use std::time::Duration;
 +use futures::task::Task;
- 
+
+ #[derive(Clone)]
  pub struct Interval {
      counter: Arc<AtomicUsize>,
      still_running: Arc<AtomicBool>,
 +    task: Arc<Mutex<Option<Task>>>,
  }
- 
+
  impl Drop for Interval {
-@@ -27,22 +30,37 @@ impl Interval {
+@@ -26,22 +28,37 @@ impl Interval {
          let still_running = Arc::new(AtomicBool::new(true));
          let still_running_clone = still_running.clone();
- 
+
 +        let task: Arc<Mutex<Option<Task>>> = Arc::new(Mutex::new(None));
 +        let task_clone = task.clone();
 +
@@ -720,14 +728,14 @@ index 3430ae0..fb1ffec 100644
 +                };
              }
          });
- 
+
          Interval {
              counter,
              still_running,
 +            task,
          }
      }
- 
+
      pub fn get_counter(&self) -> usize {
          self.counter.load(Ordering::SeqCst)
      }
