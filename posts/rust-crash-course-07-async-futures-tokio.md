@@ -518,7 +518,7 @@ The body of poll spends a lot of lines of code to:
 This is a repetitive pattern, and is pretty similar to the error
 handling we saw previously in lesson 3. The futures crate provides a
 macro, `try_ready!`, to deal with this annoyance. Add the following
-about the `extern crate futures;` in `src/main.rs`:
+above the `extern crate futures;` in `src/main.rs`:
 
 ```rust
 #[macro_use]
