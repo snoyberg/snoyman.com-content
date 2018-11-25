@@ -809,6 +809,7 @@ soon.
 We want to define a new struct, `KeepPrinting`, which is a newtype
 around an `IntervalFuture`. It's going to:
 
+* Have a `Future` implementation
 * Have `Item = ()`
 * Use a `loop` in its implementation
 * Use the `try_ready!` macro
