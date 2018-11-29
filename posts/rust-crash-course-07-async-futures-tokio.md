@@ -1584,13 +1584,13 @@ fn main() {
     };
     let future = TcpStream::connect(&addr)
         .and_then(|stream| {
-            write_all(stream, REQ_BODY).and_then(|(stream, _body)| {
-                let buffer = vec![];
-                read_to_end(stream, buffer).map(|(_stream, buffer)| {
-                    let s = std::str::from_utf8(&buffer).unwrap();
-                    println!("{}", s);
-                })
-            })
+            write_all(stream, REQ_BODY)
+        }).and_then(|(stream, _body)| {
+            let buffer = vec![];
+            read_to_end(stream, buffer)
+        }).map(|(_stream, buffer)| {
+            let s = std::str::from_utf8(&buffer).unwrap();
+            println!("{}", s);
         }).map_err(|e| eprintln!("Error occured: {:?}", e));
     tokio::run(future)
 }
@@ -1606,13 +1606,13 @@ response contents to `httpbin.json` instead:
 ```rust
 let future = TcpStream::connect(&addr)
     .and_then(|stream| {
-        write_all(stream, REQ_BODY).and_then(|(stream, _body)| {
-            let buffer = vec![];
-            read_to_end(stream, buffer).and_then(|(_stream, buffer)| {
-                File::create("httpbin.json").and_then(|file| {
-                    write_all(file, &buffer).map(|_| ())
-                })
-            })
+        write_all(stream, REQ_BODY)
+    }).and_then(|(stream, _body)| {
+        let buffer = vec![];
+        read_to_end(stream, buffer)
+    }).and_then(|(_stream, buffer)| {
+        File::create("httpbin.json").and_then(|file| {
+            write_all(file, &buffer).map(|_| ())
         })
     }).map_err(|e| eprintln!("Error occured: {:?}", e));
 ```
@@ -1621,12 +1621,12 @@ Unfortunately, the compiler doesn't like this too much:
 
 ```
 error[E0277]: the trait bound `std::fs::File: tokio::io::AsyncWrite` is not satisfied
-  --> src/main.rs:23:25
+  --> src/main.rs:25:17
    |
-23 |                         write_all(file, &buffer).map(|_| ())
-   |                         ^^^^^^^^^ the trait `tokio::io::AsyncWrite` is not implemented for `std::fs::File`
+25 |                 write_all(file, &buffer).map(|_| ())
+   |                 ^^^^^^^^^ the trait `tokio::io::AsyncWrite` is not implemented for `std::fs::File`
    |
-   = note: required by `tokio::io::write_all`
+   = note: required by `tokio::io::write_all
 ```
 
 Well, I guess that makes sense: you can't asynchronously write to a
@@ -1642,13 +1642,13 @@ First solution, ignoring anything close to proper error handling:
 ```rust
 let future = TcpStream::connect(&addr)
     .and_then(|stream| {
-        write_all(stream, REQ_BODY).and_then(|(stream, _body)| {
-            let buffer = vec![];
-            read_to_end(stream, buffer).and_then(|(_stream, buffer)| {
-                File::create("httpbin.json").map(|mut file| {
-                    file.write_all(&buffer).unwrap()
-                })
-            })
+        write_all(stream, REQ_BODY)
+    }).and_then(|(stream, _body)| {
+        let buffer = vec![];
+        read_to_end(stream, buffer)
+    }).and_then(|(_stream, buffer)| {
+        File::create("httpbin.json").map(|mut file| {
+            file.write_all(&buffer).unwrap()
         })
     }).map_err(|e| eprintln!("Error occured: {:?}", e));
 ```
