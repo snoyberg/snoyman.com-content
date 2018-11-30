@@ -1,9 +1,8 @@
 title: Michael Snoyman's homepage
-about:
-    >
-        I'm a (mainly) Haskell web developer, and lead developer of the [Yesod Web Framework](http://www.yesodweb.com).
-        I'm the Director of Engineering at [FP Complete](https://www.fpcomplete.com).
-        I live in Maalot, Israel with my wife and four kids.
+about: |
+    Michael Snoyman serves as Vice President of Engineering at [FP Complete](https://www.fpcomplete.com/), and is the founder and lead developer of multiple Haskell open source projects, including [Yesod](https://www.yesodweb.com), Conduit, Stack, and Stackage. Focused on creating developer-friendly, high-performance libraries that improve software quality, Michael specializes in using Haskell, Rust, and modern DevOps to help projects make it to market faster, with fewer bugs. He regularly speaks about programming best practices and contributes to publications like Architecture of Open Source Applications and the IEEE Spectrum.
+
+    I live in Maalot, Israel with my wife and four kids.
 
 profile:
   url: /img/profile.jpg
