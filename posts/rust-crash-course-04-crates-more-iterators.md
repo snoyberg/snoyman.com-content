@@ -60,9 +60,9 @@ authors = ["Michael Snoyman <michael@snoyman.com>"]
 
 It will look a bit different on your machine (unless your name is also
 Michael Snoyman). Notice that `[dependencies]` section at the end?
-That's where we add information on external creates. If you go back to
+That's where we add information on external crates. If you go back to
 [the pancurses page on
-creates.io](https://crates.io/crates/pancurses), you'll see:
+crates.io](https://crates.io/crates/pancurses), you'll see:
 
 ```
 Cargo.toml  pancurses = "0.16.0"
