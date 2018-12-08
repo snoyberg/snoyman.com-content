@@ -1341,15 +1341,16 @@ let future = stream::iter_ok(args)
                 future::ok(())
             })
             ;
-        tokio::spawn(future)
+        tokio::spawn(future);
+        future::ok(())
     })
     ;
 ```
 
-Notice how we have to put `future::ok(())` after the
+Notice how I've put `future::ok(())` after the
 `tokio::spawn(future);` call. It turns out that's not needed: `spawn`
 returns a `Spawn` value, which behaves like `future::ok(())` (via its
-`IntoFuture` implementation). Sojust remove `future::ok` and the
+`IntoFuture` implementation). So just remove `future::ok` and the
 semicolon after `spawn`, and your code will still work.
 
 __NOTE__ You may not notice the concurrency unless you have a large
