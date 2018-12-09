@@ -290,7 +290,207 @@ Those advocating the language have already fallen for the same trap
 
 ---
 
-## FIXME concrete code examples for maintainability
+## Loops
+
+Which of these functions is simpler?
+
+```rust
+fn total1() -> u32 {
+    let mut total = 0;
+    for i in 0..10 {
+        total += i;
+    }
+    total
+}
+
+fn total2() -> u32 {
+    (0..10).fold(0, |x, y| x + y)
+}
+```
+
+---
+
+## Typical conversations
+
+* Functional programmers: obviously the fold!
+* Imperative programmers:
+    * Too complex
+    * Have to deal with closures and other complexity
+    * Loops always work, why learn something else
+    * Isn't the fold slow?
+
+Focuses entirely on short-term productivity and performance
+
+---
+
+## Changing requirements
+
+Just add the evens
+
+```rust
+fn total1() -> u32 {
+    let mut total = 0;
+    for i in 0..10 {
+        if i % 2 == 0 {
+            total += i;
+        }
+    }
+    total
+}
+
+fn total2() -> u32 {
+    (0..10)
+        .filter(|x| x % 2 == 0)
+        .fold(0, |x, y| x + y)
+}
+```
+
+OK, I can follow that...
+
+---
+
+## And more
+
+Add `3` to the number after you know it's even
+
+```rust
+fn total1() -> u32 {
+    let mut total = 0;
+    for mut i in 0..10 {
+        i += 3;
+        if i % 2 == 0 {
+            total += i;
+        }
+    }
+    total
+}
+```
+
+```rust
+fn total2() -> u32 {
+    (0..10)
+        .map(|x| x + 3)
+        .filter(|x| x % 2 == 0)
+        .fold(0, |x, y| x + y)
+}
+```
+
+---
+
+## Types
+
+```python
+class Person:
+    def __init__(self, name):
+        self.name = name
+    def greet(self):
+        print "Hello", self.name
+Person("Alice").greet()
+```
+
+```haskell
+data Person = Person { name :: String }
+
+greet :: Person -> IO ()
+greet (Person name) = putStrLn $ "Hello " ++ name
+
+main :: IO ()
+main = greet $ Person {name = "Alice"}
+```
+
+So many annoying things in the Haskell code!
+
+---
+
+## And requirements change
+
+```python
+class Person:
+    def __init__(self, first, last):
+        self.first = first
+        self.last = last
+    def greet(self):
+        print "Hello", self.first, self.last
+Person("Alice").greet()
+```
+
+* Bug will only be caught at runtime
+* Better make sure your test suite covers this!
+
+---
+
+## Types to the rescue
+
+```haskell
+data Person = Person { first :: String, last :: String }
+
+greet :: Person -> IO ()
+greet (Person first last) =
+  putStrLn $ "Hello " ++ first ++ " " ++ last
+
+main :: IO ()
+main = greet $ Person {name = "Alice"}
+```
+
+* Caught at compile time
+* No tests required
+* Minimal example like this isn't particularly compelling
+* *Really* compelling on large code bases
+
+---
+
+## Dysfunctional Haskell
+
+Our favorite language can fail too!
+
+```haskell
+import Control.Concurrent
+
+main :: IO ()
+main = do
+  account1 <- newMVar 50
+  account2 <- newMVar 60
+  forkIO $ transfer account1 account2 20
+  transfer account2 account1 10
+  readMVar account1 >>= print
+  readMVar account2 >>= print
+```
+
+```haskell
+transfer :: MVar Int -> MVar Int -> Int -> IO ()
+transfer fromVar toVar amt =
+  modifyMVar_ fromVar $ \from -> do
+    threadDelay 100000 -- simulate some expensive stuff
+    modifyMVar_ toVar $ \to -> pure $ to + amt
+    pure $ from - amt
+```
+
+---
+
+## Needs moar FP
+
+```haskell
+import Control.Concurrent
+import Control.Concurrent.Async
+import Control.Concurrent.STM
+
+main :: IO ()
+main = do
+  account1 <- newTVarIO 50
+  account2 <- newTVarIO 60
+  concurrently_
+    (transfer account1 account2 20)
+    (transfer account2 account1 10)
+  atomically (readTVar account1) >>= print
+  atomically (readTVar account2) >>= print
+```
+
+```haskell
+transfer :: TVar Int -> TVar Int -> Int -> IO ()
+transfer fromVar toVar amt = atomically $ do
+  modifyTVar fromVar (\from -> from - amt)
+  modifyTVar toVar (\to -> to + amt)
+```
 
 ---
 
