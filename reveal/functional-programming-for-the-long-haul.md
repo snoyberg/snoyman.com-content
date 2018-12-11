@@ -87,7 +87,7 @@ What do you do if none of that helps?
 
 ---
 
-## Evaluation criteria
+## Evaluation tools
 
 * We need to make a choice
 * We've eliminated the easy ways to choose mentioned already
@@ -98,7 +98,7 @@ What do you do if none of that helps?
 
 ---
 
-## Benchmarks
+## Tool 1: Benchmarks
 
 * We _love_ benchmarks
 * Compare traffic on a review of library features post vs benchmarks
@@ -128,7 +128,7 @@ What do you do if none of that helps?
 
 ---
 
-## Hype
+## Tool 2: Hype
 
 * If it's popular it must be good, right?
 * Deeply flawed, but still provides _some_ signal
@@ -170,7 +170,7 @@ What do you do if none of that helps?
 
 ---
 
-## Onramping
+## Tool 3: Onramping
 
 * Gotta actually do the work
 * Time to learn the language
@@ -202,7 +202,13 @@ What do you do if none of that helps?
     * Scalability to large teams
     * Technical debt
     * Onboarding new team members
-* But what about dat hype?
+
+---
+
+## What about dat hype?
+
+* Hype indicates long term usage of a language
+* Surely that means others have tested and the language is a good choice, right?
 
 ---
 
@@ -218,8 +224,8 @@ Those advocating the language have already fallen for the same trap
 * Taught in schools
 * Large budgets for tooling
 * Lots of educational material
-* __Easy onramping__
 * Money for marketing == more hype
+* __Easy onramping__
 
 ---
 
@@ -260,7 +266,6 @@ Those advocating the language have already fallen for the same trap
 * Blog about it
 * Discuss with management
 * Don't pass off maintenance to "the junior devs"
-* Continue to make the case of performant, productive FP
 
 ---
 
@@ -286,7 +291,6 @@ Those advocating the language have already fallen for the same trap
 * Ability to refactor/rearchitect in massive ways
     * Faster feedback than unit tests
     * Attempt changes I would never dream of without types
-* Relatively painless to track upstream changes
 
 ---
 
@@ -505,6 +509,21 @@ transfer fromVar toVar amt = atomically $ do
   maintainability
 * Talk about practical benefits
 * Would love to have some data to back up my claims
+
+---
+
+## Three pillars
+
+How we analyze things at FP Complete
+
+* Performance
+    * Computing speed/hardware requirements
+* Productivity
+    * Time to market
+* Maintainability
+    * Bug rate, evolving a codebase
+
+All three are vitally important, all three need to be in the conversation
 
 ---
 
