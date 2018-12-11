@@ -3,6 +3,21 @@ series:
   health-guide: Health Guide
   rust-crash-course: Rust Crash Course
 posts:
+- file: posts/improving-commercial-haskell.md
+  title: Improving Commercial Haskell
+  time: 2018-12-13T08:00:00Z
+  description: |
+    A proposal on how we can make the Commercial Haskell Special Interest Group more useful for the community. Feedback very much welcome.
+- file: posts/fp-completes-opinion.md
+  title: "FP Complete's opinion"
+  time: 2018-12-12T08:00:00Z
+  description: |
+    What is FP Complete's opinion on topic X? Nothing!
+- file: posts/new-user-empathy.md
+  title: New user empathy
+  time: 2018-12-11T13:00:00Z
+  description: |
+    We often talk about the abstract "new user." I'd like to propose a more concrete, and hopefully more helpful, approach to helping new users, both with Haskell, and in general.
 - file: posts/rust-crash-course-07-async-futures-tokio.md
   title: Async, futures, and tokio - Rust Crash Course lesson 7
   time: 2018-12-03T04:00:00Z
