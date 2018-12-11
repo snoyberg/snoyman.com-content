@@ -305,7 +305,7 @@ Next, let's add a new module to provide a struct that will provide a
 extern crate futures;
 
 use super::interval::Interval;
-use future::futures::prelude::*;
+use futures::prelude::*;
 
 pub struct IntervalFuture {
     interval: Interval,
