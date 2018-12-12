@@ -22,7 +22,7 @@ posts:
   title: Async, futures, and tokio - Rust Crash Course lesson 7
   time: 2018-12-03T04:00:00Z
   description: |
-    Lesson 5 in the Rust crash course: Rule of Three - Parameters, Iterators, and Closures.
+    Lesson 7 in the Rust crash course: Async, futures, and tokio
   series: rust-crash-course
 - file: posts/rust-crash-course-06-lifetimes-slices-solutions.md
   title: Lifetimes and Slices - Rust Crash Course lesson 6 - exercise solutions

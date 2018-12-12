@@ -30,7 +30,7 @@ Someone on our sales team recently brought a question to the
 engineering team: "Why does FP Complete hate Nix?" He showed me the
 comment in question. I won't point to the comment; it's neither
 informative nor unique. Here's the answer: FP Complete has no
-emotiions. It's a company. We work on projects, and we have people who
+emotions. It's a company. We work on projects, and we have people who
 do that work. I don't think _anyone_ on our team "hates" Nix. I
 certainly don't, even if I'm usually one of the people on the team
 saying we shouldn't use Nix for most projects (I can explain why that
