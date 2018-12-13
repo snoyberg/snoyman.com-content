@@ -20,6 +20,7 @@ December 14, 2018
 * Programming for about 25 years
 * Haskell for about the last 10
 * How do we choose languages, libraries, and frameworks?
+    * I'll focus on languages
 * How can we do it better?
 * Let's start with my history
 
@@ -59,6 +60,8 @@ December 14, 2018
 * Download compilers/IDEs/etc
 * Enter: paradox of choice
 
+<img src="/static/longhaul/languages.jpg" height="300px">
+
 ---
 
 ## Some defaults still remain
@@ -73,17 +76,16 @@ What do you do if none of that helps?
 
 ---
 
-![Languages](/static/longhaul/languages.jpg)
-
----
-
 ## Non-starter: full evaluation
 
 * Try out each language fully on a project
-* Takes too much time
-* Costs too much
+* Takes too much time, costs too much
 * Deadlines need to be met
-* Instead, we need some help
+* Never ending task
+
+<img src="/static/longhaul/sisyphus.jpg" height="200">
+
+We need some help
 
 ---
 
@@ -105,8 +107,8 @@ What do you do if none of that helps?
 * But mostly misguided: things we benchmark usually aren't the bottleneck
 * Example: speeding up HTTP protocol handling 50% likely won't make
   much difference in your application
-* (We still need to make faster code as an industry)
-* Why do we care so much?
+
+(We still need to make faster code as an industry)
 
 ---
 
@@ -184,14 +186,24 @@ What do you do if none of that helps?
 
 ## Problems with approach
 
-* Still pretty costly, unavoidable
 * Easily take 1-2 months to make a decision
-* Problem 1: sunk cost fallacy activate!
-* Problem 2: we only know half the story
+* Still pretty costly
+* That's unavoidable
+* But two more fundamental problems
 
 ---
 
-## Long term costs
+## Problem 1: Sunk cost fallacy
+
+* Invested a lot of time and energy
+* Made a decision
+* Human psychology doesn't want to admit that's a waste
+* We're now biased to defend our choices
+* Will likely unintentionally ignore new information
+
+---
+
+## Problem 2: Only half the story
 
 * Benchmarks: flawed, but tell us about performance
 * Initial eval: tells us initial productivity
@@ -207,12 +219,9 @@ What do you do if none of that helps?
 
 ## What about dat hype?
 
-* Hype indicates long term usage of a language
-* Surely that means others have tested and the language is a good choice, right?
+Hype indicates long term usage of a language, but...
 
----
-
-![Sunk cost](/static/longhaul/sunkcost.png)
+<img src="/static/longhaul/sunkcost.png", height="300">
 
 Those advocating the language have already fallen for the same trap
 
@@ -221,11 +230,13 @@ Those advocating the language have already fallen for the same trap
 ## Isn't this a FP conference?
 
 * Most programmers today start imperative or OO
-* Taught in schools
+    * Taught in schools
+    * Dominant in industry
 * Large budgets for tooling
 * Lots of educational material
 * Money for marketing == more hype
-* __Easy onramping__
+
+Which leads to: __Easy onramping__
 
 ---
 
@@ -233,7 +244,6 @@ Those advocating the language have already fallen for the same trap
 
 * Claim: highly trained Python and Haskell devs can complete task in
   the same time
-* Most OO/imperative programmers won't believe that
 * Someone with no FP background will _definitely_ take longer to ramp
   up
 * Fighting the battle on initial eval hamstrings us
@@ -378,6 +388,8 @@ fn total2() -> u32 {
         .fold(0, |x, y| x + y)
 }
 ```
+
+<aside class="notes">Ask the audience where it's easier to find the bug</aside>
 
 ---
 
@@ -556,3 +568,7 @@ All three are vitally important, all three need to be in the conversation
 * Talk about the benefits of FP
 * Improve the conversation
 * Enjoy the conference, learn a lot!
+
+---
+
+## Thank you!
