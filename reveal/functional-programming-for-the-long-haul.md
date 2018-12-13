@@ -371,8 +371,8 @@ Add `3` to the number after you know it's even
 fn total1() -> u32 {
     let mut total = 0;
     for mut i in 0..10 {
-        i += 3;
         if i % 2 == 0 {
+            i += 3;
             total += i;
         }
     }
@@ -383,8 +383,8 @@ fn total1() -> u32 {
 ```rust
 fn total2() -> u32 {
     (0..10)
-        .map(|x| x + 3)
         .filter(|x| x % 2 == 0)
+        .map(|x| x + 3)
         .fold(0, |x, y| x + y)
 }
 ```
