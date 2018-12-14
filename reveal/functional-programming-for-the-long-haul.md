@@ -17,12 +17,13 @@ December 14, 2018
 ## My name is Michael Snoyman...
 
 * and I'm a functional programmer
-* Programming for about 25 years
-* Haskell for about the last 10
 * How do we choose languages, libraries, and frameworks?
     * I'll focus on languages
 * How can we do it better?
 * Let's start with my history
+* Programming for about 25 years
+* Haskell for about the last 10
+* How did I get here?
 
 ---
 
