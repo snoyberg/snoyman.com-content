@@ -3,6 +3,11 @@ series:
   health-guide: Health Guide
   rust-crash-course: Rust Crash Course
 posts:
+- file: posts/kids-coding-interlude-the-function-game.md
+  title: "Kids Coding Interlude: the function game"
+  time: 2018-12-16T16:00:00Z
+  description: "An interlude in the series of kids coding to talk about a helpful exercise we use: the function game"
+  series: kids-coding
 - file: posts/improving-commercial-haskell.md
   title: Improving Commercial Haskell
   time: 2018-12-13T08:00:00Z
