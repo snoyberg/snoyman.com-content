@@ -348,7 +348,7 @@ fn main() {
     let mut x: Foobar = Foobar(1);
     let y: &mut Foobar = &mut x;
     println!("Before uses_foobar");
-    uses_foobar(&x);
+    uses_foobar(&x); // will fail!
     uses_foobar(y);
     println!("After uses_foobar");
 }
