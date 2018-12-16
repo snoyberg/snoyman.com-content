@@ -41,6 +41,12 @@ publications:
   publisher: "IEEE Spectrum, The Functional Web"
 
 talks:
+- date: 2018-12
+  title: Functional Programming for the Long Haul
+  venue: Functional Conf 2018
+  links:
+  - url: "https://www.snoyman.com/reveal/functional-programming-for-the-long-haul"
+    text: Slides
 - date: 2018-07
   title: Haskell from the Inside Out
   venue: FLIP 2018
