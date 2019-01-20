@@ -5,22 +5,12 @@
     <title>Résumé of Michael Snoyman</title>
     <style>
       body {
-        line-height: 140%;
+        line-height: 1.4em;
         font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
       }
 
-      section, header {
-        display: block;
-        clear: both;
+      section {
         margin-bottom: 0.2in;
-      }
-
-      abbr {
-        border-bottom: 1px dotted #000;
-      }
-
-      dl {
-        clear: both;
       }
 
       ul {
@@ -32,26 +22,8 @@
       }
 
       section#wrapper {
-        position: absolute;
-        left: 50%;
-        margin-left: -3.5in;
+        margin: 0 auto;
         width: 7in;
-      }
-
-      h1 {
-        clear: both;
-      }
-
-      header > h1.fn {
-        float: left;
-      }
-
-      header > h2.email {
-        float: right;
-      }
-
-      header > div {
-        clear: both;
       }
 
       ul {
@@ -66,19 +38,28 @@
         text-decoration: underline;
       }
 
-      h1 {
+      #contact {
+        width: 100%;
+      }
+
+      h1, #fullname {
         font-variant: small-caps;
         font-weight: 700;
         font-size: 14pt;
       }
 
-      h2 {
+      h2, #email {
         font-size: 12pt;
+        font-weight: 600;
       }
 
-      h3 {
+      h3, .country-name {
         font-size: 10pt;
         font-weight: 600;
+      }
+
+      .country-name {
+        padding-top: 0.5em;
       }
 
       body {
@@ -86,17 +67,9 @@
         font-family: sans-serif;
       }
 
-      .adr > .country-name {
-        padding-right: .2in;
-        display: block;
-        float: left;
+      .country-name {
         margin: 0;
         width: 1.3in;
-      }
-      .adr > address {
-        display: block;
-        float: left;
-        width: 3.5in;
       }
 
       #experience > h1 {
@@ -108,9 +81,6 @@
       }
 
       @media print {
-          abbr {
-              border: 0;
-          }
           a, a:visited {
               color: #000;
           }
@@ -122,30 +92,25 @@
 
     <section id="wrapper">
 
-      <header class="vcard">
-        <h1 class="fn">Michael Snoyman</h1>
-        <h2 class="email">
-          <a href="mailto:michael@snoyman.com">michael@snoyman.com</a>
-        </h2>
-
-        <div class="adr">
-          <h3 class="country-name">Israel</h3>
-          <address>
-            <span class="street-address">Maale Hanarkisim 29</span>,
-            <span class="locality">Maalot</span>
-            <span class="postal-code">2154018</span>
-          </address>
-          <span class="tel">+972.52.757.7771</span>
-        </div>
-
-        <div class="adr">
-          <h3 class="country-name">United States</h3>
-          <address>
-            <span>&nbsp;</span>
-          </address>
-          <span class="tel">+1.714.900.3549</span>
-        </div>
-      </header>
+      <table id="contact">
+        <tbody>
+          <tr>
+            <td colspan="2" id="fullname">Michael Snoyman</td>
+            <td id="email">
+              <a href="mailto:michael@snoyman.com">michael@snoyman.com</a>
+            </td>
+          </tr>
+          <tr>
+            <td class="country-name">Israel</td>
+            <td class="street-address">Maale Hanarkisim 29, Maalot 2154018</td>
+            <td class="tel">+972.52.757.7771</td>
+          </tr>
+          <tr>
+            <td class="country-name" colspan="2">United States</td>
+            <td class="tel">+1.714-900.3549</td>
+          </tr>
+        </tbody>
+      </table>
 
       <section id="about">
         <h1>About Michael</h1>
@@ -247,7 +212,7 @@
         <ul>
           <li>Society of Actuaries exams P, FM, M and C</li>
           <li>Casualty Actuary Society exam 6</li>
-          <li>Completed all <abbr title="Validation by Educational Experience">VEE</abbr> requirements</li>
+          <li>Completed all Validation by Educational Experience (VEE) requirements</li>
         </ul>
       </section>
 
