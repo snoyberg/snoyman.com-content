@@ -3,6 +3,10 @@ series:
   health-guide: Health Guide
   rust-crash-course: Rust Crash Course
 posts:
+- file: posts/mismatched-global-packages.md
+  title: "Mismatched global packages"
+  time: 2019-01-24T12:30:00Z
+  description: "How GHC can ship packages that are different than what's on Hackage, how this impacts Stack, and how to do better"
 - file: posts/kids-coding-part-4.md
   title: "Kids Coding, Part 4"
   time: 2019-01-18T11:31:44Z
