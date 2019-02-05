@@ -20,7 +20,7 @@ fn drop<T>(_: T) {
 ```
 
 And surprise: check out [the actual `drop`
-function](https://doc.rust-lang.org/src/core/mem.rs.html#795).
+function](https://github.com/rust-lang/rust/blob/8bf7fda6b5fec99a11ae0fb8d5c3dbd150063741/src/libcore/mem.rs#L776).
 
 ## Exercise 2
 
