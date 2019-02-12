@@ -3,6 +3,10 @@ series:
   health-guide: Health Guide
   rust-crash-course: Rust Crash Course
 posts:
+- file: posts/call-for-new-issue-triager.md
+  title: "Call for new Stack issue triager"
+  time: 2019-02-12T08:35:00Z
+  description: "Interested in contributing back to the Stack project? Consider joining the Stack issue triager team!"
 - file: posts/mismatched-global-packages.md
   title: "Mismatched global packages"
   time: 2019-01-24T12:30:00Z
