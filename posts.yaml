@@ -3,6 +3,10 @@ series:
   health-guide: Health Guide
   rust-crash-course: Rust Crash Course
 posts:
+- file: posts/shutting-down-haskell-lang.md
+  title: "Shutting down haskell-lang.org"
+  time: 2019-02-18T19:33:00Z
+  description: "I've recently shut down the haskell-lang.org website, redirecting to a new FP Complete Haskell site."
 - file: posts/call-for-new-issue-triager.md
   title: "Call for new Stack issue triager"
   time: 2019-02-12T08:35:00Z
