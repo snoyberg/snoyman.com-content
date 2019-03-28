@@ -3,6 +3,10 @@ series:
   health-guide: Health Guide
   rust-crash-course: Rust Crash Course
 posts:
+- file: posts/typing-resistance.md
+  title: Typing Resistance
+  time: 2019-04-01T03:00:00Z
+  description: "Programming languages, like the human body, are subject to the phenomenon known as resistance. Learn how type systems in programming act like insulin in the body."
 - file: posts/shutting-down-haskell-lang.md
   title: "Shutting down haskell-lang.org"
   time: 2019-02-18T19:33:00Z
