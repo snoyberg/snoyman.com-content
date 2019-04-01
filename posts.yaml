@@ -3,6 +3,10 @@ series:
   health-guide: Health Guide
   rust-crash-course: Rust Crash Course
 posts:
+- file: posts/gym-etiquette-test.md
+  title: Gym Etiquette Test
+  time: 2019-04-01T05:32:00Z
+  description: "A recommended required exam for anyone to join a gym"
 - file: posts/typing-resistance.md
   title: Typing Resistance
   time: 2019-04-01T03:00:00Z
