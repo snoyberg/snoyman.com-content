@@ -41,6 +41,12 @@ publications:
   publisher: "IEEE Spectrum, The Functional Web"
 
 talks:
+- date: 2019-06
+  title: Why you should use Software Transactional Memory
+  venue: LambdaConf 2019
+  links:
+  - url: "https://github.com/snoyberg/why-you-should-use-stm"
+    text: Repository
 - date: 2018-12
   title: Functional Programming for the Long Haul
   venue: Functional Conf 2018
