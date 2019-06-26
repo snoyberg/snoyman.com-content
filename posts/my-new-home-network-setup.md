@@ -275,7 +275,7 @@ again are well worth it!
 Most everything went off without a hitch. Ultimately, I think I asked
 the electrician to put the network jack in our bedroom in the wrong
 location. Now that we're using it just for the WAP, having it higher
-on the wall would have been less intrusive. I'm also pretty terribel
+on the wall would have been less intrusive. I'm also pretty terrible
 at making jumbles of cables look nice, so there's still some cleanup
 in my office and the kids' rooms to make it presentable.
 
