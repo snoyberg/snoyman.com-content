@@ -3,6 +3,10 @@ series:
   health-guide: Health Guide
   rust-crash-course: Rust Crash Course
 posts:
+- file: posts/my-new-home-network-setup.md
+  title: My new home network setup
+  time: 2019-06-26T08:34:33Z
+  description: "We just did a bunch of rennovations on our house, including to our network setup. For the curious, here's what it looks like."
 - file: posts/gym-etiquette-test.md
   title: Gym Etiquette Test
   time: 2019-04-01T05:32:00Z
