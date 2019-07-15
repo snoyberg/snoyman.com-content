@@ -3,6 +3,12 @@ series:
   health-guide: Health Guide
   rust-crash-course: Rust Crash Course
 posts:
+- file: posts/how-to-lose-weight.md
+  title: How to lose weight
+  time: 2019-07-15T12:15:55Z
+  description: |
+    A short guide on approaches you may take on losing weight, and my recommendations for getting started. Targeted at newcomers to the health and fitness world.
+  series: health-guide
 - file: posts/my-new-home-network-setup.md
   title: My new home network setup
   time: 2019-06-26T08:34:33Z
