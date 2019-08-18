@@ -3,6 +3,11 @@ series:
   health-guide: Health Guide
   rust-crash-course: Rust Crash Course
 posts:
+- file: posts/haskell-kata-with-try-file-lock.md
+  title: Haskell kata: withTryFileLock
+  time: 2019-08-18T12:04:13Z
+  description: |
+    A Haskell code kata to sharpen your skills. Rewrite withTryFileLock to have a different type signature.
 - file: posts/how-to-lose-weight.md
   title: How to lose weight
   time: 2019-07-15T10:13:42Z
