@@ -41,6 +41,14 @@ publications:
   publisher: "IEEE Spectrum, The Functional Web"
 
 talks:
+- date: 2019-09
+  title: Deploying Haskell Services
+  venue: Amsterdam Haskell Meetup, September 2019
+  links:
+  - url: "https://www.snoyman.com/reveal/deploying-haskell-services"
+    text: Slides
+  - url: "https://www.youtube.com/watch?v=vIk1e3RCPVk"
+    text: Video
 - date: 2019-06
   title: Why you should use Software Transactional Memory
   venue: LambdaConf 2019
