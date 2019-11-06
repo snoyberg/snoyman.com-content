@@ -22,28 +22,6 @@ title: Your first Haskell web app with WAI and Warp
 
 ---
 
-## Goals
-
-* Minimal overhead
-* Unopinionated
-* Extensible
-* Universal
-* Stable
-* Batteries not included, but available
-
----
-
-## Common packages
-
-* `wai`: core data types, a few utilities
-* `warp`: de facto standard server
-* `wai-extra`: common middlewares and helpers
-* `wai-conduit`: conduit-specific streaming support
-* `pipes-wai`: pipes-specific streaming support
-* `wai-websockets`: you can probably guess :)
-
----
-
 ## Hello WAI!
 
 ```haskell
@@ -62,12 +40,38 @@ main = run 3000 $ \_req send ->
     "Hello World from WAI!"
 ```
 
+We'll discuss all of this (and more!) in this talk
+
+---
+
+## Goals
+
+* Minimal overhead
+* Unopinionated
+* Extensible
+* Stable
+* Batteries not included, but available
+
+---
+
+## Common packages
+
+* `wai`: core data types, a few utilities
+* `warp`: de facto standard server
+* `wai-extra`: common middlewares and helpers
+* `wai-conduit`: conduit-specific streaming support
+* `pipes-wai`: pipes-specific streaming support
+* `wai-websockets`: you can probably guess :)
+
 ---
 
 ## Data types
 
 ```haskell
+-- Given to you by the backend
 data Request
+
+-- Smart constructors, we'll show 'em later
 data Response
 
 -- Doesn't actually exist
@@ -105,7 +109,7 @@ And use `wai-extra` to actually parse the body
 
 ---
 
-## Forming a response body
+## Response smart constructors
 
 Use a lazy ByteString
 
@@ -146,22 +150,20 @@ responseFile
   -> Response
 ```
 
-Yesod, `wai-app-static`, others all use this internally
+Yesod, `wai-app-static`, others call this for you
 
 ---
 
-## Streaming and actual `Application` type
+## Streaming and `Application`
 
-* Just want a `Request -> IO Response` function
+* Just want a `Request -> IO Response`
 * However, need to handle streaming data cases
 * Example warranted (most complicated thing today)
 
 ```haskell
 type SimpleApp = Request -> IO Response
-
 simpleRun :: Int -> SimpleApp -> IO ()
 
-main :: IO ()
 main =
   simpleRun 8000 $ \_req ->
   withBinaryFile "big-file.csv" ReadMode $ \h -> do
@@ -171,6 +173,8 @@ main =
       [("Content-Type", "text/csv; charset=utf-8")]
       lbs
 ```
+
+Who can find the bug?
 
 ---
 
@@ -191,6 +195,8 @@ main =
       lbs
 ```
 
+Let's compare side by side
+
 ---
 
 ## Did you miss it?
@@ -210,18 +216,12 @@ withBinaryFile "big-file.csv" ReadMode $ \h -> do
 
 ```haskell
 withBinaryFile "big-file.csv" ReadMode $ \h -> do
-  lbs <- BL.hGetContents h
+  lbs <- BL.hGetContents h -- still lazy, but OK
   send $ responseLBS
     status200
     [("Content-Type", "text/csv; charset=utf-8")]
     lbs
 ```
-
----
-
-## Continuous Passing Style
-
-<img src="/static/yo-dawg-cps.jpeg">
 
 ---
 
@@ -240,6 +240,12 @@ type Application = Request -> Send -> IO ResponseReceived
 * Warp and other backends use the internal module
 * Normal apps _must_ call send to get a `ResponseReceived` value
 * They can still cheat and call it twice... we don't have linear types
+
+---
+
+## Continuous Passing Style
+
+<img src="/static/yo-dawg-cps.jpeg">
 
 _Done with the hard part!_
 
@@ -260,6 +266,9 @@ main = do
       _ -> send $ responseBuilder status404 [] "Not found"
 ```
 
+* Can route on query string parameters too
+* Need to parse the request body to get post parameters
+
 ---
 
 ## Logging
@@ -277,6 +286,8 @@ loggedHello = logStdout hello
 main :: IO ()
 main = run 8000 loggedHello
 ```
+
+Lots of additional options for output dest, display, etc
 
 ---
 
@@ -301,7 +312,7 @@ main = run 8000 $ chaos loggedHello
 
 ---
 
-## Virtual hosts
+## Virtual hosts (1)
 
 Can make decisions based on headers as well
 
@@ -314,7 +325,13 @@ main = run 8000 $ \req send ->
     Just host -> "Host is " <> byteString host
 ```
 
-Or even better: different apps!
+Or even better: different apps...
+
+---
+
+## Virtual hosts (2)
+
+Serve different apps per domain
 
 ```haskell
 main = run 8000 $ \req send ->
@@ -327,6 +344,8 @@ main = run 8000 $ \req send ->
       send $ responseBuilder status400 [] $
       "Unknown host: " <> byteString host
 ```
+
+Pass in the `req` and `send` to the sub-apps
 
 ---
 
@@ -366,19 +385,22 @@ main = run 8000 $ logStdout $ staticApp $
 
 ---
 
-## Deployment example - WARNING
+## Deployment example caveat
 
+* Don't do what I'm about to show you
 * No good reason to package up multiple apps like this
 * Kubernetes can handle the load balancing better
-* Hysterical raisins ahead!
+
+<img src="https://www.fpcomplete.com/static/hysterical-raisins.jpg" height="300">
 
 ---
 
 ## Deployment example - snoyman-webapps
 
 * Two webapps (snoyman.com and yesodweb.com)
-* Third virtual host in front of them
-* vhost app launches other two and reverse proxies to them
+* Third app as reverse proxy in front of them
+    * Uses `http-reverse-proxy`
+* Reverse proxy app launches and keeps other two running
 * Gitlab CI builds all three, packages into a Docker image
 
 ---
@@ -395,26 +417,6 @@ cp -r sites/yesodweb.com/config sites/yesodweb.com/static \
   docker/artifacts/app/yesodweb.com
 cp -r webapps/config docker/artifacts/app/webapps
 docker build --tag snoyberg/snoyman-webapps docker
-```
-
----
-
-## .gitlab-ci.yml
-
-```yaml
-build:
-  stage: build
-  script:
-    - docker/build-docker.sh
-    - docker tag snoyberg/snoyman-webapps "${IMGNAME}"
-
-deploy:
-  stage: deploy
-  only:
-    - master
-  script:
-    - kubectl set image "$KUBENAME" webapps="$IMGNAME"
-    - kubectl rollout status "$KUBENAME"
 ```
 
 ---
@@ -436,6 +438,26 @@ COPY artifacts/app/ /app
 
 * Uses `git` at runtime
 * `fpco/pid1` provides zombie prevention and more
+
+---
+
+## .gitlab-ci.yml
+
+```yaml
+build:
+  stage: build
+  script:
+    - docker/build-docker.sh
+    - docker tag snoyberg/snoyman-webapps "${IMGNAME}"
+
+deploy:
+  stage: deploy
+  only:
+    - master
+  script:
+    - kubectl set image "$KUBENAME" webapps="$IMGNAME"
+    - kubectl rollout status "$KUBENAME"
+```
 
 ---
 
