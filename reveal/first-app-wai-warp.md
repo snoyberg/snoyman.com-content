@@ -461,8 +461,191 @@ deploy:
 
 ---
 
-## wai-conduit
+## Demo: JSON service
+
+* Keep a map of name/age pairs
+* Get list of all names
+* Query individuals
+* Two ways to add values:
+    * PUT with query string to set age
+    * POST with request body
+
+[Full code available on Github](https://gist.github.com/snoyberg/6172d8da3fe145d9c80aaa7d495b74e3)
 
 ---
 
-## wai-websockets
+## API overview
+
+* `GET /people`
+    * JSON array of names
+* `POST /people`
+    * URL encoded body, requires `name` and `age`
+* `GET /person/<name>`
+    * `{"name":"<name>","age":<age>}`
+* `PUT /person/<name>?age=<age>`
+
+---
+
+## Type synonyms
+
+```haskell
+-- Type synonyms for nicer signatures below
+type Name = Text
+type Age = Int
+type PeopleMap = Map Name Age
+type PeopleVar = TVar PeopleMap
+```
+
+---
+
+## Response helpers
+
+```haskell
+-- Common error responses
+notFound :: Response
+notFound = responseBuilder status404 [] "Not found"
+
+badRequest :: Response
+badRequest = responseBuilder status405 [] "Bad req method"
+
+-- | Build a successful JSON response
+jsonResponse :: ToJSON a => a -> Response
+jsonResponse = responseBuilder
+  status200
+  [(hContentType, "application/json")]
+  . fromEncoding . toEncoding
+```
+
+---
+
+## Router
+
+```haskell
+peopleApp :: PeopleVar -> Application
+peopleApp peopleVar req send = do
+  response <-
+    case pathInfo req of
+      ["people"] ->
+        case requestMethod req of
+          "GET" -> getPeopleResponse peopleVar
+          "POST" -> postPeopleResponse peopleVar req
+          _ -> pure badRequest
+```
+
+```haskell
+      ["person", name] ->
+        case requestMethod req of
+          "GET" -> getPersonResponse peopleVar name
+          "PUT" -> do
+            let ageParam = lookup "age" $ queryString req
+            putPersonResponse peopleVar name ageParam
+      _ -> pure notFound
+  send response
+```
+
+---
+
+## Getters
+
+```haskell
+getPeopleResponse :: PeopleVar -> IO Response
+getPeopleResponse peopleVar = do
+  people <- atomically $ readTVar peopleVar
+  pure $ jsonResponse $ Map.keys people
+
+getPersonResponse :: PeopleVar -> Name -> IO Response
+getPersonResponse peopleVar name = do
+  people <- atomically $ readTVar peopleVar
+  case Map.lookup name people of
+    Nothing -> pure notFound
+    Just age -> pure $ jsonResponse $ object
+      [ "name" .= name
+      , "age" .= age
+      ]
+```
+
+---
+
+## Set via PUT
+
+```haskell
+putPersonResponse
+  :: PeopleVar -> Name -> Maybe (Maybe ByteString)
+  -> IO Response
+putPersonResponse _ _ Nothing =
+  pure $ responseBuilder status400 [] "No age parameter"
+putPersonResponse _ _ (Just Nothing) =
+  pure $ responseBuilder status400 [] "Empty age parameter"
+```
+
+```haskell
+putPersonResponse peopleVar name (Just (Just bs)) =
+  case Lex.readDecimal bs of
+    Just (age, "") -> do
+      atomically $ modifyTVar' peopleVar
+                 $ Map.insert name age
+      pure $ responseBuilder status201 [] ""
+    _ -> pure $ responseBuilder status400 []
+                "Invalid age parameter"
+```
+
+---
+
+## Set via POST
+
+```haskell
+postPeopleResponse :: PeopleVar -> Request -> IO Response
+postPeopleResponse peopleVar req = do
+  (params, _) <- parseRequestBody lbsBackEnd req
+  let mpair = do
+        nameBS <- lookup "name" params
+        name <- either (const Nothing) Just $
+                decodeUtf8' nameBS
+        ageBS <- lookup "age" params
+        (age, "") <- Lex.readDecimal ageBS
+        Just (name, age)
+```
+
+```haskell
+  case mpair of
+    Just (name, age) -> do
+      atomically $ modifyTVar' peopleVar
+                 $ Map.insert name age
+      pure $ responseBuilder status201 [] ""
+    Nothing -> pure $ responseBuilder status400 []
+                      "Invalid parameters"
+```
+
+---
+
+## Main function
+
+```haskell
+main :: IO ()
+main = do
+  peopleVar <- newTVarIO mempty
+  run 8000 $ logStdout $ autohead $ peopleApp peopleVar
+```
+
+Check out the test script in the Gist above
+
+---
+
+## Takeaways
+
+* Perfectly doable to write an app directly with WAI
+* Lots of manual plumbing
+* Web frameworks handle these things for you
+
+---
+
+## Summary
+
+* WAI is a low level interface
+* Basis for many frameworks and some apps
+* Lots of common utilities
+* Easy to plumb together lots of things
+* Probably not the interface you'll use on a daily basis
+* But totally usable if you need it
+
+Questions? Thank you!
