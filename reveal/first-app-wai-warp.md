@@ -461,6 +461,18 @@ deploy:
 
 ---
 
+## Exception handling
+
+* Warp has a fallback exception handler
+* Don't rely on it
+* Applications should _not_ throw exceptions
+    * Middlewares will break!
+    * Yesod does rigorous exception catching for you
+* Catch exceptions, log them, return error pages
+* Be [async exception safe](https://tech.fpcomplete.com/blog/2018/04/async-exception-handling-haskell)
+
+---
+
 ## Demo: JSON service
 
 * Keep a map of name/age pairs
