@@ -4,15 +4,17 @@ title: Why Applied Haskell
 
 ## Why Applied Haskell
 
-Quick introduction to why you're here, and why I do this :)
-
-Ties in with [Applied Haskell 101](https://tech.fpcomplete.com/haskell/tutorial/applied-haskell-101)
-
-__NOTE__ WIP slides, don't throw things at me!
+* Quick introduction to why you're here, and why I do this :)
+* Ties in with [Applied Haskell 101](https://tech.fpcomplete.com/haskell/tutorial/applied-haskell-101)
+* __NOTE__ WIP slides, don't throw things at me!
 
 <div style="text-align:center">
 <div><img src="/static/fpcomplete-logo.png" style="border:0;margin:0"></div>
 </div>
+
+1. Install Stack! https://tech.fpcomplete.com/haskell/get-started
+2. Run `stack upgrade`
+3. Run `stack build rio --resolver lts-14.10`
 
 ---
 
