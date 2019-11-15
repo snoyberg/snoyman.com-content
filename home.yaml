@@ -41,6 +41,16 @@ publications:
   publisher: "IEEE Spectrum, The Functional Web"
 
 talks:
+- date: 2019-11
+  title: Your first Haskell web app with WAI and Warp
+  venue: Functional Conf 2019
+  links:
+  - url: "https://www.snoyman.com/reveal/first-app-wai-warp"
+    text: Slides
+- date: 2019-11
+  title: Applied Haskell workshop
+  venue: Functional Conf 2019
+  links: []
 - date: 2019-09
   title: Deploying Haskell Services
   venue: Amsterdam Haskell Meetup, September 2019
