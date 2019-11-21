@@ -3,6 +3,11 @@ series:
   health-guide: Health Guide
   rust-crash-course: Rust Crash Course
 posts:
+- file: posts/boring-haskell-manifesto.md
+  title: "Boring Haskell Manifesto"
+  time: 2019-11-21T11:28:13Z
+  description: |
+    Haskell is revolutionary. But we're ignoring that. Instead: how to get Haskell into your organization, and how to make your organization more productive and profitable with better engineering
 - file: posts/haskell-kata-with-try-file-lock.md
   title: "Haskell kata: withTryFileLock"
   time: 2019-08-18T12:04:13Z
