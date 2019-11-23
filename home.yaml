@@ -17,7 +17,7 @@ toplinks:
 #  text: '@snoyberg'
 #- url: 'http://www.haskellers.com/user/snoyberg'
 #  text: I'm a Haskeller
-- url: 'http://shop.oreilly.com/product/0636920023142.do'
+- url: "http://shop.oreilly.com/product/0636920035664.do"
   text: "The Yesod book from O'Reilly"
 - url: 'https://matrix.to/#/@snoyberg:matrix.org'
   text: '@snoyberg on Matrix'
@@ -31,8 +31,8 @@ publications:
 - url: "http://www.aosabook.org/en/yesod.html"
   text: Architecture of Open Source Applications, Volume 2
   date: 2012-05
-- url: "http://shop.oreilly.com/product/0636920023142.do"
-  text: Developing Web Applications with Haskell and Yesod
+- url: "http://shop.oreilly.com/product/0636920035664.do"
+  text: Developing Web Apps with Haskell and Yesod
   date: 2012-04
   publisher: O'Reilly
 - url: "http://steve.vinoski.net/pdf/IC-Warp_a_Haskell_Web_Server.pdf"
