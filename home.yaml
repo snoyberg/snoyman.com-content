@@ -21,6 +21,8 @@ toplinks:
   text: "The Yesod book from O'Reilly"
 - url: "https://www.linkedin.com/in/snoyberg/"
   text: '@snoyberg on LinkedIn'
+- url: "https://keybase.io/snoyberg"
+  text: "@snoyberg on Keybase"
 #- url: 'https://plus.google.com/116553865628071717889/posts'
 #  text: "+Michael Snoyman"
 
