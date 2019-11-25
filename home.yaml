@@ -49,6 +49,8 @@ talks:
   links:
   - url: "https://www.snoyman.com/reveal/first-app-wai-warp"
     text: Slides
+  - url: "https://youtu.be/mz5_HmLGRXc"
+    text: Video
 - date: 2019-11
   title: Applied Haskell workshop
   venue: Functional Conf 2019
