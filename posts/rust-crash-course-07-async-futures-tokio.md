@@ -1,3 +1,5 @@
+__NOTE__ With the addition of async/await syntax in Rust 1.39 (November 2019), everything related to async code in Rust is getting an overhaul. As such, this lesson is now pretty deeply out of date. It's still useful for understanding the deeper principles, but I hope to write up an updated tutorial in the future covering the new approach.
+
 Unlike languages like Haskell, Erlang, and Go, Rust does not have a
 runtime system providing green threads and asynchronous I/O. However,
 for many real world use cases, async I/O is strongly desired, if not a
