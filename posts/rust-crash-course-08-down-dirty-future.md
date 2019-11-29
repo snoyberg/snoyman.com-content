@@ -364,7 +364,7 @@ Woohoo, that compiles! Of course, it fails at runtime due to the `unimplemented!
 thread 'async-std/executor' panicked at 'not yet implemented', src/main.rs:13:9
 ```
 
-We'll get to that executor bit later. For now, let's try to implement `poll`. We need to return a value of type `Poll<Self::Output>`, or `Poll<()>`. Let's look at the [definition of `Poll`](https://doc.rust-lang.org/std/task/enum.Poll.html):
+Now let's try to implement `poll`. We need to return a value of type `Poll<Self::Output>`, or `Poll<()>`. Let's look at the [definition of `Poll`](https://doc.rust-lang.org/std/task/enum.Poll.html):
 
 ```rust
 pub enum Poll<T> {
@@ -491,7 +491,9 @@ The next bit is the eyes-glazing part around pinned pointers. We need to _projec
 let sleep: Pin<&mut Fut> = unsafe { self.map_unchecked_mut(|s| &mut s.sleep) };
 ```
 
-Alright, now the important bit. We've got our underlying `Future`, and we need to do something with it. The only thing e _can_ do with it is call `poll`. `poll` requires a `&mut Context`, which fortunately we've been provided. That `Context` contains information about the currently running task, so it can be woken up (via a `Waker`) when the task is ready. We'll get into that a bit more later.
+Alright, now the important bit. We've got our underlying `Future`, and we need to do something with it. The only thing e _can_ do with it is call `poll`. `poll` requires a `&mut Context`, which fortunately we've been provided. That `Context` contains information about the currently running task, so it can be woken up (via a `Waker`) when the task is ready.
+
+__NOTE__ We're not going to get deeper into how `Waker` works in this post. If you want a real life example of how to call `Waker` yourself, I recommend reading my [pid1 in Rust](https://tech.fpcomplete.com/rust/pid1) post.
 
 For now, let's do the only thing we can reasonably do:
 
@@ -518,12 +520,196 @@ Poll::Ready(()) => {
 
 And just like that, we've built a more complex `Future` from a simpler one. But that was pretty ad-hoc.
 
-## `and_then`
+## TwoFutures
 
-## TODO
+`SleepPrint` is pretty ad-hoc: it hard codes a specific action to run after the `sleep` `Future` completes. Let's up our game, and sequence the actions of two different `Future`s. We're going to define a new `struct` that has three fields:
 
-* Implement `Sleepus` struct
-* Explain waker, point to `pid1` post
-* Explain `main` attr, demonstrate the `block_on` function, explain executors
-* Show double-spawning and `await`ing
-* Use `join` instead of `.await` in `main`
+* The first `Future` to run
+* The second `Future` to run
+* A `bool` to tell us if we've finished running the first `Future`
+
+Since the `Pin` stuff is going to get a bit more complicated, it's time to reach for that helper crate to ease our implementation and avoid `unsafe` blocks ourself. So add the following to your `Cargo.toml`:
+
+```toml
+pin-project-lite = "0.1.1"
+```
+
+And now we can define a `TwoFutures` struct that allows us to project the first and second `Future`s into pinned pointers:
+
+```rust
+use pin_project_lite::pin_project;
+
+pin_project! {
+    struct TwoFutures<Fut1, Fut2> {
+        first_done: bool,
+        #[pin]
+        first: Fut1,
+        #[pin]
+        second: Fut2,
+    }
+}
+```
+
+Using this in `sleepus` is easy enough:
+
+```rust
+fn sleepus() -> impl Future<Output=()> {
+    TwoFutures {
+        first_done: false,
+        first: sleep(Duration::from_millis(3000)),
+        second: async { println!("Hello TwoFutures"); },
+    }
+}
+```
+
+Now we just need to define our `Future` implementation. Easy, right? We want to make sure both `Fut1` and `Fut2` are `Future`s. And our `Output` will be the output from the `Fut2`. (You could also return both the first and second output if you wanted.) To make all that work:
+
+```rust
+impl<Fut1: Future, Fut2: Future> Future for TwoFutures<Fut1, Fut2> {
+    type Output = Fut2::Output;
+
+    fn poll(self: Pin<&mut Self>, ctx: &mut Context) -> Poll<Self::Output> {
+        ...
+    }
+}
+```
+
+In order to work with the pinned pointer, we're going to get a new value, `this`, which projects all of the pointers:
+
+```rust
+let this = self.project();
+```
+
+With that out of the way, we can interact with our three fields directly in `this`. The first thing we do is check if the first `Future` has already completed. If not, we're going to poll it. If the poll is `Ready`, then we'll ignore the output and indicate that the first `Future` is done:
+
+```rust
+if !*this.first_done {
+    if let Poll::Ready(_) = this.first.poll(ctx) {
+        *this.first_done = true;
+    }
+}
+```
+
+Next, if the first `Future` is done, we want to poll the second. And if the first `Future` is _not_ done, then we say that we're pending:
+
+```rust
+if *this.first_done {
+    this.second.poll(ctx)
+} else {
+    Poll::Pending
+}
+```
+
+And just like that, we've composed two `Future`s together into a bigger, grander, brighter `Future`.
+
+__EXERCISE__ Get rid of the usage of an `async` block in `second`. Let the compiler errors guide you.
+
+The error message you get says that `()` is not a `Future`. Instead, you need to return a `Future` value after the call to `println!`. We can use our handy `async_std::future::ready`:
+
+```rust
+second: {
+    println!("Hello TwoFutures");
+    async_std::future::ready(())
+},
+```
+
+## AndThen
+
+Sticking together two arbitrary `Future`s like this is nice. But it's even nicer to have the second `Future`s depend on the result of the first `Future`. To do this, we'd want a function like `and_then`. (Monads FTW to my Haskell buddies.) I'm not going to bore you with the gory details of an implementation here, but feel free to [read the Gist if you're interested](https://gist.github.com/snoyberg/7eeb5e330d9b5db9806d82c83c9d3e56). Assuming you have this method available, we can begin to write the `sleepus` function ourselves as:
+
+```rust
+fn sleepus() -> impl Future<Output = ()> {
+    println!("Sleepus 1");
+    sleep(Duration::from_millis(500)).and_then(|()| {
+        println!("Sleepus 2");
+        sleep(Duration::from_millis(500)).and_then(|()| {
+            println!("Sleepus 3");
+            sleep(Duration::from_millis(500)).and_then(|()| {
+                println!("Sleepus 4");
+                async_std::future::ready(())
+            })
+        })
+    })
+}
+```
+
+And before Rust 1.39 and the `async/.await` syntax, this is basically how async code worked. This is far from perfect. Besides the obvious right-stepping of the code, it's not actually a loop. You _could_ recursively call `sleepus`, except that creates an infinite type which the compiler isn't too fond of.
+
+But fortunately, we've now finally established enough background to easily explain what the `.await` syntax is doing: exactly what `and_then` is doing, but without the fuss!
+
+__EXERCISE__ Rewrite the `sleepus` function above to use `.await` instead of `and_then`.
+
+The rewrite is really easy. The body of the function becomes the non-right-stepping, super flat:
+
+```rust
+println!("Sleepus 1");
+sleep(Duration::from_millis(500)).await;
+println!("Sleepus 2");
+sleep(Duration::from_millis(500)).await;
+println!("Sleepus 3");
+sleep(Duration::from_millis(500)).await;
+println!("Sleepus 4");
+```
+
+And then we also need to change the signature of our function to use `async`, or wrap everything in an `async` block. Your call.
+
+Besides the obvious readability improvements here, there are some massive usability improvements with `.await` as well. One that sticks out here is how easily it ties in with loops. This was a real pain with the older `futures` stuff. Also, chaining together multiple `await` calls is really easy, e.g.:
+
+```rust
+let body = make_http_request().await.get_body().await;
+```
+
+And not only that, but it plays in with the `?` operator for error handling perfectly. The above example would more likely be:
+
+```rust
+let body = make_http_request().await?.get_body().await?;
+```
+
+## `main` attribute
+
+One final mystery remains. What exactly is going on with that weird attribute on `main`:
+
+```rust
+#[async_std::main]
+async fn main() {
+    ...
+}
+```
+
+Our `sleepus` and `interruptus` functions do not actually do anything. They return `Future`s which provide instructions on how to do work. Something has to actually perform those actions. The thing that runs those actions is an **executor**. The `async-std` library provides an executor, as does `tokio`. In order to run any `Future`, you need an executor.
+
+The attribute above automatically wraps the `main` function with `async-std`'s executor. The attribute approach, however, is totally optional. Instead, you can use `async_std::task::block_on`.
+
+__EXERCISE__ Rewrite `main` to not use the attribute. You'll need to rewrite it from `async fn main` to `fn main`.
+
+Since we use `.await` inside the body of `main`, we get an error when we simply remove the `async` qualifier. Therefore, we need to use an `async` block inside `main` (or define a separate helper `async` function). Putting it all together:
+
+```rust
+fn main() {
+    async_std::task::block_on(async {
+        let sleepus = spawn(sleepus());
+        interruptus().await;
+
+        sleepus.await;
+    })
+}
+```
+
+Each executor is capable of managing multiple tasks. Each task is working on producing the output of a single `Future`. And just like with threads, you can `spawn` additional tasks to get concurrent running. Which is exactly how we achieve the interleaving we wanted!
+
+## Summary
+
+I don't think the behavior under the surface of `.await` is too big a reveal, but I think it's useful to understand exactly what's happening here. In particular, understanding the difference between a value of `Future` and actually chaining together the outputs of `Future` values is core to using `async/.await` correctly. Fortunately, the compiler errors and warnings do a great job of guiding you in the right direction.
+
+In the next lesson, which I hope to get to soon, we can start using our newfound knowledge of `Future` and the `async/.await` syntax to build some asynchronous applications. My plan is to take the examples from the now-defunct lesson 7 and rewrite them to use the new syntax. I'm undecided on whether I'll use `tokio` or `async-std` for that.
+
+If you have an opinion on which library I should use, or just want to encourage me to actually get around to writing that lesson, feel free to [ping me on Twitter](https://twitter.com/snoyberg).
+
+## Exercises
+
+Here are some take-home exercises to play with. You can base them on [the code in this Gist](https://gist.github.com/snoyberg/f5fea804f2b6fb69ae6d1f75c8004fc5).
+
+1. Modify the `main` function to call `spawn` twice instead of just once.
+2. Modify the `main` function to not call `spawn` at all. Instead, use [`join`](https://docs.rs/async-std/1.2.0/async_std/future/trait.Future.html#method.join). You'll need to add a `use async_std::prelude::*;` and add the `"unstable"` feature to the `async-std` dependency in `Cargo.toml`.
+3. Modify the `main` function to get the non-interleaved behavior, where the program prints `Sleepus` multiple times before `Interruptus`.
+4. We're still performing blocking I/O with `println!`. Turn on the `"unstable"` feature again, and try using `async_std::println`. You'll get an ugly error message until you get rid of `spawn`. Try to understand why that happens.

@@ -5,7 +5,7 @@ series:
 posts:
 - file: posts/rust-crash-course-08-down-dirty-future.md
   title: Down and dirty with Future - Rust Crash Course lesson 7
-  time: 2019-12-01T04:00:00Z
+  time: 2019-12-02T04:00:00Z
   description: |
     Lesson 8 in the Rust crash course: down and dirty with the Future trait
   series: rust-crash-course
