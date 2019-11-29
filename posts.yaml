@@ -3,6 +3,12 @@ series:
   health-guide: Health Guide
   rust-crash-course: Rust Crash Course
 posts:
+- file: posts/rust-crash-course-08-down-dirty-future.md
+  title: Down and dirty with Future - Rust Crash Course lesson 7
+  time: 2019-12-01T04:00:00Z
+  description: |
+    Lesson 8 in the Rust crash course: down and dirty with the Future trait
+  series: rust-crash-course
 - file: posts/boring-haskell-manifesto.md
   title: "Boring Haskell Manifesto"
   time: 2019-11-21T11:28:13Z
