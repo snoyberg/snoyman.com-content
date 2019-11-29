@@ -697,6 +697,12 @@ fn main() {
 
 Each executor is capable of managing multiple tasks. Each task is working on producing the output of a single `Future`. And just like with threads, you can `spawn` additional tasks to get concurrent running. Which is exactly how we achieve the interleaving we wanted!
 
+## Cooperative concurrency
+
+One word of warning. `Future`s and `async`/`.await` implement a form of cooperative concurrency. By contrast, operating system threads provide preemptive concurrency. The important different is that in cooperative concurrency, you have to cooperate. If one of your tasks causes a delay, such as by using `std::thread::sleep` or by performing significant CPU computation, it will not be interrupted.
+
+The upshot of this is that you should ensure you do not perform blocking calls inside your tasks. And if you have a CPU-intensive task to perform, it's probably worth spawning an OS thread for it, or at least ensuring your executor will not starve your other tasks.
+
 ## Summary
 
 I don't think the behavior under the surface of `.await` is too big a reveal, but I think it's useful to understand exactly what's happening here. In particular, understanding the difference between a value of `Future` and actually chaining together the outputs of `Future` values is core to using `async/.await` correctly. Fortunately, the compiler errors and warnings do a great job of guiding you in the right direction.
@@ -713,3 +719,4 @@ Here are some take-home exercises to play with. You can base them on [the code i
 2. Modify the `main` function to not call `spawn` at all. Instead, use [`join`](https://docs.rs/async-std/1.2.0/async_std/future/trait.Future.html#method.join). You'll need to add a `use async_std::prelude::*;` and add the `"unstable"` feature to the `async-std` dependency in `Cargo.toml`.
 3. Modify the `main` function to get the non-interleaved behavior, where the program prints `Sleepus` multiple times before `Interruptus`.
 4. We're still performing blocking I/O with `println!`. Turn on the `"unstable"` feature again, and try using `async_std::println`. You'll get an ugly error message until you get rid of `spawn`. Try to understand why that happens.
+5. Write a function `foo` such that the following assertion passes: `assert_eq!(42, async_std::task::block_on(async { foo().await.await }));`
