@@ -707,9 +707,7 @@ The upshot of this is that you should ensure you do not perform blocking calls i
 
 I don't think the behavior under the surface of `.await` is too big a reveal, but I think it's useful to understand exactly what's happening here. In particular, understanding the difference between a value of `Future` and actually chaining together the outputs of `Future` values is core to using `async/.await` correctly. Fortunately, the compiler errors and warnings do a great job of guiding you in the right direction.
 
-In the next lesson, which I hope to get to soon, we can start using our newfound knowledge of `Future` and the `async/.await` syntax to build some asynchronous applications. My plan is to take the examples from the now-defunct lesson 7 and rewrite them to use the new syntax. I'm undecided on whether I'll use `tokio` or `async-std` for that.
-
-If you have an opinion on which library I should use, or just want to encourage me to actually get around to writing that lesson, feel free to [ping me on Twitter](https://twitter.com/snoyberg).
+In the next lesson, we can start using our newfound knowledge of `Future` and the `async/.await` syntax to build some asynchronous applications. We'll be diving into writing some async I/O, including networking code, using Tokio 0.2.
 
 ## Exercises
 
