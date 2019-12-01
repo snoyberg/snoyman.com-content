@@ -57,7 +57,7 @@ talks:
   links: []
 - date: 2019-09
   title: Deploying Haskell Services
-  venue: Amsterdam Haskell Meetup, September 2019
+  venue: Amsterdam Haskell Meetup
   links:
   - url: "https://www.snoyman.com/reveal/deploying-haskell-services"
     text: Slides

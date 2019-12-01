@@ -1,0 +1,25 @@
+.talk {
+    padding: 0.5em;
+    border: 1px solid #666;
+    margin-bottom: 1em;
+    border-radius: 5px;
+}
+
+.talk > .venue {
+    color: orange;
+}
+
+.talk > .date {
+    font-size: 70%;
+    font-style: italic;
+}
+
+.talk > .title {
+    font-size: 120%;
+    display: block;
+}
+
+.talk > .links {
+    font-size: 70%;
+    display: block;
+}
