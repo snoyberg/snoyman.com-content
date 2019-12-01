@@ -3,6 +3,12 @@ series:
   health-guide: Health Guide
   rust-crash-course: Rust Crash Course
 posts:
+- file: posts/rust-crash-course-09-tokio-0-2.md
+  title: tokio 0.2 - Rust Crash Course lesson 9
+  time: 2019-12-09T04:00:00Z
+  description: |
+    Lesson 9 in the Rust crash course: using tokio 0.2.
+  series: rust-crash-course
 - file: posts/rust-crash-course-08-down-dirty-future.md
   title: Down and dirty with Future - Rust Crash Course lesson 8
   time: 2019-12-02T04:00:00Z
