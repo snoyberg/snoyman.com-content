@@ -8,6 +8,14 @@ __NOTE__ I'm going to use the `async-std` library in this example instead of `to
 
 You should start a Cargo project to play along. Try `cargo new --bin sleepus-interruptus`. If you want to ensure you're on the same compiler version, add a `rust-toolchain` file with the string `1.39.0` in it. Run `cargo run` to make sure you're all good to go.
 
+This post is part of a series based on [teaching Rust at FP
+Complete](https://tech.fpcomplete.com/rust). If you're reading this post outside
+of the blog, you can find links to all posts in the series [at the top of the
+introduction
+post](https://www.snoyman.com/blog/2018/10/introducing-rust-crash-course). You
+can also [subscribe to the RSS
+feed](https://www.snoyman.com/feed/rust-crash-course).
+
 ## Sleepus Interruptus
 
 I want to write a program which will print the message `Sleepus` 10 times, with a delay of 0.5 seconds. And it should print the message `Interruptus` 5 times, with a delay of 1 second. This is some fairly easy Rust code:

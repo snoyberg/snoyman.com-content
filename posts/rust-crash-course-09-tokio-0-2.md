@@ -12,6 +12,14 @@ And as a side note, if you have some other topic you'd like me to cover around t
 
 *Exercise solutions will be included at the end of the blog post. Yes, I keep changing the rules, sue me.*
 
+This post is part of a series based on [teaching Rust at FP
+Complete](https://tech.fpcomplete.com/rust). If you're reading this post outside
+of the blog, you can find links to all posts in the series [at the top of the
+introduction
+post](https://www.snoyman.com/blog/2018/10/introducing-rust-crash-course). You
+can also [subscribe to the RSS
+feed](https://www.snoyman.com/feed/rust-crash-course).
+
 ## Hello Tokio!
 
 Let's kick this off. Go ahead and create a new Rust project for experimenting:
