@@ -311,6 +311,203 @@ In order to fix this, we need to convince the compiler to make a `Future` that o
 
 __Exercise 7__ Make the code above compile using two `async move` blocks.
 
+## Playing with `lines`
+
+This section will have a series of modifications to a program. I recommend you solve each challenge before looking at the solution. However, unlike the other exercises, I'm going to show the solutions inline since they build on each other.
+
+Let's build an async program that counts the number of lines on standard input. You'll want to use the [`lines`](https://docs.rs/tokio/0.2.2/tokio/io/trait.AsyncBufReadExt.html#method.lines) method for this. Read the docs and try to figure out what `use`s and wrappers will be necessary to make the types line up.
+
+```rust
+use tokio::prelude::*;
+use tokio::io::AsyncBufReadExt;
+
+#[tokio::main]
+async fn main() -> Result<(), std::io::Error> {
+    let stdin = io::stdin();
+    let stdin = io::BufReader::new(stdin);
+    let mut count = 0u32;
+    let mut lines = stdin.lines();
+    while let Some(_) = lines.next_line().await? {
+        count += 1;
+    }
+    println!("Lines on stdin: {}", count);
+    Ok(())
+}
+```
+
+OK, bumping this up one more level. Instead of standard input, let's take a list of file names as command line arguments, and count up the total number of lines in all the files. Initially, it's OK to read the files one at a time. In other words: don't bother calling `spawn`. Give it a shot, and then come back here:
+
+```rust
+use tokio::prelude::*;
+use tokio::io::AsyncBufReadExt;
+
+#[tokio::main]
+async fn main() -> Result<(), std::io::Error> {
+    let mut args = std::env::args();
+    let _me = args.next(); // ignore command name
+    let mut count = 0u32;
+
+    for filename in args {
+        let file = tokio::fs::File::open(filename).await?;
+        let file = io::BufReader::new(file);
+        let mut lines = file.lines();
+        while let Some(_) = lines.next_line().await? {
+            count += 1;
+        }
+    }
+
+    println!("Total lines: {}", count);
+    Ok(())
+}
+```
+
+But now it's time to make this properly asynchronous, and process the files in separate `spawn`ed tasks. In order to make this work, we need to spawn all of the tasks, and then `.await` each of them. I used a `Vec` of `Future<Output=Result<u32, std::io::Error>>`s for this. Give it a shot!
+
+```rust
+use tokio::prelude::*;
+use tokio::io::AsyncBufReadExt;
+
+#[tokio::main]
+async fn main() -> Result<(), std::io::Error> {
+    let mut args = std::env::args();
+    let _me = args.next(); // ignore command name
+    let mut tasks = vec![];
+
+    for filename in args {
+        tasks.push(tokio::spawn(async {
+            let file = tokio::fs::File::open(filename).await?;
+            let file = io::BufReader::new(file);
+            let mut lines = file.lines();
+            let mut count = 0u32;
+            while let Some(_) = lines.next_line().await? {
+                count += 1;
+            }
+            Ok(count) as Result<u32, std::io::Error>
+        }));
+    }
+
+    let mut count = 0;
+    for task in tasks {
+        count += task.await??;
+    }
+
+    println!("Total lines: {}", count);
+    Ok(())
+}
+```
+
+And finally in this progression: let's change how we handle the `count`. Instead of `.await`ing the count in the second `for` loop, let's have each individual task update a shared mutable variable. You should use an `Arc<Mutex<u32>>` for that. You'll still need to keep a `Vec` of the tasks though to ensure you wait for all files to be read.
+
+```rust
+use tokio::prelude::*;
+use tokio::io::AsyncBufReadExt;
+use std::sync::{Arc, Mutex};
+
+#[tokio::main]
+async fn main() -> Result<(), std::io::Error> {
+    let mut args = std::env::args();
+    let _me = args.next(); // ignore command name
+    let mut tasks = vec![];
+    let count = Arc::new(Mutex::new(0u32));
+
+    for filename in args {
+        let count = count.clone();
+        tasks.push(tokio::spawn(async move {
+            let file = tokio::fs::File::open(filename).await?;
+            let file = io::BufReader::new(file);
+            let mut lines = file.lines();
+            let mut local_count = 0u32;
+            while let Some(_) = lines.next_line().await? {
+                local_count += 1;
+            }
+
+            let mut count = count.lock().unwrap();
+            *count += local_count;
+            Ok(()) as Result<(), std::io::Error>
+        }));
+    }
+
+    for task in tasks {
+        task.await??;
+    }
+
+    let count = count.lock().unwrap();
+    println!("Total lines: {}", *count);
+    Ok(())
+}
+```
+
+## LocalSet and `!Send`
+
+Thanks to [@xudehseng](https://twitter.com/xudesheng/status/1201382514415325185?s=20) for the inspiration on this section.
+
+OK, did that last exercise seem a bit contrived? It was! In my opinion, the previous approach of `.await`ing the counts and summing in the `main` function itself was superior. However, I wanted to teach you something else.
+
+What happens if you replace the `Arc<Mutex<u32>>` with a `Rc<RefCell<u32>>`? With this code:
+
+```rust
+use tokio::prelude::*;
+use tokio::io::AsyncBufReadExt;
+use std::rc::Rc;
+use std::cell::RefCell;
+
+#[tokio::main]
+async fn main() -> Result<(), std::io::Error> {
+    let mut args = std::env::args();
+    let _me = args.next(); // ignore command name
+    let mut tasks = vec![];
+    let count = Rc::new(RefCell::new(0u32));
+
+    for filename in args {
+        let count = count.clone();
+        tasks.push(tokio::spawn(async {
+            let file = tokio::fs::File::open(filename).await?;
+            let file = io::BufReader::new(file);
+            let mut lines = file.lines();
+            let mut local_count = 0u32;
+            while let Some(_) = lines.next_line().await? {
+                local_count += 1;
+            }
+
+            *count.borrow_mut() += local_count;
+            Ok(()) as Result<(), std::io::Error>
+        }));
+    }
+
+    for task in tasks {
+        task.await??;
+    }
+
+    println!("Total lines: {}", count.borrow());
+    Ok(())
+}
+```
+
+You get an error:
+
+```
+error[E0277]: `std::rc::Rc<std::cell::RefCell<u32>>` cannot be shared between threads safely
+  --> src/main.rs:15:20
+   |
+15 |         tasks.push(tokio::spawn(async {
+   |                    ^^^^^^^^^^^^ `std::rc::Rc<std::cell::RefCell<u32>>` cannot be shared between threads safely
+   |
+  ::: /Users/michael/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-0.2.2/src/task/spawn.rs:49:17
+   |
+49 |     T: Future + Send + 'static,
+   |                 ---- required by this bound in `tokio::task::spawn::spawn`
+```
+
+Tasks can be scheduled to multiple different threads. Therefore, your `Future` must be `Send`. And `Rc<RefCell<u32>>` is definitely `!Send`. However, in our use case, using multiple OS threads is unlikely to speed up our program; we're going to be doing lots of blocking I/O. It would be nice if we could insist on spawning all our tasks on the same OS thread and avoid the need for `Send`. And sure enough, Tokio provides such a function: `tokio::task::spawn_local`. Using it (and adding back in `async move` instead of `async`), our program compiles, but breaks at runtime:
+
+```
+thread 'main' panicked at '`spawn_local` called from outside of a local::LocalSet!', src/libcore/option.rs:1190:5
+```
+
+Uh-oh! Now I'm personally not a big fan of this detect-it-at-runtime stuff, but the concept is simple enough: if you want to spawn onto the current thread, you need to set up your runtime to support that. And the way we do that is with [`LocalSet`](https://docs.rs/tokio/0.2.2/tokio/task/struct.LocalSet.html). In order to use this, you'll need to ditch the `#[tokio::main]` attribute.
+
+__EXERCISE 8__ Follow the documentation for `LocalSet` to make the program above work with `Rc<RefCell<u32>>`.
+
 ## Conclusion
 
 That lesson felt short. Definitely compared to the previous Tokio lesson which seemed to go on forever. I think this is a testament to how easy to use the new `async/`.await` syntax is.
@@ -455,6 +652,51 @@ async fn main() -> io::Result<()> {
     send.await??;
     recv.await??;
 
+    Ok(())
+}
+```
+
+## Solution 8
+
+```rust
+use tokio::prelude::*;
+use tokio::io::AsyncBufReadExt;
+use std::rc::Rc;
+use std::cell::RefCell;
+
+fn main() -> Result<(), std::io::Error> {
+    let mut rt = tokio::runtime::Runtime::new()?;
+    let local = tokio::task::LocalSet::new();
+    local.block_on(&mut rt, main_inner())
+}
+
+async fn main_inner() -> Result<(), std::io::Error> {
+    let mut args = std::env::args();
+    let _me = args.next(); // ignore command name
+    let mut tasks = vec![];
+    let count = Rc::new(RefCell::new(0u32));
+
+    for filename in args {
+        let count = count.clone();
+        tasks.push(tokio::task::spawn_local(async move {
+            let file = tokio::fs::File::open(filename).await?;
+            let file = io::BufReader::new(file);
+            let mut lines = file.lines();
+            let mut local_count = 0u32;
+            while let Some(_) = lines.next_line().await? {
+                local_count += 1;
+            }
+
+            *count.borrow_mut() += local_count;
+            Ok(()) as Result<(), std::io::Error>
+        }));
+    }
+
+    for task in tasks {
+        task.await??;
+    }
+
+    println!("Total lines: {}", count.borrow());
     Ok(())
 }
 ```
