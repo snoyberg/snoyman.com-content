@@ -5,7 +5,7 @@ series:
 posts:
 - file: posts/rust-crash-course-09-tokio-0-2.md
   title: Tokio 0.2 - Rust Crash Course lesson 9
-  time: 2019-12-09T04:00:00Z
+  time: 2019-12-05T12:57:38Z
   description: |
     Lesson 9 in the Rust crash course: using Tokio 0.2.
   series: rust-crash-course
