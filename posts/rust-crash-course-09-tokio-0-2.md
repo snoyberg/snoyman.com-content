@@ -206,7 +206,7 @@ impl<T> Future for JoinHandle<T> {
 
 Calling `spawn` gives us back a `JoinHandle<T::Output>`. In our case, the `Future` we provide as input is `dating()`, which has an output of type `Result<(), std::io::Error>`. So that means the type of `task::spawn(dating())` is `JoinHandle<Result<(), std::io::Error>>`.
 
-We also see that `JoinHandle` implements `Future`. So when we apply `.apply` to this value, we end up with whatever that `type Output = Result<T, JoinError>` thing is. Since we know that `T` is `Result<(), std::io::Error>`, this means we end up with `Result<Result<(), std::io::Error>, JoinError>`.
+We also see that `JoinHandle` implements `Future`. So when we apply `.await` to this value, we end up with whatever that `type Output = Result<T, JoinError>` thing is. Since we know that `T` is `Result<(), std::io::Error>`, this means we end up with `Result<Result<(), std::io::Error>, JoinError>`.
 
 The first `?` deals with the outer `Result`, exiting with the `JoinError` on an `Err`, and giving us a `Result<(), std::io::Error>` value on `Ok`. The second `?` deals with the `std::io::Error`, giving us a `()` on `Ok`. Whew!
 
