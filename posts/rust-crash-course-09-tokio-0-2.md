@@ -227,7 +227,7 @@ I could keep stepping through the other cools functions in the Tokio library. I 
 I'm going to slightly extend the example from the [`TcpListener` docs](https://docs.rs/tokio/0.2.2/tokio/net/struct.TcpListener.html#examples) to (1) make it compile and (2) implement an echo server. This program has a pretty major flaw in it though, I recommend trying to find it.
 
 ```rust
-use tokio::io::*;
+use tokio::io;
 use tokio::net::{TcpListener, TcpStream};
 
 #[tokio::main]
