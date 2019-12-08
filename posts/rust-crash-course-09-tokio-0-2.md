@@ -401,7 +401,10 @@ And finally in this progression: let's change how we handle the `count`. Instead
 ```rust
 use tokio::prelude::*;
 use tokio::io::AsyncBufReadExt;
-use std::sync::{Arc, Mutex};
+use std::sync::Arc;
+
+// avoid thread blocking by using Tokio's mutex
+use tokio::sync::Mutex;
 
 #[tokio::main]
 async fn main() -> Result<(), std::io::Error> {
@@ -421,7 +424,7 @@ async fn main() -> Result<(), std::io::Error> {
                 local_count += 1;
             }
 
-            let mut count = count.lock().unwrap();
+            let mut count = count.lock().await;
             *count += local_count;
             Ok(()) as Result<(), std::io::Error>
         }));
@@ -431,7 +434,7 @@ async fn main() -> Result<(), std::io::Error> {
         task.await??;
     }
 
-    let count = count.lock().unwrap();
+    let count = count.lock().await;
     println!("Total lines: {}", *count);
     Ok(())
 }
