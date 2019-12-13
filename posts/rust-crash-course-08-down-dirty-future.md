@@ -499,7 +499,7 @@ The next bit is the eyes-glazing part around pinned pointers. We need to _projec
 let sleep: Pin<&mut Fut> = unsafe { self.map_unchecked_mut(|s| &mut s.sleep) };
 ```
 
-Alright, now the important bit. We've got our underlying `Future`, and we need to do something with it. The only thing e _can_ do with it is call `poll`. `poll` requires a `&mut Context`, which fortunately we've been provided. That `Context` contains information about the currently running task, so it can be woken up (via a `Waker`) when the task is ready.
+Alright, now the important bit. We've got our underlying `Future`, and we need to do something with it. The only thing we _can_ do with it is call `poll`. `poll` requires a `&mut Context`, which fortunately we've been provided. That `Context` contains information about the currently running task, so it can be woken up (via a `Waker`) when the task is ready.
 
 __NOTE__ We're not going to get deeper into how `Waker` works in this post. If you want a real life example of how to call `Waker` yourself, I recommend reading my [pid1 in Rust](https://tech.fpcomplete.com/rust/pid1) post.
 
