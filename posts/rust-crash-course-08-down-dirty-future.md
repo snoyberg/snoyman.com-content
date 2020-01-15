@@ -197,7 +197,7 @@ async {
 
 The second error message is a result of the first: the `async` keyword causes the return type to be an `impl Future`. Without that keyword, our `for` loop evaluates to `()`, which isn't an `impl Future`.
 
-__EXERCISE__ Fix the compiler errors by introducing an `await` block inside the `sleepus` function. Do _not_ add `async` to the function signature, keep using `impl Future`.
+__EXERCISE__ Fix the compiler errors by introducing an `async` block inside the `sleepus` function. Do _not_ add `async` to the function signature, keep using `impl Future`.
 
 Wrapping the entire function body with an `async` block solves the problem:
 
