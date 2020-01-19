@@ -39,3 +39,9 @@ Along those lines, I highly recommend checking out [ngrok](https://ngrok.com/), 
 I've considered writing a blog post about [Servius](https://www.stackage.org/package/servius) many times before, but there's never enough info to warrant a dedicated post. So now's a good time to mention it. Servius is a souped-up version of the Warp executable. In addition to serving static files, it has support for rendering Markdown (using Github-flavored CommonMark). I'll often use Servius instead of Warp when I'm drafting a blog post like this and want to check it out quickly.
 
 Want to install Servius? Just run `stack install servius` or `stack install servius --resolver lts-14.20`.
+
+## Other tools?
+
+One more shout-out: I really like the [`bat` tool](https://crates.io/crates/bat), aka "a cat clone with wings." To get it, [install Rust](https://www.rust-lang.org/tools/install) and run `cargo install bat`. I enjoy getting syntax highlighting and paging when I want to look at files, without having to pop them open in `vim`.
+
+I may expand this list over time :)
