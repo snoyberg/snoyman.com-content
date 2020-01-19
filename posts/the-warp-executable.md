@@ -42,6 +42,6 @@ Want to install Servius? Just run `stack install servius` or `stack install serv
 
 ## Other tools?
 
-One more shout-out: I really like the [`bat` tool](https://crates.io/crates/bat), aka "a cat clone with wings." To get it, [install Rust](https://www.rust-lang.org/tools/install) and run `cargo install bat`. I enjoy getting syntax highlighting and paging when I want to look at files, without having to pop them open in `vim`.
+One more shout-out: I really like the [`bat` tool](https://github.com/sharkdp/bat#readme), aka "a cat clone with wings." To get it, [install Rust](https://www.rust-lang.org/tools/install) and run `cargo install bat`, or check out the [many other installation options](https://github.com/sharkdp/bat#installation). I enjoy getting syntax highlighting and paging when I want to look at files, without having to pop them open in `vim`.
 
 I may expand this list over time :)
