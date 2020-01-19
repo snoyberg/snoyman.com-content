@@ -3,6 +3,11 @@ series:
   health-guide: Health Guide
   rust-crash-course: Rust Crash Course
 posts:
+- file: posts/the-warp-executable.md
+  title: The Warp Executable
+  time: 2020-01-20T12:57:38Z
+  description: |
+    Ever need a quick web server for some static files? Use the warp executable!
 - file: posts/rust-crash-course-09-tokio-0-2.md
   title: Tokio 0.2 - Rust Crash Course lesson 9
   time: 2019-12-05T12:57:38Z
