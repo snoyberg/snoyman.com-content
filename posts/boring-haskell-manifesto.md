@@ -46,7 +46,7 @@ We want to analyze the features of Haskell that we recommend based on its power-
 Power/benefit
 
 * More maintainable code
-* Less bugs in production
+* Fewer bugs in production
 * Higher performance
 * Higher productivity
 
