@@ -5,7 +5,7 @@ series:
 posts:
 - file: posts/the-warp-executable.md
   title: The Warp Executable
-  time: 2020-01-20T12:57:38Z
+  time: 2020-01-20T04:23:21Z
   description: |
     Ever need a quick web server for some static files? Use the warp executable!
 - file: posts/rust-crash-course-09-tokio-0-2.md
