@@ -100,7 +100,7 @@ be invited to the room. You can also allow people to join via a
 link. In order to do this, you need to create an address for a
 room. This would be something like `#myroomid:matrix.org`. For
 example, I created a room
-[@commercialhaskell:matrix.org](https://matrix.to/#/@commercialhaskell:matrix.org).
+[#commercialhaskell:matrix.org](https://matrix.to/#/#commercialhaskell:matrix.org).
 
 You can also choose whether a room will be listed in the Matrix
 directory.
