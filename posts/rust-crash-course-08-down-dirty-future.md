@@ -124,7 +124,7 @@ async fn main() {
 Let's hit the changes from top to bottom:
 
 * Instead of getting `sleep` and `spawn` from `std::thread`, we're getting them from `async_std::task`. That probably makes sense.
-* Both `sleepup` and `interruptus` now say `async` in front of `fn`.
+* Both `sleepus` and `interruptus` now say `async` in front of `fn`.
 * After the calls to `sleep`, we have a `.await`. Note that this is _not_ a `.await()` method call, but instead a new syntax.
 * We have a new attribute `#[async_std::main]` on the `main` function.
 * The `main` function also has `async` before `fn`.
