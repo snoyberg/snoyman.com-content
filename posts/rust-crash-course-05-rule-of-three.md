@@ -59,7 +59,7 @@ detail of the function. But this isn't true! Observe:
 
 ```rust
 fn main() {
-    let alice = Person { name: String::from("Alice"), age: 30 };
+    let mut alice = Person { name: String::from("Alice"), age: 30 };
     baz(&alice); // this works
     bin(&alice); // this fails
     bin(&mut alice); // but this works
