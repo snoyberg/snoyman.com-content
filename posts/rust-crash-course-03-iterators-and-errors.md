@@ -694,6 +694,10 @@ impl ParseArgs {
         match self.0.next() {
         }
     }
+
+    fn require_no_args(&mut self) -> Result<(), ParseError> {
+        unimplemented!()
+    }
 }
 
 fn parse_args() -> Result<Frame, ParseError> {
