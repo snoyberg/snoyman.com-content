@@ -1,0 +1,12 @@
+Steps: To setup contact form 
+-----------------------------------
+1 - Open "Contact" folder
+2 - Open "contact_me.php" in Notepad or any Editor
+3 - Go to line number 17 and update your email ID.
+
+Test now.. it must work.
+
+IF you see any issue, please let us know.
+webthemez@gmail.com
+
+Thanks.
