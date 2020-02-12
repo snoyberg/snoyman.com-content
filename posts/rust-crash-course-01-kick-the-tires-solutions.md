@@ -67,7 +67,7 @@ fn main() {
     printer(val);
 }
 
-fn printer(val: String) {
+fn printer(val: &String) {
     println!("The value is: {}", val);
 }
 ```
