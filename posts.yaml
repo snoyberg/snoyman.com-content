@@ -3,6 +3,12 @@ series:
   health-guide: Health Guide
   rust-crash-course: Rust Crash Course
 posts:
+- file: posts/making-nutrition-decisions.md
+  title: Making nutrition decisions
+  time: 2020-02-25T06:31:03Z
+  description: |
+    I've been trying out a new dietary pattern recently. This post is about how I make decisions on what to try, and some general rules I've been converging on.
+  series: health-guide
 - file: posts/the-warp-executable.md
   title: The Warp Executable
   time: 2020-01-20T04:23:21Z
