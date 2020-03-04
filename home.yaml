@@ -27,6 +27,9 @@ toplinks:
 #  text: "+Michael Snoyman"
 
 publications:
+- url: 'https://www.rustfornewprogrammers.com'
+  text: Rust for New Programmers (in beta)
+  date: 2020-03
 - url: 'http://aosabook.org/en/posa/warp.html'
   text: Performance of Open Source Applications
   date: 2013-11
