@@ -3,6 +3,11 @@ series:
   health-guide: Health Guide
   rust-crash-course: Rust Crash Course
 posts:
+- file: posts/carbs.md
+  title: Basics of Carbohydrates
+  time: 2020-03-27T06:00:00Z
+  description: |
+    A basic overview of what carbohydrates are at a molecular level.
 - file: posts/making-nutrition-decisions.md
   title: Making nutrition decisions
   time: 2020-02-25T06:31:03Z
