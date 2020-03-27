@@ -1,4 +1,4 @@
-FROM snoyberg/snoyman.com:c4bcfad9772e15e106aa38c96897aec8fa83b305
+FROM snoyberg/snoyman.com:72ad7d7f402f25a13a0cc899c7f9899a466080eb
 
 RUN apt-get update && apt-get install -y \
   ca-certificates \
